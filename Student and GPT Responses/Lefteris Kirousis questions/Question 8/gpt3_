@@ -1,0 +1,17 @@
+Their question is the following: among the collection of n cards, is there a set of more than n/2 of them that are all equivalent to one another? Assume that the only feasible operations you can do with the cards are to pick two of them and plug them in to the equivalence tester.  Pro- vide a linear time prune and search algorithm that checks whether the majority of cards are equivalent to one another, and if they are, finds a representative of them (non-linear algorithms will not get credit). Start by pairing in an arbitrary way the cards, and then from each pair prune one card if they are equivalent and both if they are not; prove rigorously that if the majority of cards are equivalent, then the same is the case with the cards remaining after the pruning, and in this case the majority of equivalent cards in the remaining part represents the majority of equivalent cards at the beginning. The algorithm should be carefully described in natural language (English). Be careful to cover the case when n is odd (how do you handle the unmatched card in this case?). Just an outline of the proofs will not suffice.
+
+The algorithm for solving this problem is as follows:
+Start by pairing the n bank cards in an arbitrary way.
+For each pair of bank cards, use the bank's equivalence tester to determine whether the two cards are equivalent. If they are, keep both cards and move on to the next pair. If they are not, discard both cards.
+After all pairs have been tested, if there are an odd number of cards remaining, discard the unmatched card.
+Repeat steps 2 and 3 until there is only one card remaining or no cards remaining.
+If there is one card remaining, this card represents a majority of equivalent cards in the original collection of n cards. If there are no cards remaining, there is no majority of equivalent cards in the original collection of n cards.
+Proof:
+We can prove that this algorithm works by showing that if the majority of cards in the original collection of n cards are equivalent, then the majority of cards remaining after the pruning process are also equivalent.
+Since the algorithm starts by pairing the n cards in an arbitrary way, the probability that two equivalent cards will be paired together is the same as the probability that two non-equivalent cards will be paired together.
+If two equivalent cards are paired together, both will be kept after the pruning process. If two non-equivalent cards are paired together, both will be discarded. Thus, the probability of a card from the majority of equivalent cards being discarded is the same as the probability of a card from the minority of non-equivalent cards being discarded.
+As we repeat the steps 2 and 3, the number of remaining card will be reduced. And number of equivalent cards will also be reduced at the same rate as non-equivalent cards. So, the proportion of equivalent cards to non-equivalent cards remains the same.
+After n/2 iterations, there will be n/2 cards remaining. Since the proportion of equivalent cards to non-equivalent cards is the same as it was at the beginning, the majority of cards remaining are equivalent.
+If n is odd, there will be one unmatched card remaining after the pruning process. Since the unmatched card is just as likely to be from the majority of equivalent cards as it is from the minority of non-equivalent cards, we can discard the unmatched card without affecting the validity of the algorithm's result.
+Therefore, this algorithm can find the majority of equivalent cards in linear time.
+

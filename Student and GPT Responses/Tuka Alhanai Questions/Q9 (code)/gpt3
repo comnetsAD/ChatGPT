@@ -1,0 +1,62 @@
+
+#include <iostream>
+ using namespace std;
+ class Mammal {
+   private:
+     string printStatement = ""Mammals can give direct birth."";
+   public:
+     void printMe(){ cout << printStatement << ""\n""; }
+};
+ class WingedAnimal {
+   private:
+     string printStatement = ""Winged animal can flap."";
+   public:
+     void printMe(){ cout << printStatement << ""\n""; }
+};
+ class Bat: public Mammal, public WingedAnimal {
+};
+int main() {
+Bat b1;
+     b1.printMe();
+ }
+// Expected console output:
+// A new animal.
+
+
+The source of the error(s) is that the class Bat does not have its own printMe() function. As a result, the code is not able to call the printMe() function on the Bat object.
+
+To fix this issue, we can add a printMe() function to the Bat class that calls the printMe() function of both the Mammal and WingedAnimals classes:
+
+#include <iostream>
+using namespace std;
+
+class Mammal {
+    private:
+    string printStatement = "Mammals can give direct birth.";
+    public:
+    void printMe(){ cout << printStatement << "\n"; }
+};
+
+class WingedAnimals {
+    private:
+    string printStatement = " Winged animal can flap.";
+    public:
+    void printMe(){ cout << printStatement << "\n"; }
+};
+
+class Bat: public Mammal, public WingedAnimals {
+    public:
+    void printMe() {
+    Mammal::printMe();
+    WingedAnimals::printMe();
+    cout << "A new animal." << endl;
+    }
+};
+
+int main() {
+    Bat b1;
+    b1.printMe();
+}
+
+This way, when we call the printMe() function on the Bat object, it will call the printMe() function of both the Mammal and WingedAnimals classes and will also print "A new animal." as the expected output.
+

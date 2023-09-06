@@ -1,0 +1,31 @@
+
+Price of bottled water (per bottle), Quantity of bottle water demanded (millions), Total Revenue, Marginal Revenue
+10, 0, , 
+9, 1, , 
+8, 2, , 
+7, 3, , 
+6, 4, , 
+5, 5, , 
+4, 6, , 
+3, 7, , 
+2, 8, , 
+1, 9, , 
+
+As a monopolist, the firms will set their price and quantity based on the market demand schedule. To calculate the marginal revenue, we can subtract the revenue from each additional unit sold from the total revenue of the previous quantity sold.
+
+Price of bottled water (per bottle), Quantity of bottle water demanded (millions), Total Revenue, Marginal Revenue
+10, 0, 0, -
+9, 1, 9, 9
+8, 2, 16, 7
+7, 3, 21, 5
+6, 4, 24, 3
+5, 5, 25, 1
+4, 6, 24, -1
+3, 7, 21, -3
+2, 8, 16, -5
+1, 9, 9, -7
+
+Given this demand schedule, the monopoly price would be $10 per bottle, as this is the highest price at which the firms would still be able to sell any quantity of water. The monopoly output would be 1 million bottles, as this is the highest quantity the firms can sell at the monopoly price.
+
+Since the firms divide the total output produced evenly, each firm would produce 0.5 million bottles of water and have a profit of (0.5 million * $10) - $1 million = $4.5 million.
+

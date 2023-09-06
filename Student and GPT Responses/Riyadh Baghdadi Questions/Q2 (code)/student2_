@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char string[50];
+    char unique[50];
+
+    printf("Hello, dear user, enter the string: ");
+    scanf("%s", string);
+
+    int last_entry;
+    int k = 0;
+    int size;
+
+
+    for (int i = 0; i<=strlen(string)-1; i++){  //this loop gets the unique values from the values
+        size=k;
+        
+
+        for(int j = 0; j<=size; j++){
+
+            if (string[i] == unique[j]){ //it is already there
+                break;
+            }
+
+            else if (j==size){
+                    unique[k] = string[i]; //if not, add
+                    k++;
+            }           
+        }
+
+    }
+
+    for (int i = 0; i < k; i++){  //for each character in the string
+
+
+        for (int j = strlen(string)-1; 0<=j; j--){ //compare character from the unique array with each character in the string
+
+            if(unique[i] == string[j])  
+            {
+                last_entry = j; //get the last entry of the character in the string 
+                break;
+            }
+
+        }
+             
+        while(last_entry < strlen(string)) //shifting elements after the last entry
+        {
+            string[last_entry] = string[last_entry+1];
+            last_entry++;
+        }
+            
+    }
+    
+
+    printf("string: %s", string);
+
+}
+

@@ -1,0 +1,11 @@
+
+Resource leveling and resource smoothing are both techniques used to manage resources in a project schedule.
+
+Resource leveling is a technique used to balance the workload of resources across the project schedule. It involves adjusting the start and finish dates of tasks to ensure that resources are not over-allocated or under-allocated at any point in the schedule. The goal of resource leveling is to minimize resource over-allocation while maintaining the original project finish date.
+
+Resource smoothing, on the other hand, is a technique used to minimize the fluctuations in the workload of resources across the project schedule. It involves adjusting the start and finish dates of tasks to ensure that the workload of resources is distributed as evenly as possible throughout the project. The goal of resource smoothing is to minimize the fluctuations in the workload of resources while maintaining the original project finish date.
+
+If the project duration cannot be extended, and the end date of the project cannot be delayed, I would recommend resource leveling. This is because resource leveling is focused on balancing the workload of resources across the project schedule, which can help to ensure that resources are not over-allocated at any point in the schedule, which could lead to delays. Resource smoothing is focused on minimizing fluctuations in the workload of resources, which might not be as important when the project duration is fixed.
+
+It's worth noting that both resource leveling and resource smoothing are not mutually exclusive, and it is common to use them together as part of an overall resource management strategy.
+

@@ -1,0 +1,93 @@
+#include <stdio.h>
+
+//function to add from left to right in float
+float lefttoright()
+{
+    float r;
+    float sum=0.0;
+    float num;
+    //for loop to add the numbers together
+    for (r=1;r<=10000;r++)
+    {
+        num=1/r;
+        int l=(int) r;
+        if (l%2==0)
+        {
+            sum=sum-num;
+        }
+        else{
+            sum=sum+num;
+        }
+    }
+
+    return sum;
+}
+
+//double function from left to right
+double Dlefttoright()
+{
+    double r;
+    double sum=0.0;
+    double num;
+    //for loop to add the numbers together
+    for (r=1;r<=10000;r++)
+    {
+        num=1/r;
+        int l=(int) r;
+        if (l%2==0)
+        {
+            sum=sum-num;
+        }
+        else{
+            sum=sum+num;
+        }
+    }
+
+    return sum;
+}
+
+//float function from right to left
+float righttoleft()
+{
+    float r;
+    float sum=0.0;
+    float num;
+    //for loop to add the numbers together
+    for (r=10000;r>=1;r--)
+    {
+        num=1/r;
+        int l=(int) r;
+        if (l%2==0)
+        {
+            sum=sum-num;
+        }
+        else{
+            sum=sum+num;
+        }
+    }
+
+    return sum;
+}
+
+//double function from right to left
+double Drighttoleft()
+{
+    double r;
+    double sum=0.0;
+    double num;
+    //for loop to add the numbers together
+    for (r=10000;r>=1;r--)
+    {
+        num=1/r;
+        int l=(int) r;
+        if (l%2==0)
+        {
+            sum=sum-num;
+        }
+        else{
+            sum=sum+num;
+        }
+    }
+    return sum;
+}
+

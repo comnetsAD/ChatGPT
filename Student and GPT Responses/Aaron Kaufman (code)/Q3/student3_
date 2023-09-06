@@ -1,0 +1,10 @@
+poundkg_kgpounds = function(mass, unit){
+  if(unit == "kg"){
+    mass = mass/0.453592
+  } else {
+    mass = mass*0.453592
+  }
+  return(mass)
+}
+
+

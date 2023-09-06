@@ -1,0 +1,9 @@
+
+
+To build a cross-lingual question-answering system for Arabic-to-Finnish with a limited budget and short timeframe, I would likely use the machine translation model I built in the previous mission as a first step in the process.
+I would use the Arabic query and run it through the machine translation model to translate it into Finnish. Then, I would use Lextrista's English-only IR system to search the Finnish documents, which would return a set of relevant documents.
+Since I do not have a summarization tool, I would use a simple rule-based summarization technique to extract key information from the documents. This could include techniques such as extracting the first few sentences of a document, or identifying and extracting sentences that contain specific keywords.
+To evaluate the performance of the system, I would use metrics such as precision, recall, and F1-score to measure the system's ability to retrieve relevant documents. I would also perform human evaluation by having native speakers of both languages evaluate the relevance of the documents and the quality of the summaries.
+It's important to note that achieving high performance with such a short time frame and limited resources will be challenging. However, using the machine translation model I built in the previous mission and a simple rule-based summarization technique can still be an effective approach to building a cross-lingual question-answering system in this context.
+
+

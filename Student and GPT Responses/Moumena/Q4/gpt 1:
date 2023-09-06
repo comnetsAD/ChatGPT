@@ -1,0 +1,11 @@
+
+
+
+Let R1 be the event that the urn with 6 red balls is chosen, and let R be the event that a red ball is drawn. We want to find P(R1|R). By Bayes' theorem, we have:
+P(R1|R) = P(R|R1) * P(R1) / P(R)
+P(R1) is the probability of choosing the urn with 6 red balls, which is 1/2. P(R) is the probability of drawing a red ball, which is (6/9 + 5/13)/2 = 31/52. P(R|R1) is the probability of drawing a red ball given that the urn with 6 red balls is chosen, which is 6/9.
+Plugging these values into the formula above, we get:
+P(R1|R) = (6/9) * (1/2) / (31/52) = 12/31
+So the probability that the urn with 6 red balls is chosen given that a red ball is drawn is 12/31.
+
+

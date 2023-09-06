@@ -1,0 +1,2 @@
+- Linked-list does not require a specific capacity and it can be extended in runtime
+- Linked-lists are easy to alter when we need to remove or insert an element.

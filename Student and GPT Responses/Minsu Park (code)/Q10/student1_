@@ -1,0 +1,7 @@
+say_please = 'More please'
+
+if np.count_nonzero(ten_nachos == 'chesse') < 5:
+   say_please = 'More please'
+  
+say_please
+

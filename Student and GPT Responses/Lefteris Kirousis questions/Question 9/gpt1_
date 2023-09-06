@@ -1,0 +1,6 @@
+To find a local minimum of the complete binary tree T, we can use a divide-and-conquer approach.
+Start at the root of the tree, which is the first node we probe.
+Compare the value of the root to the values of its left and right children. If the value of the root is less than both its children, it is a local minimum and we return it. If not, we move to the subtree where the value of the root is greater than that of the child and repeat step 2.
+Repeat step 2 recursively until a local minimum is found.
+This approach allows us to eliminate half of the tree in each step, since we only need to search the subtree where the local minimum could be. Since the tree is complete, it has height log(n), thus we only need log(n) probes to find the local minimum.
+For example, in a four-level complete binary tree, we would need at most four probes to find a local minimum. First, we would probe the root, then the left or right child (depending on which one is smaller), then the left or right grandchild (depending on which one is smaller), and finally the left or right great-grandchild (which will be the local minimum if it exists).

@@ -1,0 +1,11 @@
+
+To prove that A − (B ∩ C) = (A − B) ∩ (A − C), we can use set notation to show that the two sets are equal by showing that they have the same elements.
+
+To do this, we need to show that x ∈ A − (B ∩ C) if and only if x ∈ (A − B) ∩ (A − C).
+
+First, let's suppose that x ∈ A − (B ∩ C). This means that x ∈ A, but x is not in B ∩ C. Since x is not in B ∩ C, it must not be in B and it must not be in C. Therefore, x ∈ A − B and x ∈ A − C, so x ∈ (A − B) ∩ (A − C).
+
+Now, let's suppose that x ∈ (A − B) ∩ (A − C). This means that x ∈ A − B and x ∈ A − C. Since x is not in B and x is not in C, it must not be in B ∩ C. Therefore, x ∈ A and x is not in B ∩ C, so x ∈ A − (B ∩ C).
+
+Since we have shown that x ∈ A − (B ∩ C) if and only if x ∈ (A − B) ∩ (A − C), we have proved that A − (B ∩ C) = (A − B) ∩ (A − C).
+

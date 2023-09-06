@@ -1,0 +1,3 @@
+Each datagram has 1500-20-20 bytes of goodput. 4000000/1460 = 2739 datagrams. Since you cannot sent part of a datagram this means it takes 2740 datagrams.
+
+

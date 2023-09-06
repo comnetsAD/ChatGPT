@@ -1,0 +1,11 @@
+#answer here
+def starwars(n, character):
+ if character == "obi":
+   return ("May the force be with you." + " ") * (n-1) + "May the force be with you."
+ elif character == "vader":
+   return ("I find your lack of faith disturbing." + " ") * (n-1) + "I find your lack of faith disturbing."
+
+starwars(3,"obi") # May the force be with you. May the force be with you. May the force be with you.
+starwars(2, "vader") # I find your lack of faith disturbing. I find your lack of faith disturbing.
+
+

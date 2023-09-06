@@ -1,0 +1,18 @@
+All the devices in your (wireless) network have MAC addresses. MAC stands for Media Access Control, and it identifies
+which device is which on your local network. When data arrives at your router, it has to decide where to forward it. The
+router keeps track of all the devices’ MAC addresses in your network. It then assigns a private IP address to a device
+(which usually starts with 192.168). This IP address is different from the public IP address of your entire network that
+everyone on the internet sees. The router attaches a private IP address to the data packets that you receive from the
+internet in order to ensure proper delivery to your device. Even though public and private IP addresses stay the same, the
+MAC addresses on data packets are constantly being changed. The packets tell the data where it’s supposed to go next.
+Once the data reaches the next device, the MAC address changes once again in order to it to tell where it’s going next.
+Many devices have MAC addresses hard-coded in their firmware (i.e they stay the same). This is helpful when for
+instance one needs to spot a malfunctioning device, as they can locate it using the MAC address. Another way to use
+MAC addresses is to list devices that you approve to connect to your network. In this way, even if one were to steal your
+WiFi password, or even connect to your network physically, they wouldn’t be able to utilize it, since only the devices
+having the approved MAC addresses can do so. ISPs also use MAC addresses to identify the devices that they provide
+with the internet connection, and they can also use them to block the connection.
+The browser keeps track of outbound requests so when one clicks a link online, it sends the data to the router, and attaches
+the correct private IP address to the data packets sent, ensuring that they arrive at the correct destination. All the private
+IPs correspond to their MAC addresses, and the computer needs both
+

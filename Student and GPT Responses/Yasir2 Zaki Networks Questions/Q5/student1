@@ -1,0 +1,5 @@
+No, it won’t be preferable because a NAK system knows a packet is lost when it receives the previous and next consecutively. If data is infrequent, it may be a long time before the next packet is received and the missing packet can be resent.
+
+Yes, a NAK-only protocol will be better because there will be considerably less feedback and less bandwidth used.
+
+

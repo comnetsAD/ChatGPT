@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+//Addition from left to right accumulated in float
+void Fleftright(){
+    float result = 0.0;
+    float a = 1.0;
+
+    for (int i = -1; i > -10001; i--){
+        if(i % 2 == 0){
+            a = 1.0;
+        }
+        else{
+            a = -1.0;
+        }
+        result += (a/i);
+    }
+    printf("Addition from left to right accumulated in float: %.30f \n",result);
+}
+
+//Addition from right to left accumulated in float
+void Frightleft(){
+    float a = 1;
+    float result = 0;
+    for (int i = -10000; i < 0; i++){
+        if(i % 2 == 0){
+            a = 1.0;
+        }
+        else{
+            a = -1.0;
+        }
+        result += (a/i);
+    }
+    printf("Addition from left to right accumulated in float: %.30f \n",result);
+}
+

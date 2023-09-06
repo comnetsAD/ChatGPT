@@ -1,0 +1,29 @@
+
+BR1(L) = U
+BR1(C) = M
+BR1(R) = D
+BR2(U) = L
+BR2(M) = R
+BR2(D) = C
+
+(U, L) is the only pure strategy equilibrium.
+
+? any mixed strategy NE
+
+We have
+
+EU1(U) = qL - 2 qC - 2 (1 - qL - qC) = 3 qL - 2
+EU1(M) = -2 qL + qC - (1 - qL - qC) = - qL + 2 qC - 1
+EU1(D) = -2 qL - qC + 1 - qL - qC = - 2 qL - 2 qC + 1
+
+Player 1 indifferent between U and M ⇔ 3 qL - 2 = -qL + 2 qC - 1 ⇔ qL = ½ qC + ¼ and qR = ¾ - 3/2 qC
+
+Player 2 must mix (½ qC + ¼, qC, ¾ - 3/2 qC)
+
+Player 1 indifferent between U and D ⇔ 3 qL - 2 = -2 qL - 2 qC + 1 ⇔ 5 qL = - 2 qC + 3 ⇔ qL = -⅖ qC + ⅗  and qR = ⅖ - ⅗ qC
+
+Player 2 must mix (-⅖ qC + ⅗, qC, ⅖ - ⅗ qC)
+
+Player 1 indifferent between M and D ⇔ -qL + 2 qC - 1 = -2 qL - 2 qC + 1 ⇔ qL = - 4 qC + 2  and qR = 3 qC - 1
+
+Player 2 must mix (-4 qC + 2, qC, 3 qC - 1)

@@ -1,0 +1,3 @@
+Function templates in C++ allow for the creation of generic functions that can operate on multiple types of data. The advantage of this is that it allows for code reusability and reduces the need for writing separate functions for each data type. Additionally, it makes the code more readable and maintainable by eliminating the need for type-specific function names. This allows for more efficient code with less redundancy.
+Also, it enables the compiler to generate type-specific functions at compile-time, which can improve the performance of the program.
+Function templates are particularly useful when working with container classes and other data structures that need to work with multiple types of objects.

@@ -1,0 +1,1 @@
+True. Assuming positive constants c and d, with c < 1, f(n) <= cg(n) + d for every big n proves this proposition. For any big n, 2f(n) <= 2cg(n) + 2d. As we can see, 2cg(n) is O(2g(n)), 2d is a constant, therefore it is also O(2g(n)), and 2f(n) <= 2cg(n) + 2d is O(2g(n)). If c > 1, the inequality f(n) <= cg(n) + d would not hold. 

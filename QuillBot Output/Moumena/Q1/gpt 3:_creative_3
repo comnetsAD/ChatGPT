@@ -1,0 +1,1 @@
+To begin fixing this, we can write the above congruence in modular arithmetic form: a + 1 ≡ 2a mod 11 a + 1 - 2a ≡ 0 mod 11\s-a + 1 ≡ 0 mod 11 And if we divide both sides by -1, we get: a ≡ -1 mod 11 At last, the smallest integer answer can be found by adding 11 to both sides: a ≡ 10 mod 11 Thus, 10 is the lowest number a > 1 that satisfies the above congruence. 

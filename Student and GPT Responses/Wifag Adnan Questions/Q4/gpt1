@@ -1,0 +1,12 @@
+A price ceiling is a legal maximum on the price at which a good or service can be sold. In this case, the price ceiling is set at $2.
+
+The consumer surplus is the difference between the maximum amount that consumers are willing to pay for a good and the actual amount they pay. Using the demand equation, we can calculate the quantity demanded at different prices.
+At the price of $2, the quantity demanded would be QD = 10 - 2(2) = 6.
+If the price was $0, the quantity demanded would be QD = 10 - 2(0) = 10.
+The consumer surplus can be calculated as the area between the demand curve and the price ceiling. This area can be approximated as a triangle with a base of 4 (10-6) and a height of 2, resulting in a consumer surplus of 4.
+
+The deadweight loss is the loss of economic efficiency that results from a market distortion, such as a price ceiling. The deadweight loss can be calculated as the difference between the quantity supplied and the quantity demanded at the price ceiling. In this case, the quantity supplied is QS = 2P = 2(2) = 4.
+Since QD = 6 and QS = 4, the deadweight loss is 6-4 = 2.
+
+In summary, the consumer surplus is 4 and the deadweight loss is 2.
+

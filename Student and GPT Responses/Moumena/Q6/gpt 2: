@@ -1,0 +1,5 @@
+
+If each student has their own locker, then there would be 4026 lockers in total. Since there are only 805 lockers available, at least 4026 - 805 = 3221 students must share lockers. Therefore, the largest number of students who must necessarily share a locker is 3221.
+
+
+

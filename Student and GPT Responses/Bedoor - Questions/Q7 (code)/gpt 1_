@@ -1,0 +1,11 @@
+from collections import Counter
+
+def least_common(input_str, n):
+    counts = Counter(input_str)
+    return counts.most_common()[:-n-1:-1]
+
+input_str = "hello world! ok bye"
+n = 8
+
+print(least_common(input_str, n))
+

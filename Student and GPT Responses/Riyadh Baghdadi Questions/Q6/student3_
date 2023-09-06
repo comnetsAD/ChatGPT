@@ -1,0 +1,7 @@
+The results of adding operands from right to left are more accurate than the result from left to
+right. It means to add from smaller numbers to bigger numbers is better. Starting from the
+smaller number means that the rounding of the operation starts later at the additions of bigger
+numbers which the rounding wouldn’t affect as much. If the operation starts on the left side,
+then the rounding starts when the operands are smaller which causes the addition of smaller
+operands to be not as accurate.
+

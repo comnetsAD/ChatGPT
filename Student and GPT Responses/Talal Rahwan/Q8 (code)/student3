@@ -1,0 +1,9 @@
+void DLinkedList::add( DNode *v, int &e )
+{
+    DNode* s = new DNode;
+    s->elem = e;
+    s->next = v;
+    s->prev = v->prev;
+    v->prev->next = s;
+    v->prev = s;
+}

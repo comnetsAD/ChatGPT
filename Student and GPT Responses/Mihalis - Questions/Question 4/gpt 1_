@@ -1,0 +1,7 @@
+Once the host establishes a connection with the website "," the contents of the website eventually reach the client in the following steps:
+The host sends a request to the website, using the transport-layer protocol (such as TCP or UDP) and the appropriate port number, asking for the specific web page or resource it wants to access.
+The website receives the request and processes it, fetching the requested web page or resource from its server.
+The website sends a response to the host, containing the requested web page or resource, along with any associated data or media.
+The host receives the response and processes the contents of the web page, displaying it on the client device.
+In summary, the contents of the website reach the client by the host sending a request to the website using the transport-layer protocol and the appropriate port number, the website sending a response containing the requested web page or resource, and the host receiving and processing the contents of the web page, displaying it on the client device.
+

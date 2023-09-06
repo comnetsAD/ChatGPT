@@ -1,0 +1,34 @@
+Client-Server Distribution time
+
+Dcs - distribution time for the client-server architecture
+- server must transmit one copy of the file to each of the N peers (NF bits); time to distribute is based on server's upload rate Us, and is minimum NF/Us
+- dmin - download rate of peer with lowest download rate (dmin = min{d1,d2,...,dN}); This peer cannot obtain the entire file in less than F/dmin, hence minimum distribution time is at least F/dmin
+
+Formula: Dcs = max {NF/Us, F/dmin}
+N = 10 or 100 or 1000
+F = 15 Gbits
+Us = 30 Mbps
+dmin = di = 2 Mbps
+
+
+          	         10        100          1000
+300Kbps    7680      51200        512000   
+700Kbps    7680      51200        512000
+2Mbps      7680      51200        512000
+
+
+P2P Distribution time
+
+- in the case the upload time of each peer matters; we have three cases for the upload time of peer: Up=300Kbps (0.3 Mbps), or Up = 700 Kbps (0.7 Mbps), or Up = 2 Mbps
+
+Formula used: Dp2p = max {F/Us, F/dmin, NF/(Us + (U1+U2+...+UN))},
+where only u1, u2, ... vary from Dcs model above.
+
+The results are follows: (note that because of the rounded down or up conversion of upload speeds, the results might not be 100 accurate).
+
+            10        100          1000
+300Kbps    7680      25600        46545.45455   
+700Kbps    7680      15360        21041.09589
+2Mbps      7680       7680          7680
+
+

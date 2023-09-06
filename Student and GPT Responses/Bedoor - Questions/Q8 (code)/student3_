@@ -1,0 +1,13 @@
+import numpy as np
+
+def impute_NaNs(array_2d):
+ # Write your implementation below this line
+ ############### SOLUTION ###############
+ mean = np.nanmean(array_2d, axis = 0) #calculating the mean
+ replace_nan = np.where(np.isnan(array_2d)) #find NaN and return result as a True/False
+ array_2d[replace_nan] = np.take(mean, replace_nan[1])
+ ############### SOLUTION END ###########
+ # Returning the imputed array
+ return array_2d
+
+

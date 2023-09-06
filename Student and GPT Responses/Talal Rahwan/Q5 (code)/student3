@@ -1,0 +1,32 @@
+void merge( A1, A2, A ):
+{
+    i —> 0
+    j —> 0
+    m —> 0
+    while( i < A1.size() & j < A2.size() )
+    {
+        if( A1[ i ] <= A2[ j ] )
+        {
+            A[ m ] ← A1[ i ];
+            i++;
+        }
+        else
+        {
+            A[ m ] ← A2[ j ];
+            j++;
+        }
+        m++;
+    }
+    while( i < A1.size() )
+    {
+        A[ m ] ← A1[ i ];
+        i++;
+        m++;
+    }
+    while( j < A2.size() )
+    {
+        A[ m ] ← A2[ j ];
+        j++;
+        m++;
+    }
+}

@@ -1,0 +1,20 @@
+
+def findExit(lst):
+    if len(lst) == 0:
+        return False
+
+    current_index = 0
+    while current_index < len(lst):
+        if lst[current_index] == 0:
+            return False
+        current_index += lst[current_index]
+
+    if current_index == len(lst):
+        return True
+    else:
+        return False
+
+print(findExit([2,0,1,0])) # should return True
+print(findExit([1,1,0,1])) # should return False
+print(findExit([1,2,0,3,1])) # should return False
+

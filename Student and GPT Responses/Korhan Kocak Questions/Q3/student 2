@@ -1,0 +1,18 @@
+
+3 players pick an integer between 1 and 100, the person closest to ⅔ of the average of the total of their numbers. 
+
+Finding the Nash equilibrium pushes us to anticipate and assume what others will do and act according to our best interests.
+
+If, let’s say, we logically want to be our outcome to be as high as possible, we want the number we pick to be very high so that when it’s divided to ⅔ of the average, it’s still high. At this point the best choice is to pick 100, so (100; 100; 100).
+
+⅔ (300/3) = 67, therefore we can understand why, after calculating ⅔ of the average of a hundred why best answer is preferably any number smaller than 67. No number is bigger than (100), so ⅔ (x+y+z)/3 will never equal to something bigger than 67.
+
+We keep going:
+⅔ (65) = 45. Knowing that it’s in everyone’s rational best interest to make a guess above 67, then my best response is always less than ⅔ of 67.
+
+⅔ (45) = 30. The same logic can be indefinitely applied in order to find the best strategy.
+
+⅔ (30) = 20…
+
+The Nash equilibrium for this game is when players choose 1, (1, 1, 1). Whatever others play, it’s best to always go with the lowest answer possible.
+

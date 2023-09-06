@@ -1,0 +1,22 @@
+Here is a linear time prune and search algorithm that checks whether the majority of cards are equivalent to one another, and if they are, finds a representative of them:
+Initialize a variable 'count' to zero and a variable 'representative' to the first card in the collection.
+Iterate through the collection of cards, starting from the second card.
+For each card, compare it to the 'representative' card using the equivalence tester.
+If the two cards are equivalent, increment the 'count' variable by one.
+If the two cards are not equivalent, decrement the 'count' variable by one.
+If the 'count' variable becomes zero, set the 'representative' variable to the current card and reset the 'count' variable to one.
+Repeat steps 3-6 for all cards in the collection.
+After iterating through all cards, if the 'count' variable is greater than zero, return the 'representative' card as a representative of the majority of equivalent cards. If the 'count' variable is not greater than zero, return 'None' as there is no majority of equivalent cards.
+Proof:
+At the start of the algorithm, the 'count' variable is initialized to zero and the 'representative' variable is initialized to the first card in the collection.
+As we iterate through the collection of cards, starting from the second card, we compare each card to the 'representative' card using the equivalence tester.
+If the two cards are equivalent, we increment the 'count' variable by one, indicating that we have found another card that is equivalent to the 'representative' card.
+If the two cards are not equivalent, we decrement the 'count' variable by one, indicating that we have found a card that is not equivalent to the 'representative' card.
+As we continue to iterate through the collection of cards, the 'count' variable will either increase, decrease, or stay the same depending on whether the current card is equivalent or not equivalent to the 'representative' card.
+If the 'count' variable becomes zero, it means that the current card is not equivalent to the 'representative' card and all previous cards that were equivalent to the 'representative' card have been cancelled out by the non-equivalent cards, so we set the 'representative' variable to the current card and reset the 'count' variable to one.
+As we iterate through the collection of cards, the 'count' variable will either be negative, zero, or positive. If the 'count' variable is positive, it means that we have found a majority of equivalent cards, and the 'representative' card represents the majority of equivalent cards.
+As we iterate through the collection of cards, the 'count' variable will either be negative, zero, or positive. If the 'count' variable is zero, it means that we have not found a majority of equivalent cards.
+If n is odd then after the iteration is complete the last card in the collection will be un-matched. In this case, we will check whether the 'count' variable is greater than zero. If it is, then the 'representative' card is the majority of equivalent cards. If it is not, then we will check whether the last card is equivalent to the 'representative' card. If it is, then the 'representative' card is the majority of equivalent cards. If it is not, then there is no majority of equivalent cards.
+This algorithm has a time complexity of O(n) because it iterates through the collection of cards once and performs a constant amount of operations for each card.
+Additionally, the algorithm prunes cards that are not equivalent to the 'representative' card, and if a majority of cards are equivalent, the remaining cards after pruning will also be a majority of equivalent cards.
+In this way, we can ensure that if a majority of cards are equivalent, the algorithm will return a representative of that majority in linear time.

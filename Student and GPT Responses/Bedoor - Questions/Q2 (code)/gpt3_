@@ -1,0 +1,2 @@
+Given two variables, n, and character, write a program that prints May the force be with you. n number of times if the value of character is "obi", and prints I find your lack of faith disturbing. n number of times if the value of character is "vader".
+

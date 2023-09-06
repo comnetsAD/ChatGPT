@@ -1,0 +1,4 @@
+There are multiple differences between an object oriented programming approach as compared to a non-OOP one.
+In an OOP approach, we try to containerize and divide the code into several interlinked but still self-contained bits through the implementation of links of datatypes such as classes & objects, whereas in a non-OOP based approach, we try to relay in all the information under one or more branches, leading to longer and often harder to comprehend code.
+In an OOP approach, we incorporate several coding paradigms and techniques to save memory, from a more structurally coherent code while at the same time having better performance as compared to that in a non-OOP based approach.
+

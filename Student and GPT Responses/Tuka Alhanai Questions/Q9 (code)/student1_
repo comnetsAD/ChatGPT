@@ -1,0 +1,30 @@
+#include <iostream>
+ using namespace std;
+ class Mammal {
+   private:
+ 	string printStatement = ""Mammals can give direct birth."";
+   public:
+ 	virtual void printMe(){ cout << printStatement << ""\n""; }
+};
+ class WingedAnimal {
+   private:
+ 	string printStatement = ""Winged animal can flap."";
+   public:
+ 	virtual void printMe(){ cout << printStatement << ""\n""; }
+};
+ class Bat: public Mammal, public WingedAnimal {
+private:
+        	string printstatement = “A new animal.”;
+public:
+        	void printMe() { cout << printstatement << “\n”; }
+};
+int main() {
+Bat b1;
+ 	b1.printMe();
+ }
+// Expected console output:
+// A new animal.
+ 
+I added the keywork virtual before the printMe() function in both of the parent classes to indicate to the program that the function will be overridden in the child class. Then, I redefined the function printMe() in the child class with a new print statement to print what we expect.
+
+

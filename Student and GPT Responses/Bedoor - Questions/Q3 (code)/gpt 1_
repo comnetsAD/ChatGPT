@@ -1,0 +1,12 @@
+# given list of (id, interest) tuples
+id_interest_list = [(0, "Hadoop"), (1, "Machine Learning"), (2, "Deep Learning")]
+
+# given dictionary mapping id to researcher name
+id_name_dict = {0: "Bedoor AlShebli", 1: "Ahmed AlKhalifah", 2: "Mohammed AlSulami"}
+
+# use map and lambda function to convert (id, interest) list to (name, interest) list
+name_interest_list = list(map(lambda x: (id_name_dict[x[0]], x[1]), id_interest_list))
+
+print(name_interest_list)
+
+

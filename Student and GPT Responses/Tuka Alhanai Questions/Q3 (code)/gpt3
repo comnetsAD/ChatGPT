@@ -1,0 +1,65 @@
+
+#include <iostream>
+using namespace std;
+
+class Drink {
+   public:
+
+    int volume;
+   
+    // constructor
+    Drink(int v) {
+
+        // variable private to the function
+        volume = v;
+        cout << ""Volume: "" << volume << ""\n"";
+    }
+};
+
+
+int main() {
+  // creating object
+  Drink mydrink(12);
+
+  // Create object with dynamic memory allocation
+  
+  // ... solution here ...
+
+  return 0;
+}
+
+
+#include <iostream>
+using namespace std;
+
+class Drink {
+  public:
+
+  int volume;
+
+  // constructor
+  Drink(int v) {
+
+      // variable private to the function
+      volume = v;
+      cout << "Volume: " << volume << "\n";
+  }
+
+};
+
+int main() {
+  // creating object
+  Drink mydrink(12);
+
+  // Create object with dynamic memory allocation
+  Drink* mydrinkDynamic = new Drink(20);
+
+  return 0;
+}
+
+In order to create an object using dynamic memory allocation, you need to use the "new" keyword. In this case, I've created a pointer variable 'mydrinkDynamic' of class Drink, and using new operator I've dynamically allocated memory for the object. Then I've passed the value 20 to the constructor of the class Drink. So this object is created using dynamic memory allocation, and the output will be:
+"Volume: 12"
+"Volume: 20"
+
+Please note that dynamic memory allocation can cause memory leaks if not handled properly, like forgetting to delete the allocated memory when it's no longer needed.
+

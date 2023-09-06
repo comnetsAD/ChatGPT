@@ -1,0 +1,3 @@
+
+A truth table involving nine different Boolean variables would have 2^9, or 512 rows. This is because a truth table lists all possible combinations of inputs, and for each Boolean variable, there are two possible values: true or false. Therefore, for nine variables, there are 2^9 possible combinations of inputs.
+

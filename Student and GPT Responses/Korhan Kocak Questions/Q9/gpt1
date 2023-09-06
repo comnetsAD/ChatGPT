@@ -1,0 +1,13 @@
+To find the pure and mixed strategy Nash equilibria for the given games, we first need to find the best response for each player for each strategy of the other player.
+For player 1 (top row):
+If player 2 plays strategy L (left column), player 1's best response is to play strategy U (1,1) as it gives them a higher payoff than playing strategy M (-2,-2) or D (-2,-2)
+If player 2 plays strategy C (center column), player 1's best response is to play strategy U (-2,-2) as it gives them a higher payoff than playing strategy M (1,-1) or D (-1,1)
+If player 2 plays strategy R (right column), player 1's best response is to play strategy U (-2,-2) as it gives them a higher payoff than playing strategy M (-1,1) or D (1,-1)
+For player 2 (bottom row):
+If player 1 plays strategy U (top row), player 2's best response is to play strategy L (1,1) as it gives them a higher payoff than playing strategy C (-2,-2) or R (-2,-2)
+If player 1 plays strategy M (middle row), player 2's best response is to play strategy R (-1,1) as it gives them a higher payoff than playing strategy L (-2,-2) or C (1,-1)
+If player 1 plays strategy D (bottom row), player 2's best response is to play strategy R (1,-1) as it gives them a higher payoff than playing strategy L (-2,-2) or C (-1,1)
+From this, we can see that there is no pure strategy Nash equilibrium in this game because if player 1 plays strategy U, player 2 will play strategy L, but if player 1 plays strategy M, player 2 will play strategy R, and if player 1 plays strategy D, player 2 will play strategy R.
+To find the mixed strategy Nash equilibrium, we need to check for any probability distributions over the strategies that result in no player being able to improve their payoff by choosing a different strategy. We can see that if both players randomize their strategy with probability 1/3 for each strategy, neither player has an incentive to deviate from their mixed strategy as they are already receiving the highest expected payoff possible given the other player's mixed strategy.
+In summary, there is no pure strategy Nash equilibrium in this game, but there is a mixed strategy Nash equilibrium where both players randomize their strategy with probability 1/3 for each strategy.
+

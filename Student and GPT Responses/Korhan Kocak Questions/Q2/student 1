@@ -1,0 +1,14 @@
+
+Players: N = {1, 2, …, n}
+Strategis: A = contribute, B = not contribute
+Payoffs
+	
+
+Let's find the Nash equilibria of the game:
+There is no NE where more than k players people contribute, since any player i who contributed will have an incentive to defect
+Each possible combination in which exacly NE people contribute is a NE. That's because from the point of view for any player i who contributed, a = k - 1, so the best response of this player is to contribute. From the view point of a defector, a = K, so this player is better off not contributing.
+There is no NE in which 0 < a ≤ k - 1.
+If a = k - 1, each non-contributor will have an incentive to deviate and contribute.
+If  0 < a < k - 1, each contributor will be better off not contributing.
+A strategy profile in which no one contributes (a = 0) is a NE. If no one contributes, no single player will have an incentive to contribute.
+

@@ -1,0 +1,9 @@
+A = [1,2,3,4]
+
+# Write your code below this line
+######### SOLUTION #########
+import numpy as np
+np.append(np.tile(A,[len(A),1]).flatten('F'),(np.tile(A,[len(A)-1,1]).flatten()))
+######### SOLUTION END #########
+
+

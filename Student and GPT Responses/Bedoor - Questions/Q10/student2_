@@ -1,0 +1,14 @@
+The 2 websites that allow us to scrape are amazon.ae and noon.com. instock.ae does not allow scraping. I know this by putting robots.txt at the end of the URL of each website. For amazon.ae, it has the format of:
+```
+User-agent: *
+Disallow: /folder/
+```
+which means partial access or that the website allows scraping in general but disallows crawling particular sections or files. For noon.com, it has the format of:
+```
+User-agent: *
+Allow: /
+```
+which means full access allowed in scraping. Meanwhile, instock.ae has Disallow for everything, suggesting that scraping is not allowed.
+
+
+

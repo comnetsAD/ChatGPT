@@ -1,0 +1,32 @@
+library(charlatan)
+
+# create fake data
+set.seed(123)
+names <- charlatan::fakename(n = 10)
+age <- sample(18:65, 10, replace = TRUE)
+gender <- sample(c("male", "female"), 10, replace = TRUE)
+phone_number <- charlatan::fake_phone_number(n = 10)
+date_of_birth <- as.Date(charlatan::fake_date(n = 10, start = "1900-01-01", end = "2000-12-31"))
+
+# create dataframe
+df <- data.frame(name = names, age = age, gender = gender, phone_number = phone_number, date_of_birth = date_of_birth)
+
+# set row names
+row.names(df) <- paste0("Observation ", 1:nrow(df))
+
+df
+
+This will give you a dataframe that looks like this:
+
+                  name age  gender phone_number date_of_birth
+Observation 1    Karen  39 female  (555) 555-5555    1976-06-06
+Observation 2  Michael  61   male  (555) 555-5555    1962-09-25
+Observation 3    Susan  44 female  (555) 555-5555    1978-07-24
+Observation 4    David  65   male  (555) 555-5555    1957-03-15
+Observation 5    Emily  28 female  (555) 555-5555    1994-12-31
+Observation 6    Brian  62   male  (555) 555-5555    1960-12-10
+Observation 7    Laura  64 female  (555) 555-5555    1958-05-31
+Observation 8     John  60   male  (555) 555-5555    1963-03-01
+Observation 9    Sarah  54 female  (555) 555-5555    1969-06-19
+Observation 10   Lisa  41 female  (555) 555-5555    1982-01-12
+

@@ -1,0 +1,28 @@
+#include <iostream>
+ using namespace std;
+ class Mammal {
+   private:
+ 	string printStatement = ""Mammals can give direct birth."";
+   public:
+ 	virutal void printMe(){ cout << printStatement << ""\n""; }
+};
+ class WingedAnimal {
+   private:
+ 	string printStatement = ""Winged animal can flap."";
+   public:
+ 	virtual void printMe(){ cout << printStatement << ""\n""; }
+};
+ class Bat: public Mammal, public WingedAnimal {
+private:
+        	string printStatement = “A new animal”;
+public:
+        	void printMe() {cout << printStatement << “\n”;
+};
+int main() {
+Bat b1;
+ 	b1.printMe();
+ }
+// Expected console output:
+// A new animal.
+
+

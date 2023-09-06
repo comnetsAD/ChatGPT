@@ -1,0 +1,7 @@
+This statement is true. It has already been given that f(n) ≤ cg(n) + d for all large enough n and for 0 ≤ c ≤ 1 and d ≥ 0. We can raise the terms on both sides of inequality as the powers of 2, which gives us 2 f(n) ≤ 2 cg(n)+d.
+• 2 f(n) ≤ 2 cg(n)+d
+• 2 f(n) ≤ 2d(2 cg(n))
+• Given that d is a constant it implies that 2d is also a constant k such that k = 2d
+• 2 f(n) ≤ k(2 cg(n)), based on this inequality we can say that 2 f(n) is O(2 cg(n)). But given the fact that 0 ≤ c ≤ 1, we know that 2 cg(n) is bounded by 2 g(n) such that 2 cg(n) ≤ 2 g(n)
+• Since 2 cg(n) ≤ 2 g(n) and 2 f(n) ≤ 2cg(n), by using the transitivity property we can conclude that 2 f(n) is O(2 g(n)).
+

@@ -1,0 +1,9 @@
+Every device in a particular network
+also has its own unique Media Access Control address that helps in the establishment of physical
+connections between devices within a particular network and it provides physical identifiers of a
+particular device. MAC addresses are 48-bit addresses (in this example, the MAC address is
+8a:00:12:3e:d6:eb) and it remains unique, while IP addresses are recycled as and when devices connect
+and disconnect. When a data package for a device in the LAN arrives at the default gateway (in this
+case, 192.168.1.1), an Address Resolution Protocol matches the IP address with a MAC address. In this
+way, MAC addresses help in communication.
+

@@ -1,0 +1,7 @@
+01010011 + 01100110 = 10111001; 10111001 + 01110100 = 00101110;
+
+The 1s-comp of the above sum is 11010001; 
+
+To detect errors, the receiver sums all of the numbers, along with the 1s-comp. If there is no error, then the sum will not contain a zero. Otherwise, there is an error. A 2-bit error can go undetected.
+
+

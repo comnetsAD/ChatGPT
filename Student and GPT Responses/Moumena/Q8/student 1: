@@ -1,0 +1,5 @@
+
+Each Boolean variable can take on 2 values independent of the value of what value the other variables take. Hence, the number of rows is:2^9 = 512
+
+That is, the truth table of nine Boolean variables has 512 rows.
+

@@ -1,0 +1,7 @@
+
+An Out-of-Vocabulary (OOV) word is a word that is not present in a given vocabulary or language model.
+An example of an OOV word against a corpus of Shakespearean text would be a modern technical term, such as "artificial intelligence" or "machine learning". These terms would not have been in use during Shakespeare's time and therefore would not be present in the vocabulary of his text.
+Another example could be a word of a different language that isn't present in the Corpus, for instance, a word in Spanish, "amor" (love in English) which wouldn't be present in the Shakespearean text.
+OOV words can cause issues in natural language processing tasks such as speech recognition, machine translation, and text-to-speech systems as they can cause errors in the output or fail to recognize the word altogether. 
+
+

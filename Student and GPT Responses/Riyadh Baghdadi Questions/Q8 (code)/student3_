@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+struct university_detail
+{
+    char university_name[50];
+};
+
+int main()
+{
+    return 0;
+}
+

@@ -1,0 +1,8 @@
+In one line of code, only using numpy functions, and without hard-coding, create the following pattern from the given array A.
+Given
+A = [1,2,3,4]
+Create
+[1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,1,2,3,4,1,2,3,4,1,2,3,4]
+
+result = np.repeat(A, 4)
+

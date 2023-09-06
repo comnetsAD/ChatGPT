@@ -1,0 +1,6 @@
+False. The shortest paths from s to any other node t do not change if the lengths are replaced by 2le.
+Proof: The shortest path from s to t is defined as the path with the minimum sum of edge weights. If we multiply all edge weights by 2, the sum of edge weights for any path will be multiplied by 2 as well. Since the multiplication of a minimum value by a constant doesn't change its minimum value, the new shortest path will still be the path with the minimum sum of edge weights.
+Counter-example:
+Consider a directed graph G with 3 nodes s, A and t and two edges (s,A) with weight 2 and (A,t) with weight 1. The shortest path from s to t is (s,A,t) with a distance of 3. If we replace the weights with 22 = 4 and 21 = 2 respectively, the shortest path is still (s,A,t) with a distance of 6.
+It is important to note that this is true only if the weights are positive, if the weights are negative it can change the shortest path.
+

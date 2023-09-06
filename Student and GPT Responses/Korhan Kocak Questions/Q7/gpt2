@@ -1,0 +1,19 @@
+The given game is a normal form game, which means that each player has a set of strategies and the outcome of the game depends on the combination of strategies chosen by both players. In this case, the players are U and D and the strategies are L and R. The payoffs are given in the form of (x, y), where x represents the payoff for player U and y represents the payoff for player D.
+To find the pure and mixed strategy Nash equilibria for this game, we need to consider the best response for each player given the strategy chosen by the other player.
+For player U:
+If player D chooses strategy L, then player U's best response is strategy L, as it gives them a payoff of 1, which is higher than the payoff of 3 for strategy R.
+If player D chooses strategy R, then player U's best response is strategy R, as it gives them a payoff of 4, which is higher than the payoff of 2 for strategy L.
+For player D:
+If player U chooses strategy L, then player D's best response is strategy R, as it gives them a payoff of 3, which is higher than the payoff of 2 for strategy L.
+If player U chooses strategy R, then player D's best response is strategy L, as it gives them a payoff of 2, which is higher than the payoff of 3 for strategy R.
+From this analysis, we can see that there are two pure strategy Nash equilibria in this game: (L, R) and (R, L).
+For mixed strategy Nash equilibrium, we can consider the probability of playing each strategy as a variable. Let x be the probability of playing strategy L for player U and y be the probability of playing strategy L for player D.
+For player U, their expected payoff for strategy L is x(1) + (1-x)(4) and expected payoff for strategy R is x(4) + (1-x)(1).
+For player D, their expected payoff for strategy L is y(3) + (1-y)(2) and expected payoff for strategy R is y(2) + (1-y)(3)
+We set the expected payoff for both strategies equal to each other, and solve the system of equations.
+x(1) + (1-x)(4) = x(4) + (1-x)(1)
+y(3) + (1-y)(2) = y(2) + (1-y)(3)
+This system of equations gives us x = 0.25, y = 0.75
+Therefore, the mixed strategy Nash equilibrium for this game is (0.25, L) and (0.75, L)
+In summary, the pure strategy Nash equilibria for this game are (L, R) and (R, L), and the mixed strategy Nash equilibrium for this game is (0.25, L) and (0.75, L).
+

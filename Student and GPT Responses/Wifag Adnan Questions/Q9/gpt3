@@ -1,0 +1,11 @@
+
+Total cost of Perrier: TC_P = 2q_P + 1
+Total cost of Evian: TC_E = 2q_E + 1
+What is the Nash Equilibrium of this game? If the firms only interact once, can the cooperative solution be achieved? Explain your answer.
+
+The Nash Equilibrium of this game is a situation where each firm is producing the quantity of water that maximizes their profit given the other firm's choice of production. In this case, the Nash Equilibrium is for both firms to produce 2.5 million bottles of water, as this is the combination of quantities that maximizes the profit of both firms.
+
+When both firms produce 2.5 million bottles of water, the market price would be P = 10 - (2.5 + 2.5) = 5, and the total revenue of each firm would be TR = P * q = 5 * 2.5 = 13.75. The total cost of each firm would be TC = 2q + 1 = 2 * 2.5 + 1 = 6.25, and the profit of each firm would be TR - TC = 13.75 - 6.25 = 7.5.
+
+If the firms only interact once, the cooperative solution cannot be achieved. The reason is that, in a one-shot game, there is no mechanism for enforcing the cartel agreement and no possibility of punishment for cheating, so each firm has an incentive to produce more than 2 million bottles of water in order to increase its profit. The Nash Equilibrium solution is the only stable outcome, as both firms have no incentive to change their production quantities once they have reached the equilibrium.
+

@@ -1,0 +1,7 @@
+Each 1500 byte chunk can transport 1460 bytes of MP3 data since the headers consume 40 bytes.
+
+(5 x 10^6) / 1460 = 3424.7
+
+which means that 3425 chunks are used
+
+

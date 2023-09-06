@@ -1,0 +1,55 @@
+=========================
+Algorithm 1 FindMajority Element(S)
+n = |S|
+if n == 0 then
+  return None
+end if
+if n == 1 then
+   return that single element from set
+end if
+if n ̸= 1 & n is odd then
+   l = last element of S
+   S′ = S – l
+   x = FindMajorityElement(S′)
+   if x is Majority in S then
+ 	return x
+   else if x = None then
+     if l is majority in S then
+	    return l
+     else return None
+     end if
+ end if
+end if
+Divide S in to random n2 pairs, (ci, cj )
+P = () //Set that will be sent to next recursive call
+iterate through the pairs
+if both the cards in the pair are same then
+   add one of them to the set P
+end if
+m = FindMajorityElement(P)
+if m is majority in the set S then
+  return m
+end if
+============================
+Explaining the Algorithm + Proof of Correctness
+Given that prune and search algorithm is a recursive process, FindMajorityElement(S) is also a recursive function. It takes in a set of n cards and prunes away cards based on several condition. Initially each cards in the set are pairedup randomly, if there are odd number of cards then one card will be unpairedand we keep that aside for later and work on the paired cards:
+• If the cards in a pair are not equivalent then you discard both of them.
+• If the cards in the pair are both same then only discard on of them Once we reach the end of the recursive call it will either return a card or”None”. There are different cases to check if a certain card is majority
+• If the last recursive call returns one card then it checks if that is themajority in the initial set of the caller. Then the caller returns that card if it is the majority and so on.
+• If the last recursive call returns ”None”, there are again two different cases
+  	– If the set in caller function has even cards then the caller will returnback ”None” to its caller and so on.
+   	– If the set in caller function has odd number of cards and it recieves”None” from its callee it will compare the card that was left outduring pairing process and then compare it to the set in that instance.If the left out card was majority then that will be returned, else”None” will be returned.
+Prove rigorously that if majority of cards are equivalent, then the same is the case with the cards remaining after pruning
+At each iteration of the recursive function if n > 1, then for each pair that are not equivalent we prune away both the cards in the pair. But if they are equivalent we only prune away one of them.
+If the majority of the cards in the set are equivalent, this implies that there are more than n/2 cards in the equivalence class. During the pruning process of FindMajorityElement(S), more than n/2 cards are discarded because we either discard one or two cards. When we discard a pair (two cards), then at most one of them must belong to the equivalence class.
+The first call to the function only takes n/2 tests because the cards are paired up (and then compared). Since the pruning is akin to filtration process so we arethen left with ≤ n/2 cards from the original set, because if a pair was equivalent only one is remove, otherwise both are removed. But since the cards from the equivalence class remain, the new pruned set P with cardinality m will have more than m/2 equivalent cards. So as the recursive function goes on and on,we will eventually be left with only one card and that card’s equivalence will be only candidate considered as a majority. We then use this single card andreturn it to the caller to check if that card’s equivalence class has more than n/2 elements in the set.
+To prove the other way around: the majority of the cards in the remainingpart represent the majority of the equivalent cards at the beginning. At the last recursive call when we are left with 1 card, as mentioned earlier this card’s equivalence is the only one for having a majority. Let’s assume that this card is n/8 th of the original set of cards, so when we return the card to its caller, at least (2* n/8 + 1) cards in the set of cards in the caller will be equivalent to card returned by the callee. So what we can deduce from this is that, if at least n/2x cards belong to the equivalence class in callee function then the caller function will have at least 2* n/2x + 1 cards that belong to the equivalence class, where x represents the stage of the callee function.
+
+Time Complexity
+Earlier it was mentioned that in the first recursive call there are n/2 test, then the next recursive call will have at most n/4 test because at least n/2 cards were discarded. This pattern of comparison goes on until the end of recursion. So forall removal this would take n/2 + n/4 + n/8 + n/16 +... tests, this is O(n) approximately.
+The maximum linear time for a recursive algorithm on a set of n cards:
+• When n = 0, T(0) = O(1)
+• When n is odd. T(n) = T(n − 1) + O(n)
+• When n is even. T(n) = T(n/2) + O(n)
+So after adding up the time complexities of the different cases, the overall time complexity for the recursive algorithm is O(n).
+

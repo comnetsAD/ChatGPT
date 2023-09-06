@@ -1,0 +1,15 @@
+
+say_please = '?'
+
+if ...
+    say_please = 'More please'
+    
+say_please
+
+ten_nachos = {'nachos_with_cheese': 3}
+
+say_please = '?'
+if ten_nachos['nachos_with_cheese'] < 5:
+    say_please = 'More please'
+
+say_please

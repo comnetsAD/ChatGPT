@@ -1,0 +1,5 @@
+True. Let ∑ le be the shortest path from s to any other node t, for each edge e on the path, with cost le. Then, ∑ le <= ∑ li where li is the weight for each edge i on any other path from s to t. If each side is multiplied by 2, the inequality is preserved, as the 2 can be distributed throughout each weight in the sum:
+2 ∑ le <= 2∑ li
+∑ 2le <= ∑ 2li
+Thus, if the weights are doubled for each edge, the shortest path from s to t does not change.
+

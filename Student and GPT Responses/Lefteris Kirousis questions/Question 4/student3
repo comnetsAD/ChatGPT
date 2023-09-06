@@ -1,0 +1,4 @@
+True. It is given that f(n) <= cg(n) + d, so 2f(n) <= 2cg(n)+d.
+2cg(n)+d = (2c)g(n) * 2d <= 2g(n) * 2d because c is <= 1. Since 2d is just a positive constant because d is a positive constant, we can let k = 2d. Then
+2f(n) <= k * 2g(n), where k is a positive constant. Thus, with the given conditions, 2f(n) is O(2g(n)).
+

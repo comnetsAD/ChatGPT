@@ -1,0 +1,8 @@
+The information is processed by the web server that finally sends a status code to the browser. The
+contents of the desired webpage are then sent in the form of data packets that reach the router and
+finally, to the host device through ARP. The data packets contain information on assembling the
+webpage that are analyzed by the web browser. The packets contain code in HTML, CSS, and more,
+and these are processed by the rendering engine of the browser. The user finally sees a complete
+webpage.
+
+

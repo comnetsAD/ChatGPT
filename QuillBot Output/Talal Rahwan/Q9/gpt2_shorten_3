@@ -1,0 +1,1 @@
+Memory allocation and deallocation during runtime allow linked-lists to be enlarged dynamically. This helps when data structure sizes vary often or are unknown. Efficient insertion and deletion: Linked-lists may add or delete elements quickly by changing a few pointers, but arrays may involve relocating a lot of data in memory. 

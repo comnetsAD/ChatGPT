@@ -1,0 +1,20 @@
+# prompt the user to enter a sentence
+sentence = input("Enter a sentence: ")
+
+# count the number of vowels, words, and characters in the sentence
+num_vowels = len([char for char in sentence if char in "aeiouAEIOU"])
+num_words = len(sentence.split())
+num_chars = len(sentence)
+
+# print the report
+print("Wordy-Bot Report:")
+print("Number of vowels: {}".format(num_vowels))
+print("Number of words: {}".format(num_words))
+print("Number of characters: {}".format(num_chars))
+
+# add additional statistics to the report
+print("Number of consonants: {}".format(num_chars - num_vowels))
+print("Number of spaces: {}".format(num_words - 1))
+print("Number of letters: {}".format(num_chars - (num_words - 1)))
+
+

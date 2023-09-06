@@ -1,0 +1,14 @@
+There are no dominant strategy, there is one NEq (Up; Right) (2; 5).
+
+Let’s look for a mixed strategy.
+
+U1(U) = U1(D).
+2(p) + 2 (1 - p) = 1(p) + 1(1 - p).
+p=Ø
+
+U2(L) = U2(R).
+3(q) + 4 (1 - q) = 5(q) + 2(1 - q).
+q = ½  
+
+There is no Nash equilibrium in mixed strategy (there is no mixture that would leave both players indifferent).
+

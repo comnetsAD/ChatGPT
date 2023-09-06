@@ -1,0 +1,21 @@
+====================
+Algorithm 2 FindLocalMinimum(T, Node)
+	if Node is a leaf OR (Node < leftChild & Node < rightChild) then
+       	return Node;
+	else
+         	if leftChild < rightChild then
+                     	FindLocalMinimum(T, leftChild)elseFindLocalMinimum(T, rightChild)
+        	end if
+ end if
+Proof of Correctness
+The recursive algorithm initiates with the root node of the tree, so if the root node is smaller than both of its children that it is the local minimum, so the function will return the root node. But if it is not smaller than its children, then the algorithm will iterate over the smaller child amongst the two. The algorithm will terminate in the following two cases:
+• The parent node v (root node of ith iteration) is smaller than its twochildren
+• The node w reached at the ith iteration is a leaf node.
+When the algorithm terminates at case 1, then the parent node v is returned since it is local minimum. The node v is considered as the local minimum because it is smaller than both of its children and also because it is smaller thanit’s own parent - which was tested in the previous iteration of the algorithm.
+When the algorithm terminates at case 2, the algorithm returns the lead node w as the local minimum because it is smaller than it’s parent and it doesn’t haveany children to which it can be compared. Same as case 1, node w is smallerthan its parent because it was tested in the previous iteration of the algorithm.
+Time Complexity
+How is the complexity O(logn)?
+As mentioned in the question, there are n = 2d − 1 nodes in a completebinary tree and d is the depth of the tree. By solving the expression in theprevious line for d we get d = log2(n + 1).
+The depth d of a node is defined as the number of edges between itself and the root node of the tree. During each recursive call of the algorithm, the current node is one level lower from the node which called it. Hence, when the algorithm returns a leaf node or a parent node other than the root node, then the algorithm recursively traversed a path down the tree which took at most d steps.
+In conclusion, the algorithm performs O(logn) probes down the tree to find the local minimum.
+

@@ -1,0 +1,192 @@
+
+Server:
+#include <unistd.h> // / header for unix specic functions declarations : fork(), getpid(), getppid(), sleep()
+#include <stdio.h>  // header for input and output from console : printf, perror
+#include <stdlib.h> // header for general functions declarations: exit() and also has exit macros such as EXIT_FAILURE - unsuccessful execution of a program
+#include <sys/socket.h> // header for socket specific functions and macros declarations
+#include <netinet/in.h> //header for MACROS and structures related to addresses "sockaddr_in", INADDR_ANY 
+#include <string.h> // header for string functions declarations: strlen()
+#include <pthread.h> // header for thread functions declarations: pthread_create, pthread_join, pthread_exit
+
+
+#define PORT 5564 //or 5554 tcp client server port
+
+void* HandleClient(void* new_socket){
+  pthread_detach(pthread_self());
+  int socket = *(int*)new_socket;
+  free(new_socket);
+  printf("--Handling the new client in a thread using socket: %d\n", socket);
+  printf("Listening to client...\n");
+
+  char message[1024] = {0};
+  char message3[1024] ="Hello Back!";
+  int message2[1024]={0};
+  int temp[100];
+  int j;
+  int sum=0;
+  int k;
+  recv(socket, message, sizeof(message),0); // recevie hello message from client
+  printf("Server Received: %s\n", message); // print the received message
+  send(socket,message3,strlen(message3),0); // send hello back messafe to client
+  printf("Waiting for client to send an array..\n");
+  int n = recv(socket,message2,1024*sizeof(int),0); // receive array of integers from client, not a good idea as because of endianness we might receive bytes out of order, but not required here because client/server will sent the bytes in same order due to being on the same machine/architecture
+  printf("Number of bytes read = %d; thus %ld is the size of the array\n",n,n/sizeof(int));
+  printf("Array received: \n"); 
+  for(j=0;j<n/sizeof(int);j++){// print array elements
+    printf("%d ",message2[j]);
+  }
+
+  printf("\nFinished reading\nComputing sum:") ;
+  for(k=0;k<n/sizeof(int);k++){// compute the sum of array elements
+    sum+=message2[k];
+  }
+  printf("\nSum= %d\n", sum);
+  send(socket,&sum,sizeof(int),0); // send the sum back to client
+  printf("Finished sending sum\n");
+
+  close(socket); // close the conneciton with client
+  pthread_exit(NULL);
+}
+
+
+int main()// main function
+{
+  int sock1, sock2, valread;
+  struct sockaddr_in address; // structure for storing addres; local interface and port 
+  int addrlen = sizeof(address);
+
+  // Creating socket file descriptor with communication: domain of internet protocol version 4, type of SOCK_STREAM for reliable/conneciton oriented communication, protocol of internet  
+  if ((sock1 = socket(AF_INET, SOCK_STREAM, 0)) == 0) // checking if socket creation fail
+  {
+    perror("socket failed");
+    exit(EXIT_FAILURE);
+  }
+
+  // setting the address to be bind to socket
+  address.sin_family = AF_INET;
+  address.sin_addr.s_addr = htonl(INADDR_ANY);
+  address.sin_port = htons(PORT);
+
+  // attaching socket to addresses (any/all local ip with port 5564)
+  if (bind(sock1, (struct sockaddr *)&address,
+   sizeof(address)) < 0) // checking if bind fails
+  {
+    perror("bind failed");
+    exit(EXIT_FAILURE);
+  }
+  if (listen(sock1, 10) < 0) // defining for socket length of queue for pending client connections
+    {
+      perror("Listen Failed");
+      exit(EXIT_FAILURE);
+    }
+  while (1) // to keep server alive for infintiy
+  {
+    if ((sock2 = accept(sock1, (struct sockaddr *)&address,
+     (socklen_t *)&addrlen)) < 0) // accepting the client connection with creation/return of a new socket for the established connection to enable dedicated communication (active communication on a new socket) with the client
+    {
+      perror("accept");
+      exit(EXIT_FAILURE);
+    }
+
+    int rc;
+    pthread_t thread_id;
+    int* new_socket = (int*)malloc(sizeof(int));
+    if(new_socket == NULL){
+      fprintf(stderr, "Could not allocate memory for thread new socket argument :(\n");
+      exit(EXIT_FAILURE);
+    }
+
+    *new_socket = sock2;
+
+    rc = pthread_create(&thread_id, NULL, HandleClient, new_socket);
+    if(rc){
+      printf("\n ERROR: return code from pthread_create is %d\n", rc);
+      exit(EXIT_FAILURE);
+    }
+/*
+    // variable such as message buffers to receive and send messages
+    printf("Listening to client..\n");
+    
+    
+*/
+
+  }
+  close(sock1);
+  
+  pthread_exit(NULL);
+}
+
+Client:
+#include <unistd.h> // / header for unix specic functions declarations : fork(), getpid(), getppid(), sleep()
+#include <stdio.h>  // header for input and output from console : printf, perror
+#include <sys/socket.h> // header for socket specific functions and macros declarations
+#include <stdlib.h> // header for general functions declarations: exit() and also has exit macros such as EXIT_FAILURE - unsuccessful execution of a program
+#include <netinet/in.h> //header for MACROS and structures related to addresses "sockaddr_in", INADDR_ANY 
+#include <string.h> // header for string functions declarations: strlen()
+#include <arpa/inet.h> // header for functions related to addresses from text to binary form, inet_pton 
+
+#define PORT 5564
+
+int main()
+{
+  int sock = 0, valread;
+  struct sockaddr_in serv_addr; // structure for storing addres; remote server ip and port 
+  
+  // Creating socket file descriptor with communication: domain of internet protocol version 4, type of SOCK_STREAM for reliable/conneciton oriented communication, protocol of internet 
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) // checking if socket creation fail
+  {
+    printf("\n Socket creation error \n");
+    return -1;
+  }
+
+  // setting the address to connect socket to server
+  serv_addr.sin_family = AF_INET;
+  serv_addr.sin_port = htons(PORT);
+
+    // Convert IPv4 and IPv6 addresses from text to binary form and set the ip
+    //This function converts the character string 127.0.0.1 into a network
+    // address structure in the af address family, then copies the
+    // network address structure to serv_addr.sin_addr
+  if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) // check if conversion failed
+  {
+    printf("\nInvalid address/ Address not supported \n");
+    return -1;
+  }
+
+  // connect the socket with the adddress and establish connnection with the server 
+  if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+  {
+    printf("\nConnection Failed \n");
+    return -1;
+  }
+
+  // variable such as message buffers to receive and send messages
+  char message[]="hello\n";
+  char message2[1024]={0};
+
+  int rcvsum;
+  send(sock,message,strlen(message),0); // send hello message to server
+  recv(sock,message2,sizeof(message2),0); // receive hello back from server
+  printf("\nClient Received: %s\n",message2); // print the message received
+
+  // get array and array size from console from user
+  int i;
+  int sizee;
+  printf("\nPlease enter the size of the array:\n"); 
+  scanf("%d",&sizee);
+  printf("\nPlease enter %d numbers:\n",sizee);
+  int temp[sizee];
+  for(i=0;i<sizee;i++){
+    scanf("%d",&temp[i]);
+  }
+
+
+  send(sock,temp,sizee*sizeof(int),0); // send array to server
+
+  recv(sock,&rcvsum,sizeof(int),0); // receive sum from server
+  printf("\nClient received Sum= %d\n",rcvsum); // print the received sum
+  close(sock); // close the socket/end the conection
+
+}
+
+

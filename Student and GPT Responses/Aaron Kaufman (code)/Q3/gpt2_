@@ -1,0 +1,12 @@
+convert_weight <- function(weight, from, to) {
+  if (from == "lbs" && to == "kgs") {
+    return(weight * 0.45359237)
+  } else if (from == "kgs" && to == "lbs") {
+    return(weight / 0.45359237)
+  } else if (from == to){
+    return(weight)
+  }else {
+    stop("Invalid unit provided. Please use 'lbs' or 'kgs'.")
+  }
+}
+

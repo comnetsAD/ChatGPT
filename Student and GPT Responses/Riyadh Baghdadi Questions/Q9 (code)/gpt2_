@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+struct university_detail {
+    char name[100];
+};
+
+struct student_detail {
+    int id;
+    char name[100];
+    float gpa;
+    struct university_detail uni;
+};
+
+int main() {
+    struct university_detail uni;
+    strcpy(uni.name, "My University");
+    printf("University name: %s\n", uni.name);
+
+    struct student_detail student;
+    student.id = 123456;
+    strcpy(student.name, "John Doe");
+    student.gpa = 3.5;
+    student.uni = uni;
+
+    printf("Student ID: %d\n", student.id);
+    printf("Student Name: %s\n", student.name);
+    printf("Student GPA: %.2f\n", student.gpa);
+    printf("Student University: %s\n", student.uni.name);
+
+    return 0;
+}
+

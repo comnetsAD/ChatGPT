@@ -1,0 +1,88 @@
+A) Is the system currently in a safe state?
+
+The Banker's algorithm is used to determine whether a system is in a safe state or not. It checks if there is a safe sequence of processes that can be executed such that the system will not enter into a deadlock state.
+
+To check if the system is currently in a safe state, we need to check the following:
+
+Check if the current allocation of resources to each process can be satisfied by the available resources and the maximum resources needed by each process.
+Check if there is a safe sequence of processes that can be executed such that the system will not enter into a deadlock state.
+
+Step 1: Check if the current allocation of resources to each process can be satisfied by the available resources and the maximum resources needed by each process.
+
+Available resources: (2, 1, 0, 0)
+Allocated resources for each process:
+P1: (0, 0, 1, 2)
+P2: (2, 0, 0, 0)
+P3: (0, 0, 3, 4)
+P4: (2, 3, 5, 4)
+P5: (0, 3, 3, 2)
+
+Maximum resources needed for each process:
+P1: (0, 0, 1, 2)
+P2: (2, 7, 5, 0)
+P3: (6, 6, 5, 6)
+P4: (4, 3, 5, 6)
+P5: (0, 6, 5, 2)
+
+We can calculate the need of each process as:
+Need = Maximum resources needed for each process - Allocated resources for each process
+
+P1: (0, 0, 0, 0)
+P2: (0, 7, 5, 0)
+P3: (6, 6, 2, 2)
+P4: (2, 0, 0, 2)
+P5: (0, 3, 2, 0)
+
+Step 2: Check if there is a safe sequence of processes that can be executed such that the system will not enter into a deadlock state.
+
+Start with the available resources and check if the need of any process can be satisfied.
+If a process's need can be satisfied, mark it as finished and add its resources to the available resources.
+Repeat the above steps for all the processes until all processes are marked as finished or no process's need can be satisfied.
+Available resources: (2, 1, 0, 0)
+Processes: P1, P2, P3, P4, P5
+Check P1: (0, 0, 0, 0) <= (2, 1, 0, 0) => P1 can be finished
+Available resources: (2, 1, 0, 0) + (0, 0, 1, 2) = (2, 1, 1, 2)
+Check P2: (0, 7, 5, 0) <= (2, 1, 1, 2) => P2 can't be finished
+Check P3: (6, 6, 2, 2) <= (2, 1, 1, 2) => P3 can't be finished
+Check P4: (2, 0, 0, 2) <= (2, 1, 1, 2) => P4 can't be finished
+Check P5: (0, 3, 2, 0) <= (2, 1, 1, 2) => P5 can't be finished
+
+Since none of the process's need can be satisfied, the system is not in a safe state.
+
+B) If the system is still safe after completing question A and updating the system, and a new request from process P3 arrives for (0, 1, 0,0), can the request be granted immediately, and do the system continue to be in a safe state?
+
+To check if the request can be granted and the system continues to be in a safe state, we need to check the following:
+
+Check if the new request can be satisfied by the available resources.
+Check if there is a safe sequence of processes that can be executed after granting the new request such that the system will not enter into a deadlock state.
+Step 1: Check if the new request can be satisfied by the available resources.
+
+New request from P3: (0, 1, 0, 0)
+Available resources: (2, 1, 0, 0)
+(0, 1, 0, 0) <= (2, 1, 0, 0) => The new request can be satisfied by the available resources.
+
+Step 2: Check if there is a safe sequence of processes that can be executed after granting the new request such that the system will not enter into a deadlock state.
+
+Update the allocated resources for P3 with the new request: (0, 0, 3, 4) + (0, 1, 0, 0) = (0, 1, 3, 4)
+Update the available resources: (2, 1, 0, 0) - (0, 1, 0, 0) = (2, 0, 0, 0)
+Update the need of P3: (6, 6, 2, 2) - (0, 1, 3, 4) = (6, 5, -1, -2)
+
+Start with the updated available resources and check if the need of any process can be satisfied.
+
+If a process's need can be satisfied, mark it as finished and add its resources to the available resources.
+
+Repeat the above steps for all the processes until all processes are marked as finished or no process's need can be satisfied.
+
+Available resources: (2, 0, 0, 0)
+
+Processes: P1, P2, P3, P4, P5
+Check P1: (0, 0, 0, 0) <= (2, 0, 0, 0) => P1 can be finished
+Available resources: (2, 0, 0, 0) + (0, 0, 1, 2) = (2, 0, 1, 2)
+Check P2: (0, 7, 5, 0) <= (2, 0, 1, 2) => P2 can't be finished
+Check P3: (6, 5, -1, -2) <= (2, 0, 1, 2) => P3 can't be finished
+Check P4: (2, 0, 0, 2) <= (2, 0, 1, 2) => P4 can't be finished
+Check P5: (0, 3, 2, 0) <= (2, 0, 1, 2) => P5 can't be finished
+
+Since none of the process's need can be satisfied, the system is not in a safe state even after granting the new request from P3. Therefore, the request can not be granted immediately and the system will enter into a deadlock state.
+
+

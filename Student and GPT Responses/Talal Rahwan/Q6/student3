@@ -1,0 +1,1 @@
+Function templates remove the need to repeat a function for different data types. Templates allow for any datatype to be used as an argument/return type, thus the user does not have to repeatedly adjust the code for different types.

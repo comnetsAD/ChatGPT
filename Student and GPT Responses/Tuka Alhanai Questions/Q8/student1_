@@ -1,0 +1,3 @@
+Map: it is from the map STL. A map is an associative list of elements that stores elements just like an array but is 1-indexed not 0-indexed. A feature of a map is that is has a “key” for each element in it. A key is a value that allows programmers to reach the element without knowing the index, and it can be of any data type (int, string, char, etc.).
+Iterator: an iterator can be from any STL from the following: map, vectors, deque. An iterator is an object that points to an element of the list that is created for. Hence, it can point to objects of a map, vector, or deque.
+

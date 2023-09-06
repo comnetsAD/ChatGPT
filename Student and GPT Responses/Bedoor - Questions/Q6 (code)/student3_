@@ -1,0 +1,12 @@
+fruit_lst = ["Apple", "Banana", "Pear", "Apricot", "Orange"] # this can be arbitrary
+
+filtered_lst = []
+
+# Write your code below this line
+
+###### SOLUTION ######
+filtered_lst = list(filter(lambda a: a[0] == "A", fruit_lst))
+print(filtered_lst)
+###### SOLUTION END ######
+
+

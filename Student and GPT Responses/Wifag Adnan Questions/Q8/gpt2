@@ -1,0 +1,14 @@
+        q_P     q_E     P    TR_P         TR_E    TC_P   TC_E   Profit_P        Profit_E
+2       2        6        12      	12      	4    	8    	8
+2       2.5     5.5     11      	13.75   4    	7    	9.75
+2.5     2       5.5     13.75   	11      	4.5  	4    	9.25      	8
+2.5     2.5     5       12.5    	12.5    	5    	5    	7.5    		7.5
+
+In this matrix, each row represents a different scenario where one firm chooses to produce 2 million bottles and the other firm chooses to produce 2.5 million bottles.
+
+In the first row, both firms choose to produce 2 million bottles. The market price (P) is determined by the total quantity supplied (Q) which is the sum of q_P and q_E, thus P = 10 - Q = 10 - (2 + 2) = 6. Given this price, the total revenue for each firm will be TR_P = P * q_P = 6 * 2 = 12 and TR_E = P * q_E = 6 * 2 = 12. The total cost for each firm is TC_P = 2 * q_P + 1 = 2 * 2 + 1 = 5 and TC_E = 2 * q_E + 1 = 2 * 2 + 1 = 5. Therefore, the profit for each firm is Profit_P = TR_P - TC_P = 12 - 5 = 7 and Profit_E = TR_E - TC_E = 12 - 5 = 7
+
+Similarly, you can calculate the remaining rows by replacing the values of q_P and q_E for each scenario and using the formula for P, TR, TC and Profit.
+
+In this scenario, each firm faces the same payoffs regardless of what the other firm chooses, but the price of water is affected by the total quantity supplied by both firms.
+

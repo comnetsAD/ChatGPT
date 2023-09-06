@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <sys/mman.h>
+
+int main(void)
+{
+  // use mmap to create shared memory space for an integer,
+  // which the integer pointer *shared_integer will point to
+  int *shared_integer =
+      (int *)mmap(NULL, sizeof(int *),
+                  PROT_READ | PROT_WRITE,
+                  MAP_SHARED | MAP_ANONYMOUS,
+                  -1, 0);
+
+  // declare two process variables for the child processes
+  pid_t child1;
+  pid_t child2;
+
+  // initialize the shared integer with value of 0
+  (*shared_integer) = 0;
+
+  // fork the first child
+  child1 = fork();
+
+  // check for an error
+  if (child1 < 0)
+  {
+    printf("Error forking child1.");
+    exit(EXIT_FAILURE);
+  }
+  // child process
+  // loop until the shared integer is 10000
+  // print value before exiting
+  else if (child1 == 0)
+  {
+    for (; (*shared_integer) < 10000; (*shared_integer)++)
+      ;
+    printf("Child 1 %d\n", (*shared_integer));
+    exit(EXIT_SUCCESS);
+  }
+  // parent process
+  else
+  {
+    // wait for child to exit
+    wait(NULL);
+
+    // fork child2
+    child2 = fork();
+
+    // check for an error
+    if (child2 < 0)
+    {
+      printf("Error forking child2.");
+      exit(EXIT_FAILURE);
+    }
+    // child process
+    // loop until the shared integer is 15000
+    // print value before exiting
+    else if (child2 == 0)
+    {
+      for (; (*shared_integer) < 15000; (*shared_integer)++)
+        ;
+      printf("Child 2 %d\n", (*shared_integer));
+      exit(EXIT_SUCCESS);
+    }
+    // parent process
+    else
+    {
+      // wait for child to exit
+      wait(NULL);
+
+      // loop until the shared integer is 20000
+
+      for (; (*shared_integer) < 20000; (*shared_integer)++)
+        ;
+
+      // print value
+      printf("Parent %d\n", (*shared_integer));
+    }
+  }
+
+  return 0;
+}
+
+

@@ -1,0 +1,1 @@
+We can define the same function for different input types in one go, e.g., int, floots, etc. and no matter what the user puts into the function it works using the one time definition and we don’t have to redefine it with multiple input types.

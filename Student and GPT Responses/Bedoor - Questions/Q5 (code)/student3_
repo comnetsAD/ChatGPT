@@ -1,0 +1,10 @@
+l1 = [1,2,3,4] # this can be any arbitrary list
+l2 = [2,8,9,1] # this can be any arbitrary list
+
+# Write your code below this line
+
+####### SOLUTION #######
+print(list(map(max, zip(l1, l2))))
+####### SOLUTION END #######
+
+

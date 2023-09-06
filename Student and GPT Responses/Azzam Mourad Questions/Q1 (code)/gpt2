@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
+#define BUFSIZE 256
+
+int main() {
+    int fd[2]; // unnamed pipe file descriptor
+    pid_t pid; // process id
+
+    // create the pipe
+    if (pipe(fd) == -1) {
+        perror("pipe");
+        return 1;
+    }
+
+    pid = fork(); // create child process
+
+    if (pid == -1) { // check for error
+        perror("fork");
+        return 1;
+    } else if (pid == 0) { // child process
+        char buf[BUFSIZE];
+        close(fd[0]); // close the read end of the pipe
+
+        while (1) { // infinite loop to read strings from user
+            printf("Enter a string: ");
+            fgets(buf, BUFSIZE, stdin); // read string from user
+            write(fd[1], buf, strlen(buf)); // write string to parent
+            read(fd[1], buf, BUFSIZE); // read result from parent
+            printf("Result: %s", buf); // print result
+        }
+
+        close(fd[1]); // close the write end of the pipe
+    } else { // parent process
+        char buf[BUFSIZE];
+        close(fd[1]); // close the write end of the pipe
+
+        while (1) { // infinite loop to check strings for palindrome
+            int len = read(fd[0], buf, BUFSIZE); // read string from child
+            buf[len-1] = '\0'; // remove newline character
+            int i, palindrome = 1;
+            for (i = 0; i < len/2; i++) {
+                if (buf[i] != buf[len-2-i]) { // check for palindrome
+                    palindrome = 0;
+                    break;
+                }
+            }
+            if (palindrome) {
+                strcpy(buf, "The string is a palindrome\n");
+            } else {
+                strcpy(buf, "The string is not a palindrome\n");
+            }
+            write(fd[1], buf, strlen(buf)); // write result to child
+        }
+
+        close(fd[0]); // close the read end of the pipe
+        wait(NULL); // wait for child to finish
+    }
+    return 0;
+}
+
+

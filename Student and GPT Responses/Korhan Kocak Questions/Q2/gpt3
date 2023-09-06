@@ -1,0 +1,16 @@
+This can be formulated as a normal form game with 2^n possible pure strategy profiles, where each player 𝑖 has two pure strategies: to contribute (C) or not to contribute (NC).
+The payoff matrix for the game can be represented as follows:
+    C   NC
+C   1   2
+NC  2   0
+The pure strategy Nash equilibria for this game can be found by analyzing the best response of each player, given the strategies of the other players. A pure strategy Nash equilibrium is a set of strategies where no player has an incentive to deviate from their chosen strategy, given the strategies of the other players.
+There are two cases to consider:
+If 𝑛 < 𝑘, then there are no pure strategy Nash equilibria. This is because no matter what strategies the players choose, the public good will not be provided.
+If 𝑛 ≥ 𝑘, then there are multiple pure strategy Nash equilibria. These are the strategy profiles where exactly 𝑘 players choose to contribute, and the rest do not. For example, if 𝑛 = 3 and 𝑘 = 2, then the following strategy profiles are Nash equilibria: (C, C, NC), (C, NC, C), and (NC, C, C).
+It is worth noting that in this game, there is no unique equilibrium, as there are multiple equilibria which are all Pareto efficient.
+In summary, the normal form game is defined by:
+A set of players {1,2,3...n}
+Each player has two pure strategies C and NC
+The payoff matrix is defined by: if the public good is provided, each player gets a payoff of 2 if they did not contribute and 1 if they contributed. If the public good is not provided, each player gets a payoff of 0.
+The pure strategy Nash equilibria are all the strategy profiles where exactly 𝑘 players choose to contribute and the rest do not.
+

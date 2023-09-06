@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class Drink {
+  public:
+
+  int volume;
+
+  // constructor
+  Drink(int v) {
+    // variable private to the function
+    volume = v;
+    cout << "Volume: " << volume << "\n";
+  }
+};
+
+int main() {
+  // creating object
+  Drink mydrink(12);
+
+  // Create object with dynamic memory allocation
+  Drink* mydrink2 = new Drink(15);
+
+  return 0;
+}
+
+To create an object using dynamic memory allocation, you can use the keyword new followed by the constructor of the class. The new keyword returns a pointer to a newly created object in the heap memory. In this case, I've created an object of the class Drink called mydrink2 and set its volume to 15.
+Additionally, I've fixed the quotation marks in the cout statement
+Please note that since the object is created dynamically, it should be deleted using the delete keyword when it's no longer needed, to avoid memory leaks.
+

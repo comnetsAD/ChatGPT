@@ -1,0 +1,41 @@
+Strong Instability - Does there always exist a perfect matching with no strong instability? Yes, there exists.
+ 
+• Algorithm: n = the cardinality the sets M and W
+--------------------------
+Initialize each person to be free
+for i = 1 to n do
+   if wi from W has an indifference in their preferences then
+  	order the indifferent males on the list based on the alphabetical order
+   	of their surname.
+   end if
+if mi from M has an indifference in their preferences then
+   order the indifferent females on the list based on the alphabetical order
+   	of their surname.
+end if
+end for
+while some m-member is free and hasn’t proposed to every w member do
+   Choose such a m-member m
+   w = 1st w-member on m’s list to whom m has not yet proposed
+   if w is free then
+     	assign m and w to be matched
+   else if w prefers m to her extant match m’ then
+     	assign m and w to be matched, and m’ to be free
+   else
+    	w rejects m
+   end if
+end while
+ 
+Explanation: Suppose there is a women who has an indifference between m2 and m3, then the for loop in the algorithm assigns analphabetical ordering (the tie breaker) to m2 and m3 based on theirfirst name. For instance if m2 = Chris and m3 = Alex, then the or-dering would be such that m3 has a higher preference than m2. After the ordering of the indifferent preferences of both men and women using the tie breaker, the Gale-Shapely algorithm is run to get the perfect matching.
+ 
+Proof of correctness – Stability:
+ 
+Claim: The above algorithm always returns a perfect matching without a strong instability, even with indifferences.
+Proof by contradiction
+Suppose for the sake of contradiction that the matching returned by the algorithm has a strong instability such that if (m1, w2) and m2, w1) are the pairs returned by the algorithm but w1 prefers m1and also m1 prefers w1 over their current partners. Thus, w1 and m1 form an unstable pair.
+– Case 1: m1 proposed to w1
+But m1 got rejected by w1 because w1 prefers her current part-ner, m2, over m1. If      there was an indifference between m1 and m2, based on the tie breaker, it might be the case that m2 has ahigher priority than m1. Therefore, w1 and m1 is a stable pair.
+– Case 2: m1 never proposed to w1
+Because m1 prefers their current GS partner to w1. Based on the ordering by the algorithm it might have been the case thatif m1 had an indifference between w1 and w2, then the orderingwas such that m1 prefers w2 over w1. Thus, w1 and m1 is astable pair. Additionally, even without the tie breaker, the pair(w1, m1) is stable pair because even with the indifferences, m1 has no preference between its current partner and w1.
+ 
+We have a reached a contradiction in either cases. Therefore, it is true that algorithm always returns a perfect matching withouta strong instability, even with indifferences.
+

@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+struct university_detail
+{
+    char university_name[50];
+};
+
+//structure for student
+struct student_detail
+{
+    int id;
+    char name[50];
+    float gpa;
+    struct university_detail uni_d;
+};
+
+
+int main()
+{
+    //create an array for student 
+    struct student_detail students[3];
+    
+    return 0;
+}
+

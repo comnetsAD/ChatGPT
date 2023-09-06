@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+// ---- Place your solution below this line -----
+double sumFunc(double a, double b){
+	return a + b;
+}
+ 
+string sumFunc(string a, string b){
+	return a + “ “ + b;
+}
+ 
+// ---- Do not edit below this line -----
+int main() {
+   double sumInt  = sumFunc(13, 7.8);
+   string sumName = sumFunc(""Abra"", ""Cadabra"");
+   cout << ""Int: "" << sumInt << ""\n"";
+   cout << ""String: "" << sumName << ""\n"";
+   return 0;
+}
+// ---- Console print out ------
+// Int: 20.8
+// String: Abra Cadabra
+
+

@@ -1,0 +1,51 @@
+
+#include <sys/types.h> 
+#include <stdio.h> 
+#include <unistd.h> 
+#include <stdlib.h>
+#include <sys/wait.h> 
+#include <sys/mman.h>
+#define N 256 // define the max number of numbers the sequence can have
+int main(int argc, char **argv){
+int * shared_array= (int*) mmap(NULL, sizeof(int) *N, PROT_READ |PROT_WRITE, MAP_SHARED |MAP_ANONYMOUS, -1,0); //initialize the share memory
+  if (shared_array== MAP_FAILED)    { // check if the shared_memory creation failed
+        perror ("Failed: mmap"); 
+        exit(EXIT_FAILURE);
+    }
+pid_t child= fork();  // create child process
+if (child<0)  // check if child creation failed
+    {
+        perror("Fork Failed");
+        exit(EXIT_FAILURE); 
+    }
+if(child==0) // in the child process
+        {
+        int start;
+        int pointer = 0;
+        printf("Please enter the starting number: ");
+        scanf("%d", start); // input start number from command line
+        current = start; // store the current value 
+        shared_array[pointer] = start; // save start number to the shared_array
+        while (current != 1){
+              if (current % 2 == 0){ //even number
+                     current = current / 2;
+                     pointer ++;
+                     shared_array[pointer] = current
+               }
+              else{ // odd value
+                      current = 3 * current + 1;
+                      pointer ++;
+                     shared_array[pointer] = current
+              }
+          } // exit the while loop when it reached to 1
+else{ // in the parent process
+       wait(NULL); // wait for child process to end
+       printf("From Parent, print the final results: \n");
+       for (int i = 0; i<N;i++){
+        printf("%d\n",shared_array[i]); // print final results
+       }
+     munmap(shared_array, sizeof(int) *N); //unmap the shared_array
+     return 0; 
+}
+
+

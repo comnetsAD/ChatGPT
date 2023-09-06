@@ -1,0 +1,177 @@
+Write a C client-server code using muti-threading such that:
+When each client connects to the server, the client sends a ”hello” message
+The server reads the message and replies to each client with a ”Hello back”.
+The client reads the message from the server then reads an array of integers from the users and send it to the server
+The server should print the array of integers, compute their sum and return it to the client
+The client should read the result and print it
+
+
+Server code:
+------------
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <pthread.h>
+
+#define PORT 8080
+
+void *handle_client(void *arg) {
+    int client_fd = *((int *)arg);
+    char buffer[1024];
+    int array[1024], n, sum = 0;
+
+    // Read "hello" message from client
+    read(client_fd, buffer, 1024);
+    printf("Client: %s\n", buffer);
+
+    // Send "Hello back" message to client
+    strcpy(buffer, "Hello back");
+    send(client_fd, buffer, strlen(buffer), 0);
+
+    // Read array from client
+    read(client_fd, array, sizeof(array));
+
+    // Print array
+    n = sizeof(array) / sizeof(array[0]);
+    printf("Received Array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", array[i]);
+        sum += array[i];
+    }
+    printf("\n");
+
+    // Send sum to client
+    send(client_fd, &sum, sizeof(sum), 0);
+
+    close(client_fd);
+}
+
+int main() {
+    int server_fd, client_fd;
+    struct sockaddr_in address;
+    int opt = 1;
+    int addrlen = sizeof(address);
+    pthread_t tid;
+
+    // Creating socket file descriptor
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(PORT);
+
+    // Forcefully attaching socket to the port 8080
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons( PORT );
+
+    // Bind the socket to the address
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Listen for incoming connections
+    if (listen(server_fd, 5) < 0) {
+        perror("listen failed");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Server is running on port %d\n", PORT);
+
+    while (1) {
+        // Accept incoming connection
+        if ((client_fd = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept failed");
+            exit(EXIT_FAILURE);
+        }
+
+        // Create new thread for each client
+        pthread_create(&tid, NULL, handle_client, &client_fd);
+    }
+
+    return 0;
+}
+
+Client code:
+------------
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define PORT 8080
+
+int main() {
+    int client_fd;
+    struct sockaddr_in address;
+    char buffer[1024];
+    int array[1024], n, sum;
+
+    // Creating socket file descriptor
+    if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_port = htons(PORT);
+
+    // Convert IPv4 and IPv6 addresses from text to binary form
+    if(inet_pton(AF_INET, "127.0.0.1", &address.sin_addr) <= 0) {
+        perror("inet_pton failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Connect to server
+    if (connect(client_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("connect failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Send "hello" message to server
+    strcpy(buffer, "hello");
+    send(client_fd, buffer,
+
+    strlen(buffer), 0);
+
+    // Read "Hello back" message from server
+    read(client_fd, buffer, 1024);
+    printf("Server: %s\n", buffer);
+
+    // Read array from user
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    // Send array to server
+    send(client_fd, array, sizeof(array), 0);
+
+    // Read sum from server
+    read(client_fd, &sum, sizeof(sum));
+    printf("Sum of elements in the array: %d\n", sum);
+
+    close(client_fd);
+
+    return 0;
+}
+

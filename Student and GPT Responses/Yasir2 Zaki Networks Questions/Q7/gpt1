@@ -1,0 +1,40 @@
+To find the 1's complement of the sum of the three 8-bit bytes, we first need to find the sum of the bytes.
+
+The sum of the bytes can be calculated as follows:
+
+01010011
++01100110
++01110100
+10111001 (137 in decimal)
+
+The 1's complement of this sum is found by flipping all of the bits, which gives us:
+
+01000110 (70 in decimal)
+
+This is the 1's complement of the sum of the three 8-bit bytes.
+
+UDP and TCP use the 1's complement of the sum in their checksums because it allows the receiver to detect errors by simply adding the checksum to the sum of the bytes being transmitted. If the result is a number with all 1's in the binary representation, then it indicates that no errors were detected.
+
+For example, if the receiver calculates the sum of the bytes being transmitted and adds it to the checksum, the result should be a number with all 1's in the binary representation if no errors were detected. If the result is not a number with all 1's in the binary representation, then it indicates that an error has occurred and the transmission should be retransmitted.
+
+For example, consider the following transmission:
+
+01010011
++01100110
++01110100
++01000110 (checksum)
+11111111 (255 in decimal)
+
+In this case, the receiver calculates the sum of the bytes being transmitted and adds it to the checksum, and the result is a number with all 1's in the binary representation. This indicates that no errors were detected and the transmission is accepted.
+
+On the other hand, consider the following transmission:
+
+01010011
++01100110
++01110100
++01000111 (incorrect checksum)
+00000000 (0 in decimal)
+
+In this case, the receiver calculates the sum of the bytes being transmitted and adds it to the checksum, and the result is not a number with all 1's in the binary representation. This indicates that an error has occurred and the transmission should be retransmitted.
+
+

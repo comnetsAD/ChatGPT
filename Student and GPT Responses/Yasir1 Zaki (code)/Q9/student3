@@ -1,0 +1,133 @@
+import random
+import os
+import time
+
+list_ascii=[]
+#add 2 of each letter to list
+for letter in range(65,85):
+	list_ascii.append(chr(letter))
+	list_ascii.append(chr(letter))
+#shuffle list randomly
+random.shuffle(list_ascii)
+
+board=[]
+for row in range(5):
+    boardList=[]
+    for col in range(8):                        
+        boardList.append(list_ascii.pop())
+    board.append(boardList)
+
+def printBoard(board,row1,col1,row2,col2):
+	#gives the body to the board
+	for num in range(8):
+		print(' | '+str(num),sep='',end='')
+	print('\n-+'+'---+'*8+'\n',sep='',end='')
+	for row in range(5):
+		print(row,end='')
+		print('|',end='')
+		for col in range(8):
+			if (row==row1 and col==col1) or (row==row2 and col==col2):
+				print(' '+board[row][col]+' |',end='')
+			else:
+				print(' - |',end='')
+		print('\n-+'+'---+'*8,sep='')
+
+#it just made it easier to print a second 'fake' board
+#I'd also like to know how to do it without doing this...
+def printfakeBoard():
+	#gives the body to the board
+	for num in range(8):
+		print(' | '+str(num),sep='',end='')
+	print('\n-+'+'---+'*8+'\n',sep='',end='')
+	for row in range(5):
+		print(row,end='')
+		print('|',end='')
+		for col in range(8):
+			if board[row][col]==' ':
+				print('   |',end='')
+			elif board[row][col]!=' ':
+				print(' - |',end='')
+		print('\n-+'+'---+'*8,sep='')
+
+def mainGame():
+	#this is the main function of the program
+	#it prints out the view of the current board every time
+	#if a choice is no longer available, it displays an blank space
+	#it switches between players and adds to score if they match a pair
+	player_choice=2
+	p1_score=0
+	p2_score=0
+	while p1_score+p2_score!=20:
+		#print(board)
+		os.system('clear') 
+		print('Player 1\'s score is:',p1_score,'\nPlayer 2\'s score is:',p2_score)
+		printfakeBoard()
+		if player_choice%2==0:
+			print('It\'s Player 1\'s turn...')
+		else:
+			print('It\'s Player 2\'s turn...')
+		#very lengthy, but couldn't really do it on for loop...?
+		col_guess=int(input('\nPlease guess which column the first tile is in:\n'))
+		while col_guess not in range(0,8):
+			print('-----------------------------------------------------')
+			col_guess=int(input('Guess again which column the first tile is in '+
+				'(0-7):\n'))
+		row_guess=int(input('\nPlease guess which row the first tile is in:\n'))
+		while row_guess not in range(0,5):
+			print('-----------------------------------------------------')
+			row_guess=int(input('Guess again which row the first tile is in '+
+				'(0-4):\n'))
+		col_guess2=int(input('\nPlease guess which column the second tile is in:\n'))
+		while col_guess not in range(0,8):
+			print('-----------------------------------------------------')
+			col_guess=int(input('Guess again which column the second tile is in '+
+				'(0-7):\n'))
+		row_guess2=int(input('\nPlease guess which row the second tile is in:\n'))
+		while row_guess not in range(0,5):
+			print('-----------------------------------------------------')
+			row_guess=int(input('Guess again which row the second tile is in '+
+				'(0-4):\n'))
+		#clears every time
+		os.system('clear')	
+		if board[row_guess][col_guess]==board[row_guess2][col_guess2] and\
+		board[row_guess][col_guess]!=' ' and board[row_guess2][col_guess2]!=' ':
+			print('Congratulations! You got a pair!\nYou get to go again!')
+			if player_choice%2==0:
+				p1_score+=1
+			else:
+				p2_score+=1
+			printBoard(board,row_guess,col_guess,row_guess2,col_guess2)
+			board[row_guess][col_guess]=' '
+			board[row_guess2][col_guess2]=' '
+		else:
+			if board[row_guess][col_guess]==' ' or board[row_guess2][col_guess2]==' ':
+				print('You\'re not allowed to make empty spaces match...\nYou '+
+					'kind of wasted your turn!')
+			else:
+				print('No matches this time, sorry!\n')
+			player_choice+=1
+			printBoard(board,row_guess,col_guess,row_guess2,col_guess2)
+		time.sleep(2)
+
+	if p1_score>p2_score:
+		print('Congratulations Player 1! You\'ve won this game!\n')
+	elif p2_score>p1_score:
+		print('Congratulations Player 2! You\'ve won this game!\n')
+	else:
+		print('Congratulations to both of you! It\'s a draw!\nYou better play '+
+			'again to see who really wins...\n')
+
+def replay():
+	#gives option to replay to test against friend
+	replay=input('Do you want to play again? (y or n)\n')
+	if replay.lower()=='y' or replay.lower()=='yes':
+		mainGame()
+	elif replay.lower()=='n' or replay.lower()=='no':
+		print('\nOkay, thanks for playing!\n\nGOODBYE\n')
+	else:
+		replay()
+
+mainGame()
+replay()
+
+

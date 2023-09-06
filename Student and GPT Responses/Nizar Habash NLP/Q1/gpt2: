@@ -1,0 +1,5 @@
+Optical Character Recognition (OCR) is a technology used to convert scanned documents, images, or other types of documents that contain text, into editable text. The process involves using specialized software to analyze an image of text and convert it into machine-encoded text, which can then be edited, searched, or stored in a database.
+An example of OCR input would be an image of a scanned document, such as a scanned PDF or image of a page from a book. The image would contain text that is not machine-readable and would need to be converted into machine-encoded text in order to be edited or searched.
+An example of OCR output would be the same image, but with the text now converted into machine-encoded text. This text would be editable, searchable, and could be copied and pasted into other documents. It would look like any other text file or document, but it would have been created from an image of text.
+For example, an image of a scanned business card can be used as an input for OCR software and it will convert the details of the card such as name, phone number, email etc. into machine-encoded text which can be easily stored in a database or contact list.
+

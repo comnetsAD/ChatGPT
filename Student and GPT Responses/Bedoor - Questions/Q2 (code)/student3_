@@ -1,0 +1,13 @@
+#answer here
+n=3
+character = "obi"
+
+if character=="obi":
+ announcement = "May the force be with you."
+elif character=="vader"
+ announcement = "I find your lack of faith disturbing."
+
+for i in range(0, n):
+ print(announcement)
+
+

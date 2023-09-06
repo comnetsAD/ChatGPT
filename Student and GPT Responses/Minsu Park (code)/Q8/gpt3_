@@ -1,0 +1,12 @@
+
+Hint: The function 'len' takes a string as its argument and returns the number of characters in it.
+
+def num_non_vowels(a_string):
+    """The number of characters in a string, minus the vowels."""
+    ...
+
+import re
+def num_non_vowels(a_string):
+    """The number of characters in a string, minus the vowels."""
+    return len(re.findall(r"[^aeiouAEIOU]", a_string))
+

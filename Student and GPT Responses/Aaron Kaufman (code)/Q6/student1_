@@ -1,0 +1,4 @@
+str_sub(words, start = ceiling(str_length(words)/2),
+end = floor(str_length(words)/2 + 1))
+
+

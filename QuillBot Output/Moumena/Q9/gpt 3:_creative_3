@@ -1,0 +1,1 @@
+There are 30 possible doughnuts to select from, followed by 29 possible ones for the second doughnut, 28 possible ones for the third doughnut, and so on. This translates to 302928...191817 possible combinations when choosing 12 doughnuts from the rack. That's 30!/(12! * 18! ), or about 3.2 1013 possible outcomes. 

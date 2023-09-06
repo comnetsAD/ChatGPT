@@ -1,0 +1,54 @@
+#define MAX_SIZE = 100
+sem_t empty, full, boys, girls;
+struct product buffer[MAX_SIZE]; //buffer of products
+void* handlePorducer{
+    pthread_detach(pthread_self());
+    //boys can go only if no girl is consuming at that time
+    sem_wait(&girls);
+    //if the buffer is full (as indicated by the semaphore full), then the producer waits until the buffer is consumed
+    sem_wait(&full);
+    
+    //critical section
+    produce(buffer); //a function to produce
+    //after done producing, signal to empty
+    sem_signal(&empty)
+    //when a boy is done with its turn, signal to ?
+    sem_signal(&boys);
+    pthread_exit(NULL);
+}
+void handleConsmume{
+    pthread_detach(pthread_self());
+    //girls can only go if no boy is producing at that time
+    sem_wait(&boys);
+    //consumer waits if the buffer is empty
+    sem_wait(&empty);
+    
+    //critical section
+    consume(buffer()); //a function to consume
+    //after consuming, the buffer signals to full 
+    sem_signal(&full);
+    //signal that a girl is done executing to ?
+    sem_signal(&girls);
+    pthread_exit(NULL);
+}
+int main(){
+    //empty and full are counting semaphores
+    sem_init(&empty, 0, 0); //intial value of consume is set to 0 so that the produce starts first
+    sem_init(&full, 0, MAX_SIZE); //the initial value of produce is set to 100 indicating that the boys can produce 100 times before the buffer is full
+    //boys and girls are binary semaphores
+    sem_init(&boys, 0, 0); //semaphore to check if a boy is producing at the moment. must make sure that no boy is producing while a girl is consuming. boys start with value 0 becuase they need to execute first before girls
+    sem_init(&girls, 0, 1); //a semaphore to check if a girl is consuming at the moment. must make sure that no girl is consuming whil a boys is producing
+    //create each thread for produce and consume
+    pthread_t tid;
+    pthread_t tid1;
+    int produceThread, consumeThread;
+    produceThread = pthread_create(&tid, NULL, handlePorducer()); 
+    consumeThread = pthread_create(&tid1, NULL, handleConsmume());
+    prrintf("The content of the box is: \n");
+    printBox(buffer); //a function to print the contents of the buffer box
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    sem_destroy(&girls);
+    sem_destroy(&boys);
+}
+

@@ -1,0 +1,25 @@
+Here's an example of an "add" function that can be implemented in a class "DLinkedList" for doubly-linked lists:
+
+class DLinkedList {
+    private:
+        struct DNode {
+            int data;
+            DNode* prev;
+            DNode* next;
+        };
+        DNode* head;
+    public:
+        // ... other member functions ...
+        void add(DNode* v, int &e) {
+            DNode* newNode = new DNode;
+            newNode->data = e;
+            newNode->prev = v->prev;
+            newNode->next = v;
+            v->prev->next = newNode;
+            v->prev = newNode;
+        }
+};
+
+The function takes two arguments: a pointer "v" to a node of type "DNode" and an element "e" of type int passed by reference.
+The function creates a new node and assigns the value of "e" to its "data" member, and then it inserts the newly-created node just before the node that "v" points to. The "prev" and "next" pointers of the surrounding nodes are updated to reflect the new insertion.
+It is important to note that this function assumes that the doubly linked list has already been initialized and that the pointer v points to an element already in the list.

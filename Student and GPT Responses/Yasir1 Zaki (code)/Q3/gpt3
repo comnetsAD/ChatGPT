@@ -1,0 +1,27 @@
+*---*
+| 6 |
+*---*
+Then tell the user if his guess was right or wrong. Finally, change the printing of the dice to print the word rather that the number (e.g.: six)
+
+
+import random
+
+# create a list of words corresponding to the numbers on a dice
+words = ["zero", "one", "two", "three", "four", "five", "six"]
+
+# prompt the user to guess the outcome of the dice roll
+guess = int(input("Guess the outcome of the dice roll (0-6): "))
+
+# roll the dice
+result = random.randint(0, 6)
+
+# print the outcome of the dice roll
+print("*---*")
+print("| {} |".format(result))
+print("*---*")
+
+# tell the user if their guess was correct or not
+message = "Your guess was correct!" if guess == result else "Your guess was wrong. The correct answer was {}.".format(words[result])
+print(message)
+
+          

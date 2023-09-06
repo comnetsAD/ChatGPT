@@ -1,0 +1,21 @@
+This researcher is not correct to make causal claims based on this study alone. There are several reasons why this study does not provide strong evidence of a causal relationship between education and income.
+
+First, the study is based on a comparison of two groups of people who applied for the scholarship in the first year of the program. However, it is possible that the people who applied for the scholarship were different in some way from the people who did not apply. For example, they may have had a greater motivation to succeed or more financial resources to support their education. These differences could be responsible for the higher incomes observed among the scholarship recipients.
+
+Second, the study only looks at the effect of two years of free education on income five years after the program started. This does not take into account other factors that could have affected the participants' income over time, such as their work experience, job market conditions, or other personal characteristics.
+
+Finally, the study does not control for any confounding variables that could be affecting the relationship between education and income.
+
+To support causal claim, one should use a randomized controlled trial design where the individuals are assigned to either receive the scholarship or not by chance. This will control for any systematic differences between the groups and allow us to infer causality.
+
+To support my conclusion, I can draw a causal graph using R as follows:
+
+library(ggdag)
+dag = dagify(
+  Z ~ X,
+  Y ~ X
+)
+ggdag(dag)
+
+In the graph, X represents the application for scholarship, Y represents the income and Z represents any other confounding variables that may affect the relationship between X and Y. The arrow from X to Y represents the causal effect of scholarship on income.
+

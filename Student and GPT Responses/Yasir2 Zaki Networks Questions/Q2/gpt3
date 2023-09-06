@@ -1,0 +1,8 @@
+
+In a two-dimensional parity scheme, the value of the field containing the parity bits would be 1111. This is because the two-dimensional parity scheme requires that the parity of the bits in each row and column of the packet be even.
+
+In the given bit pattern, there are 4 rows and 4 columns. The parity of the bits in the first row is even (2 ones), the parity of the bits in the second row is odd (3 ones), the parity of the bits in the third row is even (2 ones), and the parity of the bits in the fourth row is odd (3 ones). The parity of the bits in the first column is even (2 ones), the parity of the bits in the second column is even (2 ones), the parity of the bits in the third column is odd (3 ones), and the parity of the bits in the fourth column is odd (3 ones).
+
+To ensure that the parity of the bits in each row and column is even, we need to set the parity bits to 1111. This will give us a minimum-length checksum field, as it is the shortest sequence of bits that satisfies the two-dimensional parity requirement.
+
+

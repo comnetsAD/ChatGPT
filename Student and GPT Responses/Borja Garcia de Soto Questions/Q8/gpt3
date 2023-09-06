@@ -1,0 +1,21 @@
+
+To calculate the total cost (labor and materials) for the task "concrete work in roof," we need to calculate the cost of labor and materials separately and then add them together.
+
+First, we will calculate the cost of labor:
+RSMeans crew code C-8 has a daily cost of $3,027.
+We will use only one C-8 crew for this project.
+The total roof area is 76,000 square feet, which will require 76000/20 = 3,800 units of concrete to install.
+The duration of the task is 3,800 units / 6.2 (production rate) = 613.11 days
+The total cost of labor is $3,027 x 613.11 = $1,857,622.37
+
+Next, we will calculate the cost of materials:
+The cost of materials is 1.85 per installed unit.
+The total cost of materials is 1.85 x 3,800 = $7,030
+
+Finally, we will add the cost of labor and materials together to get the total cost of the task:
+$1,857,622.37 + $7,030 = $1,864,652.37
+
+Therefore, the total cost (labor and materials) for the task "concrete work in roof" is $1,864,652.37
+
+It's important to note that this estimate is based on the assumptions provided and that other factors such as weather conditions, site-specific challenges, and unforeseen changes to the scope of work could affect the final cost.
+

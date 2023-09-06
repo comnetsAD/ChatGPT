@@ -1,0 +1,63 @@
+# Request input
+print("Hello! I'll ask you for two names and their birthdays. Please provide the birtdays in the format DDMMYYYY).")
+
+firstName = input("First name: ")
+firstDOB = str(input("When was s/he born? "))
+secondName = input("Second name: ")
+secondDOB = str(input("When was s/he born? "))
+
+# Slice first DOB
+firstDOBDay = firstDOB[0:2]
+firstDOBMonth = firstDOB[2:4]
+firstDOBYear = firstDOB[4:]
+
+# Slice second DOB
+secondDOBDay = secondDOB[0:2]
+secondDOBMonth = secondDOB[2:4]
+secondDOBYear = secondDOB[4:]
+
+# Format names
+firstName = firstName.title()
+secondName = secondName.title()
+
+# Output sentences
+print(firstName,"was born on", end=" ")
+print(firstDOBDay,firstDOBMonth,firstDOBYear, sep="/")
+print(secondName,"was born on", end=" ")
+print(secondDOBDay,secondDOBMonth,secondDOBYear, sep="/")
+
+# Convert DOBs to integer format to enable comparisons
+firstDOBDay = int(firstDOBDay)
+firstDOBMonth = int(firstDOBMonth)
+firstDOBYear = int(firstDOBYear)
+
+secondDOBDay = int(secondDOBDay)
+secondDOBMonth = int(secondDOBMonth)
+secondDOBYear = int(secondDOBYear)
+
+if int(firstDOB[::-1]) < int(secondDOB[::-1]):
+    print(firstName,"is older than",secondName)
+elif int(firstDOB[::-1]) > int(secondDOB[::-1]):
+    print(secondName,"is older than",firstName)
+else:
+     print("Looks like they're the same age!")
+
+# Compare age: year, month, then date
+if firstDOBYear < secondDOBYear:
+    print(firstName,"is older than",secondName)
+elif secondDOBYear < firstDOBYear:
+    print(secondName,"is older than",firstName)
+else:
+    if firstDOBMonth < secondDOBMonth:
+        print(firstName,"is older than",secondName)
+    elif secondDOBMonth < firstDOBMonth:
+        print(secondName,"is older than",firstName)
+    else:            
+        if firstDOBDay < secondDOBDay:
+            print(firstName,"is older than",secondName)
+        elif secondDOBDay < firstDOBDay:
+            print(secondName,"is older than",firstName)
+        else:
+            print("Looks like they're the same age!")
+
+

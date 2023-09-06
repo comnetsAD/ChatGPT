@@ -1,0 +1,20 @@
+
+Proof. Let p and q are two arbitrarily chosen prime integers that are greater than 2.
+Since, p and q are primes > 2. Then, p and q are odd integers.
+Thus, by the definition of odd.
+p = 2k + 1
+q = 2m + 1
+for some unique integers k and m for which p and q prime.
+Then,
+pq = (2k + 1)(2m + 1)
+= 4km + 2k + 2m + 1
+= 2(2km + k + m) + 1
+
+Then,
+pq + 1 = 2(2km + k + m) + 1 + 1
+= 4km + 2k + 2m + 2
+= 2(2km + k + m + 1)
+Since, (2km + k + m + 1) is an integer as k and m are integers, and the product of integer is also an integer.
+Since pq+1 is even by the definition of even, it is divisible by 2.
+Therefore, we can conclude that for all primes p and q primes greater than 2, (pq + 1) is never prime
+

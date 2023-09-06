@@ -1,0 +1,36 @@
+
+int main() {
+    int buffer = 50; //Initial size of buffer
+    int *n = (int *)mmap(NULL, sizeof(int), PROT_READ |PROT_WRITE, MAP_SHARED |MAP_ANONYMOUS, -1,0); // creating shared memory
+    printf("Enter the starting number of the sequence\n");
+    scanf("%d",&n);
+ 
+    int *sequenceArray = (int *)mmap(NULL, sizeof(int) * n+buffer, PROT_READ |PROT_WRITE, MAP_SHARED |MAP_ANONYMOUS, -1,0); // shared memory 
+    pid_t child = fork();
+    if (child < 0) {
+        printf("Forking the child failed\n");
+        exit(1);
+    }
+    else if (child == 0) { // child area
+        int sum = 0; 
+        for (int i = 0; i < buffer; i++) {
+            if (n%2 ==0){ //even
+                sequenceArray[i] = n/2;
+            }else if (sequenceArray[i] ==1 ){ // end of sequence
+                break;
+            }else{// odd calculations 
+                sequenceArray[i] = (3*n)+1; 
+            }
+        }
+        sequenceArray = mremap(sequenceArray, n[0] * sizeof(int), (n + buffer) * sizeof(int),0); // if more space required 
+    }
+    else {// Parent area
+        wait(NULL);
+        for (int i = 0; i < (sizeof(sequenceArray); i++)
+            printf("%d ", sequenceArray[i]); // printing the sequence 
+    }
+    munmap(sequenceArray, sizeof(int)); // Unmaping the shared memory 
+    return 0;
+}
+
+

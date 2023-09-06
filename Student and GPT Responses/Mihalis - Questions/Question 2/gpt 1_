@@ -1,0 +1,8 @@
+MAC addresses, or Media Access Control addresses, are unique identifiers assigned to each device on a network. They are used to identify devices on the data link layer (layer 2) of the OSI model.
+
+During the communication process, MAC addresses are used when the host (with the MAC address 8a:00:12:3e:d6:be) initiates a connection with the router (default gateway) which is assigned with a different MAC address. The host sends an ARP (Address Resolution Protocol) request to the router, asking for the router's MAC address. The router then responds with its MAC address, which the host uses to establish a connection with the router.
+
+Once the host is connected to the router, the router uses the host's MAC address to forward the data packets to the host. The router also uses the host's MAC address to keep track of the host's location on the network, and to ensure that the data packets are only sent to the correct device.
+
+Therefore, MAC addresses are used at the beginning of the communication process to establish a connection with the router and then throughout the communication process to forward data packets and keep track of the host's location on the network.
+

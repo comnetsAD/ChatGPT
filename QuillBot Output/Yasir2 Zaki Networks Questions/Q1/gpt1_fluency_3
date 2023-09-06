@@ -1,0 +1,1 @@
+By doing a long division of D by G, the value of the CRC for the given generator G and data D may be computed. The divide would be as follows in this case: 1 0 1 0 1 0 1 0 1 0\s1 0 0 1 1 1 0 0 1 1\s1 0 0 1 1 0 0 0 1 1 The remainder of this division is 011, which is the CRC value. 

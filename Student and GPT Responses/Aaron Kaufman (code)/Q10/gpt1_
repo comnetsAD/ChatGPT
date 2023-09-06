@@ -1,0 +1,16 @@
+The researcher is not correct to make causal claims based on the results of this experiment. The reason for this is that there are likely other factors that are influencing the difference in income between the cities that received kindergartens and those that received parks. For example, cities that received kindergartens may have had more affluent populations to begin with, or may have had other factors that contributed to their higher incomes.
+
+The researcher's experiment can be represented using a causal graph (also known as directed acyclic graph (DAG) ).In the below graph:
+
+"Z" represents unobserved confounding variables (e.g. population density, family income, etc.)
+"X" represents the treatment (i.e., receiving a kindergarten or park)
+"Y" represents the outcome (i.e., income)
+
+ Z --> X --> Y
+
+The arrow "-->" represents a causal relationship. In this graph, Z is a confounding variable that affects both X and Y. Because the researcher did not control for or measure these confounding variables, it is not possible to say with certainty that the kindergartens caused the higher incomes.
+
+Additionally, the fact that the control group received a park instead of nothing is problematic. The researcher is assuming that the park does not have any impact on the outcome (income). However, the park can have positive impact on the local economy, the people's well-being, the social capital etc. and it can affect the outcome of the experiment.
+
+It is also important to notice that the researcher is making a causal claim, while she has only observational data and no experiment was performed. A randomized experiment would have been a better design to infer causality and control for confounding variables.
+

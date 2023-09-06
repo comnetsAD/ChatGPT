@@ -1,0 +1,79 @@
+import random
+
+numberRows = 4
+numberColumns = 4
+
+#initializing the lists: list for the real board with the right sequence, list for the changing board
+#and list for the empty space that we continue to track throughout the game
+board=[]
+gameBoard=[]
+space=[]
+def printBoard(board):#defining a function for printing the board with the design
+    
+    for col in range(numberColumns):
+        print ('   ' + str(col), sep=' ', end=' '*2)#printing the column number on the top
+    print ()
+    for row in range(numberRows):
+        print (str(row), end=' ')#printing the row number on the left
+        for column in range(numberColumns):
+            if board[row][column]!=' ' and int(board[row][column])>=10:#so that the double digits don't disrupt the design
+                print (' '+board[row][column]+' |', end=' ')#creating the table
+            else:
+                print (' '+board[row][column]+'  |', end=' ')#creating the table
+        print('\n'+' '+'--------'*(numberColumns-1))
+    print()
+
+def updateBoard(choice, space):
+    
+    if 0<=int(choice[0])<(numberRows) and 0<=int(choice[1])<(numberColumns):#for out of bound choices
+        #below is for inbound but invalid choices
+        if (int(choice[0])==int(space[0]-1) and int(choice[1])==int(space[1])) or (int(choice[0])==int(space[0]+1) and int(choice[1])==int(space[1]))\
+           or (int(choice[0])==int(space[0]) and int(choice[1])==int(space[1]-1)) or (int(choice[0])==int(space[0]) and int(choice[1])==int(space[1]+1)):
+            gameBoard[int(space[0])][int(space[1])]=gameBoard[int(choice[0])][int(choice[1])]
+            space=[int(choice[0]),int(choice[1])]
+            gameBoard[space[0]][space[1]]=' '
+            return True 
+    print ("You cannot move to that position.")
+    return False
+                 
+#the code below appends the nubmers to each cell in the board
+num=1
+for row in range(numberRows):
+    rowList=[]
+    rowList1=[]
+    for column in range(numberColumns):
+        rowList.append(str(num))
+        rowList1.append(str(num))
+        num+=1
+    board.append(rowList)#appending the list of alphabets to the Hidden board
+    gameBoard.append(rowList1)
+    
+gameBoard[row][column]=' '#removing 16 from the board
+board[row][column]=' '#removing 16 from the board
+
+printBoard(board) 
+
+for mix in range(40):#shuffling the gameBoard
+    row1 = random.randint(0,numberRows-1)
+    col1 = random.randint(0,numberColumns-1)
+    row2 = random.randint(0,numberRows-1)
+    col2 = random.randint(0,numberColumns-1)
+    temp = gameBoard[row1][col1] 
+    gameBoard[row1][col1] = gameBoard[row2][col2]
+    gameBoard[row2][col2] = temp
+
+for row in range(numberRows):#assigning the cell with the empty space to a variable called space
+    for col in range(numberColumns):
+        if gameBoard[row][col]==' ':
+            space=[row,col]
+
+printBoard(gameBoard)
+
+#now the user tries to correct the board
+while gameBoard!=board:#as long as the gameBoard is exactly the same as the initial board
+    choice = input("Please enter the position around the empty block: (row,column) ").split(',')
+    while updateBoard(choice,space)==False:
+        choice = input("Please enter the position around the empty block: (row,column) ").split(',')
+    printBoard(gameBoard)
+
+

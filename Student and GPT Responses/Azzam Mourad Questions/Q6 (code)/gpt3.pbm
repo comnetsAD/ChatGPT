@@ -1,0 +1,55 @@
+P1 (Child 1) should loop to increment the integer from 0 to 10000
+P2 (Child 2) should loop to increment the integer from 10000 to 15000
+P3 (Parent) should loop to increment the integer from 15000 to 20000
+Each process should print the value of the integer before exiting
+Note: You are not required to do any sort of synchronization in this question. Consider the order of execution of the different processes by using wait or waitpid methods.
+Sample Output: 
+Child 1 10000
+Child 2 15000
+Parent 20000
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main()
+{
+    int *shared_mem = (int *) mmap(NULL, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    *shared_mem = 0; // Initialize shared memory to 0
+
+    pid_t child1, child2;
+
+    child1 = fork(); // Create child 1
+    if (child1 == 0) { // Child 1 process
+        for (int i = 0; i < 10000; i++) {
+            (*shared_mem)++;
+        }
+        printf("Child 1 %d\n", *shared_mem);
+        exit(0);
+    } else {
+        child2 = fork(); // Create child 2
+        if (child2 == 0) { // Child 2 process
+            for (int i = 0; i < 5000; i++) {
+                (*shared_mem)++;
+            }
+            printf("Child 2 %d\n", *shared_mem);
+            exit(0);
+        } else { // Parent process
+            wait(NULL); // Wait for child 1 and child 2 to exit
+            for (int i = 0; i < 5000; i++) {
+                (*shared_mem)++;
+            }
+            printf("Parent %d\n", *shared_mem);
+        }
+    }
+
+    munmap(shared_mem, sizeof(int)); // Unmap shared memory
+    return 0;
+}
+
+
+

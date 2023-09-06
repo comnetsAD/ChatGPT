@@ -1,0 +1,12 @@
+income3 = dagitty("dag{
+                 Education -> Income
+                 }")
+
+coordinates(income3) = list(x = c(Education = 1, Income = 2),
+                          y = c(Education = 1, Income = 1))
+plot(income3)
+
+Confounding variables are considered in the randomized treatment as everything is set same in two groups except the education. The different in result must be attributed to education.
+
+
+

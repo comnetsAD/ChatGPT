@@ -1,0 +1,28 @@
+from collections import Counter
+
+def least_common(input_str,n):
+ """
+ Input:
+   - input_str: A string of characters
+   - n: An integer
+
+ Output:
+   - least_common_lst: A list of tuples of n least common characters
+   with their counts
+ """
+ least_common_lst = [] # initializing the output list
+
+ # Write your code below this line
+
+ ######### SOLUTION #########
+ count_dict = Counter(input_str)
+ least_common_lst = least_common_lst + count_dict.most_common()[len(count_dict)-1:len(count_dict)-n-1:-1]
+ ######### SOLUTION END #########
+
+ return least_common_lst
+
+
+# An example of how we may call your function
+print(least_common("hello world! ok bye",8))
+
+

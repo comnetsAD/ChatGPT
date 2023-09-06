@@ -1,0 +1,6 @@
+f(n) ≤ cg(n) + d (given) (big-oh notation formula) f(n) = O(g(n))
+f(n) < = g(n)
+2 ^f(n) <= 2^g(n) (exponential function)
+2f(n) = O(2g(n)).
+2f(n) is O(2g(n)). (proved)
+

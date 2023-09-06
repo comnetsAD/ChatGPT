@@ -1,0 +1,1 @@
+"If p and q are primes > 2, then pq + 1 is never prime" is untrue. Let's look at p = 3 and q = 5. pq + 1 = 35 + 1 = 16, not prime. pq + 1 = 57 + 1 = 36 is also not prime if p = 5 and q = 7. If p = 5 and q = 11, pq + 1 = 511 + 1 = 56, which is not prime. pq + 1 = 1113 + 1 = 144, which is likewise not prime. "If p and q are primes > 2, then pq + 1 is never prime" is untrue. 

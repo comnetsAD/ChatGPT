@@ -1,0 +1,4 @@
+
+I would use Europarl to create an Finnish English Statistical ML model, and then use the UN corpus to create the Statistical ML model between Arabic and English. Then through pivoting, we could translate Arabic to Finnish
+To evaluate, I will use BLEU metrics, compare the translation with the MOSES MT System, and with some human-translated references
+ 

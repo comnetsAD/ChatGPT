@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+char string[100]; // maximum string length is 100
+char lastChar;
+printf("Enter a string: ");
+scanf("%s", string);
+
+printf("Enter a character to remove: ");
+scanf(" %c", &lastChar); // note the space before %c
+
+int lastIndex = -1; // initialize last index to -1
+for (int i = 0; i < strlen(string); i++) {
+    if (string[i] == lastChar) {
+        lastIndex = i;
+    }
+}
+
+if (lastIndex != -1) { // if the character was found
+    for (int i = lastIndex; i < strlen(string) - 1; i++) {
+        string[i] = string[i + 1]; // shift characters to the left
+    }
+    string[strlen(string) - 1] = '\0'; // add null character at the end
+}
+
+printf("Result: %s\n", string);
+
+return 0;
+}
+

@@ -1,0 +1,15 @@
+for(i in words[1:980]){
+if(str_length(i)%%2 == 0){
+middle = str_length(i)/2
+middle_ch = str_sub(i, middle, middle+1)
+} else if(str_length(i)%%2 != 0){
+middle = str_length(i)/2
+new_middle = middle + 0.5
+middle_ch = str_sub(i, new_middle, new_middle)
+} else{
+print("nothing")
+}
+print(middle_ch)
+}
+
+

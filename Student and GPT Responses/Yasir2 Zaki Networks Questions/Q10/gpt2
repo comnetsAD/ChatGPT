@@ -1,0 +1,15 @@
+In order to minimize the delay of moving the file from Host A to Host B, we need to minimize the time it takes to transmit the file over the three links.
+
+The time it takes to transmit a packet of L bits over a link with transmission rate R bps is L/R seconds. Since there are three links between Host A and Host B, the total time it takes to transmit the file is:
+
+T = (L/R) * 3
+
+We want to minimize T, so we need to minimize L. The value of L is determined by the value of S, since L = 80 + S.
+
+Therefore, to minimize the delay of moving the file from Host A to Host B, we need to minimize the value of S.
+
+Note that the value of S cannot be negative, since it represents the number of bits in each segment of the file. Therefore, the minimum value of S is 0.
+
+Therefore, to minimize the delay of moving the file from Host A to Host B, we should set S = 0. This will result in the minimum value of L, and therefore the minimum value of T.
+
+

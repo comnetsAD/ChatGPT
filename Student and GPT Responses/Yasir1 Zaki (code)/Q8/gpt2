@@ -1,0 +1,77 @@
+def main():
+    # Initialize the birthday dictionary
+    birthdays = {}
+
+    # Define the functions for each menu choice
+    def look_up_birthday():
+        name = input("Enter a name: ")
+        if name in birthdays:
+            print(f"{name}'s birthday is {birthdays[name]}")
+        else:
+            print(f"{name} is not in the dictionary.")
+
+    def add_new_birthday():
+        name = input("Enter a name: ")
+        if name in birthdays:
+            print(f"{name} is already in the dictionary.")
+        else:
+            birthday = input("Enter the birthday: ")
+            birthdays[name] = birthday
+            print(f"{name}'s birthday has been added to the dictionary.")
+
+    def change_birthday():
+        name = input("Enter a name: ")
+        if name in birthdays:
+            birthday = input("Enter the new birthday: ")
+            birthdays[name] = birthday
+            print(f"{name}'s birthday has been updated in the dictionary.")
+        else:
+            print(f"{name} is not in the dictionary.")
+
+    def delete_birthday():
+        name = input("Enter a name: ")
+        if name in birthdays:
+            del birthdays[name]
+            print(f"{name}'s birthday has been deleted from the dictionary.")
+        else:
+            print(f"{name} is not in the dictionary.")
+
+    # Create the menu choice to function mapping
+    menu_choices = {
+        "1": look_up_birthday,
+        "2": add_new_birthday,
+        "3": change_birthday,
+        "4": delete_birthday
+    }
+
+    # Display the menu to the user
+    while True:
+        print("Birthday Dictionary")
+        print("-------------------")
+        print("1. Look up a birthday")
+        print("2. Add a new birthday")
+        print("3. Change a birthday")
+        print("4. Delete a birthday")
+        print("5. Quit")
+        print()
+
+        # Get the user's choice
+        choice = input("Enter your choice (1-5): ")
+        print()
+
+        # Quit the program
+        if choice == "5":
+            break
+
+        # Invalid choice
+        if choice not in menu_choices:
+            print("Invalid choice. Please try again.")
+        else:
+            # Call the function for the corresponding menu choice
+            menu_choices[choice]()
+
+        print()
+
+main()
+
+

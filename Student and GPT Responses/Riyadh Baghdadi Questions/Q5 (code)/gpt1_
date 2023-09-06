@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+  double result1 = 0;
+  double result2 = 0;
+  
+  // Left to right addition
+  for (int i = 1; i <= 10000; i++) {
+    if (i % 2 == 0) {
+      result1 -= 1.0 / i;
+    } else {
+      result1 += 1.0 / i;
+    }
+  }
+  
+  // Right to left addition
+  for (int i = 10000; i >= 1; i--) {
+    if (i % 2 == 0) {
+      result2 -= 1.0 / i;
+    } else {
+      result2 += 1.0 / i;
+    }
+  }
+  
+  printf("Result (left to right): %lf\n", result1);
+  printf("Result (right to left): %lf\n", result2);
+  
+  return 0;
+}
+

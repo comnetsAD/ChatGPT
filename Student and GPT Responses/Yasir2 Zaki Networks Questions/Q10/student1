@@ -1,0 +1,17 @@
+Time = size / speed
+Time that first packet arrives = 80 + (S/R) x 2
+
+One packet is then received every 80 + S/R
+File size = F
+
+The delay in sending the whole file is thus:
+
+d = 80 + (S/R) x 2 + (F/S - 1) x (80 + S/R) = (80 + S/R)(2 + F/S - 1) = (80 + S/R)(F/S + 1)
+
+To get the minimum value of delay, we take the derivative and equate it to zero:
+
+deltad = F/R x (1/S - 40 + S/S^2) + 1/R = 0
+
+S = sqrt(40) F 
+
+

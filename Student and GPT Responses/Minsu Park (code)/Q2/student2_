@@ -1,0 +1,5 @@
+days_leap_year=366*2
+days_non_leap_year=365*8
+seconds_in_a_decade = (days_leap_year + days_non_leap_year)*24*60*60
+seconds_in_a_decade
+

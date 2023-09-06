@@ -1,0 +1,22 @@
+Here is a possible solution to the problem:
+
+#include <iostream>
+using namespace std;
+double sumFunc(double x, double y) {
+return x + y;
+}
+string sumFunc(string x, string y) {
+return x + " " + y;
+}
+// ---- Do not edit below this line -----
+int main() {
+double sumInt = sumFunc(13, 7.8);
+string sumName = sumFunc("Abra", "Cadabra");
+cout << "Int: " << sumInt << "\n";
+cout << "String: " << sumName << "\n";
+return 0;
+}
+
+The solution is to create two overloaded functions, one for double and one for string type. The function for double types takes two double arguments and returns the sum of them, while the function for string type takes two string arguments and concatenates them with a space separator, and returns the concatenated string.
+Then in the main function, the two overloaded functions are called with appropriate types and the returned values are printed out.
+

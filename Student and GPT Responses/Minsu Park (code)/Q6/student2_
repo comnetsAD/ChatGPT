@@ -1,0 +1,8 @@
+def to_percentage(proportion):
+   """ Converts a proportion to a percentage. """
+   factor = 100
+   return factor*proportion
+
+twenty_percent = to_percentage(0.2)
+twenty_percent
+

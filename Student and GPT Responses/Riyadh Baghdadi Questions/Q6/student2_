@@ -1,0 +1,8 @@
+While the addition operation, if the difference between values of operands is high enough, the
+format of the variable is structured as a bigger number (by absolute value). That is why the
+underflow occurs after shifting the floating point of the smaller to match the exponent of the
+larger. Hence, it is better to sum up numbers that are close to each other to minimize the
+number of bits to drop. It corresponds to right to left case as the loop start with the smallest
+fraction and while the number is growing, the result accumulates accordingly, so the numbers
+we add are relatively close.
+

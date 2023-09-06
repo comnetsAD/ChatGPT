@@ -1,0 +1,120 @@
+numRows = 5
+numCols = 8
+board = []
+representation = []
+player1 = 0
+player2 = 0
+
+import random
+import os
+
+#Welcome message
+print('Welcome to the Memory Game!')
+
+for row in range(numRows):
+    tmpList=[]                                              #temporarylist - creating a list of lists
+    for col in range(numCols):
+            tmpList.append('-')
+    board.append(tmpList)
+
+def printBoard(boardname):
+    
+    #Assign column numbers
+    print('   ',end='')
+    for col in range(numCols):
+        print(' ',col,end=' ')
+
+    #Print board
+    print('\n   ','+---'*numCols,'+',sep='')
+    for row in range(numRows):
+        print(row,'','|',end=' ')                           #Assigning row numbers
+        for col in range(numCols):
+            print(boardname[row][col],'|',end=' ')
+        print('\n   ','+---'*numCols,'+',sep='')
+
+alphabetList = []
+
+for a in range(2):                                          #ensuring that the list contains two of each letter
+    for b in range(65,85):                                  #Creating a list with letters for A to T using the ASCII references 
+        alphabetList.append(chr(b))
+
+for row in range(numRows):                                           
+    for col in range(numCols):
+        if len(alphabetList)>0:
+            randomindex = alphabetList.index(random.choice(alphabetList))
+            board[row][col] = alphabetList.pop(randomindex)
+
+for rows in range(numRows):
+    tmplist=[]
+    for columns in range(numCols):
+        tmplist.append('-')
+    representation.append(tmplist)
+
+printBoard(representation)
+
+count = 0
+num = 0
+
+while (count<20):
+    if num%2 == 0:
+        userInput1 = input("Player 1, please enter position 1 in the form 'row:col' (two numbers seperated by a colon): ")
+        userInput2 = input("Player 1, please enter position 2 in the form 'row:col' (two numbers seperated by a colon): ")
+
+        if board[int(userInput1[0])][int(userInput1[2])] == board[int(userInput2[0])][int(userInput2[2])] :
+            player1 = player1 + 1
+            representation[int(userInput1[0])][int(userInput1[2])] = ' '
+            representation[int(userInput2[0])][int(userInput2[2])] = ' '
+            num = num + 2
+            print("Correct!")
+            print("You get another turn.")
+            print("The board now looks like: ")
+                         
+        else:
+            representation[int(userInput1[0])][int(userInput1[2])] = board[int(userInput1[0])][int(userInput1[2])]
+            representation[int(userInput2[0])][int(userInput2[2])] = board[int(userInput2[0])][int(userInput2[2])]
+            num = num + 1
+            print("Incorrect!")
+            print("It is the other players turn.")
+                        
+        printBoard(representation)
+
+    else:
+        userInput1 = input("Player 2, please enter position 1 in the form 'row:col' (two numbers seperated by a colon): ")
+        userInput2 = input("Player 2, please enter position 2 in the form 'row:col' (two numbers seperated by a colon): ")
+
+        if board[int(userInput1[0])][int(userInput1[2])] == board[int(userInput2[0])][int(userInput2[2])] :
+            player1 = player1 + 1
+            representation[int(userInput1[0])][int(userInput1[2])] = ' '
+            representation[int(userInput2[0])][int(userInput2[2])] = ' '
+            num = num + 2
+            print("Correct!")
+            print("You get another turn.")
+            print("The board now looks like: ")
+                         
+        else:
+            representation[int(userInput1[0])][int(userInput1[2])] = board[int(userInput1[0])][int(userInput1[2])]
+            representation[int(userInput2[0])][int(userInput2[2])] = board[int(userInput2[0])][int(userInput2[2])]
+            num = num + 1
+            print("Incorrect!")
+            print("It is the other players turn.")
+
+        printBoard(representation)
+        
+    # os.system('clear')
+    count = count + 1
+
+import time
+time.sleep(5)
+
+if player2 > player1:
+    print("Congratulations Player 2! You have won. Player 1, better luck next time!")
+                  
+elif player1 > player2:
+    print("Congratulations Player 1! You have won. Player 2, better luck next time!")
+                  
+else:
+    print("Player 1 and Player 2 have tied.")
+                  
+print("Thank you for playing the Memory Game. Game over.")
+
+

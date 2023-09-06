@@ -1,0 +1,17 @@
+
+A pure strategy Nash equilibrium is a set of strategies, one for each player, such that no player can improve their outcome by unilaterally changing their strategy while the other players keep theirs fixed.
+In this game, each candidate is choosing a single policy position. Let x1 and x2 be the policy positions chosen by the two candidates, respectively.
+The candidate's payoffs are determined by the number of electoral college votes they receive. For candidate 1, this is:
+(1) 100(x1 - m1)^2 + 80(x2 - m2)^2
+For candidate 2, this is:
+(2) 100(x2 - m1)^2 + 80(x2 - m2)^2
+We can find the pure strategy Nash equilibrium by setting the derivative of each player's payoff with respect to their own strategy equal to zero, and solving for their strategy.
+Taking the derivative of (1) with respect to x1, we get:
+-200x1 + 200m1 = 0
+So, x1 = m1.
+Taking the derivative of (2) with respect to x2, we get:
+-200x2 + 200m1 + 80 = 0
+So, x2 = (200m1 + 80) / 200
+Thus, in this game, the pure strategy Nash equilibrium is (x1, x2) = (m1, (200m1 + 80) / 200).
+Therefore the candidates will always choose the median position of the state that gives them the most electoral votes.
+

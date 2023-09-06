@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#define MAX_LENGTH 100
+
+int main() {
+    int pipefd[2]; // unnamed pipe file descriptor
+    pid_t pid;
+
+    // create the pipe
+    if (pipe(pipefd) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+
+    pid = fork();
+    if (pid == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid == 0) { // child process
+        // close the write end of the pipe
+        close(pipefd[1]);
+
+        char str[MAX_LENGTH];
+        while (1) {
+            printf("Enter a string: ");
+            scanf("%s", str);
+
+            // send the string to the parent process
+            write(pipefd[0], str, strlen(str));
+
+            // receive the result from the parent process
+            int result;
+            read(pipefd[0], &result, sizeof(result));
+
+            // print the result
+            printf("Result: %d\n", result);
+        }
+
+        // close the read end of the pipe
+        close(pipefd[0]);
+    } else { // parent process
+        // close the read end of the pipe
+        close(pipefd[0]);
+
+        while (1) {
+            // receive the string from the child process
+            char str[MAX_LENGTH];
+            read(pipefd[1], str, MAX_LENGTH);
+
+            // count the number of vowels
+            int i, length = strlen(str);
+            int count = 0;
+            for (i = 0; i < length; i++) {
+                if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' ||
+                    str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U') {
+                    count++;
+                }
+            }
+
+            // send the result to the child process
+            write(pipefd[1], &count, sizeof(count));
+        }
+
+        // close the write end of the pipe
+        close(pipefd[1]);
+    }
+
+    return 0;
+}
+
+

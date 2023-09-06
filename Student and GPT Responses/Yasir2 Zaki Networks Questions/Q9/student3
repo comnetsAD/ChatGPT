@@ -1,0 +1,5 @@
+1) Yes, it is possible for Bob to receive a complete file without uploading any data to other peers because of the optimistic un-choking. At some point some peer will unchoke him and send him data, and as long as there are many peers in the swarm and they stay for long time, Bob can download the entire file. a
+
+2) Bob can run a client that downloads the file on different machines in the lab. Then he would do “free-riding” and each machine can ask for a different section of the file (different chunks). As soon as he has all the data chunks, regardless of which machine they are, he can combine those collected chunks into a single file. 
+
+

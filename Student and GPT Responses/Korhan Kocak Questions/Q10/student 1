@@ -1,0 +1,8 @@
+
+Players = {Colonel Blotto (CB), Rebel Group (RG)}
+Strategies = {s1, s2, s3} s.t. s1 = deploy 2 regiments to pass 1, s2 = deploy 2 regiments to pass 2, s3 = deploy 1 regiment to pass 1 and 1 regiment to pass 2.
+
+
+
+We notice that CB’s best response is always to play the same strategy as RG, in which case RG would deviate to a different strategy. There is no pure strategy NE.
+

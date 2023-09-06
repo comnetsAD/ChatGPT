@@ -1,0 +1,54 @@
+score_ses = lm(zmath8~ses, data = scores)
+summary(score_ses)
+##
+## Call:
+## lm(formula = zmath8 ~ ses, data = scores)
+##
+## Residuals:
+## Min 1Q Median 3Q Max
+## -3.4976 -0.4954 0.1584 0.6393 2.4117
+##
+## Coefficients:
+## Estimate Std. Error t value Pr(>|t|)
+## (Intercept) -0.03262 0.01076 -3.032 0.00244 **
+## ses 0.51792 0.01375 37.676 < 2e-16 ***
+## ---
+1
+## Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+##
+## Residual standard error: 0.8731 on 7033 degrees of freedom
+## Multiple R-squared: 0.1679, Adjusted R-squared: 0.1678
+## F-statistic: 1419 on 1 and 7033 DF, p-value: < 2.2e-16
+2) present the result in a table using stargazer
+stargazer(lm(zmath8~ses, data = scores),
+title="How does the socio-economic status affect 8th grade math score?",
+type = "latex",
+style = 'apsr',
+dep.var.labels = 'Outcome: Math Score',
+covariate.labels = "Socio-economic status",
+header=FALSE)
+Table 1: How does the socio-economic status affect 8th grade math score?
+Outcome: Math Score
+Socio-economic status 0.518∗∗∗
+(0.014)
+Constant −0.033∗∗∗
+(0.011)
+N 7,035
+R2 0.168
+Adjusted R2 0.168
+Residual Std. Error 0.873 (df = 7033)
+F Statistic 1,419.465∗∗∗ (df = 1; 7033)
+∗p < .1; ∗∗p < .05; ∗∗∗p < .01
+3) interpret the result of regression (discuss slope & intercept) Intercept = -0.03262
+Slope = 0.51792
+The intercept represents a predicted value of math score when the socio economic status
+is 0 (which is equivalent to having an average SES). The slope shows how much change
+the math score among 8th grade students undergoes with one unit change of SES. According
+to the summary of the regression, the socio-economic status is statistically significant.
+4) compare the prediction of the math score at SES equal to -2 and 2 Equation: y = a
++ b*x, where a is intercept and b is slope; y is math score and x is socio economic
+status.
+2
+y = -0.03262 + 0.51792*(-2) = -1.06846
+y = -0.03262 + 0.51792*(2) = 1.00322
+According to these results, one can conclude that when the socio economic status of a

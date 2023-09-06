@@ -1,0 +1,9 @@
+programming compared to a non-object-oriented approach?
+
+
+In object-oriented programming, the focus is on creating objects, which are instances of classes, to represent and manipulate the data and behavior of a program. These objects can interact with one another through methods, and the data they contain is encapsulated and protected from external access.
+
+In contrast, non-object-oriented programming does not rely on the use of objects and classes. Instead, it focuses on procedures and functions that operate on data. This data is often global and can be accessed and modified by any part of the program.
+
+In summary, an object-oriented approach emphasizes the use of objects, classes, and encapsulation, while a non-object-oriented approach relies on procedures and functions to manipulate global data.
+

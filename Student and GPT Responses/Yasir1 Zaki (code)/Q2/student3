@@ -1,0 +1,23 @@
+subject=input("Please type in a sentence: ")
+
+#Total number of characters
+total=len(subject)
+print('There are '+str(total)+' characters in this sentence.' )
+
+#Total number of words
+words=subject.count(' ')
+print('There are '+str(words+1)+' words in this sentence.')
+
+#Total number of vowels
+As=subject.count('a')
+Es=subject.count('e')
+Is=subject.count('i')
+Os=subject.count('o')
+Us=subject.count('u')
+
+print('There are '+str(As+Es+Is+Os+Us)+' vowels in this sentence.' )
+
+#Reverse order of the sentence.
+print(subject[::-1])
+
+

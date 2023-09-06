@@ -1,0 +1,4 @@
+Yes, it is possible to have an optimal scheduling of jobs that minimizes lateness yet contains an inversion.
+An inversion in a schedule occurs when two jobs are assigned to the same machine in such a way that the job that should be finished first according to their deadlines is actually finished after the other job. Even though an optimal schedule should minimize the lateness of jobs, it's not always possible to avoid inversions.
+For example, if two jobs have very tight deadlines, it may be necessary to invert their order on a machine in order to finish them both on time, even though it would result in the job that should be finished first to finish last.
+So, an optimal schedule may contain inversions if it is necessary to minimize the lateness of jobs.

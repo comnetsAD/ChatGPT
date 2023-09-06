@@ -1,0 +1,35 @@
+To create an object using dynamic memory allocation, we can use the "new" operator. This allocates memory for the object on the heap and returns a pointer to the newly created object.
+
+Here is an example of how the code can be updated to create an object using dynamic memory allocation:
+
+#include <iostream>
+using namespace std;
+
+class Drink {
+  public:
+
+  int volume;
+
+  // constructor
+  Drink(int v) {
+
+      // variable private to the function
+      volume = v;
+      cout << "Volume: " << volume << "\n";
+  }
+};
+
+int main() {
+  // creating object
+  Drink mydrink(12);
+
+  // Create object with dynamic memory allocation
+  Drink* mydrink2 = new Drink(20);
+
+  return 0;
+}
+
+In this example, we create a pointer variable "mydrink2" of type Drink* and assign it the memory address of the new object created using the "new" operator, passing the value 20 as an argument to the constructor of the class Drink.
+
+It is important to note that when objects are created with dynamic memory allocation, they need to be deleted explicitly to free the memory allocated. Otherwise, it will lead to memory leaks.
+

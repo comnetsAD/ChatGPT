@@ -1,0 +1,3 @@
+Our ACK packets do not require sequence numbers because the purpose of ACKs is to detect duplicate packets and in rdt3.0 the receiver must know whether it is receiving a duplicate data packet, but the sender does not need to keep track of duplicate ACKs. Once an ACK is received, the sender will ignore any ACKs received from the previous state. Hence, ACKs going from the receiver to the sender do not need to have sequence numbers. 
+
+

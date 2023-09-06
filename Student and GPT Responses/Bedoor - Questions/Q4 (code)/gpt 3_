@@ -1,0 +1,24 @@
+For example acccording to our reference solution:
+findExit([2,0,1,0]) returns True
+findExit([1,1,0,1]) returns False
+findExit([1,2,0,3,1]) returns False
+
+
+def findExit(lst):
+    if not lst:
+        return False
+    index = 0
+    hops = lst[index]
+    while index < len(lst) - 1:
+        if hops == 0:
+            return False
+        index += hops
+        if index < len(lst):
+            hops = lst[index]
+    return True
+
+print(findExit([2,0,1,0])) # True
+print(findExit([1,1,0,1])) # False
+print(findExit([1,2,0,3,1])) # False
+
+

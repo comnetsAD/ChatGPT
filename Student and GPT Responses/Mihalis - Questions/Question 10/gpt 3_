@@ -1,0 +1,7 @@
+
+Restriction Reason 1: Shodan can be used to identify and exploit vulnerabilities in critical infrastructure systems. This poses a significant security risk as it can be used to conduct cyber attacks on power grids, water treatment plants, and other critical systems.
+Restriction Reason 2: Shodan can also be used to gather sensitive personal information, such as IP addresses, login credentials, and other private data. This can lead to identity theft and other malicious activities.
+Allow Reason: Shodan can be used for legitimate cybersecurity research and vulnerability assessments. It can help identify and patch vulnerabilities in systems, making them more secure.
+Policy:
+The use of Shodan-like tools is restricted for all individuals and organizations, except for authorized cybersecurity researchers and vulnerability assessors. These authorized individuals and organizations must have written permission from the appropriate authorities and must agree to strict guidelines for data usage, handling, and reporting. Any unauthorized use of Shodan-like tools will result in immediate legal action.
+

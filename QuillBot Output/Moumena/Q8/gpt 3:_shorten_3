@@ -1,0 +1,1 @@
+Truth tables with nine Boolean variables have 512 rows. Because each Boolean variable can be true or false, and there are nine variables, there are 2^9 potential value combinations. 

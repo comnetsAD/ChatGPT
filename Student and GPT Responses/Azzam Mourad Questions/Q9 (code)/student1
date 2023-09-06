@@ -1,0 +1,252 @@
+
+Server:
+#include <unistd.h> 
+#include <stdio.h> 
+#include <sys/socket.h> 
+#include <stdlib.h> 
+#include <netinet/in.h> 
+#include <string.h> 
+#include <pthread.h>
+
+//compile using -lpthread
+//run multiple clients in several terminal windows
+
+#define PORT 8355
+
+void* Math(void *);
+
+int main(int argc, char const *argv[]) 
+{ 
+	int server_fd, new_socket, valread; 
+	struct sockaddr_in address; 
+
+	int addrlen = sizeof(address); 
+
+	// Creating socket file descriptor 
+	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
+	{ 
+		perror("socket failed"); 
+		exit(EXIT_FAILURE); 
+	} 
+
+	address.sin_family = AF_INET; 
+	address.sin_addr.s_addr = INADDR_ANY; 
+	address.sin_port = htons( PORT ); 
+
+	if (bind(server_fd, (struct sockaddr *)&address, sizeof(address))<0) 
+	{ 
+		perror("bind failed"); 
+		exit(EXIT_FAILURE); 
+	} 
+
+	//keep listeninig for incoming connections
+	while(1)
+	{
+		if (listen(server_fd, 5) < 0) 
+		{ 
+			perror("listen"); 
+			exit(EXIT_FAILURE); 
+		} 
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, 
+						(socklen_t*)&addrlen))<0) 
+		{ 
+			perror("accept"); 
+			exit(EXIT_FAILURE); 
+		} 
+
+
+		pthread_t th;
+
+		// define attributes of the thread
+		pthread_attr_t attr;
+		pthread_attr_init(&attr);
+		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+
+		pthread_create(&th,&attr,Math,&new_socket);
+
+	}
+	
+	close(server_fd);
+	return 0; 
+
+} 
+
+void* Math (void * socket){
+	int *sock=(int*)socket;
+	int s=*sock;
+	
+	char mathString[2255];
+	recv(s, &mathString, sizeof(mathString), 0);
+
+
+
+	float final;
+
+	// check for each operation sign and operate
+	if (strstr(mathString, "+"))
+	{
+		int array[2];
+		int top=-1;
+
+		char * splitString= strtok(mathString, "*");
+
+		// storing the substrings into an array from https://stackoverflow.com/questions/47456692/c-string-of-numbers-separated-by-whitespaces-into-integer-array
+		while( splitString != NULL ) {
+			top++;
+			array[top] = atoi(splitString);
+			splitString = strtok(NULL, " ");
+		}
+		final = array[0] * array[1];
+	}
+
+
+	if (strstr(mathString, "+"))
+	{
+		char * splitString= strtok(mathString, "+");
+		while( splitString != NULL ) {
+			final = final + atoi(splitString);
+			splitString = strtok(NULL, " ");
+		}
+	}
+
+	if (strstr(mathString, "-"))
+	{
+		int array[2];
+		int top=-1;
+
+		char * splitString= strtok(mathString, "-");
+
+		// storing the substrings into an array from https://stackoverflow.com/questions/47456692/c-string-of-numbers-separated-by-whitespaces-into-integer-array
+		while( splitString != NULL ) {
+			top++;
+			array[top] = atoi(splitString);
+			splitString = strtok(NULL, " ");
+		}
+		final = array[0]-array[1];
+	}
+
+	if (strstr(mathString, "/"))
+	{
+		int array[2];
+		int top=-1;
+
+		char * splitString= strtok(mathString, "/");
+
+		// storing the substrings into an array from https://stackoverflow.com/questions/47456692/c-string-of-numbers-separated-by-whitespaces-into-integer-array
+		while( splitString != NULL ) {
+			top++;
+			array[top] = atoi(splitString);
+			splitString = strtok(NULL, " ");
+		}
+		final = array[0]/array[1];
+		printf("%d",final);
+	}
+
+
+
+	printf("%f\n",final );
+	send(s, &final, sizeof(final),0);
+
+	close(s);
+}
+
+Client:
+// Write a client-multi server code using sockets and multi-threading where you use the client to chat
+// with a dummy "math" server. The protocol between the client and server is as follows.
+
+// The client asks the user for input. The user enters a simple arithmetic expression string
+// (e.g., "1+2", "5 - 6", "3*4"). The user's input is sent to the server via the connected socket.
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> 
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <netinet/in.h>
+// #include <conio.h> 
+
+#define PORT 8355
+char *remove_white_spaces(char *str);
+
+
+int main(){
+	system("clear");
+// _____________________________socket code pt 1(socket code inspired by the code from lab 7)
+	//1. create a socket
+	int client_socket;
+	client_socket = socket(AF_INET , SOCK_STREAM, 0); //socket( domain/family of the socket, type of socket,  protocol for connection)
+
+	// error checking
+	if(client_socket == -1)
+	{
+		perror("opening stream socket");
+		exit(1);
+	}
+
+	
+	// _____________________________connect to server socket/shell code
+	// create the struct and define it's properties like family, port and so on
+	struct sockaddr_in shell_address;
+	//define family 
+	shell_address.sin_family = AF_INET; 
+	//specify port number
+	shell_address.sin_port = htons(PORT); 
+	//we use special IP address INADDR_ANY to bind our socket to an IP address of the machin
+	shell_address.sin_addr.s_addr = INADDR_ANY;
+
+
+	// int connection_status = connect(socket name, pointer to the shell socket address struct, size of address)
+	int connection_status = connect(client_socket, (struct sockaddr *) &shell_address, sizeof(shell_address));
+
+	// error checking 
+	if (connection_status == -1) 
+	{
+		perror("connection to remote socket failed");
+		exit(1);
+	}
+
+	// _____________________________end of socket code pt 1
+	
+
+	do
+	{
+		// _____________________________get user input
+		char mathString[2255];
+		printf("print a simple mathmatical expression(e.g., '1+2', '5 - 6', '3*4', '10/5'):\n");
+
+		// scan the input (we use [^\n] to enssure that the whole string is considered even the parts after the spaces)
+		scanf(" %[^\n]s", mathString);
+		remove_white_spaces(mathString);
+
+		send(client_socket , mathString , sizeof(mathString),0);
+	    printf("The expression: %s\n",mathString);
+
+
+		float finalAnswer; 
+		recv(client_socket , &finalAnswer , sizeof(finalAnswer),0);
+		printf("The final answer: %f\n" , finalAnswer);
+
+	} while(free);
+
+	close(client_socket);
+
+	return 0;
+}
+
+
+// function from https://www.educative.io/edpresso/how-to-remove-spaces-from-a-string-in-c
+char *remove_white_spaces(char *str)
+{
+	int i = 0, j = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+          str[j++] = str[i];
+		i++;
+	}
+	str[j] = '\0';
+	return str;
+}
+

@@ -1,0 +1,76 @@
+import random
+
+def create_board(num_rows, num_cols):
+    """
+    Creates a num_rows x num_cols board with the numbers 1 to num_rows*num_cols-1,
+    and an empty position at the end.
+    """
+    board = [[i+j*num_cols+1 for i in range(num_cols)] for j in range(num_rows)]
+    board[num_rows-1][num_cols-1] = None
+    return board
+
+def shuffle_board(board):
+    """Shuffles the given board by swapping random positions 1000 times."""
+    num_rows = len(board)
+    num_cols = len(board[0])
+    for i in range(1000):
+        # choose two random positions on the board
+        row1 = random.randint(0, num_rows-1)
+        col1 = random.randint(0, num_cols-1)
+        row2 = random.randint(0, num_rows-1)
+        col2 = random.randint(0, num_cols-1)
+
+        # swap the two positions
+        board[row1][col1], board[row2][col2] = board[row2][col2], board[row1][col1]
+
+def move_tile(board, row, col):
+    """Moves the tile at the given position if it is connected to the empty space."""
+    num_rows = len(board)
+    num_cols = len(board[0])
+    if row > 0 and board[row-1][col] is None:
+        board[row][col], board[row-1][col] = board[row-1][col], board[row][col]
+        return True
+    elif row < num_rows-1 and board[row+1][col] is None:
+        board[row][col], board[row+1][col] = board[row+1][col], board[row][col]
+        return True
+    elif col > 0 and board[row][col-1] is None:
+        board[row][col], board[row][col-1] = board[row][col-1], board[row][col]
+        return True
+    elif col < num_cols-1 and board[row][col+1] is None:
+        board[row][col], board[row][col+1] = board[row][col+1], board[row][col]
+        return True
+    return False
+
+def print_board(board):
+    """Prints the board in a user-friendly way."""
+    for row in board:
+        for col in row:
+            if col is None:
+                print("  ", end=" ")
+            else:
+                print("%2d" % col, end=" ")
+        print()
+
+def main():
+    # create the board and shuffle it
+    board = create_board(4, 4)
+    shuffle_board(board)
+
+    # print the board and ask the user for input
+    print_board(board)
+    while True:
+        row = int(input("Enter row of tile to move: "))
+        col = int(input("Enter column of tile to move: "))
+        if not move_tile(board, row, col):
+            print("Sorry, that tile cannot be moved.")
+        print_board(board)
+
+        # check if the board is in the correct order
+        if board == create_board(4, 4):
+            print("Congratulations, you solved the puzzle!")
+            break
+
+main()
+
+
+

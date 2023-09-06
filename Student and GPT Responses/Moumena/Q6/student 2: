@@ -1,0 +1,4 @@
+
+The problem can be solved using the pigeonhole theorem. Dividing the number of students needing a locker with the number of lockers tells us how many students should share a locker, if they were distributed equally among all students. That is: 4026/805 = 5.0012
+Because the number of students must be an integer and we are looking for the largest number of students sharing a single locker, the number is going to be the ceiling of 5, 0012. As such, the largest number of students needing to share a locker is 6.
+

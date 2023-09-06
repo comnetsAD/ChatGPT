@@ -1,0 +1,11 @@
+The movie theater can price discriminate between students and professors by requiring students to show their student ID and charging them a lower price. To maximize its profit, the movie theater should charge the highest price that students are willing to pay, which is $5, and the highest price that professors are willing to pay, which is $10. Since each person will only buy one ticket, the theater will sell all 900 student tickets at $5 and all 100 professor tickets at $10.
+
+The movie theater's profit can be calculated by multiplying the number of tickets sold by the difference between the price and the marginal cost and then summing over both groups of customers.
+(900*($5-$3)) + (100*($10-$3)) = $2400
+
+The consumer surplus is the difference between the maximum amount that a consumer is willing to pay and the amount they actually pay.
+For students, Consumer surplus = 900*($5-$5) = $0
+For professors, Consumer surplus = 100*($10-$10) = $0
+
+In this case, all 900 students and 100 professors will buy the tickets, as they are all willing to pay the prices being charged. 900 tickets will be sold at $5 and 100 tickets will be sold at $10, for a total of 1000 tickets sold. The movie theater will make a profit of $2400 and the consumer surplus will be $0
+

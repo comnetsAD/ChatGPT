@@ -1,0 +1,2 @@
+The main difference is that smoothing does not extend the project duration by using the available float to reduced the fluctuations in resource utilization. I would recommend smoothing if the project duration cannot be extended.
+

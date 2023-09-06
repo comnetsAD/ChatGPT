@@ -1,0 +1,22 @@
+The market demand schedule for bottled water in France is as follows:
+
+Price of bottled water (per bottle), Quantity of bottle water demanded (millions), Total Revenue, Marginal Revenue
+10, 0, 0, -
+9, 1, 9, 9
+8, 2, 16, 7
+7, 3, 21, 5
+6, 4, 24, 3
+5, 5, 25, 1
+4, 6, 24, -1
+3, 7, 21, -3
+2, 8, 16, -5
+1, 9, 9, -7
+
+The total output produced is the sum of the quantity of bottled water demanded at each price level, which is 45 million bottles. Since the two firms divide the total output produced evenly, each firm will produce 22.5 million bottles.
+
+To find the monopoly price, we need to find the price level where the quantity demanded is equal to the total output produced by the firms. In this case, that would be the price level of 5 € per bottle.
+
+To find the monopoly output, we need to find the quantity demanded at the monopoly price. In this case, that would be 5 million bottles.
+
+To find the profit of each firm, we need to find the total revenue at the monopoly price and subtract the total cost of production. The total cost of production is the sum of the marginal cost and fixed cost, which is €2 per bottle + €1 million = €2 million.
+

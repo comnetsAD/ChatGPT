@@ -1,0 +1,12 @@
+Researcher is not correct to make causal claims, because there might be other confounding variables that the researcher did not take into account, but they might affect both education and income levels. One of the possible Confounding variables is Socio-economic status of individuals’ family;
+Code
+## dag {
+## EDUCATION
+## INCOME
+## SES_FAMILY
+## EDUCATION -> INCOME
+## SES_FAMILY -> EDUCATION
+## SES_FAMILY -> INCOME
+## }
+
+

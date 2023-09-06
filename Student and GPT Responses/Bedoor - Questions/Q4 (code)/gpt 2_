@@ -1,0 +1,15 @@
+
+def findExit(nums):
+    if len(nums) == 0:
+        return False
+    current_index = 0
+    while current_index < len(nums):
+        if nums[current_index] == 0 and current_index != len(nums)-1:
+            return False
+        current_index += nums[current_index]
+    return True
+
+print(findExit([2,0,1,0])) # True
+print(findExit([1,1,0,1])) # False
+print(findExit([1,2,0,3,1])) # False
+

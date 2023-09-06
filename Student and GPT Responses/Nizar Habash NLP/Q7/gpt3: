@@ -1,0 +1,24 @@
+ 
+Ref 1: it 's been paid for , swept away , forgotten . 	
+
+Ref 2: it 's been covered , brushed off , forgotten . 
+
+Ref 3: i have paid it off , swept it away, and do n’t i remember anything any more .  
+ 
+     Sys A: paid it , swept it , forgot it . 
+
+
+To compute the BLEU-2 (unigram+bigram) score for the system output "paid it, swept it, forgot it" against the three references provided, we first need to compute the precision at different n-gram levels and then apply the length penalty.
+Precision at unigram level: (number of exact unigrams in the system output that also appear in the reference) / (total number of unigrams in the system output)
+System output: ["paid", "it", "swept", "it", "forgot", "it"] Ref 1: ["it's", "been", "paid", "for,", "swept", "away,", "forgotten"] Ref 2: ["it's", "been", "covered,", "brushed", "off,", "forgotten"] Ref 3: ["i", "have", "paid", "it", "off,", "swept", "it", "away,", "and", "do", "n’t", "i", "remember", "anything", "any", "more"]
+Number of unigrams in system output that also appear in at least one reference: 3 (paid, swept, forgot) Number of unigrams in system output: 6 Precision at unigram level = 3/6 = 0.5
+Precision at bigram level: (number of exact bigrams in the system output that also appear in the reference) / (total number of bigrams in the system output)
+System output: ["paid", "it", "swept", "it", "forgot", "it"] Ref 1: ["it's", "been", "paid", "for,", "swept", "away,", "forgotten"] Ref 2: ["it's", "been", "covered,", "brushed", "off,", "forgotten"] Ref 3: ["i", "have", "paid", "it", "off,", "swept", "it", "away,", "and", "do", "n’t", "i", "remember", "anything", "any", "more"]
+Number of bigrams in system output that also appear in at least one reference: 2 (paid it, swept it) Number of bigrams in system output: 3 Precision at bigram level = 2/3 = 0.67
+The length penalty is computed as exp(1 - (length of the shortest reference) / (length of the system output))
+The shortest reference is Ref 1, which has 9 words. The system output has 6 words.
+Length Penalty = exp(1 - (9/6)) = exp(-0.5) = 0.607
+The final BLEU-2 score is computed as the geometric mean of the unigram and bigram precisions, multiplied by the length penalty: BLEU-2 = sqrt(Precision at unigram level * Precision at bigram level) * Length Penalty BLEU-2 = sqrt(0.5 * 0.67) * 0.607 = 0.44
+So the BLEU-2 score of the system output against the three references is 0.44.
+
+

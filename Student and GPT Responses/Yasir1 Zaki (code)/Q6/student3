@@ -1,0 +1,227 @@
+from random import randint
+import time
+import os
+
+puzzleSolution = []
+puzzleBoard = []
+numberRows = 4
+numberColumns = 4
+numberTiles = numberRows*numberColumns
+
+##########################################################
+#                                                        #
+#  HERE WE PRINT THE RULES AND INSTRUCTIONS OF THE GAME  #
+#                                                        #
+##########################################################
+
+print("          ####################\n"\
+      +"          #                  #\n"\
+      +"          #   SLIDE PUZZLE   #\n"\
+      +"          #                  #\n"\
+      +"          ####################\n\n")
+
+print("Welcome to the puzzle game. In this game you will have to solve a slide puzzle."\
+      +" This puzzle works in the following way:\nYou will be given a puzzle with an"\
+      +" empty space. The puzzle is going to be shuffled and you will have to solve it."\
+      +" You can only move the pieces that are next to an empty space by 'sliding' the"\
+      +" selected piece into the empty space. Here are the solution to the puzzle and the"\
+      +" shuffled version that you'll have to solve.\n")
+
+############################################
+#                                          #
+#  HERE WE DEFINE ALL THE FUNCTIONS FIRST  #
+#                                          #
+############################################
+
+
+#Print Board
+def printBoard():
+    for column in range(numberColumns):
+        print("    "+str(column), end="")
+    print("\n  "+"+----"*numberColumns+"+")
+    for row in range(numberRows):
+        print(str(row)+" ",end="")
+        for column in range(numberColumns):
+            print("| "+puzzleBoard[row][column]+" "*(2-len(puzzleBoard[row][column])),end=" ")
+        print("|\n  "+"+----"*numberColumns+"+")
+
+#Finding the position of an element
+def find(element):
+    for row in puzzleBoard:
+        if element in row:
+            columnPosition = row.index(element)
+            rowPosition = puzzleBoard.index(row)
+    return rowPosition, columnPosition
+
+def moveUp(element):
+    elementRow,elementColumn = find(element)
+    tileValue = puzzleBoard[elementRow-1][elementColumn]
+    puzzleBoard[elementRow-1][elementColumn] = puzzleBoard[elementRow][elementColumn]
+    puzzleBoard[elementRow][elementColumn] = tileValue
+
+def moveDown(element):
+    elementRow,elementColumn = find(element)
+    tileValue = puzzleBoard[elementRow+1][elementColumn]
+    puzzleBoard[elementRow+1][elementColumn] = puzzleBoard[elementRow][elementColumn]
+    puzzleBoard[elementRow][elementColumn] = tileValue
+
+def moveLeft(element):
+    elementRow,elementColumn = find(element)
+    tileValue = puzzleBoard[elementRow][elementColumn-1]
+    puzzleBoard[elementRow][elementColumn-1] = puzzleBoard[elementRow][elementColumn]
+    puzzleBoard[elementRow][elementColumn] = tileValue
+    
+def moveRight(element):
+    elementRow,elementColumn = find(element)
+    tileValue = puzzleBoard[elementRow][elementColumn+1]
+    puzzleBoard[elementRow][elementColumn+1] = puzzleBoard[elementRow][elementColumn]
+    puzzleBoard[elementRow][elementColumn] = tileValue
+
+def Shuffle(number,space):
+    if number == 0:
+        moveRight(space)
+    elif number == 1:
+        moveUp(space)
+    elif number == 2:
+        moveLeft(space)
+    elif number == 3:
+        moveDown(space)
+    elif number == 4:
+        moveRight(space)
+    elif number == 5:
+        moveUp(space)
+
+#Here we check for imput errors.       
+def checkPiecePosition(tile,inputType):
+    spaceRow,spaceColumn = find(" ")
+    tileRow,tileColumn = find(tile)
+    if inputType == "1":
+        while (tileColumn > spaceColumn+1 or tileColumn < spaceColumn-1 \
+               or tileRow < spaceRow-1 or tileRow > spaceRow+1)\
+               or (tileRow != spaceRow and tileColumn != spaceColumn):
+            tile = input("That tile cannot move. Please choose another value: ")
+            while int(tile)>= numberTiles:
+                tile = input("That tile doesn't exist. Please choose another tile: ")
+            tileRow,tileColumn = find(tile)
+    else:
+        while (tileColumn > spaceColumn+1 or tileColumn < spaceColumn-1 \
+               or tileRow < spaceRow-1 or tileRow > spaceRow+1)\
+               or (tileRow != spaceRow and tileColumn != spaceColumn):
+            tileList = input("tile cannot be moved. Please enter new coordinates (row,column): ").split(",")
+            while (int(tileList[0]) >= numberRows) or (int(tileList[1]) >= numberColumns):
+                tileList = input("Coordinates out of range, Please enter new coordinates (row,column): ").split(",")
+            tile = puzzleBoard[int(tileList[0])][int(tileList[1])]
+            tileRow,tileColumn = find(tile)
+
+    return tile
+
+
+#################################
+#                               #
+#  HERE WE START WITH THE CODE  #
+#                               #
+#################################
+
+
+#Create the two boards using nested for loops
+number = 1
+for row in range(numberRows):
+    rowList = []
+    rowList2 = []
+    for column in range(numberColumns):
+        rowList.append(str(number))
+        rowList2.append(str(number))
+        number += 1
+    puzzleSolution.append(rowList)
+    puzzleBoard.append(rowList2)
+puzzleSolution[numberRows-1][numberColumns-1] = " "
+puzzleBoard[numberRows-1][numberColumns-1] = " "
+
+printBoard()
+
+#Shufle the tiles
+space = " "
+
+for this in range(200):
+    spaceRow,spaceColumn = find(space)
+
+    if spaceRow==numberRows-1 and spaceColumn==numberColumns-1:
+        number = randint(1,2)
+        Shuffle(number,space)
+    elif spaceRow==numberRows-1 and spaceColumn==0:
+        number = randint(0,1)
+        Shuffle(number,space)
+    elif spaceRow==0 and spaceColumn==numberColumns-1:
+        number = randint(2,3)
+        Shuffle(number,space)
+    elif spaceRow==0 and spaceColumn==0:
+        number = randint(3,4)
+        Shuffle(number,space)
+        
+    elif spaceRow==numberRows-1:
+        number = randint(0,2)
+        Shuffle(number,space)
+    elif spaceRow==0:
+        number = randint(2,4)
+        Shuffle(number,space)
+    elif spaceColumn==numberColumns-1:
+        number = randint(1,3)
+        Shuffle(number,space)
+    elif spaceColumn==0:
+        number = randint(3,5)
+        Shuffle(number,space)
+
+    else:
+        number = randint(0,4)
+        Shuffle(number,space)
+
+print()       
+printBoard()
+#Here we give the user a chance to select what kind of input does he or she wants
+#to use. It can be either the values printed in every tile or the position of the
+#tile given with coordinates.
+inputType = input("\nThere are two ways to select the piece that you want to move. "\
+                  +"You can input the printed value in every piece of the puzzle, "\
+                  +"or you can input the coordinates of the piece to move (row,colum)."\
+                  +" If you want to use the printed value, input 1. If you want to use coordinates, "\
+                  +"input 2. Write here 1 or 2: ")
+while inputType != "1" and inputType != "2":
+    print ("Remember that you have to input either 1 or 2.")
+    inputType = input("You can input the printed value in every piece of the puzzle, "\
+                      +"or you can input the coordinates of the piece to move (row,colum)."\
+                      +" If you want to use the printed value input 1. If you want to use coordinates "\
+                      +"input 2. Write here 1 or 2: ")
+    
+#Here the user starts changing the position of the tiles
+while puzzleBoard != puzzleSolution:
+    if inputType == "1":
+        tile = input("\nWhat tile whould you like to move? Input value: ")
+        while int(tile)>= numberTiles:
+            tile = input("That tile doesn't exist. Please choose another tile: ")
+    else:
+        tileList = input("\nPlease enter the tile coordinates separated by coma (row,column): ").split(",")
+        while (int(tileList[0]) >= numberRows) or (int(tileList[1]) >= numberColumns):
+            tileList = input("Coordinates out of range, Please enter new coordinates (row,column): ").split(",")
+        tile = puzzleBoard[int(tileList[0])][int(tileList[1])]
+        
+    tile = checkPiecePosition(tile,inputType)
+    
+    spaceRow,spaceColumn = find(space)
+    tileRow,tileColumn = find(tile)
+    
+    #Moving the tile
+    if tileRow == spaceRow-1:
+        moveDown(tile)
+    elif tileRow == spaceRow+1:
+        moveUp(tile)
+    elif tileColumn == spaceColumn-1:
+        moveRight(tile)
+    else:
+        moveLeft(tile)
+    os.system("clear")
+    printBoard()
+
+print("\nCongratulations! You won!")
+print("If you wanna keep playing, just run the program again")
+
+

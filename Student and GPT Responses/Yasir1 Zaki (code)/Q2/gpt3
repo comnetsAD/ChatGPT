@@ -1,0 +1,22 @@
+# prompt the user to enter a sentence
+sentence = input("Enter a sentence: ")
+
+# count the number of vowels, words, and characters in the sentence
+num_vowels = sentence.count("a") + sentence.count("e") + sentence.count("i") + sentence.count("o") + sentence.count("u")
+num_words = len(sentence.split())
+num_chars = len(sentence)
+
+# print the report
+print("Wordy-Bot Report:")
+print("Number of vowels: {}".format(num_vowels))
+print("Number of words: {}".format(num_words))
+print("Number of characters: {}".format(num_chars))
+
+# add new statistics to the report
+print("Number of consonants: {}".format(num_chars - num_vowels))
+print("Number of digits: {}".format(sum(c.isdigit() for c in sentence)))
+print("Number of special characters: {}".format(sum(not c.isalnum() for c in sentence)))
+print("Number of uppercase letters: {}".format(sum(c.isupper() for c in sentence)))
+print("Number of lowercase letters: {}".format(sum(c.islower() for c in sentence)))
+
+

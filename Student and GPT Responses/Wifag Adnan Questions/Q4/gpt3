@@ -1,0 +1,35 @@
+
+Demand: QD = 10 - 2P 
+Supply: QS = 2P
+If a price ceiling is set at $2, calculate the consumer surplus and the deadweight loss: 
+
+A price ceiling is a government-imposed maximum price that a good or service can be sold for. In this case, the price ceiling is set at $2.
+
+First, we need to find the equilibrium price and quantity without the price ceiling. We can do this by setting the demand and supply equations equal to each other:
+
+10 - 2P = 2P
+
+Solving for P, we get:
+
+P* = 4
+
+Q* = 6
+
+This means that the equilibrium price is $4 and the equilibrium quantity is 6 units.
+
+Next, we need to find the quantity demanded and supplied at the price ceiling of $2. Using the demand equation, we can find that the quantity demanded at a price of $2 is:
+
+QD = 10 - 2(2) = 6 units
+
+Using the supply equation, we can find that the quantity supplied at a price of $2 is:
+
+QS = 2(2) = 4 units
+
+Since the quantity demanded is greater than the quantity supplied at the price ceiling, there is a shortage (QD - QS = 6 - 4 = 2 units).
+
+Consumer surplus is the difference between the maximum price that consumers are willing to pay for a good and the actual price they pay. At the equilibrium price of $4, the consumer surplus is (1/2)(6)(4 - 2) = $6.
+
+Deadweight loss is the loss of economic efficiency that can occur when the market is not in equilibrium. It can be calculated as the area between the supply and demand curves and the price ceiling, which in this case is (1/2)(2)(2) = $1.
+
+Therefore, the consumer surplus is $6 and the deadweight loss is $1.
+

@@ -1,0 +1,38 @@
+A sample policy regarding the use of Shodan and similar
+tools:
+1) Purpose - To define the restrictions and requirements for
+publicly available device-indexing search engines.
+2) Scope - This policy applies to all search engines or tools
+that are publicly available and index devices connected
+to the internet. These will be mentioned as ”specified
+tools” throughout the rest of the policy.
+3) Exposing Critical Information - The specified tools
+may expose some information that wasn’t meant to be
+exposed to the public. Several regulations have to be
+maintained to minimize the chance of this information
+falling into the hands of malicious actors.
+If the specified tool exposes such information:
+• Each user of the specified tool must provide their
+personal information in order to use the specified
+tool with its full functionality.
+• Only minimal functionality should be available for
+the use of the tool without providing personal infor-
+mation. These limitations include but are not limited
+to:
+– Limited number of searches
+– Limited available filters
+– Limited search results
+These limitations may not apply if the tool offers only
+general statistics rather than information about specific
+devices.
+4) Critical Infrastructures - the specified tool must hide the
+devices that, if compromised, can bring harm to critical
+infrastructures of the country. Refer to the country’s
+legislature for the definition of critical infrastructures.
+5) User Guidance - the website hosting the specified tool
+must also provide a guide to a user on how to adequately
+use the tool and how not to step outside the bounds of
+ethics. The website must also discourage the user from
+establishing a connection with devices found with the
+specified tool.
+

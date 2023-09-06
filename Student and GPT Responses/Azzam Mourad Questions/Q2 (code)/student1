@@ -1,0 +1,98 @@
+
+#include
+#define READ_END = 0;
+#define WRITE_END = 1;
+#define MAX_SIZE = 1000
+
+//a function that gets user input and returns it as a string
+char* getUserInput();
+//a function that counts how many vowels there are in a given string and returns the count
+int countVowels(char* userInput);
+
+int main(){
+    //create two pieps: one from the child to the parent and one from the parent to the child
+    int fd[2];
+    pipe(fd);
+    if(pipe(fd)==-1){
+        perror("failed to pipe fd");
+    }
+    int fd2[2];
+    pipe(fd2);
+    if(pipe(fd2)==-1){
+        perror("failed to pipe fd2");
+    }
+    //fork a child
+    pid_t pid;
+    pid = fork();
+    if(pid<0){
+        perror("failed to fork")
+    } else {
+        if(pid<0){
+            //inside the child
+            //close the read end of the pipe 1 (fd) so that the child can write to the pipe
+            //clsoe the write end of the pipe 2 (fd2) so that the child can read from that pipe
+            close(fd[READ_END]);
+            close(fd2[WRITE_END]);
+            //constantly keep looping, the write and read functions are blocking functions so they will take care of the switching between child and parent process
+            while(true){
+                //declare a varibale of maxaimum size and get the user input into it through the functoin getUserInput()
+                char userInput[MAX_SIZE] = getUserInput();
+                //declare an integer that will check whether the writing was successfull
+                int n = 0;
+                //write to the pipe's write end the variable userInput of length strlen(userInput)
+                n = write(fd[WRITE_END], userInput, strlen(userInput));
+                if(n<0){
+                    perror("Failed to write to fd");
+                }
+                //declare an integer variable that will store the input from the parent
+                int vowelCount;
+                //a counter to check whether the reading was successfull
+                int n2 = 0;
+                //read from the read end of the pipe fd2 into the variable vowelCount of the size sizeof(vowelCout)
+                n2 = read(fd2[READ_END], vowelCount, sizeof(vowelCount));
+                if(n2<0){
+                    perror("failed to read from fd2");
+                }
+                printf("Number of integers in the last entered string: %d\n", vowelCount);
+            }
+            //after done using pipes, close the other ends of both pipes
+            close(fd[WRITE_END]);
+            close(fd2[READ_END]);
+        } else {
+            //inside the parent
+            //close the write end of the pipe 1 (fd) so that the parent can read from the pipe
+            //clsoe the read end of the pipe 2 (fd2) so that the parent can write to that pipe
+            close(fd[WRITE_END]);
+            close(fd2[READ_END]);
+            //constantly keep looping, the write and read functions are blocking so they will take care of the switching between child and parent process
+            while(true){
+                //declare a varibale to read from the pipe
+                char userInput[MAX_SIZE];
+                //declare an integer that will check whether the reading was successful
+                int n = 0;
+                //read from the read end of pipe fd into the varaible userInput with size sizeof(userInput)
+                n = read(fd[READ_END], userInput, sizeof(userInput));
+                if(n<0){
+                    perror("Failed to read from fd");
+                }
+                //add a trailing \0 to indicate the end of string
+                userInput[n] = "\0";
+                //count the number of vowels in the given word using the function below
+                int vowelCount = countVowels(userInput);
+                //declare an integer varaible to check whether the writing was successful
+                int n2 = 0;
+                //write to the writing end of the pipe fd2 the varibale vowelCount of the size sizeof(vowelCount)
+                n2 = write(fd2[WRITE_END], vowelCount, sizeof(vowelCount));
+                if(n2<0){
+                    perror("failed to write to fd2");
+                }
+            }
+            //after done using the pipes, close their other ends
+            close(fd[READ_END]);
+            close(fd2[WRITE_END]);
+        }
+    }
+    return 0;
+}
+
+

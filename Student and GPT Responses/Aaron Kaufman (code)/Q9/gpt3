@@ -1,0 +1,18 @@
+
+This researcher may not be correct in making causal claims based on her study. While her data is better than the previous researcher's, it is still observational data and may be subject to selection bias. The people who applied for the scholarship may have had different characteristics than those who did not apply, such as a higher motivation to succeed in life or a greater interest in higher education. These characteristics could also be related to income and could explain the observed income difference between the two groups.
+
+To support this conclusion, we can draw a causal graph in R using the package "ggdag" that illustrates the potential confounders that may affect the relationship between education and income.
+
+library(ggdag)
+
+dag(
+  x = c("S", "A", "E", "I"),
+  y = c("S", "A", "E", "I"),
+  edges = c("A", "S", "E", "A", "I"),
+  conf = c("A")
+)
+
+In this graph, "S" represents scholarship, "A" represents the application for the scholarship, "E" represents education, and "I" represents income. The arrow from "A" to "S" represents that applying for the scholarship leads to receiving it. The arrow from "S" to "E" represents that receiving the scholarship leads to obtaining education. The arrow from "E" to "I" represents that education leads to income. The arrow from "A" to "I" represents the potential confounding effect of the application for the scholarship on income.
+
+In summary, while the researcher's data is better than the previous one, it is still observational and may be subject to selection bias. Therefore, it is not possible to make causal claims based on this data. To make causal claims, a randomized controlled trial would be needed to eliminate the potential confounding effects of the application for the scholarship on income.
+

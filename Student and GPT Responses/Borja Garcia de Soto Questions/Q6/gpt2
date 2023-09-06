@@ -1,0 +1,14 @@
+If 4 painters work on the painting task, the duration of the task will be reduced. This is because with more workers, more work can be accomplished in the same amount of time. However, it's important to note that the effort of the task will remain the same.
+
+To calculate the new duration of the task with 4 painters, we can use the following formula:
+New duration = Original duration / Number of workers
+
+In this case, the original duration is 4 work days and the number of workers is 4 painters.
+
+So, the new duration of the task with 4 painters will be:
+4 days / 4 painters = 1 day
+
+It's important to note that this calculation is based on the assumption that the painters are equally skilled, and that the task does not require any additional coordination or management with more painters working. Additionally, the duration of 1 day is based on 8 hours work day.
+
+It's worth mentioning that even though the duration of the task has been reduced, the effort of the task remains the same and it's still 4 work-days worth of work.
+

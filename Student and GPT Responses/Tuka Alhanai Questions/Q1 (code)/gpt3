@@ -1,0 +1,6 @@
+The source of the error in this code snippet is the factorial function.
+The factorial function uses recursion, it calls itself with the argument x-1, and this continues until the base case is reached, where the function returns 1.
+However, in this case when the function is called with an argument of 0, the function will keep calling itself in an infinite recursion, never reaching the base case, causing a segmentation fault error.
+This is because the base case in this function is defined as x == 1, so the function will not return when x == 0.
+To fix this issue, the base case should be changed to x == 0 or x == 1, depending on the desired behavior of the function.
+

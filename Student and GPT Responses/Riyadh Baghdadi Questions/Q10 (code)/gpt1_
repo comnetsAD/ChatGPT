@@ -1,0 +1,20 @@
+struct student_detail students[3];
+
+
+void print_student_details(struct student_detail *students, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("\nStudent %d Details:\n", i+1);
+        printf("ID: %d\n", students[i].id);
+        printf("Name: %s\n", students[i].name);
+        printf("GPA: %.2f\n", students[i].gpa);
+        printf("University: %s\n", students[i].university.name);
+    }
+}
+
+int main() {
+    struct student_detail students[3];
+    // code to input student details
+    print_student_details(students, 3);
+    return 0;
+}
+

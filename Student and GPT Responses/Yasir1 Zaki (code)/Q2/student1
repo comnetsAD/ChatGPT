@@ -1,0 +1,52 @@
+# Request sentence
+sentence = str(input("Please give me a sentence without multiple successive spaces (and symbols apart from .,!): "))
+
+# Count words
+wordCount = int(sentence.count(" "))+1
+
+# Count vowels
+vowelSentence = sentence.lower()
+countA = int(vowelSentence.count("a"))
+countE = int(vowelSentence.count("e"))
+countI = int(vowelSentence.count("i"))
+countO = int(vowelSentence.count("o"))
+countU = int(vowelSentence.count("u"))
+countY = int(vowelSentence.count("y"))
+vowelCount = countA + countE + countI + countO + countU + countY
+
+# Count symbols
+countFullStops = int(sentence.count("."))
+countCommas = int(sentence.count(","))
+countExclamationMarks = int(sentence.count("!"))
+symCount = countFullStops + countCommas + countExclamationMarks
+
+# Count numbers
+count1 = int(sentence.count("1"))
+count2 = int(sentence.count("2"))
+count3 = int(sentence.count("3"))
+count4 = int(sentence.count("4"))
+count5 = int(sentence.count("5"))
+count6 = int(sentence.count("6"))
+count7 = int(sentence.count("7"))
+count8 = int(sentence.count("8"))
+count9 = int(sentence.count("9"))
+count0 = int(sentence.count("0"))
+
+numCount = count1 + count2 + count3 + count4 + count5 + count6 + count7 + count8 + count9 + count0
+
+# Count characters
+charCount = len(sentence)
+
+# Count consonants (assuming only three symbols are used)
+consonantCount = charCount - vowelCount - symCount - numCount - wordCount + 1
+
+# Output data
+print("Here is some data about your sentence:")
+print("Vowels:",vowelCount,sep="\t\t\t")
+print("Consonants:",consonantCount,sep="\t\t")
+print("Numbers:",numCount,sep="\t\t")
+print("Symbols:",symCount,sep="\t\t")
+print("Total characters:",charCount,sep="\t")
+print("Number of words:",wordCount,sep="\t")
+
+

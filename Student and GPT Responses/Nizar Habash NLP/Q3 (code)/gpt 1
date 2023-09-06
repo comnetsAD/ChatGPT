@@ -1,0 +1,9 @@
+A regular expression that exactly models the languages of hexadecimal numbers is:
+
+^[0-9A-F]+$
+This regular expression matches strings that:
+start with a character from the set [0-9A-F] (using the caret ^ to indicate the start of the string)
+are followed by one or more characters from the set [0-9A-F] (using the plus sign + to indicate one or more occurrences)
+end with a character from the set [0-9A-F] (using the dollar sign $ to indicate the end of the string)
+This regular expression will match any valid hexadecimal number, such as "12FD" or "FFFFFFFF" but will not match any irrelevant initial zeros as in "00019AF0A"
+It's important to note that the regular expression will match any number of characters, so it will also match strings that have more than 8 digits in them, which is the max number of digits in a 32-bit hexadecimal number.

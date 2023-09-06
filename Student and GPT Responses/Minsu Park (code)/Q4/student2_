@@ -1,0 +1,5 @@
+first=0
+last=31*24*60*60
+collection_times = np.arange(first, last, 60*60)
+collection_times
+

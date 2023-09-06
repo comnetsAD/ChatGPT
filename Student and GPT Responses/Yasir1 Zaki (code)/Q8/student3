@@ -1,0 +1,85 @@
+isOn=True
+friendList={}
+
+import time
+
+def addFriend(name, Bday):
+	friendList[name]= Bday
+
+def lookForBday(name):
+	print(friendList.get(name, "This person has not been added yet"))
+
+def changeBday(name,newBday):
+	friendList[name]=newBday
+
+def delBday(name):
+	friendList.pop(name,"This person has not been added")
+
+def quitProg(quitString):
+	isOn=False
+
+# for line in filename:
+# 	temp =line.split(",")
+# 	friendList[temp[]]
+
+# fp=open("hey.txt",'w')
+# for key in friendList:
+# 	fp.write(key+','+friendList+"\n")
+
+bdFile=open("hey.txt",'a')
+bdFile.close()
+
+bdFile=open("hey.txt",'r')
+for line in bdFile:
+	temp=line.strip().split(',')
+	friendList[temp[0]]=temp[1]
+print(friendList, ...)
+bdFile.close()
+
+while isOn==True:
+	wtd= int (input("Please enter what you want to do :\n 1 FOR ADDING a friends birthday \n 2 FOR LOOKING up a friend  \n 3 FOR CHANGING the birday \n 4 FOR DELETING a birthday \n 5 FOR QUITTING \n -----------:"))
+	#######################
+	if wtd==1:
+		print()
+		
+		name=input("Enter the name of your Friend: ")
+		Bday=input("Enter the DOB of said Friend: ")
+		addFriend(name.upper(), Bday)
+	
+		print("Your Friend has been added")
+		print()
+
+		time.sleep(1)
+	#######################
+	elif wtd==2:
+		print()
+		name=input("Enter the name of your Friend whose Birthday you want to find: ")
+		lookForBday(name.upper())
+		print()
+		time.sleep(1)
+	#######################
+	elif wtd==3:
+		print()
+		name=input("Enter the name of the Friend whose Bday you want to change: ")
+		newBday=input("Enter the newBday: ")
+		changeBday(name.upper(), newBday)
+		print()
+		time.sleep(1)
+	#######################
+	elif wtd==4:
+		print()
+		name=input("who do you want to delete : ")
+		delBday(name.upper())
+		print()
+		time.sleep(1)
+
+	#######################
+	elif wtd==5:
+		print("Thanks for using my program <3")
+		bdFile=open("hey.txt",'w')
+		for key in friendList:
+			bdFile.write(key+","+friendList[key]+"\n")
+		bdFile.close()
+		isOn=False
+
+

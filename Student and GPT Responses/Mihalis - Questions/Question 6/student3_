@@ -1,0 +1,130 @@
+DDOS BOTNETS
+Distributed Denial-of-Service (DDoS) attacks are one of the
+most common types of cyber-attacks. The first quarter of 2022
+broke all records in terms of DDoS attacks (hitting more than
+90,000 attacks, for reference, only 20,000 attacks were
+conducted during the same quarter the year prior), and they
+accounted for approximately 59% of all the attacks in 2022
+according to the Application Protection Report by F5 Labs.
+In addition, the strength and size of attacks are steadily
+increasing according to the same report. DDoS attacks
+undoubtedly present a serious concern to overall web security.
+Having those reasons in mind, DDoS attacks were chosen as the
+subject of our further discussion.
+
+A botnet is essentially a group of computers infected with
+malware that performs commands given by an attacker.
+Attackers that employ a such type of cyber threat can have a
+specific target in mind, in which case they would direct all the
+power towards an individual target, or, as in the case of one of
+the biggest DDoS attacks ever recorded - Mirai, the attack can
+be dispersed, tackling thousands of devices. Employing such a
+“shotgun” sort of approach, it managed to infect more than
+600,000 devices, the majority of which were IoT devices, setting
+a record at the time. The major goals of the attackers utilizing
+botnets include stealing data, sending spam, or undermining
+their competitors, etc. Another prominent DDoS attack was
+performed in Q1 of 2020 on Amazon Web Services (AWS)
+servers. Amazon claimed about the attack in its AWS Shield
+Threat Landscape report. A month before that, another
+attack of 1.3 Tbps hit Github. Judging from the frequency
+of DDoS attacks, we can certainly say that they represent a major
+threat in cyberspace nowadays.
+
+DDoS botnet attacks are essentially performed using a
+network of bots i.e. computers, servers, IoT devices, and any
+other devices that are infected with malicious software (exploit)
+and are remotely controlled by an attacker. To accumulate
+the network of bots, firstly, one must spread the exploit to
+devices. Delivery of the exploit can happen physically (by
+injecting an infected USB drive and connecting the destination
+system manually by a cable) as well as remotely. The protocols
+used by DDoS exploits include FTP, POP3, TCP&UDP.
+Botnet sends an enormous flow of traffic to a specific
+destination (a server) using all of the accumulated computing
+power, creating congestion for the traffic from ordinary web
+users trying to access the site. The strength of a DDoS
+attack is measured in Tbps (Terabytes per second), i.e., in terms
+of the amount of data it transmits to the server in a unit of time.
+In the Layer7 type of attack, the strength of a DDoS attack
+depends on the size of the pool of IP addresses and on the power
+of the servers/devices the attack is being conducted from. In the
+Layer4 type of attack, the power can be adjusted when it is
+initiated. There is a certain threshold of traffic that can be
+sustained by a server and thus, a DDoS attack exceeds that limit
+and disrupts the network. An end user trying to access a website
+that is under a DDoS attack will experience either a slower
+response time for the website in question or its complete outage.
+After extensive penetration, the target system would stop
+responding and invoke the denial-of-service to the incoming
+traffic, and the server will halt.
+
+DDoS attacks incur enormous financial losses for business
+owners whose websites are attacked, as they lose revenue while
+their websites are down. The competitors of the businesses in
+question can benefit from such a disruption in the short run as
+the customers who were willing to purchase products or services
+from the business entity will now turn to other firms to find
+suitable substitutes. Many firms in fact oftentimes utilize
+services provided by DDoS hackers.
+
+Businesses may also incur losses in reputation due to the
+DDoS attack which in turn might affect them in the long run.
+DDoS attacks might undermine the national security of targeted
+countries if the attack is performed on a government’s websites
+or communication means. This was also briefly mentioned in
+one of our readings (DDoS attacks on Estonia and Georgia).
+The statistics regarding the DDoS attacks over the time
+period from Q4 2020 until Q2 2022 are presented in Figure 1
+(Such a time period was chosen due to insufficient data provided
+in the reports for the earlier years). The data was taken from
+Kaspersky’s Securelist which was compiled using Kaspersky’s
+proprietary DDoS Intelligence system. While we can clearly see
+the upwardly increasing trend in DDoS detections (up until Q1
+2022), we have to bear in mind that the following graph was
+solely based on the data from the after-mentioned source, and it
+does not represent the entire picture of DDoS detections
+worldwide, even though Kaspersky is a reliable source in the
+cyber security world. The reports used even mention that DDoS
+Intelligence statistics only consider the botnets detected by
+Kaspersky and do not include all the DDoS attacks that took
+place within a given time period.
+
+As seen from the Kaspersky DDoS Intelligence system,
+there has been an upward trend in
+DDoS attacks up until Q1 of 2022 when it peaks. There were
+about 14% fewer detections observed in Q2 2022 than in the
+previous quarter, however, as the report presented by Kaspersky
+suggests, the overall situation might actually have worsened as
+the quality of the attacks performed is getting increasingly
+complex in comparison with previous years. Furthermore, the
+report mentions that botnet activity grew and links the increase
+in DDoS activity with the decline in the crypto industry as this
+commonly boosted DDoS attacks in previous years.
+
+Other data acquired from Cisco Annual Internet Report suggest
+the trend presented in DDoS attacks over the period of 2018-2023.
+In general, DDoS attacks are still
+on the rise, and it seems that they will continue to do so.
+In terms of solutions that one might utilize in order to prevent
+or ward off an incoming DDoS attack, there are so-called DIY
+measures such as manually blacklisting specific IPs, but those
+are not that effective and oftentimes are utilized measures after
+an attack had been conducted. More advanced approaches can
+include utilizing specialized hardware that can filter traffic, this
+however incurs huge costs for the host and sometimes is not
+available to certain hosts. Another option is using cloud-
+based/ISP-provided solutions, which are more beneficial than
+the latter, as they facilitate scalability, which is usually a major
+issue in the case of hardware solutions. In addition, they are
+relatively cheaper in comparison to hardware solutions.
+
+If we were to think about the cost of DDoS attacks, it would
+be logical to assume that the average cost of an attack should
+increase as its complexity and the level of sophistication
+required to bypass the security of a given system. But the price,
+however, has dropped significantly over recent years due to a
+huge supply of DDoS attackers offering their services to firms
+and individuals. Unfortunately, we were not able to find factual
+information about the prices of DDoS attacks over the years.
+

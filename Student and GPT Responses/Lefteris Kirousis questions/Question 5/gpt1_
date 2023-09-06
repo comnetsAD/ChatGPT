@@ -1,0 +1,11 @@
+The algorithm is as follows:
+Run a breadth-first search (BFS) starting from node s, and record the distance of each node from s. This step takes O(m + n) time.
+Run a second BFS from node t1 and record the distance of each node from t1. This step also takes O(m + n) time.
+Run a third BFS from node t2 and record the distance of each node from t2. This step also takes O(m + n) time.
+Iterate through all the nodes and select the node u that satisfies the following conditions:
+The distance of u from s is as large as possible.
+The length of the path from s to t1 that contains u is no greater than the distance of s from t1.
+The length of the path from s to t2 that contains u is no greater than the distance of s from t2.
+Return the node u.
+The algorithm takes O(m + n) time because it runs 3 BFS which takes O(m+n) time each.
+

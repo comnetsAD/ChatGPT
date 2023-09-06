@@ -1,0 +1,5 @@
+In game theory, the Nash equilibrium is a solution concept of a non-cooperative game involving two or more players in which each player is assumed to know the equilibrium strategies of the other players, and no player has anything to gain by changing only their own strategy.
+A profile of strategies is a Nash equilibrium if no player can do better by unilaterally changing their strategy, given the strategies of the other players. In other words, a Nash equilibrium is a set of strategies, one for each player, such that no player can improve their payoff by changing their strategy while the other players keep their strategies unchanged.
+In other words, a Nash equilibrium is a state where each player's strategy is optimal given the strategies of the other players. A game can have multiple Nash equilibria or none at all.
+It's important to note that the Nash equilibrium is a theoretical concept and it's not guaranteed that real-world situations will reach a Nash equilibrium, as it is based on the assumptions of rational behavior and complete information.
+

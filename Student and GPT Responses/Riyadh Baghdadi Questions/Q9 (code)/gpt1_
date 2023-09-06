@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+struct university_detail {
+    char name[100];
+};
+
+struct student_detail {
+    int id;
+    char name[100];
+    float gpa;
+    struct university_detail university;
+};
+
+int main() {
+    struct student_detail student;
+    printf("Enter student id: ");
+    scanf("%d", &student.id);
+    printf("Enter student name: ");
+    scanf("%s", student.name);
+    printf("Enter student GPA: ");
+    scanf("%f", &student.gpa);
+    printf("Enter university name: ");
+    scanf("%s", student.university.name);
+
+    printf("\nStudent Details:\n");
+    printf("ID: %d\n", student.id);
+    printf("Name: %s\n", student.name);
+    printf("GPA: %.2f\n", student.gpa);
+    printf("University: %s\n", student.university.name);
+    return 0;
+}
+

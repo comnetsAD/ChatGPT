@@ -1,0 +1,49 @@
+
+int main(){
+
+    pid_t pid ;
+     int fd[2]; //for the pipe from child to parent 
+     pipe(fd); //pipe created
+    int fd2[2];//for the pipe from parent to child
+    pipe(fd2); //creating pipe and intializing descriptors
+    int size = 200; //Buffer size 
+    int N = 0;
+    pid = fork(); //forking the child 
+    if(pid == 0) {// Child process area 
+        close(fd[0]); // closing the reader end 
+        close(fd2[1]); // closing the writer end of the 
+        int receivedVcounter = 0;
+        char inputString[size];
+        printf("Enter your string you want to check for vowels\n");
+        if(fgets(inputString, sizeof(inputString), stdin) == NULL) { // scaning the string 
+          printf("%s\n", "Error in reading");
+        }
+        N = strlen(inputString);
+        else {
+        write(fd[1], inputString, N*(sizeof(int))); // write on pipe 1 the input string 
+        
+        close(fd[1]); // closing the writer end 
+        close(fd2[0]); // closing the reader end of the
+        read(fd2[1], receivedVcounter , (sizeof(int));  // writing the Number of varibles from pipe 2 into the variable
+        printf("There were %d vowels recieved in the pipe from the string sent to parent\n", receivedVcounter);
+        } // blocking will stop the code here and wait for the parent
+    }else{ //Parent Area
+        int Vcounter =0;
+        close(fd[1]); // closing the writer end of pipe 1
+        close(fd2[0]);
+        char inputStringRecieved[size];
+        read(fd2[0], &inputStringRecieved, N*(sizeof(int)); // pipe 2 is reading the input and saving it in the recieved string
+        close(fd2[0]); // closing pipe 2 reader since we are done reading it
+        for (int i = 0; i < N; i++) {
+            if (inputStringRecieved[i] == "a" ||inputStringRecieved[i] == "e"||inputStringRecieved[i] == "i"||inputStringRecieved[i] == "o"||inputStringRecieved[i] == "u"){
+                Vcounter++; // incrementing the counter
+            }
+            printf("There were %d vowels in total\n", Vcounter);
+        }
+        write(fd2[1], Vcounter, (sizeof(int));  // writing the Number of varibles on pipe 2 
+        close(fd2[1]);
+    }
+  return 0;
+}
+
+

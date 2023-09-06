@@ -1,0 +1,2 @@
+It is better to search with a short sequence rather than a long sequence as in a long sequence there would surely be a lot of noise and non necessarily relevant sequence inside the long sequence. Indeed, by using a short sequence we have more chance of identifying our target as there would be less probability of having noise and other non related sequences inside which would give us more chance for a hit in the database.
+

@@ -1,0 +1,3 @@
+collection_times = np.arange(0,31*24*60*60,60*60)
+len(collection_times)
+

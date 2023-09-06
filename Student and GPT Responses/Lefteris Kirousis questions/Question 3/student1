@@ -1,0 +1,2 @@
+This statement is false (proof by counter example). Suppose f(n) = 2n then g(n) = n, therefore, f(n) = O(n) because it is given that f(n) is Og(n). Since we considered that f(n) = 2n and g(n) =n, then 22n is supposed to be O(2n) however O(22n) ̸= O(2n) because limx→∞22n/2n = limx→∞ 2n = ∞. Since the limit approaches ∞, 2f(n) is not O(2g(n)).
+

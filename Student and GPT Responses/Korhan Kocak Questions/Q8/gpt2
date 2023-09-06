@@ -1,0 +1,17 @@
+A pure strategy Nash equilibrium is a set of strategies, one for each player, such that no player can improve their payoff by unilaterally switching to a different strategy while the other players keep their strategies unchanged.
+A mixed strategy Nash equilibrium is a set of probability distributions over strategies, one for each player, such that no player can improve their expected payoff by unilaterally switching to a different probability distribution while the other players keep their probability distributions unchanged.
+To find the pure strategy Nash equilibrium we need to check if there is any strategy for each player such that no player can improve their payoff by changing their strategy while the other player keeps their strategy unchanged.
+Here we have two players: player 1 (row player) and player 2 (column player).
+for player 1, if he chooses strategy U, he gets the highest payoff (3) regardless of player 2's strategy. So, player 1 will not change his strategy from U.
+for player 2, if he chooses strategy R, he gets the highest payoff (5) regardless of player 1's strategy. So, player 2 will not change his strategy from R.
+Therefore, the pure strategy Nash equilibrium is (U, R) where player 1 chooses strategy U and player 2 chooses strategy R.
+To find the mixed strategy Nash equilibrium we need to check if there is any probability distribution over strategies for each player such that no player can improve their expected payoff by changing their probability distribution while the other player keeps their probability distribution unchanged.
+Here we have two players: player 1 (row player) and player 2 (column player).
+for player 1, if he plays strategy U with probability p, and strategy D with probability (1-p), his expected payoff is p(2)+(1-p)(1)=1+p.
+for player 2, if he plays strategy L with probability q, and strategy R with probability (1-q), his expected payoff is q(2)+(1-q)(5)=5-3q.
+We can use these expected payoffs to find the best response of each player to the other one's mixed strategy.
+for player 1, he prefers strategy U over D if p(2)+(1-p)(1)>p(1)+(1-p)(4) that means, if p>1/3
+for player 2, he prefers strategy L over R if q(2)+(1-q)(5)>q(1)+(1-q)(2) that means, if q>1/3
+Therefore, the mixed strategy Nash equilibrium is (p,q) = (1/3, 1/3) where player 1 plays strategy U with probability 1/3 and strategy D with probability 2/3, and player 2 plays strategy L with probability 1/3 and strategy R with probability 2/3.
+So, the game has one pure strategy Nash equilibrium (U, R) and one mixed strategy Nash equilibrium (p,q) = (1/3, 1/3)
+

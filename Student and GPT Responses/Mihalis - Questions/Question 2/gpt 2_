@@ -1,0 +1,6 @@
+MAC (Media Access Control) addresses are unique, physical addresses assigned to network devices, such as the host device in this scenario with a MAC address of 8a:00:12:3e:d6:be. They are used to identify and address devices on a local area network (LAN).
+
+During the communication process, MAC addresses are used when the host device sends a request to the router (default gateway) to establish a connection with the website. The host device sends an ARP (Address Resolution Protocol) request to the router to determine its MAC address, as it is necessary for the host device to identify the router in order to establish a connection. This ARP request is broadcasted to all devices on the LAN, and the router responds with its MAC address, allowing the host device to establish a connection and send the DNS request.
+
+In summary, MAC addresses are unique physical addresses assigned to network devices and are used to identify and address devices on a local area network. They are used during the communication process when the host device sends an ARP request to the router to determine its MAC address before establishing a connection.
+

@@ -1,0 +1,134 @@
+Each piece of technology (software or hardware) that people
+use can have many vulnerabilities, which, sooner or later, can
+be maliciously used to attack individuals, enterprises, or even
+governments.
+A cyber-attack may consist of multiple steps. A typical cyber-attack consists of:
+• Reconnaissance - gathering information and finding vul-
+nerabilities in the target computer/network/device.
+• Penetration - gaining access.
+• Stealing of valuable data or insertion of malware (mali-
+cious software) into the target.
+• Obfuscation - hiding the traces of the attack.
+The first step of almost every cyber attack is gathering some
+information. As we use the internet on the daily basis, if
+we do not take necessary measures, our sensitive information
+becomes exposed to the public and at any point can be used
+maliciously against us. For example, many individuals and
+even enterprises such as nuclear plants may connect to the
+public internet which makes their actions exposed to everyone.
+If a person uses an HTTP connection, then his/her connec-
+tion will be visible to everyone. Even with HTTPS, there’s a
+chance of someone listening to the information. For example,
+during the Man-in-the-Middle attack, the attacker spoofs the
+certificate and sees the information that is being transferred.
+The victim doesn’t see anything suspicious, because the infor-
+mation still arrives at the destination.
+After finding a technical vulnerability, for example, a zero-
+day vulnerability, in some software or hardware, the attackers
+can exploit it for getting access. Zero-day vulnerabilities are
+vulnerabilities that have recently been discovered and not yet
+disclosed or fixed. For example, EternalBlue and EternalRo-
+mance vulnerabilities in Windows, after being leaked from
+NSA, were used for Trojans such as TrickBot and Emotet.
+Also, because of prioritizing profit over security, many
+enterprises may use commercial off-the-shelf products instead
+of developing their own software/hardware. Because of this, if
+vulnerabilities are found in one of those products, the whole
+business might be in danger.
+
+Instead of vulnerabilities in software/hardware, the reckless-
+ness of the user can be exploited for gaining access to the
+target system. For example, the Mirai botnet spread through
+thousands of IoT devices all thanks to people having default or
+simple passwords that could easily be broken with a dictionary
+attack.
+For gaining access, social engineering is also used, which
+involves the deception and manipulation of the target. In the
+case of Stuxnet, there was no way of accessing the nuclear
+facilities via the internet, as their networks were isolated.
+However, USB devices were used as intermediaries for getting
+the worm in the networks. This most likely involved
+dropping USB drives in or near the facilities which would then
+be picked up by workers and plugged into their computers,
+causing them to be infected with Stuxnet.
+Social engineering attacks can be defined as
+”the manipulation of user-computer inter-
+facing with the purpose to breach a computer system’s infor-
+mation security through user deception.” These attacks involve
+phishing, malvertisement, file or application masquerading,
+web pop-ups, and so on. Their goal is to deceive the user
+into thinking that what they are opening/downloading is legit.
+• Phishing - sending spam emails that trick victims into re-
+vealing sensitive information or downloading something.
+• File or application masquerading - a file or an application
+may appear safe but contain malicious code inside (e.g.
+PDF file masquerading).
+• Malvertisement - a malicious ad that people think is
+legitimate.
+• Search engine poisoning - manipulating a search engine
+in a way that shows the malicious website among top-
+ranked results.
+If access to the victim’s computer is gained, malware can
+be installed. Malware, defined as malicious software, includes
+many types of programs that once installed, can take over
+the control of the machine and track the victim’s actions, steal
+information, or do something else that will benefit the attacker.
+These include:
+• Ransomware - the malware that encrypts the files on the
+computer and returns them to the victim if a certain sum
+of money is paid.
+• Information stealers.
+• Key-loggers - track what keys the user presses on the
+keyboard and sends the data to the attacker.
+• Cryptominers - programs that use the victim’s computer’s
+computing power for mining cryptocurrencies for the
+attacker.
+Finally, to conceal malware, different methods are used.
+Rootkits can be installed to conceal the program from the
+operating system, or other ways can be used (e.g. changing
+the process name) for preventing the victim to find out
+about the attack.
+The compromised computers may also become a part of a
+botnet. A botnet is a network of infected computers that can be
+instructed to do something. Most commonly, botnets are used
+for launching DDoS attacks. A denial of service (DoS) attack
+is when many requests are sent to a web server. The server
+fails to process them in time, and as new requests come in, it is
+unable to respond, which results in people being unable to use
+the services provided by the server. A DoS attack originating
+from one IP address can be easily blocked by blocking the
+address. However, this doesn’t work for DDoS (Distributed
+DoS) attacks in which case the requests are coming in from
+many different IP addresses. That’s why botnets are perfect
+for launching DDoS attacks - it’s hard to tell for the server
+whether the bots have malicious intents or not.
+DDoS attacks coming from botnets can have a high impact.
+The attacks launched by the Mirai botnet were able to shut
+down Dyn (a DNS provider) and Valve Steam’s and Playsta-
+tion’s servers.
+Cyber attacks have some advantages and disadvantages
+compared to physical attacks. First of all, if the attacker
+seeks destruction and bloodshed, physical attacks will be
+more useful. For example,  attacks on critical
+infrastructures of the US will most likely not have as high
+casualties as weapons of mass destruction will have.
+However, cyber attacks offer many advantages:
+• Anonymity - during a physical attack, whether we are
+talking about theft or an airstrike, it is easy to find out
+the identity of the attacker. However, finding the author
+of a virus or an operator of a botnet can take a lot of
+time.
+• Less physical damage - sometimes the attacker’s goal is
+to gain profit or just financially damage the victim. For
+example, if Israel launched an airstrike on Iran, it would
+lead to the death of many innocent civilians.
+• Fewer costs - a cyber attack can cost way less than a
+physical attack. Again, in the case of Stuxnet, it would
+cost Israel more to launch an airstrike than it cost to make
+the worm.
+• Better scalability: viruses and worms can spread through
+tens of thousands of computers in a short period. For
+example, computers all around the world were infected
+with the WannaCry ransomware, originating from North
+Korea.
+

@@ -1,0 +1,3 @@
+Counterexample: v1->v2, v2->v3, v2->v4, v3->v6, v4->v5, v5->v6.
+In this example, the provided algorithm would not return the correct answer for the longest path from v1 to v6. The actual longest path uses four edges, which are (v1, v2), (v2, v4), (v4, v5), and (v5, v6). However, the algorithm would say that the longest path only uses three edges, which are (v1, v2), (v2, v3), and (v3, v6).
+

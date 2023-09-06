@@ -1,0 +1,10 @@
+The EAC (Estimate at Completion) is a prediction of the total cost of the project when it is completed, based on the current status of the project and any known variations from the original plan.
+
+To calculate the EAC if the variations experienced so far are not expected to happen again, you can use the following formula:
+EAC = (Original budget) / (Percentage of work completed) x (Actual costs to date)
+
+Plugging in the values from your question:
+EAC = (1,500) / (40%) x (900) = 1,500 / .4 x 900 = 3,750
+
+So, the EAC for this project if the variations experienced so far are not expected to happen again is $3,750. This means that if no more variations occur, the project is expected to cost $3,750 in total.
+

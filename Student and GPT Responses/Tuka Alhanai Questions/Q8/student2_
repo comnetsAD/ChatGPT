@@ -1,0 +1,3 @@
+Vector <string> myVect; vector is a STL template that serves as a list (array) to store datatypes. It comes the <vector> library.
+Map <int, string> myMap; map is another STL template that maps a key to its corresponding value. We can use it by including the <map> library.
+

@@ -1,0 +1,18 @@
+The communication request travels from the client (host) to the server (website) through a series of network layers and protocols. The process can be summarized in the following steps:
+
+	The host initiates a connection with the website by sending an HTTP (Hypertext Transfer Protocol) request to the website's IP address, obtained through the DNS resolution process.
+
+	The request is sent to the router (default gateway) through the use of the ARP protocol, as previously explained.
+
+	The router uses its routing table to determine the next hop for the request and forwards it to the next network device (such as a switch or another router) or directly to the Internet.
+
+	The request is then sent to the website's server, where it is received by the web server software (such as Apache or Nginx)
+
+	After the web server software receives the request it will then proceed to open a port number and waits for the client (host) to send a request, this is called a port number.
+
+	The web server software processes the request and sends an HTTP response back to the host, which includes the requested webpage or any error message.
+
+The port numbers used during this operation are typically port 80 for HTTP and 443 for HTTPS. Port numbers are used to identify specific services or applications running on a device and to route the incoming request to the appropriate service or application.
+
+In summary, the communication request travels from the client (host) to the server (website) through a series of network layers and protocols, including the use of the HTTP protocol, the IP routing, and the ARP protocol. Port numbers, such as port 80 and 443, are used to identify specific services or applications running on a device and to route the incoming request to the appropriate service or application.
+

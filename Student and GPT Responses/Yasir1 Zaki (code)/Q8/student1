@@ -1,0 +1,61 @@
+birthdays={}
+file = open('birthdaysDictionary.txt','a')
+file.close()
+
+file= open('birthdaysDictionary.txt','r')
+
+for line in file: 
+	birthdays[line.strip().split(',')[0]]=line.strip().split(',')[1]
+file.close()
+
+def menu(): 
+	print("\n\nHello, welcome to the birthday calendar. Here are your options:\n")
+	print("\n1 - Add a new birthday\n2 - Look up a birthday\n3 - Change an existing birthday\n4 - Delete a birthday\n5 - Quit")
+
+menu()
+
+choice = int(input("\nPlease choose an option from the menu above.\n"))
+
+def add():
+	name= input("\nName of person to add: \n")
+	value= input("\n"+name+"'s birthday:\n")
+	birthdays[name] = value
+
+def find(): 
+	name = input("\nName of person to find: \n")
+	if name in birthdays:
+		print(name, birthdays[name])
+	elif name not in birthdays: 
+		print("\nSorry, that name was not found.")
+
+def change(): 
+	name = input("\nName of person to change: \n")
+	value = input("\n"+name+"'s new birthday: \n")
+	birthdays[name]=value 
+	if name not in birthdays: 
+		print("\nSorry, that name was not found.")
+
+def delete():
+	name = input("\nName of person to delete:\n")
+	del birthdays[name]
+	print("\nDone!\n")
+	
+while choice <5: 
+	if choice == 1: 
+		add()
+	elif choice == 2: 
+		find()
+	elif choice == 3: 
+		change()
+	elif choice == 4: 
+		delete()
+		
+	choice=int(input("\nPlease choose an option from the menu above.\n"))
+
+file = open('birthdaysDictionary.txt','w')
+
+for name in birthdays: 
+	file.write(name+','+birthdays[name]+'\n')
+file.close()
+
+

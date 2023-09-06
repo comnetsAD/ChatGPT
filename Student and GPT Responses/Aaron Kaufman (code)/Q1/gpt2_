@@ -1,0 +1,18 @@
+library(charlatan)
+
+# Create fake data
+set.seed(123)
+df <- data.frame(
+  id = row.names(df) <- 1:10,
+  customer_name = charlatan::name(),
+  is_active = sample(c(TRUE, FALSE), 10, replace = TRUE),
+  order_total = round(rnorm(10, mean = 50, sd = 10), 2),
+  order_date = as.Date(sample(seq(as.Date("2020-01-01"), as.Date("2022-12-31"), by = "day"), 10), origin = "1970-01-01"),
+  phone_number = charlatan::phone_number(),
+  address = charlatan::address()
+)
+
+In this example, the id variable serves as the unique row name, customer_name is a character variable, is_active is a logical variable, order_total is a numeric variable, order_date is a date variable and phone_number is a phone number variable and address is a character variable. The set.seed() function is used to ensure that the same random values are generated every time the code is run.
+
+You can verify the dataframe by using head(df) or str(df)
+

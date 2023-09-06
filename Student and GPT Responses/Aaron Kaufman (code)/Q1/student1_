@@ -1,0 +1,10 @@
+fake_dataset = data.frame(
+  Logicals = sample(x = c(TRUE,FALSE), size = 10, replace = TRUE),
+  Characters = as.vector(randomStrings(n=10, len=1, digits=FALSE,check=TRUE)),
+  Numerics = as.vector(randomNumbers(n=10, min=0, max=10,check=TRUE)),
+  Dates = sample(seq(as.Date('1999/01/01'), as.Date('2000/01/01'), by="day"), 10),
+  Phone_No =ch_phone_number(10),
+  row.names = ch_name(10))
+fake_dataset
+
+

@@ -1,0 +1,8 @@
+Amazon.ae and Noon.com allow scrapping.
+
+As the friend is interested in knowing the product price and the product reviews, I went to check if these 2 types of information are available on each website. Both the price and reviews are available on Amazon.ae and Noon.com without the need to log in while we have to have an account in order to see the product reviews on Instock.ae.
+
+Another way is adding the `robots.txt` at the end of the website's URL to check which information the ebsite allows/disallows for web scrapping. When cheking Instock.ae, there is a line saying
+`Disallow: /catalog/product/view/` which indicates we cannot scrape product data from there.
+
+

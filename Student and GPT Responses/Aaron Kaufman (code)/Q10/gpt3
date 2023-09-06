@@ -1,0 +1,11 @@
+
+No, the researcher is not correct to make causal claims based on this experiment. While the study may show a correlation between receiving a kindergarten and higher incomes, it does not establish causality. There could be other factors at play that are driving the difference in incomes, such as the fact that cities that received kindergartens may have had more resources or higher socio-economic status to begin with.
+
+A causal graph would look something like this:
+
+Kindergarten (treatment) --> Income (outcome)
+Coin Flip (randomization) --> Kindergarten (treatment)
+
+It is important to note that the researcher cannot conclude that the coin flip is the only source of randomization in this experiment as there could be other unmeasured confounding variables that are influencing the outcome.
+
+As for the control group cities receiving a park instead of nothing, this is an example of a non-randomized control group, which is a common practice in observational studies. The researcher might have chosen to give the control group a park because it is a desirable outcome that is similar in value to the treatment group but does not have the same potential to impact the outcome variable (income in this case).

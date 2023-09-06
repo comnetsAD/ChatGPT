@@ -1,0 +1,2 @@
+str_sub(words, str_length(words)/2, str_length(words)/2)
+

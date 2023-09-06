@@ -1,0 +1,1 @@
+OOV words are not in a language model's corpus. These words are infrequent, unseen, or unknown to the model. "Smartphone" or "Google" are examples of OOV words versus Shakespearean text. The model considers these terms OOV since they are not in the Shakespearean text corpus. 

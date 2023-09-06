@@ -1,0 +1,2 @@
+Resource smoothing should be used for this project’s resource management. By using resource smoothing, the fluctuation of resource will be as smooth as possible with the priority that no delay will happen. Therefore, it is the most appropriate technique for this project to have no delays while optimizing the fluctuation of the resources.
+

@@ -1,0 +1,8 @@
+
+l1 = [1,2,3,4]
+l2 = [2,8,9,1]
+
+result = [max(x,y) for x,y in zip(l1,l2)]
+print(result)
+
+

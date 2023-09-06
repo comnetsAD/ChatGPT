@@ -1,0 +1,10 @@
+This is a better conclusion, because now the whole population is people with and without scholarships. However, there are some confounding variables that could affect income, for example, previous experience that affects both scholarship, education (if it is on selective application basis) and income.
+## dag {
+## EDUCATION
+## EXPERIENCE
+## INCOME
+## EDUCATION -> INCOME
+## EXPERIENCE -> EDUCATION
+## EXPERIENCE -> INCOME
+## }
+

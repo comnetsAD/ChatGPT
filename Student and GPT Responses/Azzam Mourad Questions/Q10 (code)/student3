@@ -1,0 +1,403 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <ctype.h>
+
+
+//function takes in a line and commands array and fills that array with the commands given in the line
+int parse(char* line, char commands[9][50]){
+	char command[50];
+	command[0] = '\0';
+	int j = 0;
+	int cnt = 0;
+	//Loop seperates commands and the delimiters between them which correspond to pipes and I/O redirection
+	for (int i = 0; i < strlen(line);++i){
+		//this part reads the command + arguments
+		if (line[i] != '|' && line[i] != '>' && line[i] != '<' && line[i] != '\0' && !(line[i] == '2' && i != strlen(line) - 1 && line[i+1] == '>')){
+			command[i - j] = line[i];
+			command[i - j + 1] = '\0';
+			// printf("command %s %d %d\n", command, i, j);
+		//this part handles end of command and special characters (like I/O redirection, error redirection, and pipes)
+		} else{
+			//command has ended so add it to commands array
+			strcpy(commands[cnt], command);
+			//reset the command buffer to empty string
+			command[0] = '\0';
+			//increment command counter
+			cnt++;
+			//special case is 2> because it is two characters long unlike I/O redirection and pipe
+			if ((line[i] == '2' && i != strlen(line) - 1 && line[i+1] == '>')){
+				j = i + 2;
+				//set first character of delimiter to be 2
+				commands[cnt][0] = line[i];
+				//set second character of delimiter to be >
+				commands[cnt][1] = line[i+1];
+				//end of string
+				commands[cnt][2] = '\0';
+				++i;
+			} else {
+			j = i+1;
+			//set first and only character to be the delimiter
+			commands[cnt][0] = line[i];
+			//end of string
+			commands[cnt][1] = '\0';
+			}
+			cnt++;
+		}
+	}
+	//handles the last command which isn't handled in the loop and adds it to the commands array
+	strcpy(commands[cnt], command);
+
+	for (int i = 0; i < 9; ++i){
+		//code to strip whitespace adapted from stackoverflow. Source: https://stackoverflow.com/a/1488419
+		size_t size;
+        int end;
+
+        size = strlen(commands[i]);
+        //if empty skip
+        if (!size)
+            continue;
+        //start from the end of string
+        end = size - 1;
+        //move end pointer further inwards if whitespace detected
+        while (end >= 0 && isspace(commands[i][end]))
+                end--;
+        //once we reach the end we add the special end of string character    
+        commands[i][end + 1] = '\0';
+        //reallocate head of string so long as the head is a space
+        while (commands[i][0] && isspace(commands[i][0]))
+            memmove(commands[i], commands[i]+1, sizeof(commands[i]) - sizeof(char*));
+	}
+
+	//on successful parsing return 1
+	return 1;
+
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <ctype.h>
+#include <unistd.h>
+#include "parser.h"
+#include <stdbool.h>
+#include<string.h>
+#include <sys/wait.h>
+#define LENGTH 200
+#define SIZE 1024
+//https://stackoverflow.com/questions/3585846/color-text-in-terminal-applications-in-unix
+#define KGRN  "\x1B[32m"
+#define RESET   "\033[0m"
+#define COMM_LEN 9 
+#define NUM_SUPP_COMMS 13
+
+//GLOBAL LIST OF SUPPORTED COMMANDS
+
+const char* COMMANDS[NUM_SUPP_COMMS] = {"ls", "cat", "ps", "mkdir", "pwd", "open", "touch", "rmdir", "rm", "exit", "wc", "echo", "grep"};
+
+
+//function checks if string is in an array of strings (case sensitive)
+bool in_str_array(char * array[], size_t size, char * str){
+	for (int i= 0; i < size; ++i){
+		// printf("%s %s %s\n", array[i], str, new_str);
+		if (!strcmp(array[i], str))
+			return true;
+	}
+	return false;
+}
+
+//sperate a command string into a vector of arguments "ls -l" -> ["ls", "-l"]
+void append(char* list, char** args){
+	//get the first token (substring until the first space)
+	char* tok = strtok(list," \n");
+	
+	int i=0;
+	// keep repeating until the end of the string
+	while(tok!=NULL){
+		//save that token into arguments array
+		args[i]=tok;
+		//if the command is grep, add another argument that lets grep choose its color, this way its output will have the colors grep usually has rather than just green text (purely visual)
+		//if (!strcmp(tok,"grep")){
+		//args[++i]="--color=auto";
+		//}
+		// get the next token (substring up until the next space)
+		tok=strtok(NULL," \n");
+
+		i++;
+	}
+	
+	args[i]=NULL;
+	return ;
+}
+
+int main(){
+//TODO:
+//- [x] Make a list of supported commands and and use the flag if not in the command list
+//- [ ] Make sure exec output the error (this does happen sometimes when passing a wrong option but not sure if it works for all errors like ls a dir)
+//- [x] add 2> for err redirection
+//- [x] err handling for the forks and pipes (guess was just lazy to do it on the spot)
+//- [ ] made grep keep its colors, but it still prints some of it in green (should we change all the output or keep it)
+	
+	//input 
+	char input[LENGTH];
+	// infinite loop
+	while(1){
+		// make it green (purely visual)
+		printf("%s>>",KGRN);	
+		//get the input
+		fgets(input,LENGTH,stdin);
+		// parse and save the list of commands
+		
+		// list of cmmands that will be executed
+		char list[COMM_LEN][50];
+		// parse the input 
+		for (int j =0;j<COMM_LEN;j++){
+			list[j][0]='\0';
+		}
+		parse(input, list);
+
+		// check how many commands there are
+		int number=0;
+		for (int i = 0; i < COMM_LEN; i++){
+			if (list[i][0]=='\0') // if the next command empty then stop
+				break;
+			number++;
+		}
+		// our 2 pipes, one incoming pipe for STDIN and one outgoing for STDOUT
+		int pipe_number=0;
+		int pipefds[2][2];
+		int flag=1;
+		// check that for every composition there is a command on both sides
+		if (number%2==0){
+			printf("Missing arguments or commands\n");
+			continue;
+		}
+
+		//iterate over the list of commands
+		for (int i=0;i<number && flag;i+=2){
+			//find how many options/ arguments each command has by iterating over its tokens (how many substrings seperated by space)
+			//operate on a copy since strtok changes the actual string
+			char* tempstr = calloc(strlen(list[i])+1, sizeof(char));
+			strcpy(tempstr, list[i]);	
+			char* tok = strtok(tempstr," ");
+			// if grep add one length for the extra argument for the colors
+			int len=1;//+(!strcmp(tok,"grep"));
+			while(tok!=NULL){
+				tok=strtok(NULL," ");
+				len++;
+			}
+
+			free (tempstr);
+	
+			// the vector of arguments for this command
+			char* args[len];
+			// spperate the command string into a vector 
+			append(list[i],args);
+			//exits if exit command is given
+			if (!strcmp(args[0],"exit")){printf("Logging Out !\n");
+				exit(EXIT_SUCCESS);}
+			//checks if a command is supported
+			else if (!in_str_array(COMMANDS, NUM_SUPP_COMMS, args[0])){ printf("unsupported command \"%s\"\n", args[0]);
+				flag=0;
+				continue;}
+
+			// if there was an outgoing pipe (saved in pipefds[1]) from a previous command, it will be an incoming pipe (pipefds[0])
+			if (pipe_number){
+				pipefds[0][0]=pipefds[1][0];
+				pipefds[0][1]=pipefds[1][1];
+			}
+			// if we haven't reached the end of arguments
+			if (i+1<number){
+				// check the composition
+				switch((char)list[i+1][0]){
+
+					case '|':;
+
+						 if (pipe(pipefds[1]) == -1){
+						 	perror("Pipe creation failed");
+						 } 
+						 pid_t child=fork();
+						 if (child < 0){
+						 	perror("Creation of child process failed during pipe");
+						 }
+						 else if (child == 0)
+						 {	// if there is a pipe from the command before, then pipe it to the input
+							 if (pipe_number){
+								 dup2(pipefds[0][0],STDIN_FILENO);
+							 }
+							 close(pipefds[1][0]);
+							 // redirect output to outgoing pipe
+							 dup2(pipefds[1][1],STDOUT_FILENO);
+							 //close read to pipe
+							 execvp(args[0],args);
+							 exit(1);
+						 }
+
+						 else{
+							 int status;
+							 wait(&status);
+							 // make sure exec was able to execute
+							 flag=(status==0);
+							 if (status==256){
+							 printf("Command does not exist");
+							 break;
+							 } 
+							 // close writing end of outgoing pipe
+							 close(pipefds[1][1]);
+							 // close reading end of incoming pipe (we no longer have use for it)
+							 if (pipe_number){
+								 close(pipefds[0][0]);
+							 }
+							 // we have an incoming pipe now
+							 pipe_number=1;
+
+
+						 }
+						 break;
+					case '>':;
+						 // open or create the file
+						 int file=open(list[i+2],O_WRONLY|O_CREAT,0666);
+						 i+=2; // skip twice in the loop, otherwise the next iteration will be over the filename not a command
+						 pid_t child2=fork();
+						 if (child2 < 0){
+						 	perror("Creation of child process failed during output redirection");
+						 }
+						 else if (child2==0){
+							 //get the incoming pipe
+							 if (pipe_number){
+								 dup2(pipefds[0][0],STDIN_FILENO);
+							 }
+							 // redirect output
+							 dup2(file,STDOUT_FILENO);
+							 // dup2(file,STDERR_FILENO);
+							 execvp(args[0],args);
+							 exit(1);
+						 }	    
+						 else{
+							  int status;
+							 wait(&status);
+							 // check exec was able to execute
+							 flag=(status==0);
+							 if (status==256){
+							 printf("Command does not exist");
+							 break;
+							 }
+							 // close incoming pipe if it exits 
+							 if (pipe_number){
+								 pipe_number=0;// no more incoming pipe
+								 close(pipefds[0][0]);
+							 }
+							 close(file);
+						 }
+						 break;
+					case '<':;
+						 // open the file in read only
+						 int file2=open(list[i+2],O_RDONLY,0666);
+						 i+=2; // skip twice so the next iteration is not on the file name
+						// error opening the file
+						 if (	file2==-1) {
+							 perror("File does not exist");
+						 }
+						 pid_t child3=fork();
+						 if (child3 < 0){
+						 	perror("Creation of child process failed during output redirection");
+						 } else if (child3==0){
+							// redirect the input
+							 dup2(file2,STDIN_FILENO);
+							 execvp(args[0],args);
+							 exit(1);
+						 }	    
+						 else{
+							 int status;
+							 wait(&status);
+							 // check exec was able to execute
+							 flag=(status==0);
+ if (status==256){
+							 printf("Command does not exist");
+							 break;
+							 }
+ 							// no more incoming pipes (even though we didn't use it)
+							 pipe_number=0;
+							 // close incmoing pipe
+							 if (pipe_number){
+								 close(pipefds[0][0]);
+							 }
+							 close(file2);
+						 }
+						 break;
+
+				    case '2':;
+						if ((char)list[i+1][1] == '>'){
+						// open or create the file
+						int file3=open(list[i+2],O_WRONLY|O_CREAT,0666);
+						 i+=2; // skip twice in the loop, otherwise the next iteration will be over the filename not a command
+						 pid_t child2=fork();
+						 if (child2==0){
+						 	//get the incoming pipe
+							 if (pipe_number){
+
+								 dup2(pipefds[0][0],STDIN_FILENO);
+
+							 }
+							 //redirect error
+							 dup2(file3,STDERR_FILENO);
+							 execvp(args[0],args);
+							 exit(EXIT_FAILURE);
+						 }	    
+						 else{
+							  int status;
+							 wait(&status);
+							 // check exec was able to execute
+							 flag=(status==0);
+							 // close incoming pipe if it exits 
+							 if (pipe_number){
+								 pipe_number=0;
+								 close(pipefds[0][0]);
+							 }
+							 close(file3);
+						 }
+						}
+						break;
+					default:
+						 printf("Unrecgonized control character\n");
+						 flag=0;
+				}
+			}
+			else{ // last command
+
+				pid_t child=fork();
+				if(child == 0)
+				{	// redirect input to incoming pipe
+					if (pipe_number){
+						dup2(pipefds[0][0],STDIN_FILENO);
+					}
+					execvp(args[0],args);
+
+					exit(1);
+				}
+				else{	
+					int status;
+					wait(&status);
+					//check exec if it executed
+					flag=(status==0);	
+ 					if (status==256){
+						printf("Command does not exist");
+						break;
+					}
+					// close incmoing pipe
+					if (pipe_number){
+						close(pipefds[0][0]);
+					}
+					pipe_number=0; // no more pipes 
+				}
+			}
+		}
+	}
+
+	return 0;
+
+}
+
+

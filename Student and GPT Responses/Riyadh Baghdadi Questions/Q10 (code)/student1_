@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SIZE 100        //Limit for char arrays
+
+struct university_detail    //University Details        
+{
+    char uniname[MAX_SIZE];
+};
+
+struct student_detail       //Details for a student
+{
+    char sname[MAX_SIZE];
+    int sid;
+    float sgpa;
+    struct university_detail univ;
+};
+
+int main(){
+    struct student_detail students[3];
+
+     for(int i = 0; i<3; i++){
+        char* sname = (char*) malloc(MAX_SIZE* sizeof(char));   //Dynamically memory allocation
+        printf("Enter Name of Student %d: ", i + 1);
+        scanf("%s", sname);
+        strcpy(students[i].sname, sname);                       //Copies the string
+        free(sname);                                            //Removing dynamically allocated memory
+        
+        printf("Enter ID of Student %d: ", i + 1);              //Student ID
+        scanf("%d", &(students[i].sid));
+        
+        printf("Enter GPA of Student %d: ", i + 1);             //Student GPA
+        scanf("%f", &(students[i].sgpa));
+        
+        char* uniname = (char*) malloc(MAX_SIZE* sizeof(char));     //Dynamically memory allocation
+        printf("Enter the name of the university: ", i + 1);
+        scanf("%s", uniname);
+        strcpy(students[i].univ.uniname, uniname);                  //Copies the string
+        free(uniname);                                              //Removing dynamically allocated memory
+    }
+    for(int i = 0; i < sizeof(students) / sizeof(struct student_detail); i++){
+        printf("\nStudent %s with ID %d and GPA %.2f is studying at %s", students[i].sname, students[i].sid, students[i].sgpa, students[i].univ.uniname);   //Printing the result
+    }
+    printf("\n");
+    return 0;
+}
+

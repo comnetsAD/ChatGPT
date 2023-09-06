@@ -1,0 +1,24 @@
+Here is a chart showing the minimum distribution time for each combination of N and u for both client-server distribution and P2P distribution:
+
+N u Client-server (min) P2P (min)
+10  300 Kbps  52.5  1.5
+10  700 Kbps  23.846  0.769
+10  2 Mbps  7.5 0.25
+100 300 Kbps  525 15
+100 700 Kbps  238.46  7.69
+100 2 Mbps  75  2.5
+1,000 300 Kbps  5250  150
+1,000 700 Kbps  2384.6  76.9
+1,000 2 Mbps  750 25
+
+To calculate the minimum distribution time for each combination of N and u, we can use the following formulas:
+
+Client-server distribution:
+T = F / (N * di)
+
+P2P distribution:
+T = F / (N * di + (N - 1) * u)
+
+In these formulas, T is the minimum distribution time, F is the size of the file (15 Gbits), N is the number of peers, di is the download rate of each peer (2 Mbps), and u is the upload rate of each peer.
+
+

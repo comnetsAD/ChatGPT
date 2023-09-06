@@ -1,0 +1,6 @@
+The statement is true.
+To prove this statement, we can assume that f(n) is O(g(n)), meaning there exist positive constants c1 and n1 such that for all n > n1, f(n) <= c1 * g(n).
+Therefore, 2f(n) <= 2c1 * g(n) for all n > n1
+So, we can say that 2f(n) is O(2g(n)) by taking c= 2c1 and n0 = n1
+It is worth mentioning that this statement is true regardless of the base of the logarithm used. The reason is that the O notation is used to compare the rate of growth of two functions, and multiplying or dividing both sides of an inequality by a constant does not change the rate of growth.
+

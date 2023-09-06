@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE 50                    //Limit for array
+
+int main()
+{
+    char string[MAX_SIZE];
+    char charac;                        //for storing removing char
+    printf("Enter a string: ");         
+    fgets(string, MAX_SIZE, stdin);
+    printf("Which character you want to remove?: ");
+    scanf("%c", &charac);
+    int i=0, j=0;                       //To know for last occurrence
+    while(string[i]!='\0' && string[i]!='\n'){
+        if (string[i] == charac){
+            j=i;
+        }
+        i=i+1;
+    }
+    while(string[j]!='\0'){             //Replacing previous string by new
+        string[j] = string[j+1];
+        j++;
+    }
+    printf("String: %s",string);
+    return 0;
+
+}
+

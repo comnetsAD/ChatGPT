@@ -1,0 +1,9 @@
+
+Proof. Let A = the ball turns out to be red
+Let B = this is the urn with 6 red balls
+We need the conditional probability P(B|A).
+By Bayes’ Theorem, P(B|A) = P (A|B)∗P (B)
+P(A) = (6/9)/ ((6/9)+(5/13))
+= 26/41
+
+

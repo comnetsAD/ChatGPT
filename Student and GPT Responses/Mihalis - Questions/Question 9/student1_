@@ -1,0 +1,37 @@
+Shodan is a publicly available tool. Any vulnerable device
+indexed by Shodan can be found by a malicious actor. As
+we saw in the previous sections, the information found on
+Shodan can be used to bring much harm not only to devices
+but to human lives as well. This raises ethical and legal issues.
+Should such a tool be available to everyone?
+First of all, Shodan, after all, is a port scanner. In the US, for
+example, port scanning is a legal activity. This is because
+it is a tool that can be used both legally and illegally and both
+ethically and unethically. For example, searching devices on
+Shodan for research purposes is completely ethical and legal
+- it has a good cause. However, establishing any unauthorized
+access to the devices found on Shodan is unethical and illegal
+in many countries. Therefore, as long as we stay in the
+interface of Shodan and do not connect to the IP addresses
+found there, we will be staying within the bounds of ethics.
+There are several reasons why the use of Shodan should be
+allowed:
+1) As already discussed, Shodan has limitations against
+users that may be malicious. These limitations make sure
+that those users are unable to extensively use Shodan
+without giving away their identities.
+2) Although Shodan can be used maliciously, as already
+discussed, it also allows the owners of the devices to
+identify those vulnerabilities and fix them. Thus, it just
+accelerates the process of fixing/exploiting vulnerabili-
+ties. Even without Shodan and similar tools, the mali-
+cious actors would still be able to find vulnerabilities
+with tools such as Nmap. However, Shodan makes the
+process much easier, which means that device owners
+can better identify vulnerabilities in their devices. In
+this sense, banning Shodan would just hide an issue in
+security, not fix it.
+3) Shodan offers a great way for researchers, penetration
+testers, and security professionals to analyze the internet
+and better protect it
+

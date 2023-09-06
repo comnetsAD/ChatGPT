@@ -1,0 +1,31 @@
+
+To find the 1s complement of the sum of the three 8-bit bytes 01010011, 01100110, and 01110100, we first need to find the sum of the bytes. To do this, we can convert each byte to a decimal number and add them together.
+
+The decimal equivalent of 01010011 is:
+1 * 2^7 + 0 * 2^6 + 1 * 2^5 + 0 * 2^4 + 0 * 2^3 + 1 * 2^2 + 0 * 2^1 + 1 * 2^0 = 83
+
+The decimal equivalent of 01100110 is:
+1 * 2^7 + 1 * 2^6 + 0 * 2^5 + 0 * 2^4 + 1 * 2^3 + 1 * 2^2 + 0 * 2^1 + 1 * 2^0 = 102
+
+The decimal equivalent of 01110100 is:
+1 * 2^7 + 1 * 2^6 + 1 * 2^5 + 1 * 2^4 + 0 * 2^3 + 1 * 2^2 + 0 * 2^1 + 0 * 2^0 = 116
+
+The sum of the three bytes is 83 + 102 + 116 = 301.
+
+To find the 1s complement of the sum, we first need to find the 2s complement of the sum. To do this, we can invert all the bits of the sum (changing 1s to 0s and 0s to 1s) and add 1 to the result.
+
+The 2s complement of 301 is obtained by inverting all the bits of 301:
+~301 = 1's complement of 301 = 11101100
+
+We can then add 1 to the result to get the 2s complement of 301:
+11101100 + 1 = 11101101
+
+To find the 1s complement of the sum, we can simply invert all the bits of the 2s complement:
+~11101101 = 1s complement of 301 = 00010010
+
+Therefore, the 1s complement of the sum of the three 8-bit bytes 01010011, 01100110, and 01110100 is 00010010.
+
+UDP and TCP use the 1s complement scheme for their checksums because it allows the receiver to easily detect errors. When the sender calculates the checksum and sends it along with the data, the receiver can recalculate the checksum using the same method.
+
+
+

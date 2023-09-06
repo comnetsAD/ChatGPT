@@ -1,0 +1,1 @@
+Find a counterexample to prove or deny this. First, reword "If p and q are primes > 2, then pq + 1 is composite." pq + 1 = 3 * 5 + 1 = 16, which is composite. When p = 5 and q = 7, pq + 1 = 5 * 7 + 1 = 36, which is composite. We can keep changing p and q and find that this statement is always true. Thus, "If p and q are primes > 2, then pq + 1 is never prime" holds. 

@@ -1,0 +1,17 @@
+income2 = dagitty("dag{
+                 Education -> Income
+                 Selected -> Education
+                 Ability -> Selected
+                 Ability -> Income
+                 }")
+
+coordinates(income2) = list(x = c(Education = 0, Selected = 0, Ability = 1, 
+                                Income = 1),
+                          y = c(Education = 1, Selected = 0, Ability = 0,
+                                Income = 1))
+
+plot(income2)
+The causal relationship based o the selection of scholarship is unconvincing, as the confounding variable is neglected. People with higher potentials/abilities tend to be selected in this program. These abilities also tend to lead them to a higher income. Thus, it is ambiguous to merely attribute the high income to education,
+
+
+

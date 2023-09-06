@@ -1,0 +1,86 @@
+
+// define the product type
+// could be a struct or anyother data structure
+#typedef product int
+product box[100];
+int boys_counter = 0;
+int girls_counter = 0;
+int item_counter = 0;
+sem_t rwmutex;
+sem_t gmutex; // mutex for girls counter
+sem_t bmutex; // mutex for boys counter
+sem_t imutex; // item counter mutex
+
+void* boy_run(void *arg) // producers
+{
+    // Boys cannot add more products if the box is full
+    while (item_counter == 100)
+        ;
+
+    sem_wait(&bmutex);
+    boys_counter ++;
+    sem_post(&bmutex);
+    if (boys_counter == 1) // if it's the first thread of that type to ask
+        sem_wait(&rwmutex);
+    // produce
+    ...
+    // decrease item counter
+    sem_wait(&imutex);
+    item_counter++;
+    sem_post(&imutex);
+
+    sem_wait(&bmutex);
+    boys_counter--;
+    sem_post(&bmutex);
+    if (boys_counter == 0) // if no other thread of the same type is executing
+        sem_post(&rwmutex);
+}
+
+void* girl_run(void *arg) // consumers
+{
+    // Make sure to start ONLY the first time by producing
+    // Girls cannot consume if the box is empty
+    while (item_counter == 0)
+        ;
+
+    sem_wait(&gmutex);
+    girls_counter++;
+    sem_post(&gmutex);
+    if (girls_counter == 1) // if it's the first thread of that type to ask
+        sem_wait(&rwmutex);
+    // consume
+    ...
+    // decrease item counter
+    sem_wait(&imutex);
+    item_counter--;
+    sem_post(&imutex);
+
+    sem_wait(&gmutex);
+    girls_counter--;
+    sem_post(&gmutex);
+    if (girls_counter == 0) // if no other thread of the same type is executing
+        sem_post(&rwmutex);
+}
+int main()
+{
+    // initalize mutexes to value of 1
+    sem_init(&rwmutex, 0, 1);
+    sem_init(&gmutex, 0, 1);
+    sem_init(&bmutex, 0, 1);
+    // create threads
+    pthread_t threads[100];
+    pthread_attr_t thread_attr[100];
+    
+    // get input from user
+    // if create boy thread
+    pthread_run(&threads[i], &thread_attr[i], boy_run, (void *) product);
+    pthread_attr_setschedpolicy(&thread_attr[i], SCHED_RR);
+    // if create girl thread
+    pthread_run(&threads[i], NULL, girl_run, (void *) product);
+    pthread_attr_setschedpolicy(&thread_attr[i], SCHED_RR);
+    // print item in the box
+    for (int i = 0; i < 100; i++)
+        printf("%d", box[i]);
+}
+
+

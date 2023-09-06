@@ -1,0 +1,5 @@
+
+There are 10 choices for the first digit, 26 choices for the letter, and 9 choices for the second digit (since the two digits must be distinct). Therefore, there are a total of 10269 = 2340 possible serial numbers.
+If each of the 6,000 parts had a different serial number, then there would be a total of 6,000 different serial numbers. However, since this is not the case, there must be at least two parts with the same serial number. Therefore, the minimum number of parts that must have the same serial number is 2.
+
+

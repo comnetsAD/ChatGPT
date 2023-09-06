@@ -1,0 +1,8 @@
+a) The total delay will be = time for first packet to reach the destination + time for the subsequent packet that arrive sequentially: 
+
+Total = (S + 80/R) x 3 + (F/S - 1)((S + 80)/R) = (S + 80)/R x (3 + (F/S -1)) = (S + 80)/R + (F/S + 2)
+
+b) Then the value of S = dDelay / dS = 0 => d/dS ((S + 80/R)(F/S + 2)) = 0
+S = sqrt (40) F 
+
+

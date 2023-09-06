@@ -1,0 +1,17 @@
+
+Pure Nash is at D, L (7, 3)
+
+Player 1
+4p - 3(1 - p) ≥ 7p + 1 (1 - p)
+4p - 3 + 3p ≥ 7p + 1 - p
+7p - 3 ≥ 6p + 1
+p ≥ 4
+
+Player 2
+4q + 3(1 - q) ≥ 7q + 1(1-q)
+4q + 3 - 3q ≥ 7q + 1 - q
+q + 3 ≥ 6q + 1
+q  ≥ -⅖
+
+Therefore, there exist no Nash equilibrium in mixed strategies.
+

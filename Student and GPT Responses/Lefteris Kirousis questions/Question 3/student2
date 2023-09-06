@@ -1,0 +1,5 @@
+f(n) = O(g(n)) (given statement)
+f(n) < = g(n)
+2^f(n) <= 2g(n) (still greater after exponential function) hence, 2f(n) = O(2g(n))
+then, 2f(n) is O(2g(n)) (proved)
+

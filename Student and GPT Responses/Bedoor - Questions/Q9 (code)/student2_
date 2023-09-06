@@ -1,0 +1,12 @@
+import numpy as np
+A = [1,2,3,4]
+
+# Write your code below this line
+######### SOLUTION #########
+np.append(np.repeat(A, 4), np.tile(A, 3)) #merge two arrays together
+#list1 = np.repeat(A, 4)
+#list2 = np.tile(A, 3)
+
+######### SOLUTION END #########
+
+

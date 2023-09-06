@@ -1,0 +1,21 @@
+ALGORITHM
+-----------------------------
+We run 3 BFS(x) algorithm for nodes s, t1 and t2 and the distances are storedfrom those 3 nodes to all other nodes.
+BFS(s)
+BFS(t1)
+BFS(t2)
+Set a variable M = s
+for each node u in G do
+  if (d(s, u) + d(u, t1) ≤ d(t1, s)) & (d(s, u) + d(u, t2) ≤ d(t2, s)) then
+ 	if d(s, u) ≥ d(s, M) then
+     	M = u
+  	end if
+  end if
+end for
+return M
+The algorithms starts of by running 3 BFS from nodes s, t1 and t2. From the BFS we can find the distances d(s, u), d(u, t1), d(t1, s)), d(u, t2) and d(t2, s)). After the BFS algorithms we set a variable M that will store the node u satisfying the necessary conditions [(d(s, u) + d(u, t1) ≤ d(t1, s))& (d(s, u) + d(u, t2) ≤ d(t2, s))]. Then we run a for loop that checks for the if condition and keeps updating M to u at current iteration if d(s, u)≥ d(s, M). The algorithm terminates when it went over all nodes of the graph.
+The overall time complexity of this algorithm is O(m).
+When the nodes of a graph are isolated, the BFS algorithm runs in O(m+n). However, given that the graph G is connected then then BFS algorithmwill run in O(m).
+Since we are running the BFS algorithm 3 times with each BFS tree rootedat s, t1 and t2, the complexity of running 3 BFS algorithm is O(m) +O(m) + O(m) = O(m).
+Moving on, the for loop runs n iterations because there are n nodes, which implies that the complexity of the for loop is O(n). However given that the graph is connected, the number of edges m ≥ n − 1, thus implying that number of edges is greater than the number of nodes, so O(n) is less than O(m). Therefore, we can conclude that the overall time complexity of the algorithm is O(m).
+

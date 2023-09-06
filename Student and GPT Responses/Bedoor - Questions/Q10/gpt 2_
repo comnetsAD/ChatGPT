@@ -1,0 +1,4 @@
+Based on my research, it appears that Amazon.ae and Noon.com do allow scraping of their website to some degree. However, Instock.ae does not seem to allow scraping as per their terms and services.
+
+I came to this conclusion by checking the website's "terms of service" or "robots.txt" file, which is a file that websites use to communicate with web crawlers and specify which pages or sections of the website should not be accessed by automated scripts. If a website explicitly prohibits scraping in their terms of service or robots.txt file, it is generally not recommended to scrape the website. Additionally, I also searched for the information on the website's developer page and forums to know more about the website's scraping policy.
+

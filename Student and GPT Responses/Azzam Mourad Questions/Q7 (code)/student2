@@ -1,0 +1,133 @@
+
+#include <unistd.h> // / header for unix specic functions declarations : fork(), getpid(), getppid(), sleep()
+#include <stdio.h>  // header for input and output from console : printf, perror
+#include <stdlib.h> // header for general functions declarations: exit() and also has exit macros such as EXIT_FAILURE - unsuccessful execution of a program
+#include <pthread.h> // header for thread functions declarations: pthread_create, pthread_join, pthread_exit
+// compile your code with: gcc -o output code.c -lpthread
+
+#define NUM_THREADS 3
+
+//define array data structure for use
+    typedef struct values
+    {
+    int size;
+    int array[100];
+    }values;
+
+// Function that calculates average of elements of an array
+void *ArrayAvg(void *arg)
+{
+    values *a = (values*)arg;
+    int sum = 0;
+    float *avg = (float *)malloc(sizeof(float));
+    // Iterating through the array
+    for(int i = 0; i < a->size; i++)
+    {
+      // Accumulating array sum
+      sum += a->array[i];
+      }
+      // calculating the average
+      *avg = (float)sum/a->size;
+      // Exiting current thread
+      pthread_exit((void*)avg);
+}
+
+//Fucntion that calculate the minimum in the array
+void *ArrayMin(void *arg)
+{
+    values *a = (values*)arg;
+    int *min = (int *)malloc(sizeof(int));
+    *min = a->array[0];
+    // Iterating through the array
+    for(int i = 1; i < a->size; i++)
+    {
+      // calculating array min
+      if (a->array[i] < *min){
+          *min = a->array[i];
+      }
+  }
+  // Exiting current thread
+  pthread_exit((void*)min);
+}
+
+//Fucntion that calculate the maximum in the array
+void *ArrayMax(void *arg)
+{
+    values *a = (values*)arg;
+    int *max = (int *)malloc(sizeof(int));
+    *max = a->array[0];
+    // Iterating through the array
+    for(int i = 1; i < a->size; i++)
+    {
+      // calculating array max
+      if (a->array[i] > *max){
+          *max = a->array[i];
+      }
+  }
+  // Exiting current thread
+  pthread_exit((void*)max);
+}
+
+int main()// main function
+{
+    values *Num_Array = (values*)malloc(sizeof(values));
+
+// ask for input
+    int size;
+    int i;
+    printf("Enter the size of the arrays:\n");
+    scanf("%d", &size);
+    Num_Array->size = size;
+
+    printf("Enter the elements of the array:\n");
+    for (i = 0; i < size; i++) {
+        int temp=0;
+        scanf("%d", &temp);
+        Num_Array->array[i] = temp;
+    }
+    printf("*********** The results are ***********");
+
+    int rc1,rc2,rc3; // return value from pthread_create to check if new thread is created successfukky                           */
+    pthread_t threads[NUM_THREADS]; // Array to store thread IDs of new threads 
+
+
+    rc1 = pthread_create(&threads[0], NULL, ArrayAvg, (void *)Num_Array); // passing as 'ArraySum' paramter the chunk id (i - passing i safely), so each thread can calculate the partial sum of different elements chunk
+
+    if (rc1) { // check if new thread is created, otherwise exit
+        printf("Error:unable to create thread, %d\n", rc1);
+        exit(-1);
+    }
+    rc2 = pthread_create(&threads[1], NULL, ArrayMin, (void *)Num_Array); // passing as 'ArraySum' paramter the chunk id (i - passing i safely), so each thread can calculate the partial sum of different elements chunk
+
+    if (rc2) { // check if new thread is created, otherwise exit
+        printf("Error:unable to create thread, %d\n", rc2);
+        exit(-1);
+    }
+    rc3 = pthread_create(&threads[2], NULL, ArrayMax, (void *)Num_Array); // passing as 'ArraySum' paramter the chunk id (i - passing i safely), so each thread can calculate the partial sum of different elements chunk
+
+    if (rc3) { // check if new thread is created, otherwise exit
+        printf("Error:unable to create thread, %d\n", rc3);
+        exit(-1);
+    }
+   
+// display the result
+    printf("\n");
+
+    void *result1;
+    pthread_join(threads[0], &result1);
+    float average = *((float *)result1);
+    printf("The average of these numbers is: %f\n", average);
+
+    void *result2;
+    pthread_join(threads[1], &result2);
+    int min = *((int *)result2);
+    printf("The minimum number is: %d\n", min);
+
+    void *result3;
+    pthread_join(threads[2], &result3);
+    int max = *((int *)result3);
+    printf("The maximum number is: %d\n", max);
+
+    pthread_exit(NULL);		// terminate the main thread 
+}
+

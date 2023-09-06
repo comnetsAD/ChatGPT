@@ -1,0 +1,8 @@
+
+Equation: (Number of Numbers) x (Number of letters) x (Number of numbers remaining)
+= 10 x 26 x 9
+= 2340
+Then use pigeonhole method
+[6000/2340] = 2
+Ans = 2
+

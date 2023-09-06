@@ -1,0 +1,39 @@
+stargazer(regressionsesmath, type= "latex",
+title= "Table 1: linear regression of Socio Economic Status VS. Grade 8 Maths Score",
+out = "table1.txt", covariate.labels = c("Socio Economic Status", "Grade 8 Math Score"))
+% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy Institute. E-mail: marek.hlavac at
+gmail.com % Date and time: Sun, Oct 09, 2022 - 14:04:20
+The intercept estimate represents where ses is 0, showing the point where socio-economic status is average.
+Thus the value -0.03262 shows that when the socio-economic status of the student is average (0) their scores
+are -0.03262, which means they are scores below average. On the other hand, when the math grade of 8th
+grade is average (=0), the socio-economic status of the student is above average with an estimate of 0.51792.
+Following the form y= b+mx, the regression line is zmath8= -0.03262 + 0.51792(ses). Therefore, the slope
+m is 0.51792 indicating that for every increasing unit in socio economic status, the 8th grade math score
+increases by 0.51792.
+#when ses = -2
+-0.03262 + 0.51792*(-2)
+## [1] -1.06846
+#when ses = 2
+-0.03262 + 0.51792*(2)
+## [1] 1.00322
+1
+Table 1: Table 1: linear regression of Socio Economic Status VS. Grade 8 Maths Score
+Dependent variable:
+zmath8
+Socio Economic Status 0.518∗∗∗
+(0.014)
+Grade 8 Math Score −0.033∗∗∗
+(0.011)
+Observations 7,035
+R2 0.168
+Adjusted R2 0.168
+Residual Std. Error 0.873 (df = 7033)
+F Statistic 1,419.465∗∗∗ (df = 1; 7033)
+Note: ∗p<0.1; ∗∗p<0.05; ∗∗∗p<0.01
+Predictions (-2 & 2): For -2, when socio-economic status is below average by two points, the math score
+is also below average, by 1 point, and when socio-economic status is above average by 2 units, the math
+score is too, above average by 1 unit. This resonates with the slope of the regression (~0.518 3dp ) since for
+every unit change (increase or decrease) in socio economic status, there is a change (increase or decrease)
+respectively by around half in the change of math score.
+
+

@@ -1,0 +1,5 @@
+f(n) = O(g(n)) (given statement)
+so, f(n) < g(n) (applying log function for both sides)
+then, log (f(n)) < = log O(g(n)) (still greater after log function) hence, logf(n) = O(logg(n)) (proved)
+then, logf(n) is O(logg(n)).
+

@@ -1,0 +1,17 @@
+n=0
+m = 0
+o = 0
+while n<100 :
+    n = n+1
+    m = n%3
+    o = n%5
+    if m == 0 and o == 0:
+        print('FIZZ BUZZ\n')
+    elif o == 0:
+        print('BUZZ\n')
+    elif m==0:
+        print('FIZZ','\n')       
+    else :
+        print(n,'\n')
+
+

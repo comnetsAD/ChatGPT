@@ -1,0 +1,8 @@
+
+The host sends an HTTP request to the website, asking for the specific webpage or resource.
+The website receives the request and sends an HTTP response, which contains the requested webpage or resource.
+The response is sent back to the host in the form of IP packets, containing the requested webpage or resource.
+The host receives the IP packets and reassembles them into the requested webpage or resource.
+The host displays the contents of the webpage or resource on the client device.
+During this operation, the host uses the HTTP protocol to communicate with the website. The HTTP protocol uses port number 80 for unencrypted communication and port number 443 for encrypted communication.
+In summary, the contents of the website reach the client through the use of the HTTP protocol, which is used to request and receive the webpage or resource. The requested webpage or resource is sent back to the host in the form of IP packets, which are reassembled and displayed on the client device.

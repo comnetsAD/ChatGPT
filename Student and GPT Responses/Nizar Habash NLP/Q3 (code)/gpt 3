@@ -1,0 +1,10 @@
+The regular expression that exactly models the languages of hexadecimal numbers is:
+^([1-9][0-9A-F]|[A-F][0-9A-F])$
+This regular expression uses the following elements:
+^: Matches the start of a line
+$: Matches the end of a line
+[] : Matches any character inside the brackets
+*: Matches the preceding element zero or more times
+|: Matches the preceding or following element
+The regular expression first checks for numbers that start with a digit between 1 and 9, followed by zero or more digits or letters between A and F. This covers numbers that do not have leading zeroes. The second part of the regular expression checks for numbers that start with a letter between A and F, followed by zero or more digits or letters between 0 and F. This covers numbers that start with a letter.
+This regular expression will match any strings that match the hexadecimal number format, such as 12FD, FFFFFFF, and so on and will not match any irrelevant initial zeroes as in 00019AF0A or 001.

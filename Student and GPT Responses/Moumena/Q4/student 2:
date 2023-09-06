@@ -1,0 +1,8 @@
+
+Let U be the event that the urn with 6 red balls is chosen, and U be the event that the urn with 5 red balls is chosen. Thus P(U) = 1/2 and P(U) = 1/2
+Let R be the event that a red ball is chosen. Given that the urn in question has a total of 9 balls, the probability of choosing a red ball is P(R|U) = 6/9. The probability of choosing a red ball in the other urn is P(R|U) = 5/13.
+Applying Bayes’ theorem,
+
+P(U|R) = 26/41
+
+

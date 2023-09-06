@@ -1,0 +1,15 @@
+It is not necessarily correct for the researcher to make causal claims based solely on the results of this study. Correlation does not imply causation, and there may be other factors that the researcher did not account for that are influencing the relationship between education and income.
+
+A causal graph in R could be used to help demonstrate the potential causal relationship between education and income, but it would not necessarily prove that the relationship is causal.
+
+For example, the following graph shows a potential causal relationship between education and income, where education (E) causes income (I):
+
+library(dagitty)
+dag = dagitty("
+  DAG
+  E -> I
+  ")
+dagitty_plot(dag)
+
+However, it's important to note that other variables that may affect the outcome of the study such as experience, age, gender, location, and type of job, etc. And also the survey was done on a sample of 1,000 individuals, which may not be representative of the population as a whole. Therefore, more research and analysis is needed to establish a causal relationship.
+

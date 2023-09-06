@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+double sumFunc(double a, double b) {
+return a + b;
+}
+
+string sumFunc(string a, string b) {
+return a + " " + b;
+}
+
+// ---- Do not edit below this line -----
+int main() {
+double sumInt = sumFunc(13, 7.8);
+string sumName = sumFunc("Abra", "Cadabra");
+cout << "Int: " << sumInt << "\n";
+cout << "String: " << sumName << "\n";
+return 0;
+}
+
+The function sumFunc is overloaded, meaning that it is defined twice with different input types (double, string) and output types (double, string). This allows for the same function name to be used for different types of inputs and outputs.
+In main, the first call to sumFunc uses two double arguments and the second call to sumFunc uses two string arguments, so that the correct version of the function is called.
+The console output is Int: 20.8 and String: Abra Cadabra
+

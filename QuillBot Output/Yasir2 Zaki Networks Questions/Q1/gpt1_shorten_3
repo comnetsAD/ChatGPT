@@ -1,0 +1,1 @@
+Long division of D by G yields the CRC for generator G and data D. This division would be: 1 0 1 0 1 0 1 0 1 0\s1 0 0 1 1 1 0 0 1 1\s1 0 0 1 1 0 0 0 1 1 011, the CRC value, completes this division. 

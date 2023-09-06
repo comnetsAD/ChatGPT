@@ -1,0 +1,2 @@
+False. Let f(n) = 2n, and g(n) = n. Then, f(n) is O(g(n)) for some constant c >= 2, which would make f(n) <= c * g(n). However, 22n is not O(2n), because there is no constant d > 0 such that 22n <= d * 2n.
+

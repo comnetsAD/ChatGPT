@@ -1,0 +1,31 @@
+# prompt the user to enter the two names
+first_name_1 = input("Enter the first name of the first person: ")
+last_name_1 = input("Enter the last name of the first person: ")
+
+# prompt the user to enter the 8-digit integer representing the birthday
+birthday_1 = input("Enter the birthday of the first person (DDMMYYYY): ")
+
+# separate the day, month, and year from the 8-digit integer
+day_1 = birthday_1[0:2]
+month_1 = birthday_1[2:4]
+year_1 = birthday_1[4:]
+
+# print the output in the desired format
+print("{} {} was born on {}/{}/{}".format(first_name_1.capitalize(), last_name_1.capitalize(), day_1, month_1, year_1))
+
+# prompt the user to enter the two names
+first_name_2 = input("Enter the first name of the second person: ")
+last_name_2 = input("Enter the last name of the second person: ")
+
+# prompt the user to enter the 8-digit integer representing the birthday
+birthday_2 = input("Enter the birthday of the second person (DDMMYYYY): ")
+
+# separate the day, month, and year from the 8-digit integer
+day_2 = birthday_2[0:2]
+month_2 = birthday_2[2:4]
+year_2 = birthday_2[4:]
+
+# print the output in the desired format
+print("{} {} was born on {}/{}/{}".format(first_name_2.capitalize(), last_name_2.capitalize(), day_2, month_2, year_2))
+
+

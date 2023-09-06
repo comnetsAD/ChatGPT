@@ -1,0 +1,45 @@
+import calendar
+
+def is_valid_date(day, month, year):
+    # check if month is between 1 and 12
+    if not (1 <= int(month) <= 12):
+        return False
+    
+    # check if day is between 1 and the number of days in the month
+    num_days_in_month = calendar.monthrange(int(year), int(month))[1]
+    if not (1 <= int(day) <= num_days_in_month):
+        return False
+    
+    return True
+
+def get_birthday(name):
+    # prompt the user to enter the 8-digit integer representing the birthday
+    birthday = input("Enter the birthday of {} (DDMMYYYY): ".format(name))
+
+    # separate the day, month, and year from the 8-digit integer
+    day = birthday[0:2]
+    month = birthday[2:4]
+    year = birthday[4:]
+
+    # check if the date is valid
+    if is_valid_date(day, month, year):
+        # return the name and the birthday in the desired format
+        return "{} was born on {}/{}/{}".format(name.capitalize(), day, month, year)
+    else:
+        return "Invalid date. Please enter a valid date."
+
+# prompt the user to enter the two names
+first_name = input("Enter the first name: ")
+last_name = input("Enter the last name: ")
+
+# get the birthday of the first person in the desired format
+birthday_1 = get_birthday(first_name)
+
+# get the birthday of the second person in the desired format
+birthday_2 = get_birthday(last_name)
+
+# print the birthdays
+print(birthday_1)
+print(birthday_2)
+
+

@@ -1,0 +1,16 @@
+Notes:
+Use numpy functions, and avoid loops wherever possible.
+NaN is represented by np.nan
+Look up np.mean and np.nanmean functions either of which may be useful based on how you implement your function.
+Also look up np.isnan as it may come handy.
+You should not need to use any other numpy functions besides the one taught in class, and recitation, or explicitly mentioned in this handout. If you do, comment them well, and be prepared to explain them.
+Our reference solution is no more than 3 lines of code.
+
+import numpy as np
+def impute_NaNs(array_2d):
+	imputed_array_2d = np.copy(array_2d)
+	for i in range(imputed_array_2d.shape[1]):
+    	col_mean = np.nanmean(imputed_array_2d[:, i])
+    	imputed_array_2d[np.isnan(imputed_array_2d[:, i]), i] = col_mean
+	return imputed_array_2d
+

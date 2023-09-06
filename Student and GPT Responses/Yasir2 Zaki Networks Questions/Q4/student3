@@ -1,0 +1,19 @@
+a) Because  of  additive  increase, CNWD  increases by  1 MSS every RTT until loss  is   detected: 
+a. Increase to  6 MSS:  cost  1 RTT 
+b. Increase to  7 MSS:  cost  2 RTT 
+c. Increase to  8 MSS:  cost  3 RTT 
+d. Increase to  9 MSS:  cost  4 RTT 
+e. Increase to  10  MSS:  cost  5 RTT 
+f. Increase to  11  MSS:  cost  6 RTT 
+g. Increase to  12  MSS:  cost  7 RTT 
+
+b)  1st RTT:  CNWD  = 5MSS 
+2nd RTT:  CNWD  = 6MSS 
+3rd RTT:  CNWD  = 7MSS 
+4th RTT:  CNWD  = 8MSS 
+5th RTT:  CNWD  = 9MSS 
+6th RTT:  CNWD  = 10MSS 
+The total MSS = 45MSS 
+The Average Throughout  = Total CNWD  /RTT  = 45MSS/  6RTT  = 7.5
+
+

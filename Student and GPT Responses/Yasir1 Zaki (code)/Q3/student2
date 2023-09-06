@@ -1,0 +1,45 @@
+#ask for input
+begin=input('Please decide on a topic to guess with your friend.\n\n\
+Please enter the four words you think of, seperated by semi-colons:\n\
+(example- "word1;word2;word3;word4")\n')
+
+list_words=begin.split(';') #split words into list
+    
+if len(list_words)>4:
+    length=len(list_words)
+    print('You entered too many... but I fixed it, don\'t worry...')
+    for i in range(length-4):
+        del list_words[4]
+
+elif len(list_words)<4:
+    make_up_word=input('You didn\'t enter enough words... \
+Please enter another:\n')
+    list_words.append(make_up_word)
+    if len(list_words)<4:
+        make_up_word=input('Please enter another word:\n')
+        list_words.append(make_up_word)
+        if len(list_words)<4:
+            make_up_word=input('Please enter another word:\n')
+            list_words.append(make_up_word)
+            if len(list_words)<4:
+                make_up_word=input('Please enter another word:\n')
+                list_words.append(make_up_word)
+
+print (list_words)
+new_word=input('Please enter one more word:\n') #ask for new word input
+
+list_words.insert(0,new_word) #add new word
+
+#clear screen
+print('\n'*100)
+
+#now start part one of game
+guess1=input('Please try and guess one of the words:\n')
+
+if guess1 in list_words:
+    print('Congratulation! You guessed right!')
+
+elif guess1 not in list_words:
+    print('Sorry... Your guess was wrong...')
+
+

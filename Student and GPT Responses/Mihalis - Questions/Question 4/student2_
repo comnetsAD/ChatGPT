@@ -1,0 +1,3 @@
+The browser goes to the DNS server, and finds the real address of the server that the website lives on (8.8.8.8). Then the browser sends an HTTP request message to the server, asking it to send a copy of the website to the client. This message, and all other data sent between the client and the server, is sent across your internet connection using TCP/IP. If the server approves the client's request, the server sends the client a message confirming the connection is successful, and then starts sending the website's files to the browser as a series of small chunks called data. The browser assembles the small chunks into a complete web page and displays it.
+
+

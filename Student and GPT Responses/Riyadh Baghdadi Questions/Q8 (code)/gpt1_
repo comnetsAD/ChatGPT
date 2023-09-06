@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+
+struct university_detail {
+    char name[100];
+};
+
+int main() {
+    struct university_detail university;
+    printf("Enter the university name: ");
+    scanf("%s", university.name);
+
+    printf("University name: %s\n", university.name);
+    return 0;
+}
+

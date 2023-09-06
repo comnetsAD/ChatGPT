@@ -1,0 +1,8 @@
+researcher_dict = {0: "Bedoor AlShebli", 1: "Ahmed AlDosari", 2: "Sara AlMansoori"}
+id_interest_list = [(0, "Hadoop"), (1, "AI"), (2, "Machine Learning")]
+
+name_interest_list = list(map(lambda x: (researcher_dict[x[0]], x[1]), id_interest_list))
+
+print(name_interest_list)
+
+

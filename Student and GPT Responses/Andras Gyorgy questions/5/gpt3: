@@ -1,0 +1,3 @@
+
+It is generally better to search with a short sequence than with a long sequence because short sequences are more specific and less prone to false positives. A longer sequence increases the chances of finding a match but also increases the chances of finding a non-homologous sequence that just happens to have the same sequence by chance. Additionally, a short signature sequence is more likely to be conserved across evolutionarily distant organisms, which increases the chances of identifying distant homologs.
+

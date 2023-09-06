@@ -1,0 +1,11 @@
+A pure strategy Nash equilibrium is a set of strategies, one for each player, such that no player can improve their outcome by unilaterally changing their strategy while the other players keep theirs fixed. A mixed strategy Nash equilibrium is a probability distribution over pure strategies for each player, such that no player can improve their expected outcome by changing their probability distribution while the other players keep theirs fixed.
+In this game, player 1 has two pure strategies U and D, and player 2 has two pure strategies L and R.
+First, we will consider the pure strategy Nash equilibrium.
+If player 1 chooses U, player 2 will choose R to get the highest payoff of 7. If player 1 chooses D, player 2 will choose L to get the highest payoff of 7. Therefore, (U, R) and (D, L) are both pure strategy Nash equilibria.
+Now, we will consider the mixed strategy Nash equilibrium.
+Player 1 can assign probabilities p and 1-p to strategy U and D respectively, and player 2 can assign probabilities q and 1-q to strategy L and R respectively.
+Player 1's expected payoff from strategy U is 4p + 7(1-p) and from strategy D is 7p + 1(1-p). Therefore, the best response of player 1 is to choose strategy U if 4p + 7(1-p) >= 7p + 1(1-p) and strategy D otherwise. Which leads to p >= 3/5
+Similarly, player 2's expected payoff from strategy L is 4q + 1(1-q) and from strategy R is -3q + 7(1-q). Therefore, the best response of player 2 is to choose strategy L if 4q + 1(1-q) >= -3q + 7(1-q) and strategy R otherwise. Which leads to q >= 3/5
+Therefore, (p, q) = (3/5, 3/5) is a mixed strategy Nash equilibrium.
+In summary, the game has two pure strategy Nash equilibria (U, R) and (D, L) and one mixed strategy Nash equilibrium (p, q) = (3/5, 3/5) where player 1 chooses U with probability 3/5 and D with probability 2/5 and player 2 chooses L with probability 3/5 and R with probability 2/5.
+

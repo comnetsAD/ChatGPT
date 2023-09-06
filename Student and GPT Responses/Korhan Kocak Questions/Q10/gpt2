@@ -1,0 +1,14 @@
+This game can be modeled as a strategic form game with two players: Colonel Blotto and the rebel group. The players have two strategies each: deploy one regiment to each mountain pass or deploy two regiments to one mountain pass. The payoffs for each player are as follows:
+
+Colonel Blotto: 1 regiment to each pass Colonel Blotto: 2 regiments to one pass
+Rebel Group: 1 regiment to each pass   	 (1,1) 		  (-1,-1)
+Rebel Group: 2 regiments to one pass    	(-1,-1) 		  (1,1)
+
+The Nash equilibrium of a game is a strategy combination where neither player can improve their payoff by changing their strategy while the other player's strategy remains unchanged.
+In this case, there are 2 Nash equilibria:
+(Colonel Blotto: 1 regiment to each pass, Rebel Group: 1 regiment to each pass) where each player gets a payoff of 1
+(Colonel Blotto: 2 regiments to one pass, Rebel Group: 2 regiments to one pass) where each player gets a payoff of 1
+In the first equilibrium, each player deploys one regiment to each mountain pass, which means that the rebel group can't have a victory anywhere, and Colonel Blotto will not lose the battle.
+In the second equilibrium, each player deploys two regiments to one pass, which means that neither player can have a victory as it will always result in a tie.
+In both cases, no player can benefit by changing their strategy, so these strategies are the Nash equilibria of the game.
+

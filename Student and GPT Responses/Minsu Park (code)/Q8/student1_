@@ -1,0 +1,5 @@
+def num_non_vowels(a_string):
+   """The number of characters in a string, minus the vowels."""
+   remove = a_string.replace('a','').replace('e','').replace('i','').replace('o','').replace('u','')
+   return len(remove)
+

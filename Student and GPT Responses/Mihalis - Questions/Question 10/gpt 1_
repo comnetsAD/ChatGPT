@@ -1,0 +1,14 @@
+Restricting the use of Shodan:
+To protect the privacy and security of individuals and organizations. Shodan collects and makes publicly available sensitive information such as IP addresses, device types, and software versions, which can be used by cybercriminals to target vulnerabilities.
+To prevent misuse of the tool for illegal activities such as hacking and cyber espionage. Shodan can be used to identify and exploit vulnerabilities in systems, potentially leading to unauthorized access and data breaches.
+To comply with regulatory requirements such as the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), which prohibit the collection and sharing of personal data without consent.
+Policy for the use of Shodan-like tools:
+The use of Shodan-like tools is only allowed for legitimate and lawful purposes, such as vulnerability assessment, penetration testing, and incident response. The following conditions must be met:
+The tool must only be used by authorized personnel with a valid business need and proper training.
+The tool must not be used to collect, store, or share personal data without consent.
+The tool must not be used to access or disrupt systems or networks without permission.
+Any findings or data collected must be handled and reported in accordance with relevant laws and regulations.
+Any use of the tool must be reported to the appropriate authorities in case of any suspicious or malicious activity.
+Violations of this policy will result in disciplinary action, including termination of employment or contract.
+In conclusion, the use of Shodan-like tools must be closely monitored and regulated to protect the privacy and security of individuals and organizations. The tool can be used for legitimate and lawful purposes, but it must be used in accordance with relevant laws and regulations.
+

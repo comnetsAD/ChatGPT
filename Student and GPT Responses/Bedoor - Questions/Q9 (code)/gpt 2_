@@ -1,0 +1,3 @@
+np.tile(A, (5,4)).flatten()
+
+

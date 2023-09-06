@@ -1,0 +1,6 @@
+def num_non_vowels(a_string):
+    """The number of characters in a string, minus the vowels."""
+    vowels = "aeiouAEIOU"
+    non_vowels = [char for char in a_string if char not in vowels]
+    return len(non_vowels)
+

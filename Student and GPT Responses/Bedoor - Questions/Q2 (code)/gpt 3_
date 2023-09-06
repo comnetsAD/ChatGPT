@@ -1,0 +1,13 @@
+n = 5
+character = "obi"
+
+if character == "obi":
+    for i in range(n):
+        print("May the force be with you.")
+elif character == "vader":
+    for i in range(n):
+        print("I find your lack of faith disturbing.")
+else:
+    print("Invalid character entered.")
+
+

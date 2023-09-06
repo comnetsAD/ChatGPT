@@ -1,0 +1,8 @@
+import numpy as np
+
+def impute_NaNs(array_2d):
+	imputed_array_2d = array_2d.copy()
+	imputed_array_2d[np.isnan(imputed_array_2d)] = np.nanmean(imputed_array_2d, axis=0)
+	return imputed_array_2d
+
+

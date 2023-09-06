@@ -1,0 +1,88 @@
+# Battleship
+# create the first list containing the 'actual' battleship
+positions = ['O'] * 10
+import random
+ship = random.randint(0, len(positions) - 1)
+positions[ship] = 'X'
+
+# give instructions to user and display the position list
+print ('You are about to play the Battleship game with the computer. Your goal \
+is to sink the battleship.')
+num_list = list(range(10))   # creae the second list containing only numbers
+print ('Here is a list of positions with each position represented by its index. \
+There is a battleship hidden in one of the positions.')
+print ()
+print ('#---#---#---#---#---#---#---#---#---#---#')
+print ('|-' + '-|-'.join(map(str, num_list)) + '-|')
+print ('#---#---#---#---#---#---#---#---#---#---#')
+print ()
+print ('You have three chances to guess where the battleship is and shoot \
+the ship. If you guess correctly within three attempts, you win; if you \
+fail to guess correctly within three tries, you lose.')
+print ('Good luck! Here we go!')
+print ()
+
+# ask for three guesses, tell whether each guess is wrong/correct/distance
+# from the battleship
+first_guess = int(input('First shot: '))
+if first_guess != ship:
+    print ('Sorry you have missed the battleship.')
+    if first_guess == ship-1 or first_guess == ship+1:
+        print ('Your shot was right next to the ship.')
+    else:
+        dist = int(abs(first_guess - ship))
+        print ('Your shot was', dist, 'positions away from the ship.')
+    num_list[first_guess] = '-'
+    print ('Here is the list updated after your first guess: \n', num_list)
+    second_guess = int(input('Second shot: '))
+    if second_guess != ship:
+        print ('Sorry you have missed the battleship.')
+        if second_guess == ship-1 or second_guess == ship+1:
+            print ('Your shot was right next to the ship.')
+        else:
+            dist = int(abs(second_guess - ship))
+            print ('Your shot was', dist, 'positions away from the ship.')
+        num_list[second_guess] = '-'
+        print ('Here is the list updated after your second guess: \n', num_list)
+        third_guess = int(input('Now is your last shot: '))
+        if third_guess != ship:
+            print ('Sorry you have missed the battleship.')
+            if third_guess == ship-1 or third_guess == ship+1:
+                print ('Your shot was right next to the ship.')
+            else:
+                dist = int(abs(third_guess - ship))
+                print ('Your shot was', dist, 'positions away from the ship.')
+            num_list[third_guess] = '-'
+            print ('Here is the list updated after your third guess: \n', num_list)
+            print ()
+            print ('This is the actual content of the position list. The \
+battleship is represented by the X, which is position', ship, 'in the list: \n', \
+                   positions)
+            print ()
+            print ('You lose. Game over.')
+        else:
+            print ('You have sunk the ship.')
+            print ()
+            print ('This is the actual content of the position list. The \
+battleship is represented by the X, which is position', ship, 'in the list: \n', \
+                   positions)
+            print ()
+            print ('Congratulations! You win!')
+    else:
+        print ('You have sunk the ship.')
+        print ()
+        print ('This is the actual content of the position list. The \
+battleship is represented by the X, which is position', ship, 'in the list: \n', \
+               positions)
+        print ()
+        print ('Congratulations! You win!')
+else:
+    print ('You have sunk the ship.')
+    print ()
+    print ('This is the actual content of the position list. The \
+battleship is represented by the X, which is position', ship, 'in the list: \n', \
+           positions)
+    print ()
+    print ('Congratulations! You win!')
+
+

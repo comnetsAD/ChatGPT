@@ -1,0 +1,3 @@
+Host name or otherwise called domain name is utilised when a web client sends an HTTP request to a host, Host names are used rather than IP address as they are easier to be remembered. However, host names are mapped to IP addresses, but a host name and an IP address do not have a one-to-one relationship as services in the name of one host can be provided by many servers, which have different IP addresses.
+
+

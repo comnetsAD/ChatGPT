@@ -1,0 +1,99 @@
+
+import random
+import os
+import time
+
+def shuffle_board(board):
+    # Initialize the list of alphabets
+    alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"]
+    random.shuffle(alphabets)
+
+    # Populate the board with the alphabets
+    k = 0
+    for i in range(5):
+        for j in range(8):
+            board[(i, j)] = alphabets[k]
+            k += 1
+
+    # Shuffle the board
+    keys = list(board.keys())
+    random.shuffle(keys)
+    shuffled_board = {}
+    for key in keys:
+        shuffled_board[key] = board[key]
+    return shuffled_board
+
+def main():
+    # Initialize the board
+    board = {}
+
+    # Shuffle the board
+    board = shuffle_board(board)
+
+    # Initialize the scores
+    scores = [0, 0]
+
+    # Main game loop
+    while True:
+        # Clear the screen
+        # os.system("cls" if os.name == "nt" else "clear")
+
+        # Print the board
+        print("Player 1:", scores[0])
+        print("Player 2:", scores[1])
+        print()
+        for i in range(5):
+            for j in range(8):
+                print(board[(i, j)] if (i, j) in board else "-", end=" ")
+            print()
+        print()
+
+        # Get the positions from the player
+        pos1 = input("Enter the first position (e.g. 0 1): ")
+        pos2 = input("Enter the second position (e.g. 0 1): ")
+
+        # Split the positions into separate indices
+        pos1 = pos1.split()
+        pos2 = pos2.split()
+        pos1 = (int(pos1[0]), int(pos1[1]))
+        pos2 = (int(pos2[0]), int(pos2[1]))
+
+        # Check if the positions match
+        if board[pos1] == board[pos2]:
+            # Increment the score of the current player
+            scores[0 if scores[1] == 0 else 1] += 1
+
+            # Remove the matching values from the board
+            del board[pos1]
+            del board[pos2]
+        else:
+            # Switch players
+            scores[1] = 0
+            scores[0] = 1
+
+        # Pause before clearing the screen
+        time.sleep(1)
+
+        # Check if the game is over
+        if len(board) == 0:
+            break
+
+    # Clear the screen
+    # os.system("cls" if os.name == "nt" else "clear")
+
+    # Print the final scores
+    print("Player 1:", scores[0])
+    print("Player 2:", scores[1])
+
+    # Print the winner
+    if scores[0] > scores[1]:
+        print ("Player 1 won!")
+    elif scores[0] < scores[1]:
+        print ("Player 2 won!")
+    else:
+        print ("Its a tie!")
+   
+main()
+
+
+

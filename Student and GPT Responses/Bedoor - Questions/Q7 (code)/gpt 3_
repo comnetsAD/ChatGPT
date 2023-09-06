@@ -1,0 +1,29 @@
+# importing counter
+from collections import Counter
+
+# initializing a list
+lang_list = ['Python', 'C++', 'C', 'Java', 'Python', 'C', 'Python', 'C++', 'Python', 'C']
+
+# using counter to count and print the counts of each item in the list
+counts_dict = Counter(lang_list)
+print(counts_dict)`
+Your task is to write a function least_common(input_str,n) that takes in a string of characters called input_str and an integer called n, and returns the n least common elements.
+For example, if the input string is "hello world! ok bye" and n is 8 then the function should return:
+('h', 1), ('w', 1), ('r', 1), ('d', 1), ('!', 1), ('k', 1), ('b', 1), ('y', 1)
+Note: The order of the elements in the output list does not matter
+
+
+from collections import Counter
+
+def least_common(input_str, n):
+    # Count the frequency of each character in the input string
+    counts = Counter(input_str)
+    # Sort the counts by their value (least common first)
+    sorted_counts = sorted(counts.items(), key=lambda x: x[1])
+    # Return the first n items (the n least common elements)
+    return sorted_counts[:n]
+
+input_str = "hello world! ok bye"
+n = 8
+print(least_common(input_str, n))
+

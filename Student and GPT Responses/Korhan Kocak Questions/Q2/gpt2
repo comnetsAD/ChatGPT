@@ -1,0 +1,10 @@
+This situation can be formulated as a normal form game, with the players being the 𝑛 individuals, the strategies being "contribute" or "don't contribute", and the payoffs being as described in the problem. The game can be represented in a matrix, where the rows represent the strategies of player 1, the columns represent the strategies of player 2, and so on.
+The payoff matrix for this game is a 𝑛 x 𝑛 matrix, with each cell representing the payoff for a given combination of strategies. The payoffs for each player are as follows:
+    If the public good is not provided (i.e., less than 𝑘 people contribute), each player gets a payoff of 0 regardless of whether they contributed or not.
+    If the public good is provided (i.e., at least 𝑘 people contribute), each player gets a payoff of 2 if they did not contribute, and a payoff of 1 if they contributed.
+We can find the pure strategy Nash equilibria for this game by looking for the strategies where no player can improve their payoff by switching to a different strategy, assuming that all other players keep their strategies unchanged.
+There are two pure strategy Nash equilibria in this game:
+    If 𝑛 < 𝑘, no one will contribute and the public good will not be provided. All players will get a payoff of 0, this is a Nash equilibrium.
+    If 𝑛 ≥ 𝑘, all players will contribute, 𝑘 or more players will contribute and the public good will be provided. All players will get a payoff of 1, this is also a Nash equilibrium.
+It is worth noting that this game is not a standard one and there might be multiple equilibria depending on the value of 𝑘, the threshold number of contributors to provide the public good.
+

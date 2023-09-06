@@ -1,0 +1,9 @@
+Result is a 4x4 matrix, with the two-dimensional even parity in bold.
+
+1 1 1 0 1
+0 1 1 0 0
+1 0 0 1 0
+1 1 0 1 1
+1 1 0 0 0
+
+

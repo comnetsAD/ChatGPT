@@ -1,0 +1,3 @@
+Dynamic size: Linked lists can grow and shrink in size as needed, while arrays have a fixed size once they are created. This makes linked lists more useful in cases where the amount of data being stored is not known in advance or is subject to change.
+
+Ease of insertion and deletion: In a linked list, adding or removing an element is a simple matter of updating a few pointers, while in an array it often requires shifting all the elements after the insertion or deletion point. This makes linked lists more efficient for cases where there will be a lot of insertions or deletions.

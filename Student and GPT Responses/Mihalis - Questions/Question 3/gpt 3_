@@ -1,0 +1,14 @@
+
+When the host initiates a connection with the website "," the communication request travels from the client (host) to the server (website) in the following steps:
+The host sends a DNS request to the DNS IP address of 8.8.8.8, asking for the IP address associated with the host name "."
+The DNS server returns the IP address associated with the host name, which the host uses to initiate a connection with the website.
+The host sends an ARP request to the router, asking for the MAC address associated with the router's IP address "135.168.1.1."
+The router sends an ARP reply with its MAC address, allowing the host to establish a connection with it.
+The host sends an IP packet to the router, containing the destination IP address of the website "."
+The router forwards the IP packet to the website based on the destination IP address.
+During this operation, the following port numbers are used:
+The host uses port number 53 for the DNS request and DNS response.
+The host uses port number 0 for the ARP request and ARP response.
+The host uses the transport-layer protocol, such as TCP or UDP, to establish a connection with the website. The ports numbers will be defined by the protocol that is used. For example, if the host uses HTTP(S) protocol, the host will use port 80 for HTTP and 443 for HTTPS.
+In summary, the communication request travels from the client to the server by passing through the host, router, and DNS server. The host uses port number 53 for the DNS request and response, port number 0 for the ARP request and response, and the transport-layer protocol to establish a connection with the website. The transport-layer protocol will use the appropriate port number to communicate with the server.
+

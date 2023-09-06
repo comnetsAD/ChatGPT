@@ -1,0 +1,17 @@
+A pure strategy Nash equilibrium is a set of strategies, one for each player, such that no player can improve their outcome by unilaterally changing their strategy while the other players keep theirs fixed. A mixed strategy Nash equilibrium is a probability distribution over pure strategies for each player, such that no player can improve their expected outcome by changing their probability distribution while the other players keep theirs fixed.
+In this game, player 1 has three pure strategies U, M, and D, and player 2 has three pure strategies L, C, and R.
+First, we will consider the pure strategy Nash equilibria.
+If player 1 chooses U, player 2 has no strategy that guarantees a higher payoff than L, so (U, L) is a pure strategy Nash equilibrium.
+If player 1 chooses M, player 2 has no strategy that guarantees a higher payoff than C, so (M, C) is a pure strategy Nash equilibrium.
+If player 1 chooses D, player 2 has no strategy that guarantees a higher payoff than R, so (D, R) is a pure strategy Nash equilibrium.
+Now, we will consider the mixed strategy Nash equilibrium.
+Player 1 can assign probabilities p, q, and r to strategy U, M, and D respectively, and player 2 can assign probabilities x, y, and z to strategy L, C, and R respectively.
+Player 1's expected payoff from strategy U is p + (1-p-q-r), from strategy M is -2q -2(1-p-q-r) and from strategy D is -2r -2(1-p-q-r)
+Player 2's expected payoff from strategy L is p + x(-2) + y(-2) + z(-2), from strategy C is -2p + x + y(-1) + z(-1) and from strategy R is -2p -2q + x(-2) + y + z(-1)
+For player 1 to have a best response, we need to have:
+p + (1-p-q-r) >= -2q -2(1-p-q-r) >= -2r -2(1-p-q-r)
+For player 2 to have a best response, we need to have:
+p + x(-2) + y(-2) + z(-2) >= -2p + x + y(-1) + z(-1) >= -2p -2q + x(-2) + y + z(-1)
+Solving these inequalities and the constraints p+q+r=1 and x+y+z =1, we can find that the mixed strategy Nash equilibrium is (p,q,r) = (1/3,1/3,1/3) and (x,y,z) = (1/3,1/3,1/3)
+In summary, the game has three pure strategy Nash equilibria (U, L), (M, C) and (D, R) and one mixed strategy Nash equilibrium (p,q,r) = (1/3,1/3,1/3) and (x,y,z) = (1/3,1/3,1/3) where player 1 chooses U, M, D with probability 1/3 each and player 2 chooses L, C, R with probability 1/3 each.
+

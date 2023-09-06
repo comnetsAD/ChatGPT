@@ -1,0 +1,43 @@
+convert = function(value, unit, unit_to_convert){
+  if(unit == "pound" && unit_to_convert == "kg"){
+    kilograms = value * 0.454
+    return(kilograms)
+  }else if(unit == "pound" && unit_to_convert == "stone"){
+    stone = value/14
+    return(stone)
+  }else if(unit == "pound" && unit_to_convert == "Batman"){
+    Batman = value/16.97
+    return(Batman)
+  }else if(unit == "kg" && unit_to_convert == "pound"){
+    pounds = value / 0.454
+    return(pounds)
+  }else if(unit == "kg" && unit_to_convert == "stone"){
+    stone = value / 6.35
+    return(pounds)
+  }else if(unit == "kg" && unit_to_convert == "Batman"){
+    batman = value / 7.698
+    return(pounds)
+  }else if(unit == "stone" && unit_to_convert == "kg"){
+    kilograms = value * 6.35
+    return(pounds)
+  }else if(unit == "stone" && unit_to_convert == "pound"){
+    pounds = value * 14
+    return(pounds)
+  }else if(unit == "stone" && unit_to_convert == "Batman"){
+    batman = value / 0.829
+    return(pounds)
+  }else if(unit == "Batman" && unit_to_convert == "kg"){
+    kilograms = value * 7.698
+    return(pounds)
+  }else if(unit == "Batman" && unit_to_convert == "pound"){
+    pounds = value * 16.97
+    return(pounds)
+  }else if(unit == "Batman" && unit_to_convert == "stone"){
+    stone = value * 0.829
+    return(pounds)
+  }else{
+    print("You made a mistake in input")
+  }
+}
+
+

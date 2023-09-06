@@ -1,0 +1,1 @@
+True. The large O notation definition proves this. If there are positive constants c and n0 such that for every n < n0, f(n) = cg, then f(n) is O(g(n)) (n). We may express this as f(n) < cg(n) + d for all n < n0, where n0 is the point at which the inequality holds for every n. Let 2f(n) = f(n) + f(n) = 2cg(n) + 2d. Since 2f(n) = 2cg(n) + 2d for any n < n0, 2f(n) is O(2g(n)). 

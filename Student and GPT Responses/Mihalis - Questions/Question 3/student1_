@@ -1,0 +1,23 @@
+The ARP is a component of the next layer – the internetwork layer. This is where the IP addresses play
+the most important role, and where the data travels in packets from one address to the next. IP addresses
+are very efficient aids to transportation. While the host name shows the user-readable version of the
+device’s name, the host IP address gives information on the location to which the data must be routed.
+The succeeding layer is the transport layer that serves as an assurance of an effective transportation
+system. The protocols that come into play here include TCP and UDP, where the former ensures quality
+of the data and the latter ensures that the data gets delivered in real time, although at the slight expense
+of high quality. The topmost layer is the Application layer which sends the host device data on the
+webpage, email, etc that needs to be accessed. A significant Application layer protocol is the Hypertext
+Transfer Protocol (HTTP). It is the foundation of the World Wide Web. In this example, too, HTTP
+plays an important role in accessing www.cyberwarfarenyuad.com.
+In the example, the process begins with the user entering the Uniform Resource Locator (URL) on the
+browser from the host device. The URL is a human-readable address that needs to be translated into a
+machine-readable IP address so that the webpage can be accessed. The browser retrieves the required
+IP address from the Domain Name System (DNS). In this case, the DNS’s IP address is 8.8.8.8, which
+corresponds to Google’s DNS (implying that the browser being used is Google). Every application that
+uses the Internet to operate receives a port number that facilitates communication. Since the HTTP
+protocol is used in this case, the port number is 80, and the web server expects to receive requests from
+the client via this port. The browser makes a TCP connection to www.cyberwarfarenyuad.com’s IP
+address via port number 80 and communicates information on itself, the requested data and more. This
+information is sent via the router that adds its public IP address to the request and sends it as a data
+packet to the server.
+

@@ -1,0 +1,16 @@
+
+Pure Nash equilibria are U, R and D, L
+
+Player 1
+2p + 2(1 - p) ≥ 6p + 0(1 - p)
+2p + 2 - 2p ≥ 6p
+2/6  ≥ p
+Mixed strategy at (2/6, 4/6)
+
+Player 2
+2q + 4(1 - q) ≥ 4q + 1(1 - q)
+2q + 4 - 4q ≥ 4q + 1 - q
+4 - 2q ≥ 3q + 1
+q ≥ ⅗
+Mixed strategy at (⅗, ⅖)
+

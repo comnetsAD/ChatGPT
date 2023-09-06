@@ -1,0 +1,8 @@
+
+
+The output of the following code snippet: 'a' < 'f' ? true : false; is 'true'
+
+This is because the code is using the ternary operator '?' to check the result of the comparison 'a' < 'f'. 'a' is less than 'f' in ASCII table, the comparison returns true, so the value following the '?' (true) is returned.
+If the comparison was 'f' < 'a', the output would be 'false'
+The ternary operator checks the first condition and if it returns true, it returns the value after the '?' otherwise it returns the value after ':'
+

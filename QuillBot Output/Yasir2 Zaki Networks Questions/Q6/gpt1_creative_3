@@ -1,0 +1,1 @@
+A single ACK field, identifying the data packet's sequence number, is included in the ACK packets. 

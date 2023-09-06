@@ -1,0 +1,14 @@
+
+To solve this problem, we will use Bayes' Theorem. Bayes' Theorem states that:
+P(A|B) = (P(B|A) * P(A)) / P(B)
+Where P(A|B) is the probability of event A occurring given that event B has occurred, P(B|A) is the probability of event B occurring given that event A has occurred, P(A) is the probability of event A occurring, and P(B) is the probability of event B occurring.
+In this case, we can let event A be "the urn with 6 red balls was chosen", and event B be "a red ball was drawn". Therefore, we want to find P(A|B).
+We are given that P(B|A) = 6/9 (the probability of drawing a red ball from the urn with 6 red balls), P(A) = 1/2 (the probability of choosing the urn with 6 red balls), and P(B) = 11/20 (the probability of drawing a red ball from either urn).
+Plugging these values into Bayes' Theorem, we get:
+P(A|B) = (6/9 * 1/2) / (11/20) = 12/22 = 2/11
+Therefore, the probability that the urn with 6 red balls was chosen given that a red ball was drawn is 2/11.
+
+
+
+
+

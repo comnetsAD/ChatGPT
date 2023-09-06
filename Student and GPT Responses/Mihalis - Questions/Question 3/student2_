@@ -1,0 +1,2 @@
+Port 443 as it is the port assigned to commonly used internet communication protocol, HTTPS, or port 80 if the website was not secured (HTTP). It is the default network port used to send and receive unencrypted web pages. This port number is given after the IP address so that the server can identify which service or program the client wants to use.
+

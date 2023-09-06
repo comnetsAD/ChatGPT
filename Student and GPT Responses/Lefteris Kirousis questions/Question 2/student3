@@ -1,0 +1,2 @@
+False. Let f(n) = 4, and g(n) = 1 for some integer n >= 0, so f(n) is O(g(n)) since f(n) <= 4 * g(n). Then log f(n) = 2, but log g(n) = 0. There is no constant c > 0 such that log f(n) <= c * log g(n), so log f(n) is always not O(log g(n)) even if f(n) is O(g(n)).
+

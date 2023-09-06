@@ -1,0 +1,8 @@
+
+For the first position in the code there are 10 possibilities. For the second position there are 26 possibilities as there are 26 possibles in the alphabet. The third position has 9 possibilities, this is because there are 10 possible digits including 0, but one has already been chosen, and the two digits in the code must be distinct. Therefore there are 10 ∗ 26 ∗ 9 = 2340 different code occurrences. Now we can use the pigeonhole principle to find the minimum number of repeated numbers. We do this by calculating the ceiling,
+⌈( 6000/2340 )⌉ = 3.
+
+
+
+
+

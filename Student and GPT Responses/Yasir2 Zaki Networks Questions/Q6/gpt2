@@ -1,0 +1,9 @@
+In protocol rdt3.0, the ACK packets do not require sequence numbers because they are used only to acknowledge the receipt of a packet, and not to transmit data.
+
+In a protocol like rdt3.0, the sender transmits data packets to the receiver with sequence numbers, and the receiver sends ACK packets back to the sender to acknowledge the receipt of the data packets. The ACK packets do not contain any data themselves, so there is no need for them to have sequence numbers.
+
+Instead, the ACK packets contain an ACK field that contains the sequence number of the data packet that the ACK is acknowledging. This allows the sender to determine which data packets have been received by the receiver and which have not.
+
+Because the ACK packets do not contain any data and are only used to acknowledge the receipt of data packets, they do not need to have sequence numbers. This simplifies the protocol and reduces the overhead of transmitting ACK packets.
+
+

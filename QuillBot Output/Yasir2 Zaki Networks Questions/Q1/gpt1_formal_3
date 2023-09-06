@@ -1,0 +1,1 @@
+Calculate the CRC value for the supplied generator G and data D by doing a long division on D by G. In this instance, the division would be: 1 0 1 0 1 0 1 0 1 0\s1 0 0 1 1 1 0 0 1 1\s1 0 0 1 1 0 0 0 1 1 This division's residual is 011, which is the value of the CRC. 

@@ -1,0 +1,3 @@
+
+The total number of choices available to pick digits less than 100 = 99. Now, we know that only (11,22,33...99) do not have distinct values. The number of these values = 9. Thus, the probability that a positive integer less than 100 picked at random has all distinct digits = 90/99 =10/11
+

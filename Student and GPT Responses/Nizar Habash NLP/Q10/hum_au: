@@ -1,0 +1,3 @@
+
+For this, I have no budget, so I’ll have to rely on entire systems. First, I will treat queries like documents. Before sending through IR, I will use Google translate to translate queries to English. Then, I will treat them like documents, which will be sorted by similarity in the IR system. I will also cutoff i.e. I will consider top sub-set of documents since I won’t have much time. For summarization, I will start with a baseline, take one sentence, translate, send to system. I will do cut-offs for content selection, keep document order the way it is, and then I will simplify the sentences when I get results. I will use my system to translate the output. I will also compute cosine similarity to check my improvements on the similarity of the languages.
+

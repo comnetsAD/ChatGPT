@@ -1,2 +1,5 @@
-# ChatGPT
-The paper is currently under review. The data will be uploaded upon acceptance of the paper.
+`Student and GPT Responses\` contains the answers given by students and ChatGPT for each questions. There are 10 questions associated with each course, and for each question, there are three answers provided by students and three answers provided by ChatGPT. File name indicates whether the content therein are given by students or ChatGPT.
+
+`QuillBot Responses\` contains the paraphrased version of ChatGPT answers, organized in the same way as in `Archive\`. File names contain the index of the answer (1, 2, or 3), the mode of paraphrasing (creative, expand, formal, etc.), and the strength of paraphrasing. For our experiments, all strength are set to the highest strength level, 3. 
+
+`Grades_and_Taxonomy.csv` contains the grades received by each of the student and GPT responses from all three graders, as well as where the question falls on the Anderson and Krathwohl taxonomy. 

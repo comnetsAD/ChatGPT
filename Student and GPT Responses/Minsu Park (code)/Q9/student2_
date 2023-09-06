@@ -1,0 +1,4 @@
+ten_nachos = make_array('neither', 'cheese', 'both', 'both', 'cheese', 'salsa', 'both', 'neither', 'cheese', 'both')
+number_cheese = np.count_nonzero(ten_nachos=='cheese')
+number_cheese
+

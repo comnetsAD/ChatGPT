@@ -1,0 +1,69 @@
+#include <stdio.h>
+
+int main()
+{
+    //variables for the program
+    int arr[15];
+    int i,j;
+    int h,a;
+    int unique[15];
+    int input;
+    int count=0;
+
+    printf("In this program, I only considered the array with the size of 15 since that is stated in the description.\n");
+    //for loop to enter the 15 elements
+    for (i=0;i<15;i++)
+    {
+        printf("Enter array elements: \n");
+        scanf("%d", &input);
+        arr[i]=input;
+ 
+        //nested for loop to check for the same numbers
+        for (h=0;h<i;h++)
+        {   
+            if (arr[h]==arr[i])
+            {
+                break;
+            }
+        }
+        if (i==h)
+        {
+            unique[count]=arr[i];
+            count++;
+        }
+    }
+    //print input array
+    printf("Your input array: ");
+    printf("[");
+    for (j=0;j<15;j++)
+    {
+        if (j==14)
+        {
+           printf("%d", arr[j]);
+        }
+        else
+        {
+            printf("%d,", arr[j]);
+
+        }
+    }
+    
+    //print output array
+    printf("]");
+    printf("\nYour output array:");
+    printf("[");
+    for (a=0;a<count;a++)
+    {
+        if (a==count-1)
+        {
+            printf("%d", unique[a]);
+
+        }
+        else{
+            printf("%d,", unique[a]);
+        }
+    }
+    printf("]");
+    return 0;
+}
+

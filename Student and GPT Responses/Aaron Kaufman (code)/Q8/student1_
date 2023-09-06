@@ -1,0 +1,22 @@
+income <- dagitty("dag{
+                  Education -> Income
+                  FamilyWealth -> Education
+                  Country -> Education
+                  Country -> Income
+                  FamilyWealth -> Income
+                  Resource -> Income
+                  Education -> Resource
+                  FamilyWealth -> Resource
+                  Country -> Resource
+                  Profession -> Income
+                  
+}")
+coordinates(income) = list(x = c(FamilyWealth=0, Profession=2, Education = 0,
+                                 Income=2, Country = 0, Resource = 2),
+                           y = c(FamilyWealth=0, Profession=0, Education = 2, 
+                                 Income=2, Country = 4, Resource = 4))
+plot(income)
+The causal relationship between education level and income is insolid as it does not consider the confounding variables. For examples, family wealth and country might affect the education one receives: The higher the family income, the more developed the country, the higher the education. Family wealth and country can also influence the income directly, or they would lead to better resources, including, job opportunity, networking, and pre-career experiences, etc., which can lead to a higher income. Factor other than income, like the profession chose, can also affect the income.
+
+
+

@@ -1,0 +1,39 @@
+    *
+   ***
+  *****    
+ *******   
+********* 
+ *******
+  *****
+   *** 
+    *
+
+
+# Get the height of the pattern (must be an odd number)
+height = 9
+
+# Calculate the width of the pattern
+width = height
+
+# Initialize the pattern list
+pattern = []
+
+# Create the pattern
+for i in range(height):
+    # Calculate the number of stars for this row
+    num_stars = 2 * abs(height // 2 - i) + 1
+
+    # Calculate the number of spaces before the first star
+    num_spaces_before = (width - num_stars) // 2
+
+    # Calculate the number of spaces after the last star
+    num_spaces_after = width - num_stars - num_spaces_before
+
+    # Add the row to the pattern
+    pattern.append(" " * num_spaces_before + "*" * num_stars + " " * num_spaces_after)
+
+# Print the pattern
+for row in pattern:
+    print(row)
+
+

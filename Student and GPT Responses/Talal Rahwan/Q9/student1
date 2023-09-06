@@ -1,0 +1,1 @@
+We can insert elements much easily whenever we want, and don’t have to shift the entire array to create space to add something. Similarly, deleting is also much more efficient since in an array that would also require shifting a lot of elements.

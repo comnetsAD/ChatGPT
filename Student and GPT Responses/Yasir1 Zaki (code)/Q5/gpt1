@@ -1,0 +1,47 @@
+import random
+
+# create a 1-D list of positions, initialized with "O"
+positions = ["O"] * 10
+
+# randomly choose a position for the battleship
+battleship_position = random.randint(0, 9)
+
+# fill the battleship position with an "X"
+positions[battleship_position] = "X"
+
+# print the initial representation of the 1-D list
+print(" ".join(str(i) for i in range(10)))
+
+# give the user three tries to guess the battleship position
+for i in range(3):
+    # prompt the user to enter a guess
+    guess = int(input("Enter a position to attack (0-9): "))
+
+    # check if the guess is correct
+    if guess == battleship_position:
+        # print a congratulations message and the actual list content
+        print("Congratulations! You have sunk the battleship.")
+        print(positions)
+        break
+    else:
+        # print a message indicating that the guess was a miss
+        print("Sorry, you have missed the battleship.")
+
+        # check if the guess was right next to the battleship
+        if abs(guess - battleship_position) == 1:
+            print("Your shot was right next to a ship.")
+
+        # check how far the guess was from the battleship
+        distance = abs(guess - battleship_position)
+        print("Your shot was {} units away from a ship.".format(distance))
+
+        # remove the missed position from the representation of the list
+        positions[guess] = "-"
+        # print the updated representation of the list
+        print(" ".join(str(i) for i in range(10)))
+
+# if the user has used all their tries without guessing correctly, print a message indicating that the game is over
+if i == 2:
+    print("Game over. The battleship was at position {}.".format(battleship_position))
+
+

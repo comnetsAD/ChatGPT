@@ -1,0 +1,2 @@
+Since G is 5 bits long, r = 4. Therefore we append 4 zeros to the right hand side of D to get D = 10101010100000. Computing the EXOR based long division gives a remainder value of 0100.
+

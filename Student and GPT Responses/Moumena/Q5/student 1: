@@ -1,0 +1,6 @@
+
+We can disprove by a counterexample:
+We can take the sets, such that A = {6, 7, 8}, B = {8, 9, 10}, C = {10, 11, 12}
+From this we can derive: A − (B ∩ C) = {6, 7, 8} whilst (A − B) ∩ (A − C) = {6, 7}
+Therefore A − (B ∩ C) ̸= (A − B) ∩ (A − C)
+

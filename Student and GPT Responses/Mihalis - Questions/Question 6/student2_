@@ -1,0 +1,178 @@
+A. Motivation behind DDOS Attacks
+DDoS (Distributed Denial of Service) attacks are used by
+attackers for many reasons like:
+
+Financial gain or economic benefit: Hackers use
+DDoS attacks as financial weapons, demanding
+Bitcoin through email to stop the attack.
+
+Revenge: DDoS attacks on organizations or
+individuals where the dissatisfied individual or
+organization behind the attack usually intends to
+inflict harm in retaliation for a perceived violation.
+
+
+Ideological belief: hacktivist groups like anonymous
+attack political targets for ideological reasons, such
+as opposition to a nation-state or government
+policies, or they do not accept their ethics or do not
+perceive their actions as ethical.
+
+B. Delievery mothod / How DDOS attacks work
+DDoS attacks occur in three stages:
+
+In the first phase, Hackers get access to network-
+connected computers. Hackers scan the internet for
+computers or Internet of Things devices that can be
+compromised using an automated process.
+
+The second phase starts when sufficient numbers of
+computers are compromised, and these machines are
+called Botnets. Instructions are then sent to these
+botnets to launch an attack on a specific network or
+organization.
+
+Finally, Hackers direct the army of botnets to attack
+a virtual machine that causes the machine to slow
+down or may even crash the server. As these attacks
+are distributed from many locations, the victim’s
+system cannot identify where the attack is initiated
+and cannot block the incoming traffic. Moreover, IP
+addresses of compromised devices sending requests
+to the server can be spoofed, which prevents the
+victim from filtering malicious traffic to find the
+attack source.
+
+DDoS attacks in general are classified into 3 main categories:
+volumetric attack, protocol attack, and resource layer attack.
+
+Volumetric attacks are the most common form of
+DDoS attacks where the network layer is
+overwhelmed with service requests that may appear
+legitimate. DNS amplification is an example of a
+volumetric attack where the attacker exploits
+vulnerabilities in Domain naming system servers to
+amplify small requests to much larger payloads,
+which brings down the victim’s servers.
+
+By exploiting vulnerabilities in the layer three and
+layer four protocol stack, a protocol attack causes a
+service disruption. SYN flood is a good example
+where an attacker initiates many connections to the
+server without finalizing them, and the server has to
+spend much of its resources waiting for unfinalized
+open connections to be finalized which causes the
+server to be unresponsive to legitimate attacks
+
+A resource layer attack interrupts data transmission
+between hosts by targeting web application packets.
+Examples of such attacks include SQL injection and
+layer seven attacks.
+
+C. Impact of the DDoS on victims
+In a DDoS attack, many requests are sent to a server
+overwhelmingly, forcing that site or resource to go offline
+or reject legitimate requests. Attacks usually target
+businesses, and in the event of a successful attack,
+businesses are affected in many ways, including making
+network resources inaccessible to employees of the
+organization, which leads to downtime that prevents
+customers from receiving required assistance as they are
+unable to reach specialized professionals. Moreover, if a
+web server hosts an e-commerce site, no customer would
+be able to make purchases, costing the business valuable
+clients and significantly impacting the business’s
+reputation. A study by Kaspersky Lab showed that one in
+five attacks could last for days or weeks. This shows how
+big a threat DDoS attacks can be to businesses, as they
+can lose up to $20,000 per hour.
+
+D. DDoS attacks over time
+According to Cisco in a white paper released as part of the
+company’s more extensive report, “Visual Networking Index
+Complete Forecast Update, 2015-2020.” The frequency
+of DDoS attacks has increased over 2.5 times in the last 3
+years (2017 – 2020) where the average size of each attack is
+at a constant increase and approaching 1 Gbps; however, this
+is outdated as recent research shows that the average attack
+in the 3rd quarter of 2021 used 4.31Gbps of data which is
+enough to bring down most small to medium-sized websites.
+However, this number is much lower than the Q1 2021 metric
+of 9.15 Gbps. However, nothing compared to the most
+prominent attack launched by the Mirai botnet variant that
+peaked at 2.5 Tbps (terabytes per second) according to
+Cloudflare, which described it as the most significant attack
+in terms of bitrate.
+DDoS attacks have been increasing exponentially over the
+past few years, and especially during the pandemic that
+everyone online in Q2 2022, a significant and long-lasting
+spike was witnessed in the number of attacks. Since we are
+still using the internet at the same capacity, the net number of
+attacks is expected to keep increasing.
+
+Cisco predicts that in 2023 the number the total number
+of DDoS attacks will cross 15 million. DDoS attacks are
+not just increasing alone, malicious actors are creating an
+even bigger army of botnets, increasing the scale of DDoS
+attacks. Attacks of 1 Gbps can knock down an
+organization’s servers, but now attacks can reach up to
+1Tbps generated by millions of infected devices.
+As attacks are generated more often with a massive
+increase in size, Business losses are increasing
+exponentially. Furthermore, since IT services downtime
+costs organizations between $300,000 to over $1,000,000
+per hour, you can see the impact caused by an attack even
+for a short period. Since there are ineffective solutions to
+eliminate DDoS attacks, we do not expect to see a decline
+in the number of attacks soon.
+
+E. How to prevent a DDoS attack:
+One of the most effective ways to reduce the chances of
+getting attacked is by creating a Denial of Service
+Response Plan. This would take some time to plan as it
+depends on the complexity of the organizational
+infrastructure. Another method is by using firewalls;
+however, as some attacks target firewalls, it is suggested
+to put data centers on multiple networks that are not in the
+same geographical region and install servers in different
+data centers and ensure there is no place where traffic
+bottlenecks in the network. DDoS attacks are not new to
+the cyber world, and many widespread DDoS attacks are
+similar. Using anti-DDoS software or hardware would
+help prevent these common types of attacks increasing the
+network’s security. Another way is by knowing your
+network’s traffic. For example, if an organization
+provides services only for a particular region or country,
+significant traffic is not expected from other countries.
+Hence if an attack is made from a different country, it
+would be easily identified and blocked immediately
+instead of overwhelming the server and rejecting
+legitimate requests .
+
+F. Example of DDoS attacks
+The Mirai Botnet: Mirai malware first scanned IP
+addresses of devices connected to the internet and
+identified IoT devices that run a version of Linux called
+ARC. The malware exploits its security vulnerabilities to
+gain network access using default passwords. If the
+owner/user has not changed the default password, this
+intelligent device is added to the list of botnets on
+standby, waiting for an order to flood a target with
+requests. Over 600,000 devices were infected with Mirai,
+which was used to attack the DNS provider and registrar
+DYN on October 2016.
+
+The GitHub attack in 2018: This attack is particularly
+effective as it uses an amplification factor where the ratio of
+the attacker request size to the amount of traffic generated is
+up to 51,200 times! Even though GitHub is prepared for
+DDoS attacks, its defences were overwhelmed by the
+enormous amount of traffic caused by the amplification .
+GitHub explained in the company’s incident report: “Over the
+past year, we have deployed additional transit to our facilities.
+We have more than doubled our transit capacity during that
+time, which has allowed us to withstand certain volumetric
+attacks without impact to users … Even still, attacks like this
+sometimes require the help of partners with larger transit
+networks to provide blocking and filtering”.
+

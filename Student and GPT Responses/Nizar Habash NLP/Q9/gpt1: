@@ -1,0 +1,8 @@
+To build a machine translation system from Arabic to Finnish with limited resources and time, I would use a transfer learning approach, leveraging pre-trained models and fine-tuning them on the available parallel data.
+Data collection: I would use the Europarl and UN corpus as they are free and contain parallel data for many languages. I would also use any additional parallel data that I can find in order to have more data to fine-tune the model.
+Model selection: I would use the Moses MT system, as it is a popular open-source machine translation toolkit that has been extensively tested and has good performance.
+Fine-tuning: I would fine-tune the pre-trained Moses MT model on the parallel data I collected.
+Evaluation: I would evaluate the performance of the model using standard machine translation evaluation metrics such as BLEU, METEOR, and ROUGE. I would also conduct human evaluation by having native speakers evaluate the translations for fluency and adequacy.
+With the budget, I would consider to get help from professional translators to improve data quality and also to get more evaluation data from native speakers.
+Overall, the success of the model will depend on the quality and quantity of the parallel data available, and the ability to fine-tune the pre-trained model effectively.
+

@@ -1,0 +1,2 @@
+TRUE The multiplicative property states that if there are two real number xand y such that x < y, then for all positive integer c it always holds thatcx < cy. By applying the multiplicative property we can prove that if there are two different path with distances x and y from s to any other node t. And x is the shortest path such that x < y, then 2x < 2y holds because the inequality is being multiplied by 2 which is a positive constant. Therefore we can conclude that the shortest path always remains the same even when the lengths are replaced by 2le.
+

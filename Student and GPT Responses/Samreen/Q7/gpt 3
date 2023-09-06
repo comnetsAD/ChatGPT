@@ -1,0 +1,40 @@
+
+To determine whether Conch Republic should produce the new smartphone, we will need to calculate the net present value (NPV) of the project. The NPV is the difference between the present value of the expected cash flows and the initial investment. If the NPV is positive, the project is considered profitable and should be undertaken.
+
+First, we will calculate the variable costs per unit:
+$210 (variable cost per unit) + $525 (unit price) = $735 (total cost per unit)
+
+Next, we will calculate the total revenue for each year:
+67,000 (Year 1 sales) x $525 (unit price) = $35,175,000
+108,000 (Year 2 sales) x $525 (unit price) = $56,700,000
+93,000 (Year 3 sales) x $525 (unit price) = $48,575,000
+86,000 (Year 4 sales) x $525 (unit price) = $45,150,000
+55,000 (Year 5 sales) x $525 (unit price) = $28,875,000
+
+Then, we will calculate the net working capital for each year:
+20% (NWC) x 67,000 (Year 1 sales) x $525 (unit price) = $2,735,000
+20% (NWC) x 108,000 (Year 2 sales) x $525 (unit price) = $4,560,000
+20% (NWC) x 93,000 (Year 3 sales) x $525 (unit price) = $3,945,000
+20% (NWC) x 86,000 (Year 4 sales) x $525 (unit price) = $3,660,000
+20% (NWC) x 55,000 (Year 5 sales) x $525 (unit price) = $2,325,000
+
+We will also calculate the depreciation for each year:
+$41.5 million (equipment cost) x 0.1429 (MACRS Year 1) = $5,957,850
+$41.5 million (equipment cost) x 0.2449 (MACRS Year 2) = $10,187,550
+$41.5 million (equipment cost) x 0.1749 (MACRS Year 3) = $7,248,650
+$41.5 million (equipment cost) x 0.1249 (MACRS Year 4) = $5,187,250
+$41.5 million (equipment cost) x 0.0893 (MACRS Year 5) = $3,704,850
+
+Now, we can calculate the net income for each year:
+($35,175,000 (Year 1 revenue) - $5,4 million (fixed costs) - $5,957,850 (Year 1 depreciation) - $2,735,000 (Year 1 NWC)) x (1 - 0.22) = $3,647,040
+($56,700,000 (Year 2 revenue) - $5,4 million (fixed costs) - $10,187,550 (Year 2 depreciation) - $4,560,000 (Year 2 NWC)) x (1 - 0.22) = $8,933,640
+($48,575,000 (Year 3 revenue) - $5,4 million (fixed costs) - $7,248,650 (Year 3 depreciation) - $3,945,000 (Year 3 NWC)) x (1 - 0.22) = $7,135,940
+($45,150,000 (Year 4 revenue) - $5,4 million (fixed costs) - $5,187,250 (Year 4 depreciation) - $3,660,000 (Year 4 NWC)) x (1 - 0.22) = $6,298,040
+($28,875,000 (Year 5 revenue) - $5,4 million (fixed costs) - $3,704,850 (Year 5 depreciation) - $2,325,000 (Year 5 NWC)) x (1 - 0.22) = $3,869,140
+
+Finally, we can calculate the NPV using the net income for each year and the required return of 12%:
+NPV = -$1.5 million (development costs) - $250,000 (marketing study) - $41.5 million (equipment costs) + ($3,647,040 / (1+0.12)^1) + ($8,933,640 / (1+0.12)^2) + ($7,135,940 / (1+0.12)^3) + ($6,298,040 / (1+0.12)^4) + ($3,869,140 / (1+0.12)^5) + ($5,9 million (equipment salvage value) / (1+0.12)^5)
+
+If the NPV is positive, Conch Republic should produce the new smartphone. If it is negative, the project is not profitable and should not be undertaken.
+
+		

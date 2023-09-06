@@ -1,0 +1,9 @@
+
+To find all pure strategy Nash equilibrium of the game we need to lay out all the possible outcomes of the election and the voter distribution to understand what are the best strategies. 
+
+While assessing the distribution of the voters, it’s important to remember that m2 < m1 and that, if candidates tie in the electoral college, they each win the election with a ½ probability. 
+
+We can quickly notice that candidate 1 and candidate 2 are always better off focusing on winning the 1st state’s platform/votes. In each combination, whether player 1 or 2 made a tie in the 1st state case and won the state 2, it would still not constitute a NEq. If player 1 or 2 scores less than a tie for state 1, he’s assumed to lose the collegial votes. 
+
+NEq = (140; 40) or (40; 140); (100; 80) or (80; 100); (0; 180) or (180; 0).
+

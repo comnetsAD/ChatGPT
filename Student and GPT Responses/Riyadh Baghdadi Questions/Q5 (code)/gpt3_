@@ -1,0 +1,34 @@
+
+Result = 1 – 1/2 + 1/3 – 1/4 + 1/5 – 1/6 + ……….. + 1/9999 – 1/10000
+
+The addition of operands should be done in two different ways:
+First, the addition should be done from left to right.
+Second, the addition should be done from right to left.
+
+
+#include <stdio.h>
+
+int main() {
+    double result = 0.0;
+    int i;
+    for (i = 1; i <= 10000; i++) {
+        if (i % 2 == 0) {
+            result -= 1.0 / i;
+        } else {
+            result += 1.0 / i;
+        }
+    }
+    printf("Result from left to right: %f\n", result);
+
+    result = 0.0;
+    for (i = 10000; i >= 1; i--) {
+        if (i % 2 == 0) {
+            result -= 1.0 / i;
+        } else {
+            result += 1.0 / i;
+        }
+    }
+    printf("Result from right to left: %f\n", result);
+    return 0;
+}
+

@@ -1,0 +1,7 @@
+
+Proof. p and q are prime numbers larger than 2
+all numbers that are prime bigger than 2 are odd
+therefore p ∗ q + 1 is even and also larger than 2
+Since this is in composite nature as more than 2 numbers (1 and itself) can divide, they are not prime.
+Hence True
+

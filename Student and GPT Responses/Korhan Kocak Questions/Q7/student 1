@@ -1,0 +1,27 @@
+
+BR1(L) = D
+BR1(R) = U
+BR2(U) = L
+BR2(D) = R
+
+No pure strategy NE.
+
+EU1(U) = q + 4 (1 - q) = 4 - 3q
+EU1(D) = q + 2
+
+BR1(q) = 
+U if q < 1/2
+	D if q > 1/2
+	p ∈ [0, 1] if q = 1/2
+	
+
+EU2(L) = 4 p + 2 (1 - p) = 2 p + 2
+EU2(R) = p + 3 (1 - p) = 3 - 2 p
+
+BR2(p) = 
+L if p < 1/4 
+	R if p > 1/4 
+	q ∈ [0, 1] if p = 1/4 
+
+((1/4, 3/4), (1/2, 1/2)) is a mixed strategy NE.
+

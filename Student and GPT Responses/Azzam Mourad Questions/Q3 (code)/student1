@@ -1,0 +1,49 @@
+
+include…..
+define buffer[N];
+Main(){
+Int N;
+//*shared mmap(NULL, type, size, displacement)
+int *shared mmap(NULL, type, size(int)*N, -1,1)
+pid_t child;
+printf("please enter a number: ");
+scanf( *shared[0] );
+Child = fork();
+If (child<0){
+exit(EXIT_Failure);
+}
+Else if (child == 0)
+{
+int current;
+int counter;
+current = *shared;
+// in child
+if (current != 1)
+{
+if (current%2 == 0){
+//is even
+current = current/2
+*shared[counter] = current;
+counter + = 1;
+}
+else{
+//if odd
+current = (3*current) +1; 
+*shared[counter] = current;
+counter + = 1;
+}
+}
+//once the current == 1
+exit(0);
+}
+Else{
+wait(NULLL);
+// in parent
+for (elements in the shared array){
+printf( "%d", element);
+exit(null);
+}
+return 0;
+}
+
+

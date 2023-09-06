@@ -1,0 +1,11 @@
+int i, j, k = 0
+int A[ A1.size() + A2.size() ]
+while( i < A.size )
+{
+    A[ i ] = min( A1[ j ], A2[ k ] );
+    if  min( A1[ j ], A2[ k ] ) == A1[ j ]
+        j++;
+    if  min( A1[ j ], A2[ k ] ) == A2[ k ]
+        k++;
+    i++;
+}

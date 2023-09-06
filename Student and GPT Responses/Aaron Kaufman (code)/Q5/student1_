@@ -1,0 +1,19 @@
+stargazer(lm(zmath8 ~ ses, scores),
+covariate.labels = "Socio-economic status",
+dep.var.caption = "8th grade math score",
+title = "Regreassion Between 8th Grade Math Score and Socio-economic Status")
+
+There is a positive correlation between the math score and socio-economic status.
+math score = −0.03262 + 0.51792 ∗ ses + ε If one’s ses increases by 1, his/her math score
+will increase by 0.518 standard deviation. 16.8% of the data is explained by this regression.
+The P values of coefficient and intercepts are less than 0.01. Thus, the regression is
+significant in 1% significance level.
+Predictions:
+predict(lm(zmath8 ~ ses, scores), data.frame(ses = -2))
+## 1
+## -1.068451
+predict(lm(zmath8 ~ ses, scores), data.frame(ses = 2))
+## 1
+## 1.003214
+
+

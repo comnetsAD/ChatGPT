@@ -1,0 +1,15 @@
+Here is an example implementation of the "add" function for a doubly-linked list class, "DLinkedList", that takes a pointer to a node of type "DNode" and an element of type "int" passed by reference as arguments:
+
+class DLinkedList {
+    //... class definition ...
+    void add(DNode* v, int &e) {
+        DNode* newNode = new DNode; // create a new node
+        newNode->elem = e; // put element "e" in the new node
+        newNode->prev = v->prev; // set the new node's "prev" pointer to the node that "v" points to's "prev" pointer
+        newNode->next = v; // set the new node's "next" pointer to "v"
+        v->prev->next = newNode; // set the node before "v" to point to the new node
+        v->prev = newNode; // set "v" to point to the new node as its previous node
+    }
+};
+
+This function creates a new node, puts element "e" in it, and then inserts the newly-created node just before the node that "v" points to by updating the pointers of the surrounding nodes and the new node.

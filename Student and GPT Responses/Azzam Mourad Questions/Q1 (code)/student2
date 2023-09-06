@@ -1,0 +1,105 @@
+#define READ_END 0
+#define WRITE_END 1
+#define MAX_STRING 100
+int main(void)
+{
+  // variable for pid after forking child
+  // shows whether fork failed,
+  // whether we are in parent or child
+  pid_t child;
+  // pipe 1 for sending string to parent from child
+  int fd1[2];
+  // pipe 2 for reciving isPalindrome from parent in child
+  int fd2[2];
+  // create pipe and check whether pipe failed
+  if (pipe(fd1) < 0)
+    fprintf(stderr, "Pipe 1 failed");
+    // create pipe and check whether pipe failed
+    if (pipe(fd2) < 0)
+      fprintf(stderr, "Pipe 2 failed");
+  // fork the child
+  child = fork();
+  // check whether fork failed
+  if (child < 0)
+  {
+    // exit with exit_failure if fork failed
+    exit(EXIT_FAILURE);
+  }
+  // child process
+  else if (child == 0)
+  {
+    // close read end for writing pipe
+    close(fd1[READ_END]);
+    // close write end for reading pipe
+    close(fd2[WRITE_END]);
+    // loop infinitely
+    // child acts as producer/consumer
+    while (1)
+    {
+      char input_string[MAX_STRING];
+      // get string from user
+      printf("Please enter a string: ");
+      scanf("%s", input_string);
+      // send string to parent
+      write(fd1[WRITE_END], input_string, sizeof(char) * MAX_STRING);
+      // variable for receiving from parent whether string is palindrome
+      int isPalindrome;
+      // read from parents (blocking)
+      read(fd2[READ_END], &isPalindrome, sizeof(int));
+      // print whether string is palindrome after receiving from parent
+      if (isPalindrome)
+      {
+        printf("Child: %s is palindrome.", input_string);
+      }
+      else
+      {
+        printf("Child: %s is not palindrome.", input_string);
+      }
+    }
+    // close read and write end for both pipes
+    close(fd2[READ_END]);
+    close(fd1[WRITE_END]);
+  }
+  // parent process
+  else
+  {
+    // close read end for writing pipe
+    close(fd2[READ_END]);
+    // close write end for reading pipe
+    close(fd1[WRITE_END]);
+    // loop infinitely
+    // parent acts as consumer/producer
+    while (1)
+    {
+      char input_string[MAX_STRING];
+      // read string from child process
+      read(fd1[READ_END], &input_string, sizeof(char) * MAX_STRING);
+      int len;
+      int isPalindrome = -1;
+      // get length of string (increase len till we find \0)
+      for (int i = 0; i < MAX_STRING && input_string[i] != '\0'; i++)
+        len++;
+      // check whether string is palindrome
+      for (int i = 0, j = len - 1; i < len && input_string[i] != input_string[j]; i++, j--)
+      {
+        isPalindrome = 1;
+      }
+      if (isPalindrome)
+      {
+        printf("Parent: %s is palindrome.", input_string);
+      }
+      else
+      {
+        printf("Parent: %s is not palindrome.", input_string);
+      }
+      // write is palindrome to child process
+      write(fd2[WRITE_END], &isPalindrome, sizeof(int));
+    }
+    // close read and write end for both pipes
+    close(fd1[READ_END]);
+    close(fd2[WRITE_END]);
+  }
+  return 0;
+}
+
+

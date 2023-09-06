@@ -1,0 +1,23 @@
+
+There are no dominant strategy nor pure Nash equilibrium in this game.
+
+Let’s try to find a mixed strategy where both players are indifferent to their opponent actions. 
+
+Let player 2 play L with (q) and R with (1 - q); if player 1 best responds with a mixed strategy, player 2 must make him indifferent between playing U or D.
+
+U1(U) = U1(D).
+1(p) + 4 (1 - p) = 3(p) + 2(1 - p).
+p=½ 
+
+(½; ½)
+
+Likewise, player 1 must randomize to make player 2 indifferent. 
+
+U2(L) = U2(R).
+4(q) + 2 (1 - q) = 1(q) + 3(1 - q).
+p=¼ 
+
+(¼; ¾)
+
+The mixed strategy Nash equilibrium is ((½; ½), ¼; ¾)).
+

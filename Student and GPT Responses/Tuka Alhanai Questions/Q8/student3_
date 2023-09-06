@@ -1,0 +1,3 @@
+<sort>: used for sorting through an array and is from the <algorithm> STL library, which when included in the main program allows for such functions as objects from the STL.
+<length> used for calculating and returning the length of a thing and is from the <string> STL, which passes through an entered string using a counter of sorts and implements is per the number of words.
+

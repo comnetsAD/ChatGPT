@@ -1,0 +1,39 @@
+def findExit(l):
+ can_exit_flag = False
+ # Write your implementation below this line
+
+ ######### SOLUTION #########
+ if (len(l) == 0): # empty list case -> False
+   return can_exit_flag
+
+ hop = l[0]
+ i=0
+ while(i<len(l)-1 and hop != 0): # hop != 0 because if there's a 0 where we hop to before the final index, we can never reach the final index -> False
+   i += hop
+   if(i > len(l)-1): # exceed the final index -> False
+     break
+   elif(i == len(l)-1): # reach the final index
+     can_exit_flag = True
+   hop = l[i]
+
+# 2 conditions to keep in mind with this code:
+## IF sum of hops is smaller than len(l)
+## IF
+
+ # the last index: i[len(l)]
+ # first index: i[0]
+
+ ######### SOLUTION END #########
+  return can_exit_flag
+
+"""
+Test cases for your function: If you implement
+your function correctly, the following lines should
+not give an error
+"""
+assert(findExit([2,0,1,0]) == True)
+assert(findExit([1,1,0,1]) == False)
+assert(findExit([1,2,0,3,1]) == False)
+assert(findExit([5,2,0,3,1,1,1]) == True)
+
+

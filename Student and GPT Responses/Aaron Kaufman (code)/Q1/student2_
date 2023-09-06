@@ -1,0 +1,25 @@
+library(charlatan)
+
+friends = c("Atina", "Altynay", "Zhanerke", "Yeldar", "Ayaulym",
+            "Dilnaz", "Baekhyun", "Taehyung", "Jungkook", "Jimin")
+age = c(19, 19, 19, 20, 19, 19, 30, 27, 25, 27)
+birthday = c("05/02/2003", "09/12/2003", "10/27/2002", "08/21/2002", "05/25/2003",
+             "08/13/2003", "05/06/1992", "12/30/1995", "09/01/1997", "10/12/1995")
+as.Date(birthday, format = "%m/%d/%y")
+
+country = c("Hungary", "Kazakhstan", "Canada", "Kazakhstan", "Hong Kong",
+            "UAE", "South Korea", "USA", "South Korea", "South Korea")
+gifts_idea = c("Drawing Supplies", "Volleyball shoes", "Clutch", "Blackpink album", "Easel",
+               "Polaroid", "Microphone", "Film camera", "Cardigan", "Love")
+phone_number = ch_generate('phone_number', n=10)
+
+friends_frame = data.frame(friends,
+                            age,
+                            birthday,
+                            phone_number,
+                            country,
+                            gifts_idea,
+                            stringsAsFactors = F)
+friends_frame
+new_row <- data.frame(friends_frame, row.names = c(1:10))
+new_row

@@ -1,0 +1,108 @@
+Write a C client-multi server code using sockets and multi-threading where you use the client to chat with a dummy "math" server. The protocol between the client and server is as follows.  
+The client asks the user for input. The user enters a simple arithmetic expression string (e.g., "1+2", "5 - 6", "3*4"). The user's input is sent to the server via the connected socket. 
+The server reads the user's input from the client socket, evaluates the expression, and sends the result back to the client. 
+The client should display the server's reply to the user, and prompt the user for the next input, until the user terminates the client program with “Ctrl C”. 
+
+Your server should behave like any real server. It should be able to handle several clients concurrently. It should work fine as clients come and go. Your server should always keep running (until terminated with “Ctrl C”), and should not quit for any other reason. At the very minimum, the server should be able to handle addition, multiplication, subtraction, and division operations on two integer operands. So, some sample test cases are: 
+User types: 1 + 2, server replies 3 
+User types: 2 * 3, server replies 6 
+User types: 4 - 7, server replies -3 
+User types: 30 / 10, server replies 3 
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h> 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <pthread.h>
+
+void error(const char *msg) { perror(msg); exit(1); } // Error function used for reporting issues
+
+void *math_server(void *socket_desc)
+{
+    int sock = *(int*)socket_desc;
+    char buffer[256];
+    bzero(buffer, 256);
+    int n;
+
+    while(1)
+    {
+        n = read(sock, buffer, 255);
+        if (n < 0) 
+            error("ERROR reading from socket");
+
+        // Evaluate the expression and store the result in result variable
+        int result = 0;
+        char operator = ' ';
+        sscanf(buffer, "%d %c %d", &result, &operator, &n);
+        switch (operator) {
+            case '+':
+                result += n;
+                break;
+            case '-':
+                result -= n;
+                break;
+            case '*':
+                result *= n;
+                break;
+            case '/':
+                result /= n;
+                break;
+            default:
+                error("Invalid operator");
+        }
+
+        // Convert the result to string and send it back to the client
+        sprintf(buffer, "%d", result);
+        n = write(sock, buffer, strlen(buffer));
+        if (n < 0) 
+            error("ERROR writing to socket");
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    int listenSocketFD, establishedConnectionFD, portNumber, charsRead;
+    socklen_t sizeOfClientInfo;
+    struct sockaddr_in serverAddress, clientAddress;
+    pthread_t thread;
+
+    if (argc < 2) { fprintf(stderr,"USAGE: %s port\n", argv[0]); exit(1); } // Check usage & args
+
+    // Set up the address struct for this process (the server)
+    memset((char *)&serverAddress, '\0', sizeof(serverAddress)); // Clear out the address struct
+    portNumber = atoi(argv[1]); // Get the port number, convert to an integer from a string
+    serverAddress.sin_family = AF_INET; // Create a network-capable socket
+    serverAddress.sin_port = htons(portNumber); // Store the port number
+    serverAddress.sin_addr.s_addr = INADDR_ANY; // Any address is allowed for connection to this process
+
+    // Set up the socket
+    listenSocketFD = socket(AF_INET, SOCK_STREAM, 0); // Create the socket
+    if (listenSocketFD < 0) 
+        error("ERROR opening socket");
+
+    // Enable the socket to begin listening
+    if (bind(listenSocketFD, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) < 0) // Connect socket to port
+        error("ERROR on binding");
+    listen(listenSocketFD, 5); // Flip the socket on - listening for connections
+
+    while(1)
+    {
+        // Accept a connection, blocking if one is not available until one connects
+        sizeOfClientInfo = sizeof(clientAddress); // Get the size of the address for the client that will connect
+        establishedConnectionFD = accept(listenSocketFD, (struct sockaddr *)&clientAddress, &sizeOfClientInfo); // Accept
+        if (establishedConnectionFD < 0) 
+            error("ERROR on accept");
+
+        // Create a new thread for this client
+        if(pthread_create(&thread, NULL, math_server, (void *)&establishedConnectionFD) < 0)
+            error("Error creating thread");
+    }
+    close(listenSocketFD);
+    return 0; 
+}
+
+

@@ -1,0 +1,3 @@
+
+For example, `fun(10,100)` should return `True` as 10 divides 100, whereas `fun(3,100)` should return `False`.
+

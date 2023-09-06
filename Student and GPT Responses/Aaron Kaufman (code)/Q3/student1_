@@ -1,0 +1,20 @@
+convert = function(n, target) {
+  if (is.numeric(n) == TRUE){   # Check whether the input is numeric
+    if (target == "kilo"){
+    result = n * 0.4536
+    return(paste(result, "kilos"))
+  } else if(target == "pound"){ 
+    result = n * 2.205
+    return(paste(result, "pounds"))
+  } else {
+    stop("Please choose a target unit. Pound or kilo")
+  }
+  }
+  else{
+    stop("Please enter a number to convert")
+  }
+}
+
+convert(30, "pound")
+
+

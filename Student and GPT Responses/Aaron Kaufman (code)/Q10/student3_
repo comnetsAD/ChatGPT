@@ -1,0 +1,9 @@
+Randomization is the gold standard of research and experiments because it removes all the confounded variables, those that we have learned that make causal experiments inaccurate. Therefore, in this case, she is correct. 
+
+g3 = dagitty("dag{
+            Education -> Income
+            }")
+plot(g3)
+
+
+

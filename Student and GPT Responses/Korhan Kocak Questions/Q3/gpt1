@@ -1,0 +1,14 @@
+This can be formulated as a normal form game with 100^3 possible pure strategy profiles, where each player 𝑖 has 100 pure strategies: to announce any integer from 1 to 100.
+The pure strategy Nash equilibria for this game can be found by analyzing the best response of each player, given the strategies of the other players. A pure strategy Nash equilibrium is a set of strategies where no player has an incentive to deviate from their chosen strategy, given the strategies of the other players.
+To simplify the game, we can assume that the players are rational and understand that the average is between the lowest and the highest number announced. Thus, if a player announces a number x, the only way to win the dirham is if x is closest to 2/3 of the average of the three numbers. Since the average is between the lowest and the highest number announced, the only way to win the dirham is to announce a number between (2/3) * Lowest number and (2/3) * Highest number.
+Given this, we can see that there are multiple pure strategy Nash equilibria in this game:
+If the three players announce different numbers, the player who announces the number closest to (2/3) * Average of the three numbers wins the dirham.
+If two players announce the same number, the player who announces the number closest to (2/3) * Average of the three numbers wins the dirham.
+If all three players announce the same number, the dirham is split equally between the three players.
+In summary, the normal form game is defined by:
+A set of players {1,2,3}
+Each player has 100 pure strategies, to announce any integer from 1 to 100
+The payoff matrix is defined by: the player whose number is closest to 2/3 of the average of the three numbers wins 1 dirham. If two or more integers are the same, the dirham is split equally between the people whose integer is closest to 2/3 of the average.
+The pure strategy Nash equilibria are all the strategy profiles where each player announces a number between (2/3) * Lowest number and (2/3) * Highest number.
+It's important to note that this game has multiple equilibria as there are many different strategy profiles that could be chosen, and all of them are Pareto efficient.
+

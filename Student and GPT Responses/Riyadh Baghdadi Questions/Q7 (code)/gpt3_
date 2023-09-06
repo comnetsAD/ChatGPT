@@ -1,0 +1,21 @@
+
+For example, if the input is "abcde", then the program will output: "e", "de", "cde", "bcde", "abcde".
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char input[100];
+    printf("Enter a string: ");
+    scanf("%s", input);
+    int len = strlen(input);
+    for (int i = len - 1; i >= 0; i--) {
+        for (int j = i; j < len; j++) {
+            printf("%c", input[j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+

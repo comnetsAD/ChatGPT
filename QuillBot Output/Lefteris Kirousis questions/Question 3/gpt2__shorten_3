@@ -1,0 +1,1 @@
+True. Show that for every n > n0, 2f(n) <= c * 2g for positive constants c and n0 (n). If f(n) is O(g(n)), then for every n > n1, f(n) <= c1 * g. (n). For every n > n1, 2f(n) <= 2 * c1 * g(n). 2f(n) is O(2g(n)) for every n > n0 since c = 2 * c1 and n0 = n1. The big O notation compares the pace of growth of two functions, not their precise values, hence this assertion is correct. 

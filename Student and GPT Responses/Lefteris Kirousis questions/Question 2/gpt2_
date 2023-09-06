@@ -1,0 +1,4 @@
+The statement is not always true. The reason is that the big O notation is used to compare the rate of growth of two functions, whereas logarithms are used to change the scale of the function. Therefore, the relationship between f(n) and g(n) does not necessarily imply a relationship between log f(n) and log g(n).
+One counterexample is f(n) = n^2 and g(n) = n. It is clear that f(n) is O(g(n)) as f(n) <= c1 * g(n) for c1 = 1 and n > n1 = 1. However, log f(n) = 2 log n, while log g(n) = log n. Therefore, 2 log n is not O(log n), and thus log f(n) is not O(log g(n))
+Another example is f(n) = 2^n and g(n) = n! which f(n) is O(g(n)) but log f(n) = nlog2 is not O(log g(n)) = log(n!)
+In short, the statement that "If f(n) is O(g(n)) then log f(n) is O(log g(n))" is not always true, and counterexamples can be provided to disprove it.

@@ -1,0 +1,12 @@
+  01010011 	  10111001
++01100110 	+01110100
+————— 	—————-
+  10111001 	  00101110
+
+Hence,  one’s complement is 11010001.
+
+UDP takes the 1’s complement of the sum to  add it to the checksum, and if  all bits  are on,  this indicates no  errors. 
+
+The receiver  knows if  there are errors  if  the sum contains  a zero. It  is  not possible  for a  1bit error to  go  undetected. However,  it  is possible for a 2bit  error to  go  undetected,  because the  two-bit errors  will  cancel  out each  other appear  as  though  no  error  occurred.
+
+

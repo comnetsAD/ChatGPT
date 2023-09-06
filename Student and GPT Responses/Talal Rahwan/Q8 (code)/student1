@@ -1,0 +1,5 @@
+Node* u = Node( e );
+u ->next = v;
+u->prev = v->prev;
+v->prev->next = u;
+v->prev = u;

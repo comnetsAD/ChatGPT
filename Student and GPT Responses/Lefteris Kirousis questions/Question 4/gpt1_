@@ -1,0 +1,7 @@
+The statement is true.
+We can prove this statement by assuming that there are positive constants c and d, with c ≤ 1, such that f(n) <= cg(n) + d for all large enough n.
+Therefore, 2f(n) <= 2cg(n) + 2d for all large enough n.
+As we can see, 2cg(n) is O(2g(n)) and 2d is a constant, so it is also O(2g(n)),
+so 2f(n) <= 2cg(n) + 2d, is O(2g(n)) and that means that 2f (n) is O(2g(n)).
+It's worth mentioning that this statement is true as long as c<=1, because if c > 1, the inequality f(n) <= cg(n) + d would not hold.
+

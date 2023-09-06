@@ -1,0 +1,9 @@
+The time that it takes for the first packet to arrive is 2 x (80+S)/R seconds, as there are two links, and the transmission rate are R bps. After this first packet arrives, each packet arrives every (80+S)/R seconds. The delay in sending the whole file will be 
+
+2 x (80+S)/R + (F/S - 1)x(80 + S)/R = (F/S + 1)x(80+S)/R
+
+To find the values of S that minimizes the delay, we take the derivative according to S and equate it to 0.
+
+Thus sqrt(80) x F is the value of S that minimizes the delay.
+
+

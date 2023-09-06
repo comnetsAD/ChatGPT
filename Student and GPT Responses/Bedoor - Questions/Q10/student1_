@@ -1,0 +1,3 @@
+Amazon as well as noon allow web scraping. A way of knowing that is by adding the text robots.txt to the website url, as that lets us know if a certain website allows their data to be scraped. When done to instock, it shows Disallow: /catalog/product/view, which means that we cannot scrape data from the same. Additionally, both noon and amazon do not require you to have a user account whereas instock does to view products, prices and reviews.
+
+

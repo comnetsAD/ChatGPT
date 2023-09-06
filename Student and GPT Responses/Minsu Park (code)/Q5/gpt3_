@@ -1,0 +1,22 @@
+
+top_10_movie_ratings = make_array(9.2, 9.2, 9., 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.8)
+top_10_movie_names = make_array(
+        'The Shawshank Redemption (1994)',
+        'The Godfather (1972)',
+        'The Godfather: Part II (1974)',
+        'Pulp Fiction (1994)',
+        "Schindler's List (1993)",
+        'The Lord of the Rings: The Return of the King (2003)',
+        '12 Angry Men (1957)',
+        'The Dark Knight (2008)',
+        'Il buono, il brutto, il cattivo (1966)',
+        'The Lord of the Rings: The Fellowship of the Ring (2001)')
+
+top_10_movies = ...
+# We've put this next line here so your table will get printed out when you
+# run this cell.
+top_10_movies
+
+top_10_movies = Table().with_columns("Rating", top_10_movie_ratings, "Name", top_10_movie_names)
+top_10_movies
+

@@ -1,0 +1,17 @@
+
+Nash equilibrium at U, R.
+
+Player 1
+2p + 2(1 - p) ≥ 1p + 1(1 - p)
+2p + 2 - 2p ≥ 1p + 1 - p
+2 ≥ 1 
+undefined
+
+Player 2
+3q + 4(1 - q) ≥ 5q + 2(1 - q)
+3q + 4 - 4q ≥ 5q + 2 - 2q
+1 - q ≥ 3q + 2
+q ≥ -1
+
+No mixed strategy Nash equilibrium.
+

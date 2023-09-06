@@ -1,0 +1,12 @@
+  01010011    	  10111001
++01100110   	+01110100
+—------------     —------------
+  10111001     00101110
+
+final answer: 00101110
+
+The checksum is used 
+
+The receiver detects errors by adding the checksums to the 1’s complement. This should result in all 1’s. Therefore, any detected 0’s are known to be errors. This mathematical property of one’s complement makes it beneficial to use for error detection vs the plain sum.
+
+

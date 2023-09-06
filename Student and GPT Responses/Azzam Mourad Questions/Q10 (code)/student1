@@ -1,0 +1,310 @@
+
+#include <sys/types.h>
+#include <sys/mman.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <assert.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+
+#define READ_END 0
+#define WRITE_END 1
+#define ERR_END 2
+
+// tokenize command for vector list
+// TAKEN FROM STACKOVERFLOW
+// https://stackoverflow.com/questions/9210528/split-string-with-delimiters-in-c
+char **str_split(char *a_str, const char a_delim)
+{
+  char **result = 0;
+  size_t count = 0;
+  char *tmp = a_str;
+  char *last_comma = 0;
+  char delim[2];
+  delim[0] = a_delim;
+  delim[1] = 0;
+
+  /* Count how many elements will be extracted. */
+  while (*tmp)
+  {
+    if (a_delim == *tmp)
+    {
+      count++;
+      last_comma = tmp;
+    }
+    tmp++;
+  }
+
+  /* Add space for trailing token. */
+  count += last_comma < (a_str + strlen(a_str) - 1);
+
+  /* Add space for terminating null string so caller
+     knows where the list of returned strings ends. */
+  count++;
+
+  printf("%ld yuh", count);
+  // allocate space if the input is not empty
+  result = malloc(sizeof(char *) * count);
+
+  if (result)
+  {
+    size_t idx = 0;
+    // start tokenizing the string
+    char *token = strtok(a_str, delim);
+
+    // keep tokenizing until reaching NULL
+    while (token)
+    {
+      assert(idx < count);
+      *(result + idx++) = strdup(token);
+      token = strtok(0, delim);
+    }
+    assert(idx == count - 1);
+    *(result + idx) = 0;
+  }
+
+  return result;
+}
+
+// trim leading and trailing whitespaces
+// FROM STACKOVERFLOW
+// https://stackoverflow.com/questions/122616/how-do-i-trim-leading-trailing-whitespace-in-a-standard-way
+char *trim(char *str)
+{
+  int i, j;
+
+  // count number of leading white space
+  for (i = 0; str[i] == ' ' || str[i] == '\t'; i++)
+    ;
+
+  // replace original string with new string with no leading white space
+  for (j = 0; str[i]; i++)
+  {
+    str[j++] = str[i];
+  }
+  str[j] = '\0'; // end the new string
+
+  // check for trailing white space
+  for (i = 0; str[i] != '\0'; i++)
+  {
+    if (str[i] != ' ' && str[i] != '\t')
+      j = i;
+  }
+  str[j + 1] = '\0';
+
+  return str;
+}
+
+// count number of pipes in command chain
+int countPipes(char *commands)
+{
+  int count;
+
+  // loop till end of string (null-terminated in c)
+  for (int i = 0; commands[i] != '\0'; i++)
+    if (commands[i] == '|')
+      count++;
+
+  return count;
+}
+
+// check for redirect in command
+// return 1 if >
+// return 2 if <
+// return 0 otherwise
+int checkForRedirect(char *commands)
+{
+  for (int i = 0; commands[i] != '\0'; i++)
+  {
+    if (commands[i] == '>')
+      return 1;
+
+    if (commands[i] == '<')
+      return 2;
+  }
+
+  return 0;
+}
+
+// process commands, including pipes and redirects
+void processCommand(char *commands)
+{
+  // get number of pipes in command chain
+  int numberOfPipes = countPipes(commands);
+
+  // allocate memory for two pipe arrays
+  int *fd1 = (int *)malloc(sizeof(int[2]));
+  int *fd2 = (int *)malloc(sizeof(int[2]));
+
+  // execute one command for each pipe, and
+  // use two pipes to redirect output from one to other
+  for (int i = 0; i <= numberOfPipes; i++)
+  {
+    // get next command, separated by pipe ("|")
+    // trim leading and trailing whitespaces
+    char *command = trim(strsep(&commands, "|"));
+
+    // if there is another command to pipe to
+    // init a pipe for it
+    if (i != numberOfPipes)
+    {
+      pipe(fd2);
+    }
+
+    // fork child
+    pid_t child = fork();
+
+    // exit with failure if fork failed
+    if (child < 0)
+    {
+      exit(EXIT_FAILURE);
+    }
+    // execute command with execvp in child, and
+    // redirect input and output through pipes
+    else if (child == 0)
+    {
+      // variables to hold command and file part
+      // if redirect is in command
+      char *commandPart;
+      char *filePart;
+
+      // get redirect flag
+      // 1 if >
+      // 2 if <
+      int redirectFlag = checkForRedirect(command);
+
+      // redirect output of command to file
+      if (redirectFlag == 1)
+      {
+        // get command part (everything before >)
+        commandPart = trim(strsep(&command, ">"));
+
+        // get file part (everything after >)
+        filePart = trim(strsep(&command, ">"));
+
+        // open file to write and create it if doest not exist
+        int rfd = open(filePart, O_WRONLY | O_CREAT, 0666);
+
+        // redirect stout and stderr to file
+        dup2(rfd, WRITE_END);
+        dup2(rfd, ERR_END);
+
+        // close file
+        close(rfd);
+      }
+      // redirect input of command to file
+      else if (redirectFlag == 2)
+      {
+        // get command part (everything before <)
+        commandPart = trim(strsep(&command, "<"));
+
+        // get file part (everything after <)
+        filePart = trim(strsep(&command, "<"));
+
+        // open file to read
+        int rfd = open(filePart, O_RDONLY, 0666);
+
+        // redirect stdinn to file
+        dup2(rfd, READ_END);
+
+        // close file
+        close(rfd);
+      }
+
+      // tokenize command for vector list in execvp
+      char **tokens = str_split(redirectFlag ? commandPart : command, ' ');
+
+      // if there is a command after this one,
+      // redirect stdout to the the write end of pipe
+      if (i != numberOfPipes)
+      {
+        dup2(fd2[WRITE_END], WRITE_END);
+        close(fd2[READ_END]);
+        close(fd2[WRITE_END]);
+      }
+
+      // if there was a command before this one,
+      // redirect stdin to the the read end of pipe,
+      // which has been written to
+      if (i > 0)
+      {
+        dup2(fd1[READ_END], READ_END);
+        close(fd1[READ_END]);
+        close(fd1[WRITE_END]);
+      }
+
+      // execute the command
+      execvp(tokens[0], tokens);
+
+      // throw error if it failed
+      // (this will not be reached if execvp executed)
+      perror("Process failed");
+    }
+    // adjust pipes in parent
+    else if (child > 0)
+    {
+      // if there was a command in the last iteration,
+      // close read and write end of the pipe that reads,
+      // so that it does not wait for an input from this parent
+      if (i > 0)
+      {
+        close(fd1[READ_END]);
+        close(fd1[WRITE_END]);
+      }
+
+      // if there is no command after this one,
+      // make the read pipe hold the write pipe,
+      // free memory allocation, and allocate new memory,
+      // so that we only need to use two pipes instead of more
+      if (i != numberOfPipes && numberOfPipes != 0)
+      {
+        int *tmp = fd1;
+        fd1 = fd2;
+        free(tmp);
+        fd2 = (int *)malloc(sizeof(int[2]));
+      }
+    }
+  }
+
+  // if there were any pipes, we need to close the read pipe,
+  // which remains opens, while we wait for all commands to finish
+  if (numberOfPipes > 0)
+  {
+    close(fd1[READ_END]);
+    close(fd1[WRITE_END]);
+  }
+
+  // wait for all children to terminate
+  while (wait(NULL) > 0)
+    ;
+
+  // free memory allocated for two pipe arrays
+  free(fd1);
+  free(fd2);
+}
+
+int main(void)
+{
+  char commands[256];
+
+  do
+  {
+    printf("> ");
+
+    // get input from users
+    fgets(commands, 256, stdin);
+    if (commands[0] == '\0' || commands[0] == '\n')
+      continue;
+    commands[strcspn(commands, "\n")] = 0;
+
+    if (strcmp(commands, "exit"))
+      processCommand(commands);
+
+  } while (strcmp(commands, "exit")); // exit if user input exit
+
+  return 0;
+}
+

@@ -1,0 +1,2 @@
+OOV stands for "Out Of Vocabulary" and it refers to words that are not present in the predefined vocabulary of a language model, or corpus. These words are not recognized or understood by the model and are also called rare words, unseen words, or unknown words.
+An example of an OOV word against a corpus of Shakespearean text would be a modern word or a proper noun that was not in use during Shakespeare's time, such as "smartphone" or "Google." These words would not be present in the vocabulary of the Shakespearean text corpus and would be considered OOV words by the model.

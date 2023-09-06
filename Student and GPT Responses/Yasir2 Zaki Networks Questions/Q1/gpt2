@@ -1,0 +1,18 @@
+The value of the CRC for the given generator and data value is 011.
+
+To calculate the CRC, we first need to pad the data value with zeros until it is the same length as the generator. In this case, the padded data value is 10101010100000.
+
+Next, we divide the padded data value by the generator using modulo-2 division. The remainder of this division is the CRC.
+
+Using modulo-2 division, we get:
+
+10101010100000
+10011
+10011
+100110
+00000
+10011
+011
+
+The remainder of the division is 011, which is the value of the CRC.
+

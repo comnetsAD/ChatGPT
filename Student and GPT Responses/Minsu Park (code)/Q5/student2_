@@ -1,0 +1,7 @@
+top_10_movies = Table().with_columns(
+   "Rating", top_10_movie_ratings,
+   "Name", top_10_movie_names
+)
+
+top_10_movies
+

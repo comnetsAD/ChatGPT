@@ -1,0 +1,7 @@
+If TCP is using AIMD for congestion control without slow start, and assuming that cwnd increases by 1 MSS every time a batch of ACKs is received, it will take 6 RTTs for cwnd to increase from 6 MSS to 12 MSS. This is because cwnd is increased by 1 MSS every time a batch of ACKs is received, and it takes RTT for an ACK to be received after a packet is sent.
+
+The average throughout for this connection up through time = 6 RTT will be equal to cwnd / RTT. For example, if cwnd = 6 MSS and RTT = 1 sec, the average throughout will be 6 MSS/sec.
+
+In an HTTP request message, the average throughout will depend on the size of the request and the round-trip time of the connection. For example, if the size of the request is 1000 bytes and the round-trip time is 0.5 seconds, the average throughout will be 2000 bytes/sec.
+
+

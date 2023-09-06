@@ -1,0 +1,5 @@
+In a NAK-protocol the receiver only realizes that it missed a packet when the following packet is received. Therefore if transmission of packets is infrequent, it could take a long time for the receiver to realize that it never received the packet it should have and for the correct packet to be sent. 
+
+If rapid transmission takes place with few losses, then few NAKs would be sent, freeing bandwidth and presenting an advantage over ACK-protocols
+
+

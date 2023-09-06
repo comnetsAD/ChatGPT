@@ -1,0 +1,9 @@
+Searching for distantly related homologous proteins using a short signature sequence is considered to be a better strategy than using a long sequence for several reasons:
+
+High specificity: A short signature sequence is more specific to a particular protein function, and it is less likely to match with non-related proteins in the database. Long sequences, on the other hand, are more likely to contain regions of high homology that are not specific to the particular protein function.
+Lower computational cost: Searching the database using a short sequence is computationally less expensive than using a long sequence. This is because a shorter sequence requires fewer calculations to compare to other sequences in the database, which can be a time-consuming task.
+High sensitivity: Despite being shorter, signature sequences are often derived from conserved regions of a protein that are essential for its function. This ensures that the signature sequence will identify closely related homologs as well as more distant ones.
+More sensitive to evolutionary divergence: Because they are derived from conserved regions, short signature sequences are less likely to be affected by evolutionary divergence. This means that they will be able to identify homologs even in distantly related organisms.
+
+In conclusion, searching for distantly related homologous proteins using a short signature sequence is considered to be a better strategy than using a long sequence because it is more specific, less computationally expensive and more sensitive to evolutionary divergence.
+

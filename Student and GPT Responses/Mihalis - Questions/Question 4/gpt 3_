@@ -1,0 +1,9 @@
+
+
+The host sends a request for the contents of the website, typically using the HTTP (Hypertext Transfer Protocol) or HTTPS (HTTP Secure) protocol.
+The request is sent to the website's server, which processes the request and retrieves the requested content from its database.
+The server sends a response to the host, which includes the requested content, such as HTML, CSS, JavaScript, and images.
+The response is received by the host, which uses the information in the response to display the website's contents on the client's web browser.
+The host continues to send and receive requests and responses as the client interacts with the website, such as clicking on links or submitting forms.
+In summary, the contents of the website reach the client through the process of requesting and receiving information from the website's server using the HTTP or HTTPS protocol. The host uses the information in the response to display the website's contents on the client's web browser.
+

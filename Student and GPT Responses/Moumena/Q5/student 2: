@@ -1,0 +1,7 @@
+
+Suppose A, B and C are any sets.
+Counterexample: Let x ∈ A, x ∈ B and x ̸∈ C.
+(Left-hand). x ̸∈ (B ∩ C) and x ∈ A. x ∈ A − (B ∩ C)
+(Right-hand). x ̸∈ (A − B). x ∈ (A − C). By definition of intersection, x ̸∈ (A − B) ∩ (A − C)
+Therefore, A − (B ∩ C) ̸= (A − B) ∩ (A − C) because there is an element x which is x ∈ A, x ∈ B and x ̸∈ C such that x ∈ A − (B ∩ C) and x ̸∈ (A − B) ∩ (A − C)
+

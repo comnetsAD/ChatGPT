@@ -1,0 +1,26 @@
+
+3 options for the game:
+All troops to the right ®
+All to the left (L)
+Even split (S)
+
+
+
+There are no pure strategy Nash equilibria.
+
+E(L) = p1 - p2 - 1 + p1 + p2 = 2 p1 - 1
+E(R) = - p1 + p2 - 1 + p1 + p2 = 2 p2 - 1
+E(S) = - p1 - p2 + 1 - p1 - p2 = - 2 p1 - 2 p2 + 1
+
+p1 = ½, p2 = ½,  1 - ½ - ½ = 0
+(½, ½, 0)
+
+E(L) = - q1 + q2 + 1 - p1 - p2 = - 2 q1 + 1
+E(R) = q1 - q2 + 1 - q1 - q2 = - 2 q2 + 1
+E(S) = q1 + q2 - 1 + p1 + p2 = 2 q1 + 2 q2 - 1
+
+q1 = ½, q2 = ½,  1 - ½ - ½ = 0
+(½, ½, 0)
+
+Mixed strategy are (½, ½, 0) and (½, ½, 0)
+

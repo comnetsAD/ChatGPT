@@ -1,0 +1,96 @@
+
+int isPalindrome(char *buffer)
+{
+    // get the length of the string
+    int n = strlen(buffer);
+    // 1 for palindrome
+    // 0 otherwise
+    int result = 1;
+    // check if a palindrome
+    for (int i = 0; i < n; i++)
+    {
+        // not a palindrome
+        if (buffer[i] != buffer[n-1-i])
+        {    
+            result = 0;
+            break;
+        }    
+    }
+    return result;
+}
+int main()
+{
+    // creating the pipes
+    int toParent[2]; // unidirectional pipes from child to parent
+    int toChild[2];  // unidirectional pipes from parent to child
+    if (pipe(toParent) < 0 || pipe(toChild) < 0)
+    {
+        perror("pipe creation failed");
+        exit(-1);
+    }
+    // forking
+    pid_t pid = fork();
+    if (pid < 0)
+    {
+        perror("forking failed");
+        exit(-1);
+    }
+    else if (pid == 0) // child
+    {
+        // needed file descriptors: stdin, stdout, toChild[0], toParent[1]
+        close(toParent[0]);
+        close(toChild[1]);
+        while (1)
+        {
+            char buffer[MAXLINE];
+            // get the user input from (stdin)
+            gets(&buffer);
+            // send to the parent through (toParent[1])
+            write(toParent[1], buffer); // !!!
+            // get result from the parent
+            char resultBuffer[1];
+            while(read(toChild[0], resultBuffer, 1) < 1); // loop till a character is read
+            
+            // print the result to the user
+            if (resultBuffer[0] == '1')
+                printf("A palindrome is detected!\n");
+            else
+                printf("Not a palindrome!\n");
+        }
+        // make sure to close the pipes after usage 
+        close(toParent[1]);
+        close(toChild[0]);
+    }
+    else // parent
+    {
+        // needed file descriptors: stdout, toParent[0], toChild[1]
+        close(toParent[1]);
+        close(toChild[0]);
+        while(1)
+        {
+            char buffer[MAXLINE];
+            
+            // get data from child
+            while(fgets(buffer, MAXLINE, toParent[0]) < 1); // loop till sth is read
+                        
+            // process the data
+            int result = isPalindrome(buffer);
+            // print the result to the user
+            if (result == 1)
+                printf("A palindrome is detected!\n");
+            else
+                printf("Not a palindrome!\n");
+            
+            // send the result to the client
+            write(toChild[1], result == 1 ? &(char *){"1"} : &(char *){"0"}, 1);
+            
+        }
+    
+        // make sure to close the pipes after usage 
+        close(toParent[0]);
+        close(toChild[1]);    
+    }
+    // exits both child and parent
+    exit(0);
+}
+

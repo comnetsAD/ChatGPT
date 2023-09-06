@@ -1,0 +1,43 @@
+
+
+To find the pure and mixed strategy Nash equilibria for the given games, we first need to find the best response for each player for each strategy of the other player.
+
+For player 1 (top row):
+- If player 2 plays strategy L (left column), player 1's best response is to play strategy U (2,2) as it gives them a higher payoff than playing strategy D (6,4)
+-If player 2 plays strategy R (right column), player 1's best response is to play strategy U (2,4) as it gives them a higher payoff than playing strategy D (0,1)
+
+For player 2 (bottom row):
+- If player 1 plays strategy U (top row), player 2's best response is to play strategy L (2,2) as it gives them a higher payoff than playing strategy R (2,4)
+- If player 1 plays strategy D (bottom row), player 2's best response is to play strategy R (6,4) as it gives them a higher payoff than playing strategy L (0,1)
+
+To find the pure and mixed strategy Nash equilibria for the given games, we first need to find the best response for each player for each strategy of the other player.
+
+For player 1 (top row):
+If player 2 plays strategy L (left column), player 1's best response is to play strategy U (2,2) as it gives them a higher payoff than playing strategy D (6,4)
+If player 2 plays strategy R (right column), player 1's best response is to play strategy U (2,4) as it gives them a higher payoff than playing strategy D (0,1)
+
+For player 2 (bottom row):
+If player 1 plays strategy U (top row), player 2's best response is to play strategy L (2,2) as it gives them a higher payoff than playing strategy R (2,4)
+If player 1 plays strategy D (bottom row), player 2's best response is to play strategy R (6,4) as it gives them a higher payoff than playing strategy L (0,1)
+
+From this, we can see that there is one pure strategy Nash equilibrium: (U, L) where player 1 plays strategy U and player 2 plays strategy L.
+
+To find the mixed strategy Nash equilibrium, we need to check for any probability distributions over the strategies that result in no player being able to improve their payoff by choosing a different strategy.
+
+For player 1, weFrom this, we can see that there is one pure strategy Nash equilibrium: (U, L) where player 1 plays strategy U and player 2 plays strategy L.
+
+To find the mixed strategy Nash equilibrium, we need to check for any probability distributions over the strategies that result in no player being able to improve their payoff by choosing a different strategy.
+
+For player 1, we can see that if they mix their strategy by playing U with probability p and D with probability (1-p), player 2 will always play strategy L. Player 1's expected payoff will be:
+p(2,2) + (1-p)(6,4) = (2p,2p) + (6-6p,4-4p) = (2p+6-6p,2p+4-4p) = (6-4p,6-2p)
+
+For player 2, if they mix their strategy by playing L with probability q and R with probability (1-q), player 1 will always play strategy U. Player 2's expected payoff will be:
+q(2,2) + (1-q)(2,4) = (2q,2q) + (2-2q,4-4q) = (2q+2-2q,2q+4-4q) = (2,4-2q)
+
+For player 1 to not have any incentive to change their strategy, their expected payoffs for playing U and D should be equal. This means that (6-4p) = (6-2p) => p = 1/2.
+For player 2 to not have any incentive to change their strategy, their expected payoffs for playing L and R should be equal. This means that (2) = (4-2q) => q = 1/2.
+
+Therefore, the mixed strategy Nash equilibrium is (p=1/2, U; q=1/2, L) where player 1 plays strategy U with probability 1/2 and strategy D with probability 1/2, and player 2 plays strategy L with probability 1/2 and strategy R with probability 1/2. This means that neither player has any incentive to deviate from their mixed strategy as they are already receiving the highest expected payoff possible given the other player's mixed strategy.
+
+In summary, there is one pure strategy Nash equilibrium (U, L) and one mixed strategy Nash equilibrium (p=1/2, U; q=1/2, L) for the given games with vNM preferences.
+

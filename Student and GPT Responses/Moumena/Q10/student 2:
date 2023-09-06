@@ -1,0 +1,11 @@
+
+Total number of positive integers less than 100 = 99. Let, Set A in the sample space be the set with same digits = { 11, 22, 33, 44, 55, 66, 77, 88, 99}
+
+|A| = 9
+Probability(P) = 1 −|A|/99
+= 1 − 9/99
+= 1 −1/11
+=(11 − 1)/11
+=10/11
+Hence, the probability that a positive integer less than 100 picked at random has all distinct digits is 10/11 .
+

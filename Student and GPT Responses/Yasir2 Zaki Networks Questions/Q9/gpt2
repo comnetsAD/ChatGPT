@@ -1,0 +1,9 @@
+Bob's claim that he can receive a complete copy of the file shared by the swarm without uploading any data to other peers is not possible. This is because the BitTorrent protocol relies on a system of shared responsibility where each peer in the swarm is expected to contribute to the distribution of the file by uploading data to other peers.
+
+If Bob does not contribute to the distribution of the file, he will not receive data from other peers, and he will not be able to download the complete file. This is because other peers will not be motivated to upload data to Bob if he is not uploading data to them.
+
+However, Bob may be able to receive a partial copy of the file if he is able to connect to enough seeds or high-bandwidth peers that are able to provide him with the data he needs. However, this will be inefficient and may not result in a complete copy of the file.
+
+If Bob wants to use multiple computers with distinct IP addresses to make his "free-riding" more efficient, he could do so by running a BitTorrent client on each of the computers and connecting them to the same torrent. This would allow him to download data from multiple sources simultaneously, potentially increasing his download speed. However, this is considered unethical and may be against the terms of service of the BitTorrent client and the torrent tracker.
+
+

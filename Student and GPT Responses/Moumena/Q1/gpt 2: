@@ -1,0 +1,19 @@
+
+To find the smallest integer a > 1 such that a + 1 ≡ 2a mod 11, we can start by setting a = 2 and checking whether the equation is satisfied. If it is not satisfied, we can increment a by 1 and check again, continuing until we find an a that works.
+For a = 2, we have:
+2 + 1 ≡ 2 * 2 mod 11 3 ≡ 4 mod 11
+Since 3 is not congruent to 4 modulo 11, we need to try the next value of a.
+For a = 3, we have:
+3 + 1 ≡ 2 * 3 mod 11 4 ≡ 6 mod 11
+Since 4 is not congruent to 6 modulo 11, we need to try the next value of a.
+For a = 4, we have:
+4 + 1 ≡ 2 * 4 mod 11 5 ≡ 8 mod 11
+Since 5 is not congruent to 8 modulo 11, we need to try the next value of a.
+For a = 5, we have:
+5 + 1 ≡ 2 * 5 mod 11 6 ≡ 10 mod 11
+Since 6 is not congruent to 10 modulo 11, we need to try the next value of a.
+For a = 6, we have:
+6 + 1 ≡ 2 * 6 mod 11 7 ≡ 0 mod 11
+Since 7 is congruent to 0 modulo 11, this is the smallest integer a > 1 that satisfies the equation. Therefore, the answer is a = 6.
+
+

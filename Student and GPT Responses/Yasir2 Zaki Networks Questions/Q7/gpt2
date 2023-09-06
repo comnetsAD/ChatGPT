@@ -1,0 +1,17 @@
+To find the 1's complement of the sum of the three 8-bit bytes, we first need to find the sum of the bytes. The sum of 01010011, 01100110, and 01110100 is:
+
+01010011
+
+01100110
+01110100
+11000111
+
+The sum of the bytes is 11000111 in binary, or 199 in decimal.
+
+To find the 1's complement of the sum, we need to invert each bit of the sum. The 1's complement of 11000111 is 00111000 in binary, or 56 in decimal.
+
+UDP takes the 1's complement of the sum because it allows the receiver to easily detect errors in the data. If the sum of the bytes is correct, the 1's complement of the sum will be all zeros. If there is an error in the data, the 1's complement of the sum will be a non-zero value.
+
+To detect errors using the 1's complement scheme, the receiver can simply add the received bytes and the checksum, and the result should be a multiple of 256 (that is, the least significant 8 bits should be all zeros). If the result is not a multiple of 256, then an error has been detected and the data should be discarded.
+
+

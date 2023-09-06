@@ -1,0 +1,7 @@
+
+Hint 1: There were 31 days in December, which is equivalent to (31 x 24) hours or (31 x 24 x 60 x 60) seconds. So your array should have 31 x 24 elements in it.
+
+Hint 2: The 'len' function works on arrays, too. If your 'collection_times' isn't passing the tests, check its length and make sure it has 31 x 24 elements.
+
+collection_times = [i*3600 for i in range(3124)]
+

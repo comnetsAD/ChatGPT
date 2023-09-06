@@ -1,0 +1,3 @@
+The sender does not need sequence numbers because there is no reason why it would need this information in order to tell when there was a duplicate ACK. In rdt3.0, the sender changes state when it sends something and so when it receives a duplicate ACK, it ignores it.
+
+

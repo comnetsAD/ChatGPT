@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+#include <time.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+// function:
+    // Write a C program that creates 3 processes (P1, P2, and P3)(Parent and 2 children). The 3
+    // processes should increment the value of an integer declared as a shared memory using mmap()
+    // as follows:
+    // • P1 (Child 1) should loop to increment the integer from 0 to 10000
+    // • P2 (Child 2) should loop to increment the integer from 10000 to15000
+    // • P3 (Parent) should loop to increment the integer from 15000 to 20000
+
+    // • Each process should print the value of the integer before exiting
+    // Note: You are not required to do any sort of synchronization in this question. Consider the order
+    // of execution of the different processes by using wait or waitpid methods.
+    // Sample Output:
+    // Child 1 10000
+    // Child 2 15000
+    // Parent 20000
+
+int main()
+{
+
+
+    int * shared = mmap(NULL, sizeof(int), PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);
+
+    pid_t child1, child2;
+
+    child1 = fork();
+
+    if (child1 < 0)
+    {
+        //proccess failed
+        exit(EXIT_FAILURE);
+    }
+    else if (child1 == 0) {
+        // inside child 1 proccess
+
+        // looping
+        for (int i = 0; i < 1000; ++i)
+        {
+            shared[1] = shared[1]+1;
+        }
+
+        // printing
+        printf("Child 1: %d\n", *(shared+1));
+        exit(0);
+    } 
+
+    else {
+        // in parent process
+        child2 = fork();
+        if (child2<0)
+        {
+            //proccess failed
+            exit(EXIT_FAILURE);
+        }
+        if (child2 == 0) {
+            // inside child 2 proccess
+
+            // looping
+            for (int i = 0; i < 500; ++i)
+            {
+                shared[1] = shared[1]+1;
+            }
+
+            // printing
+            printf("Child 2: %d\n", *(shared+1));
+            exit(0);
+        } 
+        else {
+            /* Parent Code */
+            wait(NULL);
+
+            // looping
+            for (int i = 0; i < 500; ++i)
+            {
+                shared[1] = shared[1]+1;
+            }
+
+            // printing
+            printf("parent: %d\n", *(shared+1));
+            exit(0);
+        }
+    }
+
+    return 0;
+}
+
+

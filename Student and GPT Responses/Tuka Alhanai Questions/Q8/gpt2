@@ -1,0 +1,5 @@
+vector: The STL "vector" is a container class that holds a collection of elements of a specific type. It is part of the STL's container library. Vectors are dynamic arrays that can grow or shrink in size as elements are added or removed. They have constant time access to elements and provide an array-like interface. They are useful when you need a dynamic, resizable array and when you don't know the size of your array in advance.
+map: The STL "map" is an associative container class that stores elements in a key-value pair format. It is part of the STL's container library. Maps are implemented as balanced binary trees and provide logarithmic time access to elements. They are useful when you need to store elements with unique keys and look them up efficiently.
+
+In both cases, vector and map are template classes, meaning that they can be used with any data type (int, double, string, custom class, etc).
+

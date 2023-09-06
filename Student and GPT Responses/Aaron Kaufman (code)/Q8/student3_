@@ -1,0 +1,17 @@
+education and income (more education -> more money).
+This researcher is not correct to make causal claims because she is not taking into consideration other confounding variables that might be actually taking place, like race. She does not take into account  these other factors that might also affect income aside from education.
+
+library(dagitty)
+
+g = dagitty("dag{
+            Race -> Income
+            Race -> Education
+             Education -> Income
+            }")
+plot(g)
+
+coordinates(g) = list(x= c(Race = 0.5,Education = 1, Income = 2), 
+                      y= c(Race = 1.5, Education= 2, Income = 3))
+
+
+

@@ -1,0 +1,41 @@
+import calendar
+
+def is_valid_date(day, month, year):
+    # check if month is between 1 and 12
+    if not (1 <= int(month) <= 12):
+        return False
+    
+    # check if day is between 1 and the number of days in the month
+    num_days_in_month = calendar.monthrange(int(year), int(month))[1]
+    if not (1 <= int(day) <= num_days_in_month):
+        return False
+    
+    return True
+
+# prompt the user to enter the two names and the 8-digit integer representing the birthday
+input_str = input("Enter the two names and the birthdays (DDMMYYYY), separated by commas: ")
+
+# split the input string into a list of strings
+input_list = input_str.split(",")
+
+# validate the input
+if len(input_list) != 6:
+    print("Invalid input. Please enter two names and two 8-digit integers representing the birthdays, separated by commas.")
+else:
+    # separate the day, month, and year from the 8-digit integers
+    day_1 = input_list[0].strip()
+    month_1 = input_list[1].strip()
+    year_1 = input_list[2].strip()
+    day_2 = input_list[3].strip()
+    month_2 = input_list[4].strip()
+    year_2 = input_list[5].strip()
+
+    # check if the dates are valid
+    if is_valid_date(day_1, month_1, year_1) and is_valid_date(day_2, month_2, year_2):
+        # print the output in the desired format
+        print("{} {} was born on {}/{}/{}".format(input_list[2].capitalize(), input_list[3].capitalize(), day_1, month_1, year_1))
+        print("{} {} was born on {}/{}/{}".format(input_list[4].capitalize(), input_list[5].capitalize(), day_2, month_2, year_2))
+    else:
+        print("Invalid date. Please enter two valid dates.")
+
+

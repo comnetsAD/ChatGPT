@@ -1,0 +1,17 @@
+def translate_to_enkliz(sentence):
+    enkliz_sentence = sentence.lower()
+    enkliz_sentence = enkliz_sentence.replace("twinkle", "dingle")
+    enkliz_sentence = enkliz_sentence.replace("little", "liddle")
+    enkliz_sentence = enkliz_sentence.replace("star", "zdar")
+    enkliz_sentence = enkliz_sentence.replace("how", "o")
+    enkliz_sentence = enkliz_sentence.replace("wonder", "onter")
+    enkliz_sentence = enkliz_sentence.replace("above", "apofe")
+    enkliz_sentence = enkliz_sentence.replace("world", "orlt")
+    enkliz_sentence = enkliz_sentence.replace("high", "ik")
+    enkliz_sentence = enkliz_sentence.replace("like", "lige")
+    enkliz_sentence = enkliz_sentence.replace("diamond", "tiamont")
+    enkliz_sentence = enkliz_sentence.replace("sky", "zgy")
+    return enkliz_sentence
+
+english_sentence = "Twinkle, twinkle, little star,"
+print(translate_to_enkliz(english_sentence))

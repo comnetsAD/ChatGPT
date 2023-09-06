@@ -1,0 +1,8 @@
+A host name is a human-readable label that is assigned to a device, such as a computer or a router, on a network. It is used to identify the device on the network and is typically composed of a series of alphanumeric characters separated by periods, such as "myhost.mysubnet.com".
+
+A host IP address, on the other hand, is a numerical label assigned to a device on a network. It is used to identify and locate the device on the network, and is typically represented in the form of four octets separated by periods, such as "135.168.1.50".
+
+In the process of initiating a connection with www.cyberwarfarenyuad.com, the host name is first utilized by the client device to initiate a DNS (Domain Name System) query. The DNS is a distributed database that maps domain names to IP addresses. The client device sends a request to the DNS server specified in its network configuration (8.8.8.8) to resolve the host name "www.cyberwarfarenyuad.com" to its corresponding IP address. Once the IP address is received, the client device can then utilize the host IP address to initiate a connection with the target website.
+
+In summary, host names are used to identify devices on a network in a human-readable format, while host IP addresses are used to identify and locate devices on a network in a numerical format. The host name is used to initiate a DNS query to resolve the domain name to IP address, once the IP address is received the host IP address is used to initiate the connection.
+

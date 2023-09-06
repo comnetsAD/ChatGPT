@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<string.h>
+
+int main() 
+{
+
+	int initial[15] = {1, 2, 2, 2, 5, 6, 7, 7, 5, 10, 3, 4, 4, 1, 1}; //initial array of the characters
+	int outcome[15];
+	int k = 0;
+	int size_of_outcome;
+
+	for (int i = 0; i<=14; i++){ //for each character in initial array
+		size_of_outcome=k;
+		for(int j = 0; j<=size_of_outcome; j++){ //check values of unique array
+			if (initial[i] == outcome[j]){ //if the number is there, stop 
+				break;
+			}
+			else if (j==size_of_outcome){
+					outcome[k] = initial[i]; //if not, place it there
+					k++;
+			}			
+		}
+
+	}
+
+	printf("Initial array: \n");
+	for (int m = 0; m<=14; m++){
+		printf("%d ", initial[m]);
+
+	}
+
+	printf("\n");
+
+	printf("New array:\n");
+	for (int n = 0; n<k; n++){
+		printf("%d ", outcome[n]);
+
+	}
+	 
+	 return 0;
+		
+}
+

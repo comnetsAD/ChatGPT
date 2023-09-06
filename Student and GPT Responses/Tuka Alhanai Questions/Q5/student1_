@@ -1,0 +1,2 @@
+The object-oriented approach to programming depends on the creation of objects. Then, operating with commands that are related to these objects. To create objects, we must first create classes and these classes contain the functions that are applicable to only objects of this class. A non-object-oriented approach solely depends on a series of commands without classes and objects. These commands can be pre-defined functions created by the user or existing function in the respective language.
+

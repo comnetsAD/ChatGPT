@@ -1,0 +1,22 @@
+A host name is a human-readable string that identifies a device on a network. It is typically used to make it easier for users to remember the address of a device, rather than having to remember its numerical IP address. In this case, the host name is "myhost.mysubnet.com".
+
+A host IP address, on the other hand, is a numerical address assigned to a device on a network. It is used to identify and locate the device on the network, allowing other devices to communicate with it. In this case, the host IP address is 135.168.1.50.
+
+During the process of initiating a connection with www.cyberwarfarenyuad.com, the host name is not used directly. Instead, the host will use its IP address to initiate the connection. However, the host name is used in the process of resolving the domain name "www.cyberwarfarenyuad.com" to an IP address, which is necessary for the host to initiate the connection.
+
+The process of resolving a domain name to an IP address is known as DNS resolution. The host will begin by checking its local cache for a previously resolved IP address for the domain name "www.cyberwarfarenyuad.com". If there is no cached information, the host will send a DNS query to the DNS server specified by its network configuration, which in this case is 8.8.8.8.
+
+The DNS server will then check its own cache for a previously resolved IP address for the domain name. If it does not find one, it will send a recursive query to other DNS servers on the internet, following the hierarchical structure of the DNS system. These servers will check their own caches and send further queries until the IP address for the domain name is found.
+
+Once the IP address is found, it is returned to the host in the form of a DNS response, along with any additional information such as the Time-To-Live (TTL) value for the IP address. The host will then cache this information for future use.
+
+The following protocols are used in this process:
+
+	User Datagram Protocol (UDP): This protocol is used for the initial DNS query sent by the host to the DNS server. It is used because it is a connectionless protocol, which means that it does not require a dedicated connection to be established before data is exchanged. This allows the host to quickly send a query and receive a response without the overhead of establishing a connection.
+
+	Transmission Control Protocol (TCP): This protocol is used for the recursive queries sent by the DNS server to other DNS servers on the internet. It is used because it is a connection-oriented protocol, which means that a dedicated connection is established before data is exchanged. This allows for reliable and error-free transmission of the queries and responses.
+
+	Internet Protocol (IP): This protocol is used to route the DNS query and response packets through the internet. It is used because it provides the necessary addressing information for the packets to reach their destination.
+
+In summary, the host uses UDP to quickly send a DNS query to the DNS server and receive a response. The DNS server uses TCP to send recursive queries to other DNS servers on the internet and receive responses in a reliable manner. IP is used to route the packets through the internet to their destination.
+

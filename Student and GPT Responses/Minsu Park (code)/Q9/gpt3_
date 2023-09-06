@@ -1,0 +1,12 @@
+
+Hint: Our solution involves a comparison operator and the 'np.count_nonzero' method.
+
+import numpy as np
+
+ten_nachos = np.array(['neither', 'cheese', 'both', 'both', 'cheese', 'salsa', 'both', 'neither', 'cheese', 'both'])
+
+# count the number of nachos that have only cheese
+number_cheese = np.count_nonzero(ten_nachos == "cheese")
+
+print(number_cheese)
+

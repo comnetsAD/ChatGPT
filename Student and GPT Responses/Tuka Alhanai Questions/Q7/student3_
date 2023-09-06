@@ -1,0 +1,3 @@
+Making sure that the code is written aptyle, with proper spacing and indentation instead of it all being a single line to improve readibility.
+Making sure to comment the code as much as possible to a certain degree of necessity so as to help other developers, myself (when I return to the code) and even users understand the different parts, aspects and coding paradigms used in the code.
+

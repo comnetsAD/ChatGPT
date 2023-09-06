@@ -1,0 +1,25 @@
+
+
+Here is a chart showing the minimum distribution time for each of the combinations of N and u for both client-server distribution and P2P distribution:
+
+N u (Kbps)  Client-Server (Hours) P2P (Hours)
+10  300 0.525 0.525
+10  700 0.525 0.525
+10  2,000 0.525 0.525
+100 300 0.525 5.250
+100 700 0.525 2.625
+100 2,000 0.525 0.525
+1,000 300 5.250 52.500
+1,000 700 2.625 26.250
+1,000 2,000 0.525 5.250
+To calculate the minimum distribution time for client-server distribution, we can use the following formula:
+
+T_client-server = F / us
+
+To calculate the minimum distribution time for P2P distribution, we can use the following formula:
+
+T_P2P = F / (N * di)
+
+Note that the minimum distribution time for P2P distribution is dependent on the value of u, as each peer is uploading data to other peers in the swarm. The higher the value of u, the faster the file can be distributed. However, if u is too low, the distribution time can be significantly longer, as the peers may not have enough bandwidth to upload data to other peers in the swarm.
+
+

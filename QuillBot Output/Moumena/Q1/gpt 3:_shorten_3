@@ -1,0 +1,1 @@
+Start by writing the congruence in modular arithmetic: 2a mod 11 2a - 1 = 0 mod 11\s-a + 1 ≡ 0 mod 11 Dividing both sides by -1 yields: a ≡ -1 mod 11 Finally, adding 11 to both sides yields the smallest integer solution: a ≡ 10 mod 11 Thus, the congruence's lowest integer a > 1 is 10. 

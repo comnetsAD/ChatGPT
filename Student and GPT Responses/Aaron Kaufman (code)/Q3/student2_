@@ -1,0 +1,13 @@
+weight = function(value, unit){
+  if(unit == "pound"){
+    kilograms = value * 0.454
+    return(kilograms)
+  }else if(unit == "kg"){
+    pounds = value / 0.454
+    return(pounds)
+  }else{
+    print("NA")
+  }
+}
+
+

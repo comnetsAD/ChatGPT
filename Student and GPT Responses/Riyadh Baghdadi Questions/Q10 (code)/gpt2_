@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+struct university_detail {
+    char name[100];
+};
+
+struct student_detail {
+    int id;
+    char name[100];
+    float gpa;
+    struct university_detail uni;
+};
+
+void print_students(struct student_detail students[], int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        printf("Student ID: %d\n", students[i].id);
+        printf("Student Name: %s\n", students[i].name);
+        printf("Student GPA: %.2f\n", students[i].gpa);
+        printf("Student University: %s\n", students[i].uni.name);
+    }
+}
+
+int main() {
+    struct university_detail uni;
+    strcpy(uni.name, "My University");
+    printf("University name: %s\n", uni.name);
+
+    struct student_detail students[3];
+    int i;
+    for (i = 0; i < 3; i++) {
+        students[i].id = 123456 + i;
+        strcpy(students[i].name, "John Doe");
+        students[i].gpa = 3.5;
+        students[i].uni = uni;
+    }
+
+    print_students(students, 3);
+
+    return 0;
+}
+

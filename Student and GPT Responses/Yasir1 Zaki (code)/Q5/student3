@@ -1,0 +1,124 @@
+#Initial title
+print (" "*10 + "#------------------------#\n" + " "*10 + "|------------------------|\n" \
+       + " "*10 + "|| -----BATTLESHIP----- ||\n"+ " "*10 + "|------------------------|\n" \
+       + " "*10 + "#------------------------#\n")
+print ("WELCOME TO BATTLESHIP! One of the most popular games in the world.\
+\nIf you don't know how to play this game don't worry, here is a summary of \
+the rules:\nThe goal of the game is to guess where a hidden battleship is. \
+This program will hide the battleship in an specific and random position, and the \
+user (YOU) will have three aportunities to guess where the battleship is.")
+#Here we generate the random possition of the battleship
+import random
+shipPosition = random.randint(0,9)
+
+#We will express the 10 different possitions inside a list. That way it will be easy to
+#change the possition number by "-" everytime the user does NOT guess the possition correctly.
+battleShipList = ["O","O","O","O","O","O","O","O","O","O"]
+battleShipList[shipPosition] = "X"
+#print(battleShipList)
+battleShipListIndex = ["0","1","2","3","4","5","6","7","8","9"]
+
+print("\nThe battlesphip can be in one of the following posittions:\n\n  " \
+      + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipListIndex) + "-|\n  " \
+      + "#---"*10 + "#" + "\n")
+
+#Here I will give the user the option to choose if he or she wants to play with
+#radars. Because playing with radars makes the game super easy.
+print("There are two ways to play this game: with or without radars. the radars \
+will tell you, after each try, some information about where the battleship is.\n")
+radarOption = input("Do you wanna play with radars? (Yes/No): ")
+radarOption = radarOption.lower()
+#If we define the "userWantsRadars" variable as a True or False variable, the later if statement
+#will be easier to compute. Ex: if userWantsRadars: (if True:).
+userWantsRadars = (radarOption == "yes")
+
+guess1 = input ("\nPerfect! we are ready to play the game. Now you have to guess where the "\
+                +"ship is.\nPlease, write the possition where you think the battleship is: ")
+guess1 = int(guess1)
+
+#Here are the possible outcomes depending on the guess1
+if battleShipList[guess1] == "X":
+    print ("\nCongratulations! you have sinked the battleship." \
+           +"\nThe position of the battleship was:",str(shipPosition) \
+           + "\n\n  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipList) \
+           + "-|\n  " + "#---"*10 + "#\n\n" + "-"*17 + " GAME OVER " + "-"*17 \
+           + "\n\nIf you wanna keep playing, you just have to run the program again.")
+else:
+    battleShipListIndex[guess1] = "-"
+    battleShipOutput = ("\n  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipListIndex) \
+       + "-|\n  " + "#---"*10 + "#\n")
+    print (battleShipOutput)
+
+    #If the user wants radars then this part of the program will be executed 
+    if userWantsRadars:
+        #For the radar and the super-radar we need to calculate the distance between the guess and
+        #the position of the battleship. because we dont want negative values, we can obtain the
+        #possitive number by using an if statement.
+        if guess1 > shipPosition:
+            distance = guess1 - shipPosition
+        else:
+            distance = shipPosition - guess1
+        #First we program the radar. In this program the radar will tell the user if his or her
+        #guess was right next to the battleship.
+        if distance == 1:
+            print("RADAR: the battleship is right next to your last guess.\n")
+        #We will introduce the super-radar (which tells how far the guess was from the ship)
+        #in the else statement; because if the guess is right next to the ship it is redundant to
+        #to print both radars at the same time. 
+        else:
+            print("SUPER-RADAR: the battleship is", distance ,"possitions away from your guess.\n")
+            
+    print ("Sorry you have missed the battleship.")
+    guess2 = input("You have a second chance to guess where the ship is. Write your guess here: ")
+    guess2 = int(guess2)
+
+    #for the second guess we will use the same process to generate the radar and super-radar.
+    
+    if battleShipList[guess2] == "X":
+        print ("\nCongratulations! you have sinked the battleship." \
+               +"\nThe position of the battleship was:",str(shipPosition) \
+               + "\n\n  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipList) \
+               + "-|\n  " + "#---"*10 + "#\n\n" + "-"*17 + " GAME OVER " + "-"*17 \
+               + "\n\nIf you wanna keep playing, you just have to run the program again.")
+    else:
+        battleShipListIndex[guess2] = "-"
+        battleShipOutput =("\n  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipListIndex) \
+               + "-|\n  " + "#---"*10 + "#\n")
+        print (battleShipOutput)
+        
+        if userWantsRadars:
+            if guess2 > shipPosition:
+                distance = guess2 - shipPosition
+            else:
+                distance = shipPosition - guess2
+            if distance == 1:
+                print("RADAR: the battleship is right next to your last guess.\n")
+            else:
+                print("SUPER-RADAR: the battleship is", distance ,"possitions away from your guess.\n")
+
+        print ("Sorry you have missed the battleship again.")
+        guess3 = input("This is your last chance to guess the position of the battleship."\
+                       + " Write your guess here: ")
+        guess3 = int(guess3)
+
+        #I am not printing the radars after the third guess because at that point they are
+        #useless. The player wont have the chance to guess again.
+        
+        if battleShipList[guess3] == "X":
+            print ("\nCongratulations! you have sinked the battleship." \
+                   +"\nThe position of the battleship was:",str(shipPosition) \
+                   + "\n\n  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipList) \
+                   + "-|\n  " + "#---"*10 + "#\n\n" + "-"*17 + " GAME OVER " + "-"*17 \
+                   + "\n\nIf you wanna keep playing, you just have to run the program again.")
+        else:
+            battleShipListIndex[guess3] = "-"
+            battleShipOutput = ("\n  " + "#---"*10 + "#\n" + "  |-" + \
+                                "-|-".join(battleShipListIndex) + "-|\n  " + "#---"*10 + "#\n")
+            print (battleShipOutput)
+            print ("The position of the battleship was:",shipPosition,"\n")
+            print ("  " + "#---"*10 + "#\n" + "  |-" + "-|-".join(battleShipList) \
+                   + "-|\n  " + "#---"*10 + "\n")
+            print ("Sorry, you have missed your last guess. You have lost the game.\n\n" \
+                   + "-"*17 + " GAME OVER " + "-"*17 + "\n\nIf you wanna keep playing, you "\
+                   + "just have to run the program again.")
+

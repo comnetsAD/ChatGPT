@@ -1,0 +1,10 @@
+An object-oriented approach to programming, also known as OOP, is a programming paradigm that focuses on the use of objects and their interactions to design and develop software. It is based on the principles of encapsulation, inheritance, polymorphism, and abstraction.
+
+In contrast, a non-object-oriented approach to programming does not rely on the use of objects and their interactions. It is based on a more procedural or functional approach to programming, where the focus is on writing code that performs specific tasks, rather than on creating and manipulating objects.
+
+Some key differences between an object-oriented approach and a non-object-oriented approach include:
+Encapsulation: In an object-oriented approach, data is typically encapsulated within objects, which are responsible for maintaining their own state and behavior. In a non-object-oriented approach, data is not encapsulated and is often accessible and modifiable by any part of the program.
+Inheritance: In an object-oriented approach, classes can inherit properties and behavior from parent classes, allowing for code reuse. In a non-object-oriented approach, code reuse is typically achieved through the use of functions or modules.
+Polymorphism: In an object-oriented approach, objects can have different forms or behaviors depending on their type or class. In a non-object-oriented approach, code is typically written to perform specific tasks, with little or no flexibility to handle different types of inputs or behaviors.
+Abstraction: In an object-oriented approach, objects are designed to hide their internal implementation details and
+

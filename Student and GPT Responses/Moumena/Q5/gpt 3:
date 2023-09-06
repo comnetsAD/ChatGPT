@@ -1,0 +1,11 @@
+
+To prove this statement, we can use the definition of set difference.
+For any sets A, B, and C, we have:
+A − (B ∩ C) = {x | x ∈ A and x ∉ (B ∩ C)}
+And
+(A − B) ∩ (A − C) = {x | x ∈ A and x ∉ B} ∩ {x | x ∈ A and x ∉ C}
+To show that these two expressions are equal, we need to show that x ∈ A − (B ∩ C) if and only if x ∈ (A − B) ∩ (A − C).
+Suppose x ∈ A − (B ∩ C). This means that x ∈ A and x ∉ (B ∩ C). Since x ∈ A, it follows that x ∈ (A − B) and x ∈ (A − C). Therefore, x ∈ (A − B) ∩ (A − C).
+Conversely, suppose x ∈ (A − B) ∩ (A − C). This means that x ∈ A and x ∉ B and x ∉ C. Since x ∉ B and x ∉ C, it follows that x ∉ (B ∩ C). Therefore, x ∈ A − (B ∩ C).
+We have shown that x ∈ A − (B ∩ C) if and only if x ∈ (A − B) ∩ (A − C), which means that A − (B ∩ C) = (A − B) ∩ (A − C).
+

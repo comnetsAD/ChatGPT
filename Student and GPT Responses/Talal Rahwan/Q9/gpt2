@@ -1,0 +1,3 @@
+Dynamic size: Linked-lists can be resized easily and dynamically, as memory can be allocated and deallocated during runtime. This is useful for cases where the size of a data structure needs to change frequently or is not known in advance.
+
+Efficient insertion and deletion: Linked-lists provide efficient insertion and deletion operations as only a few pointers need to be changed in order to add or remove an element from the list, while in arrays these operations can be expensive as they may require shifting a large amount of data in memory.

@@ -1,0 +1,2 @@
+Since it is a 7 bit generator, we first append zeros to D, making it 10101010100000. Then we divide D by G, with our remainder being the CRC value. The remainder in this case is 0100.
+

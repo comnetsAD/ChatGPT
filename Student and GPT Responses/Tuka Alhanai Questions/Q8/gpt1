@@ -1,0 +1,5 @@
+"vector" : The STL vector is a template class in the C++ Standard Template Library (STL) that provides dynamic arrays. It is defined in the <vector> header and allows you to store a collection of elements of the same type. It has many useful member functions such as push_back(), pop_back(), size(), etc. that allow you to add, remove, and access elements in the vector.
+"string" : The STL string is a template class in the C++ Standard Template Library (STL) that provides a convenient way to manipulate strings of characters. It is defined in the <string> header and allows you to perform operations such as concatenation, substring extraction, and character searching. It also has many useful member functions such as length(), find(), replace() etc. that allow you to manipulate strings in various ways.
+
+Both vector and string are objects from the Standard Template Library (STL) which provides a collection of templates for common data structures and algorithms that can be used in C++ programs.
+

@@ -1,0 +1,5 @@
+In the program, the order in which the numbers are added can affect the final result due to the fact that floating-point arithmetic is not associative. This means that the order in which the numbers are added can change the way the errors accumulate in the final result.
+When adding from left to right, the small values are added first and these small values are subject to larger relative error than larger values. This means that the small values introduce more error into the final result when they are added first.
+When adding from right to left, the larger values are added first and these values have smaller relative error. This means that the larger values introduce less error into the final result when they are added first.
+In this specific program, the series being added is an alternating series with a sum of 0, the order of numbers matters. Therefore, adding from right to left leads to a more accurate result as the relative error introduced by the small numbers is minimized by adding the larger values first.
+

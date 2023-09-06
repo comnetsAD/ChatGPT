@@ -1,0 +1,22 @@
+To distribute the file using client-server distribution, the server must upload the file to each of the N peers. The total time it takes to distribute the file using client-server distribution is therefore:
+
+T_client-server = F / (us / N) = 15 Gbits / (30 Mbps / N)
+
+To distribute the file using P2P distribution, each peer must download the file from other peers in the swarm. The total time it takes to distribute the file using P2P distribution is therefore:
+
+T_P2P = F / (di / N) = 15 Gbits / (2 Mbps / N)
+
+Here is a chart showing the minimum distribution time for each of the combinations of N and u for both client-server distribution and P2P distribution:
+
+N u T_client-server (seconds) T_P2P (seconds)
+10  300 Kbps  5,000 75,000
+10  700 Kbps  2,142 33,333
+10  2 Mbps  750 12,500
+100 300 Kbps  500 7,500
+100 700 Kbps  214 3,333
+100 2 Mbps  75  1,250
+1,000 300 Kbps  50  750
+1,000 700 Kbps  21  333
+1,000 2 Mbps  7.5 125
+
+

@@ -1,0 +1,11 @@
+
+For a construction project like the construction of a hotel on Yas Island, where the owner is very interested in having the hotel ready on time for the start of the tourist season and full occupancy is expected, the most appropriate resource management technique would be Critical Path Method (CPM).
+
+CPM is a project management technique that uses a network diagram to represent the project schedule. It is used to identify the critical path of a project, which is the sequence of activities that determines the earliest completion date of the project. By identifying the critical path, CPM allows project managers to focus on the activities that have the most impact on the project's completion date.
+
+One of the main characteristics of CPM is that it uses a forward pass and a backward pass to calculate the earliest start and finish times for each activity. This allows project managers to identify the critical path, and to schedule resources accordingly.
+
+Another characteristic of CPM is that it allows project managers to identify the float or slack time of each activity. Float time is the amount of time an activity can be delayed without delaying the overall project completion. This allows project managers to identify the activities that can be delayed without delaying the project, and to optimize the use of resources by focusing on the critical path activities.
+
+In this case, the use of CPM can help you optimize the resources of the project by identifying the critical path and focusing on the activities that have the most impact on the project's completion date, also it can make you aware of the slack time on activities, so you can plan and make better use of the resources.
+

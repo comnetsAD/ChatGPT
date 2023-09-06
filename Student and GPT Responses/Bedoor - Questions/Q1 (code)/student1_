@@ -1,0 +1,15 @@
+def fun(a,b):
+   # Write your code for Part VII below this line
+   if b%a == 0:
+     return True
+   else:
+     return False
+'''
+These assertions will not throw error
+if you write your function above correctly.
+'''
+
+assert(fun(10,100) == True)
+assert(fun(3,100) == False)
+
+

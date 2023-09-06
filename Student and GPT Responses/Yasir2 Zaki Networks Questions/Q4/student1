@@ -1,0 +1,7 @@
+1 RTT = 6 MSS; 2 RTT = 7 MSS; 3 RTT = 8 MSS … 7 RTT = 12 MSS 
+
+First RTT = 5 MSS, second RTT = 6MSS, third RTT = 7 MSS, fourth RTT = 8 MSS, fifth RTT = 9 MSS, sixth RTT = 10 MSS. 5+6+7+8+9+10 = 45 MSS 45/6 = 7.5 MSS/RTT (TCP)   
+
+HTTP headers reduce size and therefore throughput. It falls to 3.25 MSS/RTT 
+
+

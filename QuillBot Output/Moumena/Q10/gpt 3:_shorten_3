@@ -1,0 +1,1 @@
+100 positive integers less than 100 have 9 first-digit options (since it cannot be 0). Each choice has 9 second-digit options (since it must be different from the first digit). Thus, 9*9=81 positive numbers under 100 have different digits. Thus, the likelihood that a random positive integer smaller than 100 has all distinct digits is 81/100, or 0.81. 

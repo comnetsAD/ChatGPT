@@ -1,0 +1,19 @@
+
+
+A pure strategy Nash equilibrium is a strategy where neither player has an incentive to change their strategy given the strategy of the other player. A mixed strategy Nash equilibrium is a combination of strategies where neither player has an incentive to change their strategy given the strategy of the other player.
+
+To find the pure strategy Nash equilibria, we check each strategy for each player to see if it is a best response to the other player's strategy.
+
+For player 1, their best response to player 2's strategy L is to play U, because it results in a higher payoff than playing D. Similarly, their best response to player 2's strategy R is to play U. Therefore, the pure strategy Nash equilibrium is (U, L) and (U, R) where player 1 plays U and player 2 plays L or R.
+
+For player 2, their best response to player 1's strategy U is to play R, because it results in a higher payoff than playing L. Similarly, their best response to player 1's strategy D is to play R. Therefore, the pure strategy Nash equilibrium is (U, R) and (D, R) where player 1 plays U or D and player 2 plays R.
+
+To find the mixed strategy Nash equilibrium, we need to check the expected payoffs for each player given the other player's mixed strategy.
+
+Let x be the probability that player 1 plays U and y be the probability that player 2 plays L. Then the expected payoff for player 1 is 2x + 1(1-x) and the expected payoff for player 2 is 3y + 2(1-y). For player 1 to be indifferent between playing U and D, we must have 2x + 1(1-x) = 1(1-x) + 4x, which simplifies to x = 2/5.
+
+Similarly, let z be the probability that player 2 plays R. Then the expected payoff for player 1 is 2x + 1(1-x) = 2(2/5) + 1(3/5) = 8/5 and the expected payoff for player 2 is 5z + 2(1-z) = 5z + 2(1-z) = 2z + 2. For player 2 to be indifferent between playing R and L, we must have 5z + 2(1-z) = 3y + 2(1-y) = 3(2/5) + 2(3/5) = 8/5, which simplifies to z = 2/5.
+
+Therefore, the mixed strategy Nash equilibrium is (x, y, z) = (2/5, 2/5, 2/5) where player 1 plays U with probability 2/5, player 2 plays L with probability 2/5, and plays R with probability 2/5.
+
+

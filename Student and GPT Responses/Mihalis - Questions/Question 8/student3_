@@ -1,0 +1,76 @@
+According to the security survey, in 2021, 91% of industrial
+organizations have encountered at least one incident related to
+cyber security. As Eddy Wade, principal industrial
+consultant at Dragos, a major cybersecurity firm in the Gulf
+region says: “Keeping industrial control systems and operational
+technology safe means protecting the most important structures
+of an organization … Cyberattacks targeting critical industries
+such as energy, oil, and gas, mining and pharmaceuticals will
+leverage disruption of sometimes dangerous physical equipment
+which we rely on as a society.” Formation and maintenance
+of rigid and strong cyber security are vital to any industrial firm
+nowadays, and it seems that its importance will only increase in
+years to come.
+As a tool, Shodan has both great advantages and
+disadvantages in terms of its possible use cases and scenarios
+that it can be incorporated into. Shodan can be used as a security
+research and testing tool as it enables users to explore different
+vulnerabilities in targeted devices and if used properly and in
+goodwill, it can act as a highly beneficial tool for vulnerability
+detection and cyber security maintenance. For instance, one
+might check his own IP address via Shodan and see what
+vulnerabilities are detected, or the Research and Development
+team in an IoT firm might run multiple Shodan searches on the
+devices that are in development to make alterations and/or
+reinforce devices’ security. Naturally, the process can be
+repeated, for instance, to make sure that the devices are not
+prone to new vulnerabilities that have originated after the latest
+firmware update and that there are no flaws left. Such a use case
+opens a great possibility for IoT device manufacturers to test
+their devices and facilitate research and development. In turn,
+this will have economic benefits since expenses on R&D will
+noticeably decrease. Having an extensive list of filters,
+manufacturers and individual users can identify potential threats
+to security and track exploits with the help of Shodan.
+Conversely, Shodan can be used in malicious ways.
+Individuals can look for under-protected devices and exploit the
+vulnerabilities that those have. In the case of unprotected CCTV
+cameras, they can use them to analyze security breaches or
+weaknesses and access the premises of a secured object, facility,
+private property, or any other place. In the case of ICS, they may
+halt the ongoing processes resulting in production delays for
+private companies (which will incur financial and reputational
+losses), and the breakdown of critical infrastructure elements
+which by itself creates numerous negative implications. They
+may also disturb the ground and air traffic regulations if the
+according systems are accessed, and this could certainly produce
+devastating consequences (aircraft and automotive accidents).
+Corporate networks can also get disrupted, which in turn would
+cease normal workflow and communications within a firm or a
+conglomerate if we are talking about an attack on a large-scale
+entity. Logically, this would result in financial, reputational,
+time, and many other losses for the stakeholder in question. It
+can affect the stock prices of the company and its long-term
+stability in the market.
+While it may appear that Shodan is an all-powerful utility
+that can tackle various devices, we believe that it is not as serious
+as it may initially appear. While it provides some meaningful
+assistance to attackers employing this tool, it primarily serves
+the role of the detection device. It does not directly participate
+in the orchestration of a malicious attack, but rather, provides a
+solid informational foundation regarding the target that is to be
+attacked. Relative to the exploits, botnets, cyber worms, and
+many other cyber threats that have been covered so far, Shodan
+does not present an immediate threat to the devices in question.
+Furthermore, it is worth considering that Shodan is not
+considered illegal, as it simply provides a way to scan ports of
+the devices that are connected to the internet, unlike the after-
+mentioned cyber threats and other tools that are available in
+DarkWeb for instance. It is the unethical use case that makes it
+seem like the source of the issue, however, one can use his or
+her knowledge of chemistry to fabricate DIY explosives or to
+synthesize aromatic compounds for fragrances. In both cases,
+the freely available tools and knowledge can lead to different
+end products, thus it is valid to say that it is the intent rather than
+the tool that presents a danger.
+

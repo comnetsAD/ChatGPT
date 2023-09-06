@@ -1,0 +1,13 @@
+Dog_owner = c(T, F, F, T, F, T, T, T, T, F)
+Name = c("Francis", "Mark", "Jessie", "Micky", "Mateo", "Andrea", "Belen", 
+         "Rafaella", "Lucas", "Lara")
+Age = c(18, 27, 15, 19, 39, 52, 58, 17, 28, 20)
+Date_of_birth = c("18April2002", "19May2001", "20June2000", "21July1999", 
+                  "29August1998", "30September1950", "31October2003", 
+                  "14December2001", "19November2000", "14July2001")
+Date_of_birth <- as.Date(Date_of_birth, "%d%b%Y")
+phone = ch_phone_number(10)
+row_names = 1:10
+data_frame = data.frame(row_names, Dog_owner, Name, Age, Date_of_birth, phone)
+
+

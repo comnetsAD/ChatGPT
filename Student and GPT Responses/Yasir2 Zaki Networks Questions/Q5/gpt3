@@ -1,0 +1,11 @@
+
+
+Whether a NAK-only protocol is preferable to a protocol that uses ACKs depends on the specific circumstances of the data transfer.
+
+If the sender sends data infrequently, a NAK-only protocol may be preferable to a protocol that uses ACKs. This is because NAKs are only sent in response to lost or damaged packets, and since the sender is sending data infrequently, there will be fewer opportunities for packets to be lost or damaged. As a result, there will be fewer NAKs being sent, which can help to reduce the overhead of the protocol.
+
+On the other hand, if the sender has a lot of data to send and the end-to-end connection experiences few losses, a NAK-only protocol may not be preferable to a protocol that uses ACKs. This is because in a NAK-only protocol, the sender does not receive any positive confirmation that a packet has been received until a NAK is received for a subsequent packet. If the sender has a lot of data to send and the connection is relatively stable, this can lead to a large amount of data being sent without receiving any positive confirmation, which can be inefficient.
+
+In general, a NAK-only protocol may be preferable in situations where there are few losses and the sender is sending data infrequently, while a protocol that uses ACKs may be preferable in situations where there is a large amount of data to be sent and the connection is relatively stable.
+
+

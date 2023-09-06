@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE 50                    //Limit for array
+
+int main()
+{
+    int i=0;
+    int j;
+    printf("Enter a string: ");
+    char string[MAX_SIZE];             //Char array
+    scanf("%s",string);              
+    while(string[i]!='\0'){
+        i++;
+    }
+    i-=1;                               
+    for(j=i; j>=0; j--){                 //Going over all characters
+        for (int c=j; c<=i; c++){
+            printf("%c", string[c]);
+        }
+        printf("\n");
+    }
+    return 0; 
+}
+

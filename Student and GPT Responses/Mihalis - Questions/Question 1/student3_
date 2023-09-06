@@ -1,0 +1,9 @@
+Whenever a user tries to access a website - he types its address in the browser, as in gmail.com or wikipedia.org. But, on
+the internet, the IP addresses are the ones that are actually being used. Host IP addresses are essentially the IP addresses
+translated into words, they enable the users to easily access the website without the need of typing in the actual IP address
+every time. The browser does that translation internally, using the domain name system (DNS). We can think of DNS
+servers as routers that send packages of information or a dictionary that links hostnames to the IP addresses. DNS servers
+respond to questions from clients (users). Clients give the website name (the hostname) and DNS finds a corresponding IP
+address for that website. So the first step in connecting to www.cyberwarfarenyuad.com would be the retrieval of the IP
+address from the DNS.
+

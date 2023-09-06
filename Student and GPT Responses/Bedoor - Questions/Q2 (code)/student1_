@@ -1,0 +1,11 @@
+#answer here
+n = int(input("Enter number of times"))
+character = str(input("Enter character"))
+
+for i in range(n):
+ if character == "obi":
+   print("May the force be with you.")
+ elif character == "vader":
+   print("I find your lack of faith disturbing.")
+
+

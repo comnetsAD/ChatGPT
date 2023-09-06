@@ -1,0 +1,6 @@
+To compute the BLEU-2 (unigram+bigram) score for the system output ("paid it , swept it , forgot it .") against the set of three references, we first need to calculate the precision scores for each n-gram (unigram and bigram) in the system output.
+Precision for unigrams: 3/4 (3 out of the 4 unigrams in the system output also appear in at least one of the references) Precision for bigrams: 2/3 (2 out of the 3 bigrams in the system output also appear in at least one of the references)
+Next, we calculate the length penalty, which is calculated as: Length Penalty = e^(1 - (ref_length / sys_length)) In this case, the shortest reference length is 18, and the system output length is 14, so the length penalty is e^(1 - (18 / 14)) = 0.935
+Finally, we calculate the BLEU score using the formula: BLEU = (precision_unigram * precision_bigram)^0.5 * length_penalty
+BLEU-2 = (3/4 * 2/3)^0.5 * 0.935 = 0.564
+So the BLEU-2 score for the system output against the set of three references is 0.564

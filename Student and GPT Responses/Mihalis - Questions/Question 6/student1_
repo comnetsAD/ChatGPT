@@ -1,0 +1,109 @@
+Encrypting ransomware attacks are some of the most
+widespread cyber attacks.
+There are many ways of delivering ransomware to the
+victims’ computers. Most of the delivery methods described in
+the first section can be used: worms can be used for installing
+ransomware; semantic attacks can be used for tricking the
+victim into downloading the ransomware by themselves; the
+program can also be delivered physically, with a USB drive,
+for example.
+After installation, the ransomware program encrypts certain
+types of files. The files essential for the computer’s operation
+are avoided. Some of the most frequently encrypted files
+include PDF, Word, PowerPoint, and TXT files. Mostly, these
+files have huge importance for the victims, and the only way
+for them to get the files back is to pay the ransom. Because the
+files are encrypted and the attacker is the only one who knows
+the key, there is no other way around it. Bitcoin is mostly used
+as a payment method for ransom because of its anonymity. To
+further protect their anonymity, the attackers mostly use many
+bitcoin addresses.
+Ransomware attacks can have different outcomes:
+• The victim decides to give up the data and doesn’t pay
+the ransom.
+• The victim pays the ransom. In this case, the users can
+recover their data but not fully.
+• If the victim is a company and doesn’t pay the ransom,
+the attackers may release its data to the public.
+Ransomware attacks can have a huge impact on companies.
+The ransom they have to pay to recover their data can range
+from hundreds of thousands to millions of dollars. Other
+than that, because of the lost data, their operations are delayed
+which also can cost them money.
+Using ransomware is quite attractive to cyber criminals
+because of several reasons:
+• Easily spread just like most other malware - there are
+many ways of delivering ransomware.
+• Can be automated - after infection, the attackers don’t
+have to do much.
+• Preservation of anonymity - technologies such as Bitcoin
+allow attackers to receive money without being discov-
+ered.
+• High monetary gain - companies are willing to pay huge
+sums of money to get their data back
+
+Using data provided by SonicWall Capture Labs in
+the ”2022 SonicWall Cyber Threat Report”, we see
+a massive surge in 2021. One of the explanations
+for this is the fact that as many organizations switched to re-
+mote work because of the pandemic, their security decreased.
+However, ransomware attacks have decreased in 2022. One
+of the reasons for this is the massive fall in the prices of
+cryptocurrencies. Another explanation offered by the report connects
+this fact to the war in Ukraine. One of the
+major sources of ransomware attacks is Russia. Because of
+this, as Russia started the war, it shifted its whole focus to
+Ukraine, which resulted in fewer attacks. Also, because of
+the sanctions by many countries, Russian cybercriminals faced
+difficulty gathering means for the attacks.
+The decrease in the number of ransomware attacks doesn’t
+mean that it will be going away. Ransomware attacks are a
+great way for cybercriminals to get monetary gain, and the
+attacks will probably increase once more as the war ends
+and/or cryptocurrencies become more stable.
+
+Average cost of remediation from
+ransomware attacks data is gathered from the surveys
+conducted by Sophos in the years 2019-2022. One strange
+thing here is that the average cost of remediation decreases
+from 2020 to 2021. However, this doesn’t mean that the total
+costs decrease. Because the number of attacks in 2021 was
+much more than in 2020, the total cost will be more in 2021.
+However, the reason for the decrease in the average cost of
+remediation, is that the companies have
+learned more about recovering from data losses. Still, we can
+see that the financial losses are tremendous.
+From the victim’s side, nothing can be done to counter the
+ransomware if it already has encrypted the files. Because of
+this, countermeasures against ransomware have to be taken
+before it is installed. The main way to do this is to make sure
+that the ransomware cannot be delivered to the computer. To
+protect against the use of exploits by the attacker, the operating
+system and all third-party software have to be frequently
+updated. To protect against semantic attacks, the users have
+to be educated. Also, malware detection software can be used
+for detecting ransomware. However, this also has to be chosen
+carefully, as many anti-virus applications can be malicious
+themselves. For ransomware specifically, another solution is to
+back up all the important data so that it can be easily restored
+if it is lost.
+One of the most known ransomware is the WannaCry worm.
+It targeted Windows machines and used the EternalBlue ex-
+ploit for propagation. Although Windows had released patches
+for that vulnerability, WannaCry was still able to spread
+because many people didn’t update their operating systems.
+WannaCry started attacks in May 2017 and accepted pay-
+ments in Bitcoin. The author of the ransomware is considered
+to be the North Korean government.
+Another interesting case is the TeslaCrypt ransomware. Its
+attacks started in 2015 and were originally targeting gamers
+(”saved games, user profiles, replays of some popular games
+like League of Legends, Call of Duty or Minecraft”).
+However, TeslaCrypt later got developed into full-fledged
+ransomware that encrypted other types of files as well. The
+ransom message was displayed on the desktop, and the victims
+were given a chance to decrypt one file to trust that their
+files would be returned if they paid the ransom. In
+2016, however, the developers released the master key, making
+TeslaCrypt ineffective.
+

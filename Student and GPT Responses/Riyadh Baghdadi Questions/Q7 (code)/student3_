@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    //variables for the program
+    char str[50];
+    int length;
+    int i;
+
+    //ask for input from user
+    printf("Enter your string: \n");
+    scanf("%s", str);
+
+    //length of the string
+    length=strlen(str);
+
+    //reverse the string 
+    char temp;
+    int left=0;
+    int right=length-1;
+    //for loop to reverse it
+    for (i=left; i<right;i++)
+    {
+        temp= str[i];
+        str[i]=str[right];
+        str[right]=temp;
+        right--;
+    }
+
+    int a=0;
+    int b;
+    //print the reverse string by the rule
+    while (a<length)
+    {
+        for (b=a;b>=0;b--)
+        {
+            printf("%c", str[b]);
+        }
+        printf("\n");
+        a++;
+    }
+
+    return 0;
+}
+

@@ -1,0 +1,7 @@
+In this case, the researcher is able to make causal claims, because the experiment she conducted is completely random, which excludes any possible biases. Since she gets full financial support, she is able to examine the whole population and how their income is affected by education.
+## dag {
+## EDUCATION
+## INCOME
+## EDUCATION -> INCOME
+## }
+

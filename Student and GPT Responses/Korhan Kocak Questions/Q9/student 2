@@ -1,0 +1,31 @@
+1 NEq (U; L), (1; 1), no dominant strategy.
+
+U1(U) = U1(M)
+qL - 2 qC - 2 (1 - qL - qC) = -2 qL + qC - (1 - qL - qC)
+3 qL - 2 = - qL + 2qC - 1
+4 qL - 2 qC = 1
+
+U1(U) = U1(D)
+qL - 2 qC - 2 (1 - qL - qC) = -2 qL - qC + 1 - qL - qC
+3 qL - 2 = - 3 qL - 2qC + 1
+3 qL -  qC = 3/2
+
+
+U2(L) = U2(C).
+1(pU) - 2 pM - 2 (1 - pU - pM) = - 2 (pU) - 1 pM + (1 - pU - pM)
+3 pU - 2 = - 3 pU - 2 pM + 1
+3 pU + pM = 3/2
+
+U2(L) = U2(R).
+1(pU) - 2 pM - 2 (1 - pU - pM) = - 2 (pU) + 1 pM - (1 - pU - pM)
+3 pU - 2 = pU + 2 pM - 1
+4 pU - 2 pM = 1
+
+Solve a system
+4 qL - 2 qC = 1
+3 qL - qC = 3/2
+
+qC = -3/2
+qL = -½
+
+There is no mixture that would make both players indifferent qC < 1 and qL < 1 (these are not probabilities).

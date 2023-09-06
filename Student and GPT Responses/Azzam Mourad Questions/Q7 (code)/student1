@@ -1,0 +1,108 @@
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+int N;
+int *arr;
+
+void *thread_entry(void *arg)
+{
+    int i = (int)arg;
+    switch (i)
+    {
+        case 0: // average
+        {
+            int sum = 0;
+            for (int i = 0; i < N; i++)
+                sum += arr[i];
+            
+            float *toReturn = malloc(sizeof(float));
+            *toReturn = (float)sum/N;
+
+            pthread_exit((void *)toReturn);
+        }
+        case 1: // minimum
+        {
+            int *min = malloc(sizeof(int));
+            *min = arr[0];
+
+            for (int i = 1; i < N; i++)
+                if (arr[i] < *min)
+                    *min = arr[i];
+
+            pthread_exit(min);
+        }
+        case 2: // maximum
+        {
+            int *max = malloc(sizeof(int));
+            *max = arr[0];
+
+            for (int i = 1; i < N; i++)
+                if (arr[i] > *max)
+                    *max = arr[i];
+
+            pthread_exit(max);
+        }
+    }
+}
+
+int main()
+{
+    printf("Please enter N the number of integers in the list:\n");
+    scanf("%d", &N);
+
+    // N validation
+    if (N < 1)
+    {
+        perror("N has to be a positive integer\n");
+        return -1;
+    }
+
+    // allocating the array
+    arr = malloc(sizeof(int) * N);
+
+    // filling the array
+    printf("Please enter the %d integers:\n", N);
+    for (int i = 0; i < N; i++)
+        scanf("%d", &arr[i]);
+
+
+    // Creating the threads
+    pthread_t threads[3];
+    int rc;
+    void *retvalue;
+
+    for (int i = 0; i < 3; i++)
+    {
+        rc = pthread_create(&threads[i], NULL, thread_entry, (void *)i);
+        if (rc != 0)
+        {
+            perror("Thread creation failed!\n");
+            return -1;
+        }
+    }
+
+
+    // Joining
+    char *labels[3] = {"average", "minimum", "maximum"};
+
+    for (int i = 0; i < 3; i++)
+    {
+        pthread_join(threads[i], &retvalue);
+        if (i == 0)
+            printf("The %s is %f\n", labels[i], *(float *)retvalue); // as average is float
+        else
+            printf("The %s is %d\n", labels[i], *(int *)retvalue);   // while rest are ints
+
+        // freeing the heap
+        free(retvalue);
+    }
+
+
+    // freeing the heap
+    free(arr);
+}
+
+

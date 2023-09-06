@@ -1,0 +1,12 @@
+For example, if
+fruit_lst = ["Apple", "Banana", "Pear", "Apricot", "Orange"]
+we would like to get
+["Apple", "Apricot"]
+Write a program to do that.
+Hint: look up the filter() function.
+
+fruit_lst = ["Apple", "Banana", "Pear", "Apricot", "Orange"]
+result = list(filter(lambda x: x[0] == "A", fruit_lst))
+print(result)
+
+

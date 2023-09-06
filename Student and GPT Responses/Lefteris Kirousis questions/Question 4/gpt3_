@@ -1,0 +1,7 @@
+
+This statement is true.
+To prove this, we can use the definition of the big O notation. A function f(n) is said to be O(g(n)) if there exist positive constants c and n0 such that for all n ≥ n0, f(n) ≤ cg(n).
+Given that f(n) ≤ cg(n) + d for all large enough n, we can rewrite this as f(n) ≤ cg(n) + d for all n ≥ n0, where n0 is the point at which the inequality holds for all n ≥ n0.
+Now, consider 2f(n) = f(n) + f(n) ≤ (cg(n) + d) + (cg(n) + d) = 2cg(n) + 2d.
+Therefore, 2f(n) is O(2g(n)), since we can find positive constants c=2 and d=2 such that 2f(n) ≤ 2cg(n) + 2d for all n ≥ n0.
+

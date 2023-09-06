@@ -1,0 +1,158 @@
+Server code:
+------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <pthread.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define MAX_CLIENTS 5
+#define BUFFER_SIZE 256
+
+void *handle_client(void *arg) {
+    int client_fd = *(int *)arg;
+    char buffer[BUFFER_SIZE];
+    int array[100], sum = 0, n;
+
+    // Read "hello" message from client
+    recv(client_fd, buffer, BUFFER_SIZE, 0);
+    printf("Received message from client: %s\n", buffer);
+
+    // Send "Hello back" message to client
+    strcpy(buffer, "Hello back");
+    send(client_fd, buffer, strlen(buffer), 0);
+
+    // Read array of integers from client
+    recv(client_fd, &n, sizeof(int), 0);
+    recv(client_fd, array, n * sizeof(int), 0);
+    printf("Received array from client: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", array[i]);
+        sum += array[i];
+    }
+    printf("\n");
+
+    // Send sum of array to client
+    send(client_fd, &sum, sizeof(int), 0);
+
+    close(client_fd);
+    pthread_exit(NULL);
+}
+
+int main() {
+    int server_fd, client_fd, port = 8000, clients = 0;
+    struct sockaddr_in server_address, client_address;
+    socklen_t client_address_size;
+    pthread_t thread_id;
+
+    // Create socket
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        perror("socket() failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Configure server address
+    server_address.sin_family = AF_INET;
+    server_address.sin_addr.s_addr = htonl(INADDR_ANY);
+    server_address.sin_port = htons(port);
+
+    // Bind socket to address
+    if (bind(server_fd, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {
+        perror("bind() failed");
+        exit(EXIT);
+    }
+
+    // Listen for incoming connections
+    if (listen(server_fd, MAX_CLIENTS) < 0) {
+        perror("listen() failed");
+        exit(EXIT_FAILURE);
+    }
+
+    while (1) {
+        client_address_size = sizeof(client_address);
+        // Accept incoming connection
+        if ((client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_size)) < 0) {
+            perror("accept() failed");
+            exit(EXIT_FAILURE);
+        }
+        printf("Client connected\n");
+        clients++;
+
+        // Create thread for client
+        if (pthread_create(&thread_id, NULL, handle_client, &client_fd) < 0) {
+            perror("pthread_create() failed");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    close(server_fd);
+    return 0;
+}
+
+
+And here is the client code:
+---------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define BUFFER_SIZE 256
+
+int main() {
+    int client_fd, port = 8000;
+    struct sockaddr_in server_address;
+    char buffer[BUFFER_SIZE];
+    int array[100], sum, n;
+
+    // Create socket
+    if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        perror("socket() failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Configure server address
+    server_address.sin_family = AF_INET;
+    server_address.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_address.sin_port = htons(port);
+
+    // Connect to server
+    if (connect(client_fd, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {
+        perror("connect() failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Send "hello" message to server
+    strcpy(buffer, "hello");
+    send(client_fd, buffer, strlen(buffer), 0);
+
+    // Read "Hello back" message from server
+    recv(client_fd, buffer, BUFFER_SIZE, 0);
+    printf("Received message from server: %s\n", buffer);
+
+    // Read array of integers from user
+   
+    printf("Enter number of integers to send: ");
+    scanf("%d", &n);
+    printf("Enter %d integers: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    // Send array of integers to server
+    send(client_fd, array, sizeof(array), 0);
+
+    // Receive sum of integers from server
+    recv(client_fd, &sum, sizeof(sum), 0);
+    printf("Sum of integers received from server: %d\n", sum);
+
+    close(client_fd);
+    return 0;
+}
+

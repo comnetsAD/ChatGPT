@@ -1,0 +1,10 @@
+
+The smallest such integer is 12.
+Proof. By algebraic manipulation of congruences:
+a + 1 ≡ 2a mod 11 =⇒ 1 ≡ a mod 11
+=⇒ 1 mod 11 = a mod 11
+=⇒ 1 = a mod 11
+=⇒ 11 ∗ k + 1 = a for some integer k
+
+If we substitute 0 in place of k, then a = 1, but we need a > 1. So, we try the next available k value, which is 1. When k = 1, a = 12. Therefore, the answer is 12.
+

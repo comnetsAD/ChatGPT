@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+#define SIZE 15
+
+void print_unique(int array[], int size) {
+    for (int i = 0; i < size; i++) {
+        bool duplicate = false;
+        for (int j = 0; j < i; j++) {
+            if (array[i] == array[j]) {
+                duplicate = true;
+                break;
+            }
+        }
+        if (!duplicate) {
+            printf("%d ", array[i]);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int array[SIZE];
+    printf("Enter %d integers:\n", SIZE);
+    for (int i = 0; i < SIZE; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    printf("Unique elements in the array: ");
+    print_unique(array, SIZE);
+    return 0;
+}
+

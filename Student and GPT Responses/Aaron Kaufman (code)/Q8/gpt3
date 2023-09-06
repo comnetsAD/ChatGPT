@@ -1,0 +1,17 @@
+
+The researcher may be making incorrect causal claims based on her study design and analysis. While the study finds a statistically significant positive relationship between education and income, this does not necessarily mean that education causes an increase in income. Other factors, such as innate intelligence, family background, and luck, may also play a role in determining both education level and income. Additionally, it is possible that the relationship is actually caused by a third variable, such as job type or location, which is correlated with both education and income.
+
+To properly establish causality, the researcher would need to use a design that can control for or rule out these alternative explanations, such as a randomized controlled trial or a natural experiment.
+
+Here is an example of a causal graph in R using the ggdag package:
+
+library(ggdag)
+
+g <- dagify(Y ~ X1 + X2 + X3, 
+            X1 ~ X2 + X3, 
+            X2 ~ X3)
+
+ggdag(g, label = c("Income","Education","Job Type","Location"))
+
+This causal graph represents the researcher's hypothesis that education leads to increased income, but it also indicates that there may be additional variables that could affect the relationship between education and income, such as Job Type and Location.
+

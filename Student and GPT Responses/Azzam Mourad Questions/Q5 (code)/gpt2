@@ -1,0 +1,85 @@
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
+
+#define MAX_PRODUCTS 100
+#define MAX_PRODUCERS_CONSUMERS 100
+#define MAX_ITEMS 50
+
+int box[MAX_PRODUCTS];
+int count = 0; // Count of products in the box
+
+sem_t mutex; // Semaphore to ensure mutual exclusion
+sem_t empty; // Semaphore to check if the box is empty
+sem_t full; // Semaphore to check if the box is full
+
+void *producer(void *arg) {
+    while (1) {
+        sem_wait(&empty); // Wait if the box is full
+        sem_wait(&mutex); // Wait for mutual exclusion
+
+        // Produce an item
+        int item = rand() % MAX_ITEMS;
+        box[count++] = item;
+        printf("Produced item: %d\n", item);
+
+        sem_post(&mutex); // Release mutual exclusion
+        sem_post(&full); // Signal that the box is not empty
+    }
+}
+
+void *consumer(void *arg) {
+    while (1) {
+        sem_wait(&full); // Wait if the box is empty
+        sem_wait(&mutex); // Wait for mutual exclusion
+
+        // Consume an item
+        int item = box[--count];
+        printf("Consumed item: %d\n", item);
+
+        sem_post(&mutex); // Release mutual exclusion
+        sem_post(&empty); // Signal that the box is not full
+    }
+}
+
+int main() {
+    sem_init(&mutex, 0, 1); // Initialize mutex semaphore
+    sem_init(&empty, 0, MAX_PRODUCTS); // Initialize empty semaphore
+    sem_init(&full, 0, 0); // Initialize full semaphore
+
+    pthread_t producer_threads[MAX_PRODUCERS_CONSUMERS];
+    pthread_t consumer_threads[MAX_PRODUCERS_CONSUMERS];
+
+    // Create producer threads
+    for (int i = 0; i < MAX_PRODUCERS_CONSUMERS; i++) {
+        pthread_create(&producer_threads[i], NULL, producer, NULL);
+    }
+
+    // Create consumer threads
+    for (int i = 0; i < MAX_PRODUCERS_CONSUMERS; i++) {
+        pthread_create(&consumer_threads[i], NULL, consumer, NULL);
+    }
+
+    // Wait for producer threads to finish
+    for (int i = 0; i < MAX_PRODUCERS_CONSUMERS; i++) {
+        pthread_join(producer_threads[i], NULL);
+    }
+
+    // Wait for consumer threads to finish
+    for (int i = 0; i < MAX_PRODUCERS_CONSUMERS; i++) {
+        pthread_join(consumer_threads[i], NULL);
+    }
+    printf("content of the box:");
+    for (int i=0;i<count;i++)
+        printf("%d ",box[i]);
+    printf("\n");
+    sem_destroy(&mutex); // Destroy mut
+
+    ex semaphore
+    sem_destroy(&empty); // Destroy empty semaphore
+    sem_destroy(&full); // Destroy full semaphore
+
+    return 0;
+}
+
+

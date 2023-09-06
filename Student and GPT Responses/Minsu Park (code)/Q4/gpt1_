@@ -1,0 +1,2 @@
+collection_times = [i*3600 for i in range(3124)]
+

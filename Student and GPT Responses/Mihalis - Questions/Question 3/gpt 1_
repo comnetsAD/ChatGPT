@@ -1,0 +1,16 @@
+The communication request travels from the client (the host) to the server side (the website) through a series of steps using various protocols. The process can be broken down into the following steps:
+
+	The host initiates a connection by sending a DNS request to the DNS IP address of 8.8.8.8, asking for the IP address associated with the host name "www.cyberwarfarenyuad.com."
+
+	Once the DNS server returns the IP address, the host uses it to initiate a connection with the router (default gateway) by sending an ARP request to the router's IP address "135.168.1.1," asking for the router's MAC address.
+
+	The router sends an ARP reply with its MAC address, allowing the host to establish a connection with it.
+
+	The host sends an IP packet to the router, containing the destination IP address of the website (the IP address returned by the DNS server) and the destination port number of 80 (HTTP protocol), which is the standard port number used for web communication.
+
+	The router then forwards the packet to the website's server by using routing tables and the Internet Protocol (IP) and the Transmission Control Protocol (TCP)
+
+	The website's server receives the packet and processes the request. It then sends a response back to the host, again using the IP and TCP protocols.
+
+In summary, the communication request travels from the client to the server side through a series of steps using various protocols. The host name is translated into an IP address through the use of DNS, and the host establishes a connection with the router through the use of ARP. The host then sends an IP packet to the router, containing the destination IP address of the website and the destination port number of 80 (HTTP protocol). The router then forwards the packet to the website's server, and the server sends a response back to the host.
+

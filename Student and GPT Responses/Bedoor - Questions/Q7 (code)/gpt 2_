@@ -1,0 +1,13 @@
+from collections import Counter
+
+def least_common(input_str, n):
+    # Use the Counter function to count the occurrences of each character
+    counts = Counter(input_str)
+    # Use the most_common() function to sort the counts in ascending order
+    # and return the first n elements
+    return counts.most_common()[:-n-1:-1]
+
+input_str = "hello world! ok bye"
+n = 8
+print(least_common(input_str, n))
+

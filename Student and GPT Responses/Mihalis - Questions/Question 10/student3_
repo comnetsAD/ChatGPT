@@ -1,0 +1,29 @@
+Shodan is not entirely unique in the sense that there are other
+similar scanning tools that exist freely on the internet. For a
+government body, accounting for each and every tool individual
+would be unreasonable and impractical. A uniform policy
+regarding the scanning engines like Shodan that would cover all
+the relevant aspects can be potentially introduced by
+governments in order to define exact boundaries on what is
+allowed and what is not.
+Such a policy could cover various points, including
+obligatory background checks for individuals/organizations
+involved in the use of Shodan-like search engines. This could
+eliminate the threat from certain parties wishing to employ the
+tools in malicious ways, but it will happen at the expense of free
+access to information, which is arguably one of the most crucial
+rights existing nowadays. A more comprehensive approach
+would be to clearly define the legality of different use scenarios
+of Shodan-like tools. This could involve, for instance, the
+implementation of user protocols that would only allow the use
+cases that involve testing of one’s own devices and equipment,
+and limit access to the devices beyond one’s own IP address.
+Alternatively, governments can impose extensive security
+requirements related to the available functionality and enabled
+use cases to Shodan and other companies directly. This would
+put the burden of complying with security standards on the
+companies, which evidently will negatively impact them, but it
+might in turn reduce the rate of criminal activity that involves
+the use of Shodan-like tools and services.
+
+

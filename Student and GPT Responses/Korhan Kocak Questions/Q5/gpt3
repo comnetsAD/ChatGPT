@@ -1,0 +1,21 @@
+
+In a game with vNM preferences, a pure strategy Nash equilibrium is a pair of strategies (one for each player) such that no player can improve their payoff by changing their strategy while the other player keeps their strategy. A mixed strategy Nash equilibrium is a pair of probability distributions over strategies such that no player can improve their expected payoff by changing their strategy while the other player keeps their strategy.
+
+To find the pure strategy Nash equilibria, we can check for each player whether they have a dominant strategy, which is a strategy that always gives them a higher payoff than any other strategy regardless of the other player's strategy.
+
+For player 1, the strategy U is a dominant strategy because it yields a payoff of 4 regardless of player 2's strategy.
+For player 2, the strategy R is a dominant strategy because it yields a higher payoff than L regardless of player 1's strategy.
+
+Therefore, the pure strategy Nash equilibrium is (U, R) where player 1 plays U and player 2 plays R.
+
+To find the mixed strategy Nash equilibrium, we can check whether there is no incentive for either player to deviate from their mixed strategy, given the other player's mixed strategy.
+
+Let's say player 1 plays U with probability p, and D with probability 1-p and player 2 plays L with probability q and R with probability 1-q.
+
+Player 1's expected payoff is p(4) + (1-p)(7) and player 2's expected payoff is q(-3) + (1-q)(1).
+
+Player 1's best response is to play U with probability 1 and Player 2's best response is to play R with probability 1. Therefore, there is no mixed strategy Nash equilibrium for this game.
+
+In summary, the pure strategy Nash equilibrium for this game is (U, R) and there is no mixed strategy Nash equilibrium.
+
+

@@ -1,0 +1,8 @@
+The statement is true.
+We can prove this statement by showing that there exist positive constants c and n0 such that for all n > n0, 2f(n) <= c * 2g(n).
+Assume that f(n) is O(g(n)), meaning there exist positive constants c1 and n1 such that for all n > n1, f(n) <= c1 * g(n).
+Therefore, 2f(n) <= 2 * c1 * g(n) for all n > n1.
+Now, let c = 2 * c1, and n0 = n1
+we have 2f(n) <= c * 2g(n) for all n > n0, which means that 2f(n) is O(2g(n))
+It is important to note that the big O notation is a tool that compares the rate of growth of two functions, rather than their exact values, hence this statement holds true.
+

@@ -1,0 +1,19 @@
+# Set i=0
+i = 0
+
+while i <=100:
+    if i>0:
+        if i%3==0 and i%5==0:
+            n = "FIZZ BUZZ"
+        elif i%3==0:
+            n = "FIZZ"
+        elif i%5==0:
+            n = "BUZZ"
+        else:
+            n = i
+    else:
+        n = i
+    print(n)
+    i = i+1
+
+

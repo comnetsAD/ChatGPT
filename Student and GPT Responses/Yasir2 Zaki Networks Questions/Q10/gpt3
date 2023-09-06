@@ -1,0 +1,29 @@
+
+
+The time it takes to transmit a packet of L bits on a link with transmission rate R bps is L / R seconds.
+
+The total time it takes to transmit the file from Host A to Host B is the sum of the transmission times for each of the three links. Therefore, the total time it takes to transmit the file is:
+
+T = (L / R) + (L / R) + (L / R) = 3 * (L / R)
+
+We want to minimize the total time T, so we want to minimize the value of L. Since L = 80 + S, we want to minimize the value of S.
+
+To minimize the value of S, we need to find the value of S that minimizes the packet size L while still being able to transmit the file. Since the file is made up of segments of S bits, we need to ensure that the value of S is large enough to transmit the entire file.
+
+If we let N be the number of segments in the file, then the total size of the file is N * S bits. Therefore, to transmit the entire file, we need to have S >= F / N.
+
+Therefore, to minimize the delay of moving the file from Host A to Host B, we need to choose the value of S that satisfies the following two conditions:
+
+1. S >= F / N (to transmit the entire file)
+2. S is as small as possible (to minimize the packet size L)
+
+We can satisfy these conditions by setting S equal to the ceiling of F / N. The ceiling of a number is the smallest integer that is greater than or equal to the number. For example, the ceiling of 3.2 is 4, and the ceiling of 4.9 is 5.
+
+In Python, we can use the math.ceil function to calculate the ceiling of a number:
+
+Copy code
+import math
+
+S = math.ceil(F / N)
+This will ensure that S is large enough to transmit the entire file, while also being as small as possible to minimize the packet size L.
+

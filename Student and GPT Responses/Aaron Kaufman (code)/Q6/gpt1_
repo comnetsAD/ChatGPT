@@ -1,0 +1,22 @@
+Here is an example of how you might use the str_length() and str_sub() functions from the stringr library in R to extract the middle character from a string:
+
+library(stringr)
+
+# Create a vector of words
+words <- c("example", "word", "middle", "character")
+
+# Use str_length() to find the length of each word
+lengths <- str_length(words)
+
+# Use str_sub() to extract the middle character of each word
+middle_chars <- str_sub(words, (lengths + 1) / 2, (lengths + 1) / 2)
+
+# Print the middle characters
+print(middle_chars)
+
+The output will be:
+
+[1] "m" "r" "d" "a"
+
+The str_length() function is used to find the length of each word in the vector, and this length is then used in the str_sub() function to extract the middle character of each word. The index for the middle character is calculated by adding 1 to the length of the word and then dividing by 2. This ensures that for even-length words, the middle character is the one immediately to the left of the center of the word, and for odd-length words, the middle character is exactly in the center of the word.
+

@@ -1,0 +1,9 @@
+The time it takes to transmit a packet of L bits over a link with transmission rate R bps is L/R seconds. If the file is segmented into packets of S bits, then each packet takes L/R seconds to transmit.
+
+In order to minimize the delay of moving the file from Host A to Host B, we want to minimize the time it takes to transmit all of the packets. Since there are three links between Host A and Host B, each packet must be transmitted three times. Therefore, the total time it takes to transmit all of the packets is 3 * (L/R) seconds.
+
+We can minimize this total time by minimizing the value of L/R. Since L is fixed (it is equal to 80 + S), the only way to minimize L/R is to maximize R. Since the transmission rate of each link is fixed, the only way to maximize R is to minimize the value of L, which is equal to 80 + S. Therefore, in order to minimize the delay of moving the file from Host A to Host B, we want to minimize the value of S.
+
+Therefore, the value of S that minimizes the delay of moving the file from Host A to Host B is the minimum possible value of S, which is 0 bits.
+
+

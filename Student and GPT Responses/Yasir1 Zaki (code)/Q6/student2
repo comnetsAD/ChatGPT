@@ -1,0 +1,149 @@
+import random
+
+numRow = 4
+numCol = 4
+correctBoard = []
+board = []
+
+count = 1
+#create correctboard
+for r in range(numRow):
+    row = []
+    for c in range(numCol):
+        row.append(str(count))
+        count += 1
+    correctBoard.append(row)
+
+correctBoard[numRow-1][numCol-1] = "  "
+
+#add space to single digits for aesthetic purpose
+for r in range(numRow):
+    for c in range(numCol):
+        num = correctBoard[r][c]
+        if num.isdigit():
+            if int(num) < 10:
+                correctBoard[r][c] = correctBoard[r][c]+" "
+
+#create shuffled playing board
+numList = []
+
+for i in range(numRow*numCol):
+    numList.append(str(i))
+numList.append("  ")
+
+random.shuffle(numList)
+
+count = 1
+for r in range(numRow):
+    row = []
+    for c in range(numCol):
+        row.append(numList[count])           
+        count += 1
+    board.append(row)
+
+#add space to single digits for aesthetic purpose
+for r in range(numRow):
+    for c in range(numCol):
+        num = board[r][c]
+        if num.isdigit():
+            if int(num) < 10:
+                board[r][c] = board[r][c]+" "
+
+def createBoard(board):
+    for c in range(numCol):
+        print("   "+str(c), end="  ")
+    print()
+
+    for r in range(numRow):
+        print(str(r)+" ", end="")
+        for c in range(numCol):
+            print(" "+str(board[r][c])+" | ", end="")
+        print("\n "+"------"*numCol)
+
+    print()
+
+#need to fix spacing
+
+def findBlank():
+    for r in range(numRow):
+        for c in range(numCol):
+            if board[r][c] == "  ":
+                return(r, c)
+
+
+def checkForMatch(row, col, blankRow, blankCol):
+    if blankRow+1 == row and blankCol == col:
+        board[blankRow][blankCol] = board[row][col]
+        board[row][col] = "  "
+        return True
+    elif blankRow-1 == row and blankCol == col:
+        board[blankRow][blankCol] = board[row][col]
+        board[row][col] = "  "
+        return True
+    elif blankRow == row and blankCol+1 == col:
+        board[blankRow][blankCol] = board[row][col]
+        board[row][col] = "  "
+        return True
+    elif blankRow == row and blankCol - 1 == col:
+        board[blankRow][blankCol] = board[row][col]
+        board[row][col] = "  "
+        return True
+    else:
+        return False
+
+createBoard(correctBoard)
+print("Slide Puzzle")
+print("The object of the puzzle is to place the tiles in order (seen in diagram above) by making sliding moves using the empty space. \
+\nYou can only slide a tile if there is an empty space next to it.")
+print("Good luck and have fun! \n")
+
+
+
+def slidePuzzle():
+    
+    createBoard(board)
+
+    game = True
+
+    count = random.randint(0,1)
+
+    while game:
+        choice = input("Enter the position of the tile you want to slide (row,column): ").split(",")
+        print()
+        
+        while int(choice[0]) < 0 or int(choice[0]) >= numRow or int(choice[1]) < 0 or int(choice[1]) >= numCol:
+            choice = input("Invalid input. \nPlease enter the position of the tile you want to slide (row,column): ").split(",")
+            print()
+
+        row = int(choice[0])
+        col = int(choice[1])
+
+        blankRow, blankCol = findBlank()
+
+        move = checkForMatch(row, col, blankRow, blankCol)
+
+        while not move:
+            choice = input("Tile cannot be moved. \nEnter the position of the tile you want to slide (row,column): ").split(",")
+            print()
+
+            while int(choice[0]) < 0 or int(choice[0]) >= numRow or int(choice[1]) < 0 or int(choice[1]) >= numCol:
+                choice = input("Invalid input. \nPlease enter the position of the tile you want to slide (row,column): ").split(",")
+                print()
+
+            row = int(choice[0])
+            col = int(choice[1])
+
+            blankRow, blankCol = findBlank()
+
+            move = checkForMatch(row, col, blankRow, blankCol)
+
+        createBoard(board)
+        
+        if board == correctBoard:
+            game = False
+        else:
+            game = True
+
+slidePuzzle()
+
+

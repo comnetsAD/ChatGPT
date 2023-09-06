@@ -1,0 +1,89 @@
+#include<stdio.h>
+#include<string.h>
+
+
+int main()
+{
+    //variables for the program
+    char str[50];
+    
+    int length;
+    int i,j,h;
+    int count=0;
+
+    //ask for input from user
+    printf("Enter your string: \n");
+    scanf("%s", str);
+
+    //length of the string
+    length=strlen(str);
+
+    //reverse the string so the last occurence is the first occurence
+    //so i can remove the character from the front 
+    char temp;
+    int left=0;
+    int right=length-1;
+    for (i=left; i<right;i++)
+    {
+        temp= str[i];
+        str[i]=str[right];
+        str[right]=temp;
+        right--;
+    }
+    
+    //find all the elements that have occured in the array but store it only once in the other array
+    char unique[50];
+    for (i=0;i<length;i++)
+    {
+        //nested for loop to check for the same numbers
+        for (h=0;h<i;h++)
+        {   
+            if (str[h]==str[i])
+            {
+                break;
+            }
+        }
+        if (i==h)
+        {
+            unique[count]=str[i];
+            count++;
+        }
+    }
+
+    //remove the first occurences 
+    //variables 
+    int b;
+    int c;
+    for (c=0;c<count;c++)
+    {
+        b=0;
+        while(b<length && str[b]!=unique[c]) 
+        {
+            b++;
+        }
+        while(b<length)
+        {
+            str[b]=str[b+1];
+            b++;
+        }
+    }
+
+    //redefine the length of the new string
+    length=strlen(str);
+    //reverse the string back to its normal order
+    char temp1;
+    int left1=0;
+    int right1=length-1;
+    for (i=left1; i<right1;i++)
+    {
+        temp1= str[i];
+        str[i]=str[right1];
+        str[right1]=temp1;
+        right1--;
+    }
+    printf("The output here: \n");
+    printf("%s\n", str);
+
+    return 0;
+}
+

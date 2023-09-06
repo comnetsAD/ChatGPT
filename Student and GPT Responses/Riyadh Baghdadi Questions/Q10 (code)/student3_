@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+struct university_detail
+{
+    char university_name[50];
+};
+
+//structure for student
+struct student_detail
+{
+    int id;
+    char name[50];
+    float gpa;
+    struct university_detail uni_d;
+};
+
+
+int main()
+{
+    //create an array for student 
+    struct student_detail students[3];
+
+    //variables for the function
+    int i;
+
+    //question and assigning of the information
+    printf("Enter the name of the first student:\n");
+    scanf("%s", students[0].name);
+
+    printf("Enter the id of the first student:\n");
+    scanf("%d", &students[0].id);
+
+    printf("Enter the gpa of the first student:\n");
+    scanf("%f", &students[0].gpa);
+
+    printf("Enter the name of the university:\n");
+    scanf("%s", students[0].uni_d.university_name);
+
+    printf("Enter the name of the second student:\n");
+    scanf("%s", students[1].name);
+
+    printf("Enter the id of the second student:\n");
+    scanf("%d", &students[1].id);
+
+    printf("Enter the gpa of the second student:\n");
+    scanf("%f", &students[1].gpa);
+
+    printf("Enter the name of the university:\n");
+    scanf("%s", students[1].uni_d.university_name);
+
+    printf("Enter the name of the third student:\n");
+    scanf("%s", students[2].name);
+
+    printf("Enter the id of the third student:\n");
+    scanf("%d", &students[2].id);
+
+    printf("Enter the gpa of the third student:\n");
+    scanf("%f", &students[2].gpa);
+
+    printf("Enter the name of the university:\n");
+    scanf("%s", students[2].uni_d.university_name);
+
+    for(i=0; i<3; i++)
+    {
+        printf("Student %s with ID %d and GPA %f is studying at %s \n", students[i].name, students[i].id, students[i].gpa, students[i].uni_d.university_name);
+
+    }
+
+    return 0;
+}
+

@@ -1,0 +1,9 @@
+def disemvowel(a_string):
+	vowels = "aeiouAEIOU"
+	for v in vowels:
+		a_string = a_string.replace(v, "")
+	return a_string
+
+# An example call to your function.
+disemvowel("Can you read this without vowels?")
+

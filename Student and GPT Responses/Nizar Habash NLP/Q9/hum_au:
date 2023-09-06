@@ -1,0 +1,5 @@
+First and foremost, this has to be unsupervised learning since there is no data. I will start with preprocessing. I will tokenize the data to words. Then I will shift to normalization. For cleaning the data, I will have two people, give them $200 each for helping me with this. We will aim to remove all lowercase characters, number, punctuation, strip white space, remove non-alphanumeric characters. We will then move to data representation. We need a smart approach since translations have syntactic variation in sentences. We will use ‘bag of words’ model since it’s a representation that ignores the order. Then, to classify data, I will use logistic regression. I will then use confusion matrix for inspection of false positives and negatives. For my model to focus on a) meaningful words, I’ll use a TF-IDF score. Finally to leverage semantics and finding continuous word embeddings, I’ll use word2vec. I will use UN corpus as the pivotal language and use the vectors produced in word2vec to finish my project.
+
+
+
+

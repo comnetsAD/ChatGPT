@@ -1,0 +1,35 @@
+
+To determine which method of financing maximizes the per-share stock price of Stephenson’s equity, we need to calculate the company's weighted average cost of capital (WACC) for both the all-equity and the 70/30 debt/equity scenarios and then compare the two.
+
+	All-equity scenario: In this scenario, the company would not issue any debt to finance the project and would rely solely on equity financing. The WACC for this scenario is calculated as follows:
+
+WACC = (E/V) * Re + (D/V) * Rd * (1-T)
+
+Where:
+E = market value of equity (8.7 million shares * $46.50/share = $405.45 million)
+V = market value of equity + market value of debt (405.45 million)
+Re = cost of equity (Kim estimates this to be 12.5%)
+D = market value of debt (0)
+Rd = cost of debt (0)
+T = corporate tax rate (21%)
+
+Plugging in the values, we get:
+WACC = (405.45 million / 405.45 million) * 12.5% = 12.5%
+
+	70/30 debt/equity scenario: In this scenario, the company would issue debt to finance 30 percent of the project and rely on equity financing for the remaining 70 percent. The WACC for this scenario is calculated as follows:
+
+WACC = (E/V) * Re + (D/V) * Rd * (1-T)
+
+Where:
+E = market value of equity (8.7 million shares * $46.50/share = $405.45 million)
+V = market value of equity + market value of debt (405.45 million + 65 million * 0.3 = 446.35 million)
+Re = cost of equity (Kim estimates this to be 12.5%)
+D = market value of debt (65 million * 0.3 = 19.5 million)
+Rd = cost of debt (8%)
+T = corporate tax rate (21%)
+
+Plugging in the values, we get:
+WACC = (405.45 million / 446.35 million) * 12.5% + (19.5 million / 446.35 million) * 8% * (1-0.21) = 11.6%
+
+From the above calculations, we can see that the 70/30 debt/equity scenario results in a lower WACC of 11.6 percent compared to the all-equity scenario of 12.5 percent. Therefore, this method of financing maximizes the per-share stock price of Stephenson’s equity.
+

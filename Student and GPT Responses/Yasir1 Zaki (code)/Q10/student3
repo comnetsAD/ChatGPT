@@ -1,0 +1,13 @@
+diamond = list(range(1,10,2)) + list(range(7,0,-2))
+count = 5
+switch = 0
+for x in diamond:
+    print(" "*count + "*"*x)
+    if(count==1):
+        switch=1
+    if(switch==0):
+        count = count-1
+    else:
+        count = count+1
+
+

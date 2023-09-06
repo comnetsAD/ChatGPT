@@ -1,0 +1,26 @@
+#include <iostream>
+ using namespace std;
+ // Variable created inside namespace
+ namespace first {
+  int val = 500;
+}
+ 
+ // Global variable
+ int val = 100;
+ int main() {
+ 
+   // Local variable
+int val = 200;
+ 
+   // (a) print local variable
+cout << val << endl;
+ 
+   // (b) print global variable
+cout << ::val << endl;
+ 
+   // (c) print namespace variable
+cout << first::val << endl;
+ 
+return 0; }
+
+

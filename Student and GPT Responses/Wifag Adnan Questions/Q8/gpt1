@@ -1,0 +1,13 @@
+Sure, here's a payoff matrix that represents the situation described above:
+q_P q_E P   TR_P    TR_E    TC_P    TC_E    Profit_P    Profit_E
+2   	2   6   	12  	12  	6   	6   	6  	 6
+2   	2.5 5   	10  	12.5    	6   	7.5 	4  	 5
+2.5 	2   5   	12.5    	10 	7.5 	6   	5  	 4
+2.5 	2.5 4   	12.5    	12.5    	7.5 	8.5 	5   	 4
+
+In this table, each firm can choose to produce 2 million or 2.5 million bottles of water. The market price (P) is determined by the sum of the output of both firms (Q = q_P + q_E) and the inverse demand function (P = 10 – Q).
+
+The Total Revenue (TR) for each firm is calculated by multiplying the quantity produced by the market price (TR = P * q). The Total Cost (TC) for each firm is calculated using the given cost function (TC = 2q + 1). The Profit for each firm is calculated by subtracting the Total Cost from the Total Revenue (Profit = TR - TC).
+
+As we can see from this payoff matrix, the firms have the highest profit when both firms produce 2 million bottles of water. If one firm produces more than the other it will cause the market price to fall and the profit will decrease for both firms.
+

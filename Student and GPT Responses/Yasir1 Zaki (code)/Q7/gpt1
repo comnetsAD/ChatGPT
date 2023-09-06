@@ -1,0 +1,102 @@
+import random
+
+# Constants for the board size and ship length
+BOARD_SIZE = 10
+SHIP_LENGTH = 4
+
+# Initialize the boards and the ship positions
+board1 = [['.' for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+board2 = [['.' for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+
+# Place the ships on the boards
+for board in [board1, board2]:
+    # Randomly choose whether the ship is placed vertically or horizontally
+    vertical = random.choice([True, False])
+
+    # Choose the starting position for the ship
+    if vertical:
+        row = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+        col = random.randint(0, BOARD_SIZE - 1)
+        for i in range(SHIP_LENGTH):
+            board[row + i][col] = 'S'
+    else:
+        row = random.randint(0, BOARD_SIZE - 1)
+        col = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+        for i in range(SHIP_LENGTH):
+            board[row][col + i] = 'S'
+
+# Initialize the scores
+score1 = 0
+score2 = 0
+
+# Play the game
+while True:
+    # Player 1's turn
+    print("Player 1's turn:")
+    for row in board2:
+        print(' '.join(row))
+    print()
+
+    # Get the player's guess
+    row = input("Enter the row (0-9): ")
+    col = input("Enter the column (A-J): ")
+
+    # Make sure the input is valid
+    if not row.isdigit() or not col.isalpha():
+        print("Invalid input. Please try again.")
+        continue
+        
+    row = int(row)
+    col = ord(col.upper()) - ord('A')
+    if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
+        print("Invalid input. Please try again.")
+        continue
+
+    # Check if the player has hit the ship
+    if board2[row][col] == 'S':
+        print("Hit!")
+        board2[row][col] = 'X'
+        ship_sunk = True
+        for i in range(SHIP_LENGTH):
+            if vertical and board2[row + i][col] != 'X':
+                ship_sunk = False
+                break
+            elif not vertical and board2[row][col + i] != 'X':
+                ship_sunk = False
+                break
+        if ship_sunk:
+            print("You sank the ship!")
+            break
+    else:
+        print("Miss!")
+        board2[row][col] = 'X'
+    score1 += 1
+
+    # Player 2's turn (computer)
+    print("Computer's turn:")
+    row = random.randint(0, BOARD_SIZE - 1)
+    col = random.randint(0, BOARD_SIZE - 1)
+    if board1[row][col] == 'S':
+        print("Computer hit the ship!")
+        board1[row][col] = 'X'
+        ship_sunk = True
+        for i in range(SHIP_LENGTH):
+            if vertical and board1[row + i][col] != 'X':
+                ship_sunk = False
+                break
+            elif not vertical and board1[row][col + i] != 'X':
+                ship_sunk = False
+                break
+        if ship_sunk:
+            print("Computer sank your ship!")
+            break
+    else:
+        print("Computer missed!")
+        board1[row][col] = 'X'
+    score2 += 1
+
+# Print the final scores
+print(f"Player 1's score: {score1}")
+print(f"Computer's score: {score2}")
+
+

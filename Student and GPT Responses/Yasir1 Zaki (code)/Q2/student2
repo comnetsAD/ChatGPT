@@ -1,0 +1,30 @@
+sentence =(input("Please enter your sentence for its report: "))
+a=(sentence.count('a'))
+e=(sentence.count('e'))
+i=(sentence.count('i'))
+o=(sentence.count('o'))
+u=(sentence.count('u'))
+total=(a+e+i+o+u)
+print ("The number of vowels is "+str(total))
+
+words=str(sentence.count(' ')+1)
+print ("The number of words is "+words)
+
+
+totalCharacters=str(len(sentence))
+print ("The number of characters is "+totalCharacters)
+
+a1 = (sentence.count('1'))
+a2 = (sentence.count('2'))
+a3 = (sentence.count('3'))
+a4 = (sentence.count('4'))
+a5 = (sentence.count('5'))
+a6 = (sentence.count('6'))
+a7 = (sentence.count('7'))
+a8 = (sentence.count('8'))
+a9 = (sentence.count('9'))
+a0 = (sentence.count('0'))
+totalNumbers = str (a1+a2+a3+a4+a5+a6+a7+a8+a9+a0)
+print ("The number of digits is "+totalNumbers)
+
+

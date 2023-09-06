@@ -1,0 +1,18 @@
+import random
+
+guess = int(input("Welcome to the die guessing game! \n\nPlease guess the number the die will roll.\n"))
+
+nums = ['One','Two','Three','Four','Five','Six']
+
+roll = random.randint(0,6)
+
+print("\n*_*\n|"+str(roll)+"|\n*_*")
+
+print(nums[roll-1]+"\n")
+
+if guess==roll:
+    print("You were right!")
+else:
+    print("You were wrong. Better luck next time!")
+
+

@@ -1,0 +1,12 @@
+#this game allows the user to guess a number from 1-6 and the roll of the dice determines
+#if they chose the correct number or not
+guess=int(input('Please guess a number from 1-6: '))#asks the guest to input a number
+import random 
+num=random.randint(1,6)#chooses a random number for the dice like a random roll 
+print(' *___* \n\n |',num,'| \n *___*') #prints out the dice
+if guess==num:
+    print('You were right!')
+else:
+    print('Sorry, you were wrong')#determines if the user was right or wrong
+
+

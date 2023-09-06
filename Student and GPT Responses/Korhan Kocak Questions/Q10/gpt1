@@ -1,0 +1,17 @@
+This game can be modeled as a strategic form game, where each player (Colonel Blotto and the rebel group) has two strategies (deploying their troops to Pass 1 or Pass 2). The payoff matrix can be represented as follows:
+
+Pass 1 (Colonel Blotto) Pass 2 (Colonel Blotto)
+Pass 1 (Rebel Group)    -1, -1  1, -1
+Pass 2 (Rebel Group)    -1, 1   1, 1
+
+To find the Nash equilibria, we need to find the strategies where neither player has an incentive to deviate from their chosen strategy given the other player's strategy.
+For Colonel Blotto:
+If the rebels deploy their troops to Pass 1, Colonel Blotto's best response is to deploy his troops to Pass 2 (1, -1)
+If the rebels deploy their troops to Pass 2, Colonel Blotto's best response is to deploy his troops to Pass 1 (-1, 1)
+For the rebel group:
+If Colonel Blotto deploys his troops to Pass 1, the rebel group's best response is to deploy their troops to Pass 2 (1, -1)
+If Colonel Blotto deploys his troops to Pass 2, the rebel group's best response is to deploy their troops to Pass 1 (-1, 1)
+From this, we can see that there are two pure strategy Nash equilibria in this game: (Pass 1, Pass 2) and (Pass 2, Pass 1) where Colonel Blotto deploys his troops to Pass 1 and the rebel group deploys their troops to Pass 2, and vice versa.
+Additionally, there is a mixed strategy Nash equilibrium where both players randomize their strategy with probability 1/2. For example, Colonel Blotto plays Pass 1 with probability 1/2 and Pass 2 with probability 1/2, and the rebel group also plays Pass 1 with probability 1/2 and Pass 2 with probability 1/2. In this case, neither player has an incentive to deviate from their mixed strategy as they are already receiving the highest expected payoff possible given the other player's mixed strategy.
+In summary, there are two pure strategy Nash equilibria (Pass 1, Pass 2) and (Pass 2, Pass 1) and one mixed strategy Nash equilibrium where both players randomize their strategy with probability 1/2.
+

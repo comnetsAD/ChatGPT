@@ -1,0 +1,183 @@
+import random, copy, time, os
+
+class Board:
+	def __init__(self, rows, columns):
+		self.rows = rows
+		self.columns = columns
+		self.x = []
+		self.createboards()
+		self.ship_placement()
+		self.printboards()
+
+	def createboards(self):
+		for r in range(self.rows):
+			tmp = []
+			for c in range(self.columns):
+				tmp.append(' ')
+			self.x.append(tmp) 								
+
+		self.x1 = copy.deepcopy(self.x)						#Board for display					
+
+	def printboards(self):
+		for i in range(self.columns):
+			print('   ' + str(i), end = '')
+		print('\n','----' * self.columns)
+
+		for r in range(self.rows):
+			print(str(r) + '|', end = ' ')
+			for c in range(self.columns):
+				print(self.x1[r][c],'|', end = ' ') 
+			print('\n','----' * self.columns)
+
+
+	def ship_cells(self, size):
+		self.size = size
+		vertical_horizontal = random.randint(0, 1)			#To assign random direction of ship
+
+		if vertical_horizontal == 0: 						
+			r_row = random.randint(0, 9 - self.size)
+			r_column = random.randint(0, 9)
+
+			for i in range(self.size):						#For ships to not overlap
+				while self.x[r_row + i][r_column] == 'X':
+					r_row = random.randint(0, 9 - self.size)
+					r_column = random.randint(0,9)
+					i = 0 
+
+			for i in range(self.size):
+				self.x[r_row + i][r_column] = 'X'
+
+		else:												
+			r_row = random.randint(0, 9)
+			r_column = random.randint(0, 9 - self.size)
+
+			for i in range(self.size):
+				while self.x[r_row][r_column + i] == 'X':
+					r_row = random.randint(0, 9)
+					r_column = random.randint(0,9 - self.size)
+					i = 0
+				
+			for i in range(self.size):
+				self.x[r_row][r_column + i] = 'X'
+
+
+	def ship_placement(self):
+		ship = ['Aircraft Carrier', 'Battleship', 'Submarine', 'Destroyer', 'Patrol']
+		ship_size = [5, 4, 3, 3, 2]
+		for i in ship_size:
+			self.ship_cells(i)
+
+
+	def user_turn(self):
+		hit = input("\nPlease enter your target to hit the opponent's board in row,column format. (For example, enter '0,2' to hit the third box in the grid, from the left.) ").split(',')
+
+		error_check = len(hit) == 2 and (hit[0]).isdigit() and (hit[1]).isdigit() and int(hit[0]) < 10 and int(hit[1]) <10 and self.x1[int(hit[0])][int(hit[1])] not in ['X', 'O']
+		while error_check == False:
+			hit = input("Invalid input. Please enter a new target that you have not hit before, in 'row,column' format.").split(',')
+			error_check = len(hit) == 2 and (hit[0]).isdigit() and (hit[1]).isdigit() and int(hit[0]) < 10 and int(hit[1]) <10 and self.x1[int(hit[0])][int(hit[1])] not in ['X', 'O']
+			
+		for r in range(self.rows):
+			for c in range(self.columns):
+				if self.x[int(hit[0])][int(hit[1])] == 'X':
+					self.x1[int(hit[0])][int(hit[1])] = 'X'
+				else:
+					self.x1[int(hit[0])][int(hit[1])] = 'O'
+		
+		os.system("clear")
+		print("\n	     OPPONENT'S BOARD\n")
+		self.printboards()
+
+		if self.x1[int(hit[0])][int(hit[1])] == 'X':
+			print("\nYou successfully hit the target.")
+		else:
+			print("\nYou missed the target.")
+
+
+	def computer_turn(self):
+		hit = [random.randint(0, 9), random.randint(0, 9)]
+
+		while self.x1[hit[0]][hit[1]] in ['X', 'O']:			#For the computer to not attack the same target twice
+			hit = [random.randint(0, 9), random.randint(0, 9)]
+
+		for r in range(self.rows):
+			for c in range(self.columns):
+				if self.x[int(hit[0])][int(hit[1])] == 'X':
+					self.x1[int(hit[0])][int(hit[1])] = 'X'
+				else:
+					self.x1[int(hit[0])][int(hit[1])] = 'O' 
+
+		print("\n		USER'S BOARD\n")
+		self.printboards()
+
+		if self.x1[int(hit[0])][int(hit[1])] == 'X':
+			print("\nThe opponent hit yout ship.")
+		else:
+			print("\nThe opponent missed their target.")
+
+
+	def count_boardx(self):
+		num_x = 0
+		for r in range(self.rows):
+			for c in range(self.columns):
+				if self.x[r][c] == 'X':
+					num_x += 1
+		return num_x
+
+
+	def count_boardx1(self):
+		num_x = 0
+		for r in range(self.rows):
+			for c in range(self.columns):
+				if self.x1[r][c] == 'X':
+					num_x += 1
+		return num_x
+
+	def remaining_trials(self):
+		count_ = 0
+		for r in range(self.rows):
+			for c in range(self.columns):
+				if self.x1[r][c] not in ['X', 'O']:
+					count_ += 1
+		return count_
+
+
+class Game(Board):
+	def __init__(self):
+
+		print("\n	     OPPONENT'S BOARD\n")
+		computers_board = Board(10, 10) 
+
+		print("\n		USER'S BOARD\n")
+		users_board = Board(10, 10)
+
+		end = (computers_board.count_boardx1() == computers_board.count_boardx()) or (users_board.count_boardx1() == users_board.count_boardx())
+
+		while end == False:
+			turn = 0 
+
+			while turn == 0:
+				computers_board.user_turn()
+				turn = (turn +1)%2
+				print("Your current score is", str(computers_board.remaining_trials())+'.')
+
+			end = (computers_board.count_boardx1() == computers_board.count_boardx()) or (users_board.count_boardx1() == users_board.count_boardx())
+
+			while turn == 1:
+				print("\nIt's the opponent's turn...")
+				time.sleep(1)
+				users_board.computer_turn()
+				turn = (turn +1)%2
+				print("The opponent's current score is", str(users_board.remaining_trials())+'.')
+
+			end = (computers_board.count_boardx1() == computers_board.count_boardx()) or (users_board.count_boardx1() == users_board.count_boardx())
+
+			if computers_board.count_boardx1() == computers_board.count_boardx():
+				print("\nYou have won the game with", computers_board.remaining_trials(), "score.")
+
+			if users_board.count_boardx1() == users_board.count_boardx():
+				print("\nThe computer won the game with", users_board.remaining_trials(), "score.")
+	
+
+print("\nWelcome to Battleship! There are five ships each on your and your opponent's board - Aircraft Carrier, Battleship, Submarine, Destroyer, and Patrol, with 5, 4, 3, 3, and 2 units as their dimensions, respectively. Your goal is to sink the opponent's ships before the opponent sinks your's. If your target succesfully attacks the part of the opponent's ship, your target will be marked 'X' on the opponent's board, else it will be marked 'O'.")
+main = Game()
+

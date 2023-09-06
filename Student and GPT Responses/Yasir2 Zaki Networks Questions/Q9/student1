@@ -1,0 +1,5 @@
+(a) P2P systems such as BitTorrent have mechanisms of encouraging new users to download – and, subsequently, to upload more data. This mechanism is called “unchoking” and allows users with no seeds to still download the desired data. Hence, Bob can take advantage of the system’s design and selfishly receive a complete copy of the file shared as long as enough peers contribute with data for a long enough period of time.
+
+(b) Other method Bob can use in obtaining a complete copy of a file in the swarm is to have multiple computers in a network each downloading different parts of the file and then combine them together, reconstructing the entire file. In this case, each computer in Bob’s lab will appear as a different free-rider client that only requires smaller amounts of data (than in the first case) and hope that all of them will receive the missing parts of the final puzzle.
+
+

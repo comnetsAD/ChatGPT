@@ -1,0 +1,2 @@
+The differences between resource leveling and resource smoothing are that leveling might extend the project duration to meet the resource constrains while smoothing only uses available float but might not meet the resource constrain limit. If the priority is to avoid extension in the project duration the best approach would be to use resource smoothing, but this assumes that there are no resource limitations (which might bot be realistic).
+

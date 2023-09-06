@@ -1,0 +1,75 @@
+Local CLI Shell: You have to develop using C your own shell/CLI that replicates features from the linux one. You should implement the composed commands including 1 pipe (…|…), 2 pipes (…|…|…) and 3 pipes (…|…|…|…). Use the techniques that you have learned about creating processes (e.g. fork, excec), interprocess communications (e.g. pipes), etc.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/wait.h>
+
+#define MAX_COMMANDS 10
+#define MAX_ARGS 10
+
+// Function to split the input string into commands and arguments
+void parse_input(char * input, char ** * commands, int * num_commands) {
+  char * token = strtok(input, "|");
+  int i = 0;
+  while (token != NULL) {
+    commands[i] = (char ** ) malloc(MAX_ARGS * sizeof(char * ));
+    int j = 0;
+    char * arg = strtok(token, " ");
+    while (arg != NULL) {
+      commands[i][j] = arg;
+      arg = strtok(NULL, " ");
+      j++;
+    }
+    commands[i][j] = NULL;
+    token = strtok(NULL, "|");
+    i++;
+  }
+  * num_commands = i;
+}
+
+int main() {
+  while (1) {
+    printf("my_shell> ");
+    char input[256];
+    fgets(input, 256, stdin);
+    // Remove newline character at the end of the input
+    input[strlen(input) - 1] = '\0';
+    if (strcmp(input, "exit") == 0) {
+      break;
+    }
+    // Split input into commands and arguments
+    char ** * commands = (char ** * ) malloc(MAX_COMMANDS * sizeof(char ** ));
+    int num_commands;
+    parse_input(input, commands, & num_commands);
+    int fd[2];
+    int prev_fd = 0;
+    for (int i = 0; i < num_commands; i++) {
+      pipe(fd);
+      pid_t pid = fork();
+      if (pid == 0) {
+        // Child process
+        if (prev_fd != 0) {
+          dup2(prev_fd, 0);
+        }
+        if (i < num_commands - 1) {
+          dup2(fd[1], 1);
+        }
+        close(fd[0]);
+        execvp(commands[i][0], commands[i]);
+        printf("Command not found\n");
+        exit(1);
+      } else {
+        // Parent process
+        wait(NULL);
+        close(fd[1]);
+        prev_fd = fd[0];
+      }
+    }
+  }
+  return 0;
+}
+
+

@@ -1,0 +1,1 @@
+To get the value of the CRC for the specified generator G and the data D, conduct a long division of D by G. This will provide the value of the CRC. In this particular scenario, the divide would go as such: 1 0 1 0 1 0 1 0 1 0\s1 0 0 1 1 1 0 0 1 1\s1 0 0 1 1 0 0 0 1 1 011 represents the remaining portion of this division, and it is the value of the CRC. 

@@ -1,0 +1,6 @@
+def disemvowel(a_string):
+   '''This function removes the vowels from the strings.'''
+   return a_string.replace('a','').replace('e','').replace('i','').replace('o','').replace('u','')
+
+disemvowel("Can you read this without vowels?")
+

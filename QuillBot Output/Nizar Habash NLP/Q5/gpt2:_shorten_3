@@ -1,0 +1,1 @@
+OOV words are words not in a language model or corpus of text. The model or corpus has never seen this term. "Smartphone" is an OOV term against Shakespearean literature since it didn't exist during Shakespeare's time. A model or system trained on Shakespearean literature cannot identify or accurately depict the term "smartphone." 

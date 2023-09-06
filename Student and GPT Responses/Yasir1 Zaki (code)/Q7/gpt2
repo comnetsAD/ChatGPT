@@ -1,0 +1,126 @@
+import random
+
+# Constants
+BOARD_SIZE = 10
+SHIP_LENGTH = 4
+
+# Initialize the boards
+board1 = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+board2 = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+
+# Place the ships on the boards
+orientation = random.choice(["horizontal", "vertical"])
+if orientation == "horizontal":
+    row = random.randint(0, BOARD_SIZE - 1)
+    col = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+    for i in range(SHIP_LENGTH):
+        board1[row][col + i] = 1
+else:
+    row = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+    col = random.randint(0, BOARD_SIZE - 1)
+    for i in range(SHIP_LENGTH):
+        board1[row + i][col] = 1
+orientation = random.choice(["horizontal", "vertical"])
+if orientation == "horizontal":
+    row = random.randint(0, BOARD_SIZE - 1)
+    col = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+    for i in range(SHIP_LENGTH):
+        board2[row][col + i] = 1
+else:
+    row = random.randint(0, BOARD_SIZE - SHIP_LENGTH)
+    col = random.randint(0, BOARD_SIZE - 1)
+    for i in range(SHIP_LENGTH):
+        board2[row + i][col] = 1
+
+# Initialize the scores
+score1 = 0
+score2 = 0
+
+# Main game loop
+while True:
+    # Print the boards
+    print("Player 1 board:")
+    print("  ", end="")
+    for i in range(BOARD_SIZE):
+        print(chr(ord("A") + i), end=" ")
+    print()
+    for i in range(BOARD_SIZE):
+        print(i, end=" ")
+        for j in range(BOARD_SIZE):
+            if board1[i][j] == 1:
+                print("X", end=" ")
+            elif board1[i][j] == -1:
+                print("O", end=" ")
+            else:
+                print("-", end=" ")
+        print()
+    print()
+    print("Player 2 board:")
+    print("  ", end="")
+    for i in range(BOARD_SIZE):
+        print(chr(ord("A") + i), end=" ")
+    print()
+    for i in range(BOARD_SIZE):
+        print(i, end=" ")
+        for j in range(BOARD_SIZE):
+            if board2[i][j] == 1:
+                print("X", end=" ")
+            elif board2[i][j] == -1:
+                print("O", end=" ")
+            else:
+                print("-", end=" ")
+        print()
+    print()
+
+    # Get the target coordinates from player 1
+    while True:
+        target = input("Player 1, enter the target coordinates (e.g. A 0): ")
+        if len(target) != 3:
+            print("Invalid input. Please try again.")
+            continue
+        if not target[0].isalpha() or not target[0].isupper():
+            print("Invalid input. Please try again.")
+            continue
+        if not target[2].isdigit():
+            print("Invalid input. Please try again.")
+            continue
+        row = int(target[2])
+        col = ord(target[0]) - ord("A")
+        if row < 0 or row >= BOARD_SIZE or col < 0 or col >= BOARD_SIZE:
+            break
+
+        # Update the board and the score for player 1
+        if board2[row][col] == 1:
+            board2[row][col] = -1
+            score1 += 1
+            print("Player 1 hit!")
+        else:
+            print("Player 1 missed!")
+
+        # Check if player 1 won
+        if score1 == SHIP_LENGTH:
+            print("Player 1 won!")
+            break
+
+        # Get the target coordinates from player 2
+        while True:
+            row = random.randint(0, BOARD_SIZE - 1)
+            col = random.randint(0, BOARD_SIZE - 1)
+            if board1[row][col] != -1:
+                break
+
+        # Update the board and the score for player 2
+        if board1[row][col] == 1:
+            board1[row][col] = -1
+            score2 += 1
+            print("Player 2 hit!")
+        else:
+            print("Player 2 missed!")
+
+        # Check if player 2 won
+        if score2 == SHIP_LENGTH:
+            print("Player 2 won!")
+            break
+
+
+

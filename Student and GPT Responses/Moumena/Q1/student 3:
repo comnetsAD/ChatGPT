@@ -1,0 +1,16 @@
+
+By the definition of congruence,
+
+11|a + 1 + 2a = 5|3a + 1
+
+We are looking for the smallest a such that 3a + 1 is divisible by 5 and > 1. That would be a = 3, for 5|10,which is divisible.
+
+
+
+
+
+
+
+
+
+

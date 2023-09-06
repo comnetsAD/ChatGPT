@@ -1,0 +1,7 @@
+poundtokilo = function(pounds){
+  pounds = pounds * 0.454
+  return(pounds)
+}
+poundtokilo(5)
+
+

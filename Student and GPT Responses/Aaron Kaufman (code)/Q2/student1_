@@ -1,0 +1,13 @@
+convert_kilo = function(p) {
+  if (is.numeric(p) == TRUE){ # Check whether the input is numeric
+    k = p * 0.4536
+  return(paste(k, "kilos"))
+  }
+  else {
+    stop("Please enter a number to convert")
+  }
+}
+
+convert_kilo(10)
+
+

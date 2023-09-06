@@ -1,0 +1,27 @@
+The researcher is not correct to make causal claims based on this study alone. Randomized experiments are considered the strongest design for inferring causality, but this study has several limitations that would prevent the researcher from making causal claims.
+
+First, the study only examines the effect of one type of intervention (kindergartens) on one outcome (income). It does not consider other possible factors that may be contributing to the differences in income between the two groups, such as differences in population demographics, economic conditions, or other interventions that may have been implemented in the cities.
+
+Second, the study only looks at the effect of the interventions 20 years later, and does not consider the potential long-term effects of the interventions on other outcomes, such as health, crime, or social cohesion.
+
+Finally, the study does not look at the potential spillover effects of the interventions on neighboring cities, which could also be a important factor in determining the effect of the interventions on income.
+
+Here is a causal graph that represents the study:
+
+          +------------+
+          |            |
+          | Kindergarten|
+          |            |
+          +------+------+
+                 |
+                 |
+          +------v------+
+          |            |
+          | Income     |
+          |            |
+          +------------+
+
+The graph shows that there is a direct arrow from Kindergarten to Income, which means that the researcher is assuming that Kindergarten causes Income. However, as explained before, there are many other factors that might affect income, and therefore the arrow should be dotted, and the researcher can not claim causality with this design.
+
+Regarding why the control group cities receive a park instead of nothing, it could be that the government wanted to provide a benefit to these cities as well, and believed that parks would be a valuable addition to these communities. Additionally, providing parks could serve as a plausible alternative to kindergartens, and make the study more robust as it would be less likely to be suspected as a control group that is not receiving any type of benefit.
+

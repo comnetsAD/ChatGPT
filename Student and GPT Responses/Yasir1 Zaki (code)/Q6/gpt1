@@ -1,0 +1,57 @@
+numberOfRows = 4
+numberOfColumns = 4
+
+# create a 2-D board with the numbers 1 to 15
+board = [[i+j*numberOfColumns+1 for i in range(numberOfColumns)] for j in range(numberOfRows)]
+
+# leave the last position empty
+board[numberOfRows-1][numberOfColumns-1] = None
+
+# shuffle the board
+for i in range(1000):
+    # choose two random positions on the board
+    row1 = random.randint(0, numberOfRows-1)
+    col1 = random.randint(0, numberOfColumns-1)
+    row2 = random.randint(0, numberOfRows-1)
+    col2 = random.randint(0, numberOfColumns-1)
+
+    # swap the two positions
+    board[row1][col1], board[row2][col2] = board[row2][col2], board[row1][col1]
+
+# create a board with the correct solution
+solution = [[i+j*numberOfColumns+1 for i in range(numberOfColumns)] for j in range(numberOfRows)]
+solution[numberOfRows-1][numberOfColumns-1] = None
+
+# print the initial board
+print("Initial board:")
+for row in board:
+    print(row)
+
+# keep playing until the board is solved
+while board != solution:
+    # ask the user to choose a tile to slide
+    row = int(input("Enter the row of the tile to slide: "))
+    col = int(input("Enter the column of the tile to slide: "))
+
+    # check if the chosen tile can be moved
+    if row > 0 and board[row-1][col] is None:
+        board[row][col], board[row-1][col] = board[row-1][col], board[row][col]
+    elif row < numberOfRows-1 and board[row+1][col] is None:
+        board[row][col], board[row+1][col] = board[row+1][col], board[row][col]
+    elif col > 0 and board[row][col-1] is None:
+        board[row][col], board[row][col-1] = board[row][col-1], board[row][col]
+    elif col < numberOfColumns-1 and board[row][col+1] is None:
+        board[row][col], board[row][col+1] = board[row][col+1], board[row][col]
+    else:
+        print("Sorry, that tile cannot be moved.")
+
+    # print the updated board
+    print("Current board:")
+    for row in board:
+        print(row)
+
+# print a message indicating that the board is solved
+print("Congratulations, you have solved the slide puzzle!")
+
+
+

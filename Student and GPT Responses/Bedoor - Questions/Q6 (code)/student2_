@@ -1,0 +1,13 @@
+fruit_lst = ["Apple", "Banana", "Pear", "Apricot", "Orange"] # this can be arbitrary
+filtered_lst = []
+
+# Write your code below this line
+
+###### SOLUTION ######
+#for i in fruit_lst:
+filt_objct = filter(lambda i: i[0] == "A", fruit_lst) # filter() doesn't need to loop through the list (i.e., go through element) -> no need for
+print(list(filt_objct)) # problem rn: print 5 times
+
+###### SOLUTION END ######
+
+

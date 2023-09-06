@@ -1,0 +1,13 @@
+while( A1 != A.size()  &&  A2 != A.size() )
+    if ( A1[ i ] <= A2[ j ])
+        A.pushback( A1[ i ] )
+        i —> i + 1
+    else
+        A.pushback( A2[ j ] )
+        j —> j + 1
+
+while( A1[ i ] != A1.size() )
+    A.pushback[ i ];
+
+while( A2[ j ] != A2.size() )
+    A.pushback[ j ];

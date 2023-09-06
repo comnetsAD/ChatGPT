@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_SIZE 15                             //Limit for array
+
+int main()
+{
+    int i,j;
+    srand(time(NULL));
+    int array[MAX_SIZE];                        //Array
+
+    for( i = 0; i < sizeof(array) / sizeof(int); i++){
+        array[i] = rand() % 10;
+    }
+    printf("Initial Array: ");                  //Initial Array
+    for(j=0; j<i; j++){
+        printf("%d ", array[j]);
+    }
+
+    int newarray[MAX_SIZE];                     //NewArray
+    int c=0;
+    for(int a = 0; a <i; a++){
+        int p = 0;
+        for(int b=0; b<i; b++){
+            if (array[b] == array[a]){
+                p++;
+            }
+        }
+        if (p<=1){
+          newarray[c] = array[a];
+          c++;
+        }
+    }
+    printf("\nUnique Array: ");                      //Unique Array
+    for(j = 0; j < c; j++){
+        printf(" %d ", newarray[j]);
+    }
+    return 0;
+}
+

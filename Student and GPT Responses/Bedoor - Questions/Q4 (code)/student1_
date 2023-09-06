@@ -1,0 +1,32 @@
+def findExit(l):
+ can_exit_flag = False
+ # Write your implementation below this line
+
+ ######### SOLUTION #########
+ last_index = len(l) - 1
+ i = 0  #pointer pointing to certain index (0 at the beginning)
+ while i <= last_index:
+   if l == []:
+     return can_exit_flag   #returns false for empty list
+   elif i>last_index: 
+     return can_exit_flag   #returns false if pointer overshoots the size of the array
+   elif l[i] == 0 and i != last_index:
+     return can_exit_flag   #returns false if it reaches an index with element 0 which isnt the last index
+   if i == last_index:
+     can_exit_flag = True  #assigns true value to can_exit_flag once pointer i reaches the last index and returns true
+     return can_exit_flag 
+   i += l[i]  #to move the pointer i forward by making the number of hops at that index
+ ######### SOLUTION END #########
+ return can_exit_flag #returns false if the loop exits and the pointer hasnt reached the last element
+
+"""
+Test cases for your function: If you implement
+your function correctly, the following lines should
+not give an error
+"""
+assert(findExit([2,0,1,0]) == True)
+assert(findExit([1,1,0,1]) == False)
+assert(findExit([1,2,0,3,1]) == False)
+assert(findExit([5,2,0,3,1,1,1]) == True)
+
+

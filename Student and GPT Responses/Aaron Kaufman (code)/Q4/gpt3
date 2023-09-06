@@ -1,0 +1,26 @@
+
+convert_weight <- function(value, from, to) {
+    # conversion factors
+    pounds_kg <- 0.453592
+    pounds_stone <- 0.0714286
+    kg_stone <- 0.157473
+    
+    if (from == "pounds" && to == "kilograms") {
+        return (value * pounds_kg)
+    } else if (from == "pounds" && to == "stone") {
+        return (value * pounds_stone)
+    } else if (from == "kilograms" && to == "pounds") {
+        return (value / pounds_kg)
+    } else if (from == "kilograms" && to == "stone") {
+        return (value / kg_stone)
+    } else if (from == "stone" && to == "pounds") {
+        return (value / pounds_stone)
+    } else if (from == "stone" && to == "kilograms") {
+        return (value * kg_stone)
+    } else if (from == to) {
+        return (value)
+    } else {
+        return ("Invalid unit")
+    }
+}
+

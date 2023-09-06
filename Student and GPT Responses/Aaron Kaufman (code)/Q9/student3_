@@ -1,0 +1,22 @@
+She is also not right yet because she concludes that education increases income 
+by comparing those that received a scholarship and those who didn't, without taking 
+into consideration also other confounding factors that might have affected the 
+future income of all those students. For example, she doesn't mention or take into
+consideration that the students that didn't get the scholarship similarly to those that didn't
+have education and ultimately had a lower income, might be affected by factors like persistence and talent. In other words, scholarship status, education and income in real life will be influenced by factors like talent and persistence. 
+
+g2 = dagitty("dag{
+            Persistence -> Education
+            Persistence -> Scholarship
+            Persistence -> Income
+            Talent -> Education
+            Talent -> Scholarship
+            Talent -> Income
+            Scholarship -> Education 
+            Education ->  Income
+            }")
+coordinates(g2) = list(x= c(Persistence = 1.5, Talent = 2.5, Scholarship =1,Education = 2, Income = 3), 
+                    y= c(Persistence = 3, Talent = 3, Scholarship= 1, Education = 1, Income = 1))
+plot(g2) 
+
+

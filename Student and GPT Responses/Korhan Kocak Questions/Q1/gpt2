@@ -1,0 +1,7 @@
+The Nash equilibrium is a concept in game theory that defines a state in which each player in a game has chosen the best strategy they can, given the strategies chosen by the other players. It is named after Nobel laureate John Nash, who first described the concept in his 1950 thesis.
+Formally, a Nash equilibrium is a set of strategies, one for each player, such that no player can improve their payoff by unilaterally changing their strategy while the other players' strategies remain fixed. In other words, a set of strategies is a Nash equilibrium if and only if no player has an incentive to change their strategy given the strategies of the other players.
+More formally, for a given game with n players, let S_i be the set of strategies available to player i, and let u_i(s) be the payoff to player i when the strategy profile is s = (s_1, s_2, ..., s_n). Then, a strategy profile s* = (s_1*, s_2*, ..., s_n*) is a Nash equilibrium if and only if for all i = 1, 2, ..., n and for all s_i in S_i, we have:
+u_i(s_i*, s_{-i}) >= u_i(s_i, s_{-i})
+where s_{-i}* denotes the strategies of all players other than i at the equilibrium.
+In simple words, a Nash equilibrium is a set of strategies, one for each player, such that no player can improve their payoff by choosing a different strategy given the strategies chosen by the other players.
+

@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#define MAX_LENGTH 100
+
+int main() {
+    int pipefd[2]; // unnamed pipe file descriptor
+    pid_t pid;
+
+    // create the pipe
+    if (pipe(pipefd) == -1) {
+        perror("pipe");
+        exit(EXIT_FAILURE);
+    }
+
+    pid = fork();
+    if (pid == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
+
+    if (pid == 0) { // child process
+        // close the write end of the pipe
+        close(pipefd[1]);
+
+        char str[MAX_LENGTH];
+        while (1) {
+            printf("Enter a string: ");
+            scanf("%s", str);
+
+            // send the string to the parent process
+            write(pipefd[0], str, strlen(str));
+
+            // receive the result from the parent process
+            char result[5];
+            read(pipefd[0], result, 5);
+
+            // print the result
+            printf("Result: %s\n", result);
+        }
+
+        // close the read end of the pipe
+        close(pipefd[0]);
+    } else { // parent process
+        // close the read end of the pipe
+        close(pipefd[0]);
+
+        while (1) {
+            // receive the string from the child process
+            char str[MAX_LENGTH];
+            read(pipefd[1], str, MAX_LENGTH);
+
+            // check if the string is a palindrome
+            int i, length = strlen(str);
+            int is_palindrome = 1;
+            for (i = 0; i < length / 2; i++) {
+                if (str[i] != str[length - i - 1]) {
+                    is_palindrome = 0;
+                    break;
+                }
+            }
+
+            // send the result to the child process
+            if (is_palindrome) {
+                write(pipefd[1], "True", 4);
+            } else {
+                write(pipefd[1], "False", 5);
+            }
+        }
+
+        // close the write end of the pipe
+        close(pipefd[1]);
+    }
+
+    return 0;
+}
+
+This program uses the fork() function to create a child process. The parent and child process communicate with each other using an unnamed pipe. The pipe is created using the pipe() function and the file descriptor of the pipe is stored in the pipefd array.
+
+In the child process, the program prompts the user to enter a string, then sends the string to the parent process using the write() function. The read end of the pipe is closed since the child process is only sending data. The child process then receives the result from the parent process using the read() function and prints it.
+
+In the parent process, the program receives the string from the child process using the read() function and checks if it is a palindrome or not. If it is a palindrome, the parent process sends "True" to the child process, otherwise it sends "False". The write end of the pipe is closed since the parent process is only receiving data.
+
+

@@ -1,0 +1,13 @@
+To find the pure-strategy Nash equilibria of this game, we need to consider all possible strategies for each player and determine which strategy combinations result in a situation where no player can improve their payoff by choosing a different strategy given the strategies chosen by the other players.
+Let's consider each player's strategy individually.
+1st player : The first player can choose any integer from 1 to 100. Let's call the integer chosen by the first player x1
+2nd player : The second player can also choose any integer from 1 to 100. Let's call the integer chosen by the second player x2
+3rd player : The third player can also choose any integer from 1 to 100. Let's call the integer chosen by the third player x3
+In order to win the dirham, a player must choose an integer that is closest to 2/3 the average of the 3 integers chosen by the players.
+If all three integers are different, the average is simply the sum of the integers divided by 3. So in this case, the player whose integer is closest to 2/3 the average wins the dirham.
+If two integers are the same, the average is the sum of the integers divided by 2. So in this case, the dirham is split between the two players whose integers are closest to 2/3 the average.
+If all three integers are the same, the average is simply the integer. So in this case, the dirham is split between all players.
+A pure-strategy Nash equilibrium is a combination of strategies such that no player can gain by changing his strategy if the other players' strategies remain unchanged.
+Since all players have the same strategy space and the same objective, the only possible pure-strategy equilibrium is where all the players choose the same integer. In this case, each player will get 1/3 of the dirham and no player can gain by changing his strategy.
+So, the pure-strategy Nash equilibrium of this game is all players choosing the same integer from 1 to 100.
+

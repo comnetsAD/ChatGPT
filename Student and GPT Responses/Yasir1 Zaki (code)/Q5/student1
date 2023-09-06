@@ -1,0 +1,67 @@
+# The program will create a 1-D list of possible positions for a battleship.
+# creating a list
+
+positions = []
+
+for numbers in range(0,10):
+    positions.append ("O")
+
+# program is choosing a position in a range from [0,9]
+# and marking that position with X
+
+import random
+ship = random.randint(0,9)
+positions[int(ship)] = "X"
+
+
+# The program printing representations of the 1D list with positions
+#represented by its index from (0 to 9)
+
+print ("Battleship game")
+
+for number in range (len(positions)):
+    print ("#---", end ="")
+print ("#")
+for number in range (len(positions)):
+    if positions == ("-"):
+        print ("|-"+str("-")+"-",end = "")
+    else:
+        print ("|-"+str(number)+"-",end = "")
+print("|")
+for number in range (len(positions)):
+    print ("#---", end = "")
+print ("#")
+
+# The user is entering a quess
+
+for number in range (0,3):
+    guess1 = input("Please guess the position: ")
+    
+    if int(guess1) == ship:
+        print ("Congratulations, you have sinked the battleship")
+        print (positions)
+        exit ()
+    else:
+        print ("Sorry, you have missed the battleship")
+        positions[int(guess1)] = "-"
+        for number in range (len(positions)):
+            print ("#---", end ="")
+        print ("#")
+        for number in range (len(positions)):
+            if positions[number] == ("-"):
+                print ("|-"+str("-")+"-",end = "")
+            else:
+                print ("|-"+str(number)+"-",end = "")
+        print("|")
+        for number in range (len(positions)):
+            print ("#---", end = "")
+        print ("#")
+
+        if abs(ship- int(guess1)) ==1:
+            print ("Your shot was right next to the battleship")
+        else:
+            print ("Your shot was not right next to the battleship")
+        print ("You were",abs(ship - int(guess1)) , "positions away from the battleship")
+        
+print ("You have lost the game")
+

@@ -1,0 +1,7 @@
+The output of the following code snippet is 'true': 'a' < 'f' ? true : false;
+
+This is a ternary operator. It takes three operands, the condition, the value if the condition is true, and the value if the condition is false. In this case, it compares the ASCII value of the character 'a' with the ASCII value of the character 'f', and since the ASCII value of 'a' is less than the ASCII value of 'f', the condition 'a' < 'f' is true, so the ternary operator returns the value "true".
+
+It's also worth noting that characters can be compared using relational operators like <,>,<=,>=,==,!=.
+When comparing characters, the relational operators compare the ASCII values of the characters, not their actual symbols.
+

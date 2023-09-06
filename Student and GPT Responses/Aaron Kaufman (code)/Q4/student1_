@@ -1,0 +1,84 @@
+# 1 stone is 14 pounds
+# 1 batman is 65.5 kilo = 65.5*2.205 = 144.4275 pounds
+convert_mass = function(n, origin, target) {
+  if (is.numeric(n) == TRUE) {      # Check whether the input is numeric
+    if(origin == "kilo"){           # convert kilo into others
+      pound = n * 2.205
+    if (target == "pound"){
+      return(paste(pound,"pounds"))
+    } else if (target == "stone"){
+      stone = pound/14
+      return(paste(stone,"stones"))
+    } else if (target == "batman"){
+      batman = pound/144.4275
+      return (paste(batman,"batmans"))
+    } else if (target == "kilo"){
+      return(paste(n,"kilos"))
+    } else {                        # check the origin
+      stop("Please enter a valid target. Kilo, pound, stone, or batman")
+      }
+    }
+  
+    if (origin == "pound"){         # convert pound into others
+      pound = n
+    if (target == "kilo"){
+      kilo = n * 0.4536
+      return(paste(result, "kilos"))
+    } else if (target == "pound"){
+      return(paste(pound,"pounds"))
+    } else if (target == "stone"){
+      stone = pound/14
+      return(paste(stone,"stones"))
+    } else if (target == "batman"){
+      batman = pound/144.4275
+      return (paste(batman,"batmans"))
+    } else {
+      stop("Please enter a valid target. Kilo, pound, stone, or batman")
+    }
+  }
+  
+  if (origin == "stone"){           # convert stone into others
+    pound = n*14
+    if (target == "stone"){
+      return(paste(n,"stones"))
+    } else if (target == "kilo"){
+      kilo = pound * 0.4536
+      return(paste(kilo, "kilos"))
+    } else if (target == "pound"){
+      return(paste(pound,"pounds"))
+    } else if (target == "batman"){
+      batman = pound/144.4275
+      return (paste(batman,"batmans"))
+    } else {
+      stop("Please enter a valid target. Kilo, pound, stone, or batman")
+    }
+  }
+    
+  if (origin == "batman"){        # convert batman into others
+    pound = n * 144.4275
+    if (target == "kilo"){
+      kilo = pound * 0.4536
+      return(paste(kilo, "kilos"))
+    } else if (target == "pound"){
+      return(paste(pound,"pounds"))
+    } else if (target == "stone"){
+      stone = pound/14
+      return(paste(stone,"stones"))
+    } else if (target == "batman"){
+      return(paste(n,"batman"))
+    } else {
+      stop("Please enter a valid target. Kilo, pound, stone, or batman")
+    }
+  } 
+  else {                          # check the target
+    stop("Please enter a valid origin. Kilo, pound, stone, or batman")
+  }
+  }
+  else{
+    stop("Please enter a valid number")
+  }
+} 
+
+convert_mass(30, "batman", "batman")
+
+

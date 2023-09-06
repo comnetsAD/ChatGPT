@@ -1,0 +1,14 @@
+
+False. The shortest paths from s to any other node t can change if the lengths of the edges are replaced by 2le.
+Counterexample: Consider the following graph with weights le assigned to each edge e.
+
++----1----+
+  |         |
+s +----2----+ t
+  |         |
+  +----3----+
+The shortest path from s to t is the path s -> t with a length of 1. However, if the lengths of the edges are replaced by 2le, the shortest path becomes s -> t with a length of 2.
+Proof: The Dijkstra's shortest path algorithm is used for finding the shortest path from a single source to all other vertex. It uses a priority queue, which is implemented as a min-heap data structure. The key of a vertex in the priority queue is the distance from the source vertex s. The algorithm repeatedly selects the vertex v from the priority queue with the smallest key, and updates the key of all vertices adjacent to v, by relaxing the edge(v,u).
+When we multiply all the edge weights by a constant k, the distance from s to any vertex remains the same, but the key of the vertex in the priority queue will be multiplied by k. But the min heap property remains the same, the vertex which was previously the smallest will still be the smallest after the multiplication.
+Therefore, the shortest paths from s to any other node t can change if the lengths of the edges are replaced by 2le.
+

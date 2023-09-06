@@ -1,0 +1,18 @@
+This is a non-cooperative game in which each candidate has a strategy set of {m1, m2, ..., mn}, where mi is the median's favorite position among the citizens of state i. The payoff for each candidate depends on the strategies chosen by both candidates, and the goal for each candidate is to maximize her payoff.
+To find the pure-strategy Nash equilibrium, we need to check all possible strategy profiles and check if no candidate can increase her payoff by changing her strategy while the other candidate keeps her strategy.
+Let's call x and y the strategies chosen by candidate 1 and candidate 2 respectively.
+The payoff for candidate 1 is:
+u1(x, y) = 100 if x wins state 1 and y wins state 2
+80 if x wins state 1 and x wins state 2
+90 if x wins state 1 and the candidates tie in state 2
+0 otherwise
+Similarly, the payoff for candidate 2 is:
+u2(x, y) = 80 if y wins state 1 and x wins state 2
+100 if y wins state 1 and y wins state 2
+90 if y wins state 1 and the candidates tie in state 2
+0 otherwise
+A pure-strategy Nash equilibrium is a strategy profile (x*, y*) such that for every candidate i and for every strategy si in Si, we have:
+u(si*, sj*) >= u(si, sj*), for every j = 1, 2
+Given that m2<m1, it is clear that candidate 1 will not choose a position greater than m1. The same holds for candidate 2 and positions greater than m2. Therefore, the only possible pure strategy Nash equilibrium is the one in which the two candidates choose m1 and m2 respectively.
+In other words, if any candidate deviates from their strategy, they will earn less than 90 electoral votes, so they would not gain any advantage by doing so, and therefore, the strategy profile (m1, m2) is a pure-strategy Nash equilibrium.
+

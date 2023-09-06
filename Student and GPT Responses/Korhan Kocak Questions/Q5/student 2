@@ -1,0 +1,21 @@
+
+The First Number in each parentheses corresponds to player 1’s payoff, the second number corresponds to player 2’s payoff. 
+
+We start by finding each player’s best responses, Down is a dominant strategy for player 1, Right is a dominant strategy for player 2.
+
+In this game, there is a unique Nash Equilibria = (1; 1) -> (Down; Right)
+(The interaction of tho the dominant strategy/Best responses.
+
+Let us search for a mixed strategy Nash equilibria
+Player 1's strategies will be associated with positive probabilities (p) and (1 - p) for Up and Down respectively.
+Player 2's strategies will be associated with positive probabilities (q) and (1 - q).
+
+For a mixed strategy to exist, players need to make each other indifferent between their strategies.
+U1(U) = U1(D).
+4(p) + (-3)(1-p) = 7(p) + (1-p)
+4p - 3 + 3p = 6p + 1
+p=4
+
+There is no mixture that would leave both players indifferent. There is no mixture strategy for this game.
+
+

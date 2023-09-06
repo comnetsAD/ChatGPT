@@ -1,0 +1,1 @@
+You have 30 options for the first doughnut you choose, 29 for the next, 28 for the next, and so forth. This indicates that there are 30 * 29 * 28 *... * 19 * 18 * 17 different ways to choose 12 doughnuts from the shop. This is equivalent to 30!/(12!*18! ), or roughly 3.2 * 1013 ways. 

@@ -1,0 +1,1 @@
+Error, because workHours is a private member not a protected member; otherwise it would print 280.

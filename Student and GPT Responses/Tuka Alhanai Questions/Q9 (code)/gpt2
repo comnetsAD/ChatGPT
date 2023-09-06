@@ -1,0 +1,31 @@
+The error in the code is that the string printStatement in the Mammal and WingedAnimals classes are missing quotation marks at the beginning and end of the strings. Also, the expected output is "A new animal." but the code does not contain any statement to print this out. I will correct the error by adding quotation marks and adding a new statement to print the expected output.
+
+#include <iostream>
+using namespace std;
+class Mammal {
+   private:
+     string printStatement = "Mammals can give direct birth.";
+   public:
+     void printMe(){ cout << printStatement << "\n"; }
+};
+class WingedAnimals {
+   private:
+     string printStatement = "Winged animal can flap.";
+   public:
+     void printMe(){ cout << printStatement << "\n"; }
+};
+class Bat: public Mammal, public WingedAnimals {
+    public:
+    void printMe(){
+        Mammal::printMe();
+        WingedAnimals::printMe();
+        cout << "A new animal.\n";
+    }
+};
+int main() {
+Bat b1;
+     b1.printMe();
+ }
+
+In this way, the output will show "Mammals can give direct birth." "Winged animal can flap." "A new animal."
+

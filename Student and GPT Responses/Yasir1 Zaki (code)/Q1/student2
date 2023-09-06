@@ -1,0 +1,47 @@
+print('Welcome User No 1')
+
+name1 = input("Please enter your first name  ")
+name1=name1.capitalize()
+name2= input('Please enter your surname   ')
+name2=name2.capitalize()
+birthday1 = input('Please enter you birthdate in the format YYYYMMDD   ')
+day1=birthday1[6::]
+month1=birthday1[4:6]
+year1=birthday1[:4]
+print('\n')
+print(name1,name2,'was born on', day1+'/'+month1+'/'+year1)
+
+print('\n'*2)
+print('Welcome User No 2')
+
+name3 = input("Please enter your first name  ")
+name3=name3.capitalize()
+name4= input('Please enter your surname   ')
+name4=name4.capitalize()
+birthday2 = input('Please enter you birthdate in the format YYYYMMDD   ')
+day2=birthday2[6::]
+month2=birthday2[4:6]
+year2=birthday2[:4]
+print('\n')
+print(name3,name4,'was born on', day2+'/'+month2+'/'+year2)
+
+print('\n')
+
+if(year2<year1):
+    print(name3,name4,'is',(int(year1)-int(year2)),'year(s) older than',name1,name2)
+if(year2>year1):
+    print(name3,name4,'is',(int(year2)-int(year1)),'year(s) younger than',name1,name2)   
+if(year2==year1):
+    if(month2<month1):
+        print(name3,name4,'is',(int(month1)-int(month2)), 'month(s) older than',name1,name2)
+    if(month2==month1):
+        print(name3,name4,'was born in the same month as',name1,name2)
+        if(day2<day1):
+           print(name3,name4,'is',(int(day1)-int(day2)),'day(s) older than',name1,name2)
+        if(day2==day1):
+            print(name3,name4,'was born on the same day as',name1,name2)
+        if(day2>day1):
+            print(name3,name4,'is',(int(day2)-int(day1)),'day(s) younger than',name1,name2)
+    if(month2>month1):
+        print(name3,name4,'is',(int(month2)-int(month1)), 'month(s) younger than',name1,name2)
+

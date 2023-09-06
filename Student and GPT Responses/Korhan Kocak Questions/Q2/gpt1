@@ -1,0 +1,12 @@
+This game can be formulated as a normal form game with 𝑛 players, where each player has two possible strategies: "Contribute" or "Not Contribute". The payoff for each player depends on the number of players who choose to contribute and whether the public good is provided or not.
+The payoff matrix for each player can be represented as follows:
+    			Contribute  		Not Contribute
+Good Provided   		1   			2
+Good Not Provided   		-1  			0
+
+It's clear that the game has multiple Nash equilibria, one of them is where k or more players contribute and the public good is provided. The other Nash equilibrium is where less than k players contribute and the public good is not provided.
+In this game, each player has a dominant strategy which is to not contribute. This is because no matter what other players do, it's always better for each player to not contribute, as they will get a payoff of 0 rather than -1.
+As a result, the pure strategy Nash equilibrium of this game is the one where no player contributes and the public good is not provided.
+It's also possible for the game to have multiple Nash equilibria, if there are different ways for k or more players to contribute and the public good is provided.
+It's worth noting that this game can also have mixed-strategy Nash equilibrium, where each player randomly chooses between contributing and not contributing with a certain probability.
+

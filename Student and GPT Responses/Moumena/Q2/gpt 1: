@@ -1,0 +1,12 @@
+
+The statement "The product of any two irrational numbers is irrational" is true.
+
+To prove this, let's suppose that the product of two irrational numbers, x and y, is rational. This means that there exists some integers a and b, with b ≠ 0, such that:
+
+xy = a/b
+
+Since x and y are irrational, they cannot be expressed as the ratio of two integers, so we must have a = 0. However, this means that xy = 0, which is a contradiction, since x and y are not equal to 0. Therefore, our assumption that the product of x and y is rational must be false, which means that the product of any two irrational numbers is irrational.
+
+This proof shows that the statement "The product of any two irrational numbers is irrational" is always true.
+
+

@@ -1,0 +1,13 @@
+
+The maximum number a player can choose is 100. The second 99 and third 98. The average is 99, 2/3 of average is 66. 66 is closest to 97, player who chooses the lowest number wins and the others get nothing.
+
+Question says each player wants to maximize the amount she receives and chooses the least # possible. If all choose the same #, the dh is divided between all players. If all choose 1:
+⅔ of 1 = ⅔, nearest is 1.
+
+If 2 players select 1 and one player chooses 2.
+Average = 4/3
+⅔ = 8/9
+Players who choose 1 get payoff and other doesn't.
+
+Each should choose minimum number and maximize payoffs. Therefore, the Nash equilibrium is (1, 1, 1).
+

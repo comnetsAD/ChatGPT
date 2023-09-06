@@ -1,0 +1,24 @@
+convert_weight <- function(value, from, to) {
+    if (from == "pounds") {
+        if (to == "kilograms") {
+            return (value * 0.453592)
+        } else if (to == "stone") {
+            return (value * 0.0714286)
+        }
+    } else if (from == "kilograms") {
+        if (to == "pounds") {
+            return (value * 2.20462)
+        } else if (to == "stone") {
+            return (value * 0.157473)
+        }
+    } else if (from == "stone") {
+        if (to == "pounds") {
+            return (value * 14)
+        } else if (to == "kilograms") {
+            return (value * 6.35029)
+        }
+    } else {
+        return ("Invalid unit")
+    }
+}
+

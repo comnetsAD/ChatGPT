@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SIZE 100        //Limit for char arrays
+
+struct university_detail    //University Details        
+{
+    char uniname[MAX_SIZE];
+};
+
+struct student_detail       //Details for a student
+{
+    char sname[MAX_SIZE];
+    int sid;
+    float sgpa;
+    struct university_detail univ;
+};
+
+int main(){
+    struct student_detail students[3];
+
+}
+

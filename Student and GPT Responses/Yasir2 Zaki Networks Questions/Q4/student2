@@ -1,0 +1,5 @@
+a) It takes 1 RTT for each increase in MSS. THerefore it takes 6 RTT to get from 6 MSS to 12 MSS. 
+
+b) (6+7+8+9+10+11)/6RTT = 8.5 MSS/RTT. HTTP is built on top of TCP and simply appends a header, so the answer should not change using HTTP vs TCP.
+
+

@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include<string.h>
+
+
+
+int main()
+{
+    char string[50];
+
+    printf("Hello, dear user, enter the string: ");
+    scanf("%s", string);
+    
+    int loop2 = strlen(string) - 1; 
+
+    for (int i = 0; i < strlen(string); i++){ //iterate through each character
+
+        for (int j = loop2 ; j < strlen(string); j++){
+
+            printf("%c", string[j]); //print the characters from the back
+        }
+
+        printf("\n");
+
+        loop2--;
+    }
+
+
+    return 0;
+}
+

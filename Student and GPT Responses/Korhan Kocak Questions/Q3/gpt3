@@ -1,0 +1,23 @@
+This is a non-cooperative game in which each player has a strategy set of {1, 2, ..., 100}. The payoff for each player depends on the strategies chosen by all players, and the goal for each player is to maximize her payoff.
+To find the pure-strategy Nash equilibrium, we need to check all possible strategy profiles and check if no player can increase her payoff by changing her strategy while the other players keep their strategies.
+Let's call x, y, and z the strategies chosen by player 1, player 2, and player 3 respectively.
+If x, y, and z are different, then the player whose number is closest to 2/3 of the average wins 1 dirham.
+The average of the three numbers is (x+y+z)/3 and 2/3 of the average is (2/3)(x+y+z)/3. The player whose number is closest to this value wins.
+If x, y, and z are the same, then the dirham is split equally among the players.
+So, the payoff for player 1 is:
+u1(x, y, z) = 1 if x is closest to (2/3)(x+y+z)/3,
+1/3 if x = y = z,
+0 otherwise
+Similarly, the payoff for player 2 is:
+u2(x, y, z) = 1 if y is closest to (2/3)(x+y+z)/3,
+1/3 if x = y = z,
+0 otherwise
+And the payoff for player 3 is:
+u3(x, y, z) = 1 if z is closest to (2/3)(x+y+z)/3,
+1/3 if x = y = z,
+0 otherwise
+A pure-strategy Nash equilibrium is a strategy profile (x*, y*, z*) such that for every player i and for every strategy si in Si, we have:
+u(si*, sj*, sk*) >= u(si, sj*, sk*), for every j, k = 1, 2, 3 and j != k
+In this specific game, the only pure-strategy Nash equilibrium is the one in which the three players pick the same number, x = y = z = 34. It is the only strategy that guarantees an equal payoff for all players regardless of the choices of the other players.
+In other words, if any player deviates from the strategy 34, they will earn less than 1/3 dirhams, so they would not gain any advantage by doing so, and therefore, the strategy profile (34, 34, 34) is a pure-strategy Nash equilibrium.
+

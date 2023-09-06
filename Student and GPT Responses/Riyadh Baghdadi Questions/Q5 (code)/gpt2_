@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+double resultLeftRight = 0, resultRightLeft = 0;
+  for(int i = 1; i <= 10000; i++) {
+    if(i % 2 == 0) {
+        resultLeftRight -= (double) 1/i;
+        resultRightLeft += (double) 1/i;
+    } else {
+        resultLeftRight += (double) 1/i;
+        resultRightLeft -= (double) 1/i;
+    }
+}
+
+printf("Result (left to right): %f\n", resultLeftRight);
+printf("Result (right to left): %f\n", resultRightLeft);
+
+return 0;
+}
+

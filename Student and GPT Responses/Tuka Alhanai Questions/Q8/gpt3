@@ -1,0 +1,5 @@
+
+
+vector: A vector is an object from the Standard Template Library (STL) in C++. It is a dynamic array that can be resized and has a constant time complexity for accessing elements at a specific index. It is a part of the STL's container library, and it allows to store and manipulate a collection of elements. It is a template class, which means it can hold any type of data such as integers, strings, or custom classes, and it has a set of member functions such as push_back, pop_back, size, and more.
+string : string is an object from the Standard Template Library (STL) in C++. It is a class that allows to manipulate and store strings of characters. It is a part of the STL's string library, and it is a template class, meaning it can store any type of character, including basic types such as char and wchar_t. It has a set of member functions such as length, find, replace, and more. String class is a useful and efficient way to handle and manipulate strings, as it provides a lot of useful functions and methods to manipulate them, and it is also more secure than C-style strings.
+

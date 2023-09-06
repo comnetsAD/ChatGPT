@@ -1,0 +1,22 @@
+A regular expression (regex) in R that will match telephone numbers from the United Arab Emirates (UAE) but not from the United States (US) might look like the following:
+
+library(stringr)
+
+# UAE telephone number regex
+uae_telephone_regex <- "^(\\+971|00971)[0-9]{9}$"
+
+# Test some UAE telephone numbers
+uae_telephone_numbers <- c("+971501234567", "00971509876543", "0501234567")
+matches_uae <- str_detect(uae_telephone_numbers, uae_telephone_regex)
+print(matches_uae)
+
+# Test some US telephone numbers
+us_telephone_numbers <- c("+12021234567", "0012021234567", "2021234567")
+matches_us <- str_detect(us_telephone_numbers, uae_telephone_regex)
+print(matches_us)
+
+
+This regex matches strings that start with "+971" or "00971" (to indicate that the number is a UAE number) and the rest of the string is 9 digits. It will match UAE telephone numbers like "+971501234567", "00971509876543" and "0501234567" and it will not match US telephone numbers like "+12021234567", "0012021234567" and "2021234567"
+
+You can test a string against the regex using the str_detect() function from the stringr library. It returns a logical value indicating whether the string matches the regex or not.
+

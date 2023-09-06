@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+ 
+class Drink
+{
+ 
+public:
+  int volume;
+ 
+  // constructor
+  Drink(int v)
+  {
+ 
+	// variable private to the function
+	volume = v;
+	cout << "Volume: " << volume << "\n";
+  }
+};
+ 
+int main()
+{
+ 
+  // creating object
+  Drink mydrink(12);
+ 
+  // Create object with dynamic memory allocation
+ 
+  // ... solution here ...
+  Drink *dynamicDrink = new Drink(15); //dynamic creation of an object
+  delete dynamicDrink;             	//releasing memory
+ 
+  return 0;
+}
+

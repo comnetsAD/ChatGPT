@@ -1,0 +1,104 @@
+import random
+
+turn=0
+numRows=5
+numColumns=8
+charList=[]
+players=[input ("Name of player 1: "), input("Name of player 2: ")]
+board=[]
+score=[0,0]
+
+def printBoard(r1,c1,r2,c2):
+    print('  ', end='')
+    for column in range(numColumns):
+        print(' ',column,end=' ')
+
+    print('\n  ','+---'*numColumns,'+',sep='')
+    for row in range(numRows):
+        print(row,'| ',end='')
+        for column in range(numColumns):
+            if (row==r1 and column==c1) or (row==r2 and column==c2):
+                print(board[row][column],end=' | ')
+            
+            elif board[row][column]=='+':
+                print (board[row][column],end=' | ')
+            
+            else:
+                print('-',end=' | ')
+        print('\n  ','+---'*numColumns,'+',sep='')
+
+def InputOne():
+    r1= input(players[turn]+", please enter the the number of the row: ")
+    while not r1.isdigit() or (int(r1) not in range(numRows)):
+        r1= input("Your entry was invalid, please enter the the number of the row: ")
+    r1=int(r1)
+    c1= input(players[turn]+", please enter the the number of the column: ")
+    while not c1.isdigit() or (int(c1) not in range(numColumns)):
+        c1= input("Your entry was invalid, please enter the the number of the column: ")
+    c1=int(c1)
+    return(r1,c1)
+
+def InputTwo():
+    r2= input(players[turn]+", please enter the the number of the row: ")
+    while not r2.isdigit() or (int(r2) not in range(numRows)):
+        r2= input("Your entry was invalid, please enter the the number of the row: ")
+    r2=int(r2)
+
+    c2= input(players[turn]+", please enter the the number of the column: ")
+    while not c2.isdigit() or (int(c2) not in range(numColumns)):
+        c2= input("Your entry was invalid, please enter the the number of the column: ")
+    c2=int(c2)
+    return(r2,c2)
+
+
+for alphabet in range(65,65+int(numColumns*numRows/2)):
+    charList.append(chr(alphabet))
+    charList.append(chr(alphabet))
+random.shuffle(charList)
+
+#create board
+for row in range(numRows): #Create lists for rows
+    subList=[] #important to create every column seperately from the other
+    for column in range(numColumns): #create list of items within the column
+        subList.append(charList.pop())
+    board.append(subList)
+
+print(board)
+
+while score[0]+score[1] != (numRows*numColumns/2):
+
+    printBoard(-1,-1,-2,-2)
+    print(board)
+
+    print("\nFirst Card: ")
+    r1,c1 = InputOne()
+    while board[r1][c1]=='+':
+        print("Your card entry is invalid, please choose a different card")
+        r1,c1 = InputOne()
+
+    print("\nSecond Card")
+    r2,c2 = InputTwo()
+
+    while (r1==r2 and c1==c2) or board[r1][c1]=='+' or board[r2][c2]=='+' :
+        print("Your card entry is invalid, please choose a different card")
+        r2,c2 = InputTwo()
+
+    printBoard(r1,c1,r2,c2)
+
+    if board[r1][c1] == board[r2][c2]:
+        board[r1][c1]='+'
+        board[r2][c2]='+'
+        score[turn]+=1
+
+    turn=(turn+1)%2
+
+print('Game over')
+if score[0] > score[1]:
+    print(players[0]+' has won!')
+elif score[1] > score[0]:
+    print(players[1]+' has won!')
+else: 
+    print("It's a tie.")  
+
+
+

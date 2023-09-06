@@ -1,0 +1,34 @@
+
+A)
+I did the following calculations on the sequence P1, P4, P5, P2, P3 and found no deadlock occurring so I chose it as a safe state
+Need
+(0,0,0,0)
+(0,7,5,0)
+(6,6,2,2)
+(2,0,0,2)
+(0,3,2,0)
+Available:
+(2,1,0,0)
+(2,1,1,2)
+(4,4,6,6)
+(4,7,9,8)
+(6,7,9,8)
+(6,7,12,12)
+B)
+It appears to be safe with the sequence P5, P3, P2, P1, P4 which I did the following calculations for assuming I accept P3's request of (0,1,0,0) and did not see the system enter a deadlock:
+Need:
+(0,0,0,0)
+(0,7,5,0)
+(6,5,2,2)
+(2,0,0,2)
+(0,3,2,0)
+Available
+(2,0,0,0)
+(2,3,3,2)
+(2,4,6,6)
+(4,4,6,6)
+(4,4,7,8)
+(6,7,12,12)
+I of course updated P3's allocation matrix before starting the algorithm to reflect the new allocation of resources and recalculated the need matrix.
+
+

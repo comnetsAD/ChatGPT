@@ -1,0 +1,8 @@
+
+1. the absolute value of $2^{5}-2^{11}-2^2-1$, and 
+2. $5 \times 13 \times 31 + 6$.
+
+Try to use just one statement (one line of code).
+
+new_year = max(abs(25 - 211 - 2**2 - 1), 5 * 13 * 31 + 6)
+

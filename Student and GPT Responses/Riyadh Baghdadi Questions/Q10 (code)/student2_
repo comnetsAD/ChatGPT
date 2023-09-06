@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include<string.h>
+struct university_detail
+{
+	char university_name[50];
+
+};
+
+struct student_detail
+{
+	int id;
+	float gpa;
+	char name[50];
+	struct university_detail u_d;
+
+};
+	
+struct student_detail details_array[3]; //array of structures 
+
+void show_details(){
+
+
+	for (int i = 0; i<=2; i++){
+
+		printf("Enter the name of the student ");
+		scanf("%s", details_array[i].name);
+		printf("Enter the id of the student ");
+		scanf("%d", &details_array[i].id);
+		printf("Enter the gpa of the student ");
+		scanf("%f", &details_array[i].gpa);
+		printf("Enter the name of the student university ");
+		scanf("%s", details_array[i].u_d.university_name);
+		
+	}
+	printf("Student %s with ID %d and GPA %.2f is studying at %s \n", details_array[0].name, details_array[0].id, details_array[0].gpa, details_array[0].u_d.university_name);
+
+    printf("Student %s with ID %d and GPA %.2f is studying at %s \n", details_array[1].name, details_array[1].id, details_array[1].gpa, details_array[1].u_d.university_name);
+
+    printf("Student %s with ID %d and GPA %.2f is studying at %s \n", details_array[2].name, details_array[2].id, details_array[2].gpa, details_array[2].u_d.university_name);
+
+}
+
+
+int main()
+{
+    show_details();
+
+    return 0;
+}
+

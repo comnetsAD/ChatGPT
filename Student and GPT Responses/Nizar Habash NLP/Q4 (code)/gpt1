@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+void engToEnkliz(char *eng) {
+    int i;
+    int len = strlen(eng);
+    for (i = 0; i < len; i++) {
+        if (eng[i] == 'w') {
+            eng[i] = 'd';
+        } else if (eng[i] == 't') {
+            eng[i] = 'd';
+        } else if (eng[i] == 'k') {
+            eng[i] = 'g';
+        } else if (eng[i] == 'l') {
+            eng[i] = 'd';
+        } else if (eng[i] == 'i') {
+            eng[i] = 'o';
+        } else if (eng[i] == 'a') {
+            eng[i] = 'e';
+        } else if (eng[i] == 'u') {
+            eng[i] = 'ub';
+        } else if (eng[i] == 'e') {
+            eng[i] = 'a';
+        } else if (eng[i] == 'o') {
+            eng[i] = 'i';
+        } else if (eng[i] == 'r') {
+            eng[i] = 'z';
+        }
+    }
+}
+
+int main() {
+    char eng[] = "twinkle, twinkle, little star,";
+    engToEnkliz(eng);
+    printf("Enkliz: %s\n", eng);
+    return 0;
+}

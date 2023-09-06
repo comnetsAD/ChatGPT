@@ -1,0 +1,3 @@
+Two strategies to implement in C++ code to make it neat and organized would be header files (modularity) and comments. The use of header files in code makes it readable for someone who is being introduced to the code base. Furthermore, this allows the programmers to separate the different structures of code they would have to write (functions, classes, and/or main). On the other hand, adding comments to code bases is a great strategy to making code neat and organized. The use of comments allows programmers to explain their logic in a concise way, which makes their code easy to follow.
+
+

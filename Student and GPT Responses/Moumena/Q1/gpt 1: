@@ -1,0 +1,22 @@
+
+To solve this problem, we can start by setting up the congruence equation:
+a + 1 ≡ 2a mod 11
+Then we can rearrange the terms to get:
+a + 1 - 2a ≡ 0 mod 11
+This simplifies to:
+-a + 1 ≡ 0 mod 11
+Then we can divide both sides of the equation by -1 to get:
+a ≡ -1 mod 11
+Since a is an integer, we want to find the smallest integer value of a that satisfies this congruence. To do this, we can add 11 to both sides of the equation to get:
+a ≡ 10 mod 11
+Then we can add 11 to both sides again to get:
+a ≡ 21 mod 11
+We can continue adding 11 to both sides until we find the smallest integer value of a that satisfies the congruence.
+a ≡ 32 mod 11
+a ≡ 43 mod 11
+a ≡ 54 mod 11
+a ≡ 65 mod 11
+a ≡ 76 mod 11
+a ≡ 87 mod 11
+a ≡ 98 mod 11
+The smallest integer value of a that satisfies the congruence is 98.

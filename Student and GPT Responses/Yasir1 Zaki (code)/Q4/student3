@@ -1,0 +1,13 @@
+Integer=0
+while Integer <= 100:
+    if Integer%3==0 and Integer%5!=0:
+        print("FIZZ")
+    if Integer%5==0 and Integer%3!=0:
+        print("BUZZ")
+    if Integer%3==0:
+        print("FIZZ BUZZ")
+    else:
+        print(Integer)
+    Integer+=1
+
+

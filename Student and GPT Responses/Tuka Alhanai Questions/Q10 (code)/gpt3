@@ -1,0 +1,47 @@
+
+#include <iostream>
+ using namespace std;
+ // Variable created inside namespace
+ namespace first {
+  int val = 500;
+}
+ // Global variable
+ int val = 100;
+ int main() {
+   // Local variable
+int val = 200;
+   // (a) print local variable
+   // (b) print global variable
+   // (c) print namespace variable
+return 0; }
+
+
+#include <iostream>
+using namespace std;
+
+// Variable created inside namespace
+namespace first {
+    int val = 500;
+}
+
+// Global variable
+int val = 100;
+
+int main() {
+    // Local variable
+    int val = 200;
+
+    // (a) print local variable
+    cout << "Local variable: " << val << endl;
+
+    // (b) print global variable
+    cout << "Global variable: " << ::val << endl;
+
+    // (c) print namespace variable
+    cout << "Namespace variable: " << first::val << endl;
+
+    return 0;
+}
+
+In this code snippet, I added cout statements to print the local variable, global variable and namespace variable respectively. To print the global variable, I used the scope resolution operator (::) before the variable name. To print the namespace variable, I used the namespace name followed by the scope resolution operator before the variable name.
+

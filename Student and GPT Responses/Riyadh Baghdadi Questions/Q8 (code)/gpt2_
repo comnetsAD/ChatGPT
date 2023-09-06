@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+
+struct university_detail {
+    char name[100];
+};
+
+int main() {
+    struct university_detail uni;
+    strcpy(uni.name, "My University");
+    printf("University name: %s", uni.name);
+    return 0;
+}
+

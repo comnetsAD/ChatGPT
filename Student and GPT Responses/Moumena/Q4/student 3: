@@ -1,0 +1,12 @@
+
+It is given that the urns are identical, meaning the probability of choosing either the one with 6 red balls or
+the other with 5 red balls is: 1/2
+Calculating the probability of choosing a red ball from the urn with 5 red balls is:
+1/2 ∗ 5/13 = 5/26
+Calculating the probability of choosing a red ball from the urn with 6 red balls is:
+1/2 ∗ 6/9= 1/3
+From this we can derive that the probability of choosing a red ball is:
+1/3 +5/26 = 41/78
+Thus, the probability that the randomly chosen ball is one from the urn with 6 red balls is:
+1/3 * 41/78 = 26/41
+

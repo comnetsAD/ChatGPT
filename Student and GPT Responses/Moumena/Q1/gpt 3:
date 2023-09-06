@@ -1,0 +1,12 @@
+
+To solve this problem, we can start by expressing the given congruence in terms of modular arithmetic:
+a + 1 ≡ 2a mod 11
+a + 1 - 2a ≡ 0 mod 11
+-a + 1 ≡ 0 mod 11
+Then we can divide both sides by -1 to get:
+a ≡ -1 mod 11
+Finally, we can add 11 to both sides to find the smallest integer solution:
+a ≡ 10 mod 11
+Therefore, the smallest integer a > 1 that satisfies the given congruence is 10.
+
+

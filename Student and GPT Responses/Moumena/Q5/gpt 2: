@@ -1,0 +1,18 @@
+
+
+To prove that A − (B ∩ C) = (A − B) ∩ (A − C), we can use the fact that the difference of two sets, also known as the set difference, is defined as the set of elements that are in the first set but not in the second set.
+
+We can start by expanding the left side of the equation:
+
+A − (B ∩ C) = A − {x | x ∈ B ∧ x ∈ C}
+
+Since the intersection of two sets B and C is defined as the set of elements that are in both sets B and C, we can rewrite the expression as:
+
+A − (B ∩ C) = {x | x ∈ A ∧ x ∉ B ∧ x ∉ C}
+
+We can now expand the right side of the equation:
+
+(A − B) ∩ (A − C) = {x | x ∈ A ∧ x ∉ B} ∩ {x | x ∈ A ∧ x ∉ C}
+
+Using the definition of the intersection of two sets, this can be simplified to:
+

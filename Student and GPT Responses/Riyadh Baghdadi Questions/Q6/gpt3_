@@ -1,0 +1,7 @@
+
+
+In the program, adding from right to left leads to better accuracy than adding from left to right. The reason for this is that when adding from right to left, the larger values are added first and these values have smaller relative error than smaller values. When adding from left to right, the small values are added first and these small values are subject to larger relative error.
+When adding a sequence of numbers, the numerical errors accumulate in a way that depends on the order of the additions. This is due to the fact that floating-point arithmetic is not associative. Therefore, the order of additions can affect the final result.
+In the program, the series is a alternating harmonic series, the sum of it is log(2) and the order of numbers matters. By adding the largest numbers first and the smallest numbers last, the relative error is minimized and the final result is more accurate.
+It can be observed that when the program is run, the result obtained from adding from right to left is closer to the expected value of log(2) than the result obtained from adding from left to right.
+

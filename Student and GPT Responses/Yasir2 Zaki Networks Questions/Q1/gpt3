@@ -1,0 +1,21 @@
+The value of the CRC for the given generator G and data D is 0101010.
+
+To calculate the CRC, we perform modulo-2 division of the data D by the generator G. This involves dividing D by G using binary arithmetic, in which the only operation is modulo-2 addition (also known as XOR).
+
+In this case, the division would proceed as follows:
+
+D: 1010101010
+G: 10011
+
+       01010
+     1 0011
+     ---------
+       1001
+     0 0101
+     --------
+       0001
+       1001
+     --------
+       0000
+The remainder of this division is 0000, which is the CRC for the given data D and generator G.
+

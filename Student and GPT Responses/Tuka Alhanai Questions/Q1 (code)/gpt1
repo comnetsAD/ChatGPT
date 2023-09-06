@@ -1,0 +1,13 @@
+he source of the error in the code snippet is the factorial function. Specifically, the issue is with the base case of the recursion.
+
+When the function is called with an input of 0, the function will call itself with an input of -1 and continue to call itself with decreasing input, the function never reaches the base case where it should return and stop the recursion. This leads to an infinite recursion and the program eventually run out of stack memory, resulting in a segmentation fault error.
+
+To fix this, the base case of the recursion should be modified to return 1 when the input is 0, not 1.
+
+int factorial(int x) {
+   if(x == 0) { return 1; }
+   return x * factorial(x-1);
+}
+
+This way the function will stop the recursion when the input is 0 and not to fall into the infinite recursion and the program will not run out of stack memory.
+

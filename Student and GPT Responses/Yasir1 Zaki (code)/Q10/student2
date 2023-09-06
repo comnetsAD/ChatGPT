@@ -1,0 +1,7 @@
+listTwo = list(range(1,10,2)) + list(range(7,0,-2))
+
+# Output
+for stars in listTwo:
+    print(" "*int((9-stars)/2)+"*"*stars)
+
+

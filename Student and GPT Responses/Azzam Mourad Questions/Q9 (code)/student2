@@ -1,0 +1,314 @@
+
+Server
+#include <unistd.h>     // / header for unix specic functions declarations : fork(), getpid(), getppid(), sleep()
+#include <stdio.h>      // header for input and output from console : printf, perror
+#include <stdlib.h>     // header for general functions declarations: exit() and also has exit macros such as EXIT_FAILURE - unsuccessful execution of a program
+#include <sys/socket.h> // header for socket specific functions and macros declarations
+#include <netinet/in.h> //header for MACROS and structures related to addresses "sockaddr_in", INADDR_ANY
+#include <string.h>     // header for string functions declarations: strlen()
+#include <pthread.h>    // header for thread functions declarations: pthread_create, pthread_join, pthread_exit
+#include <signal.h>     // header for signal related functions and macros declarations
+#include <string.h>
+// compile your code with: gcc -o output code.c -lpthread
+
+#define PORT 5554 // or 5554 tcp client server port
+#define NUM_CLIENTS 10
+
+// function routine of Signal Handler for SIGINT, to terminate all the threads which will all be terminated as we are calling exit of a process instead of pthread_exit
+void serverExitHandler(int sig_num)
+{
+  printf("\n Exiting server.  \n");
+  fflush(stdout); // force to flush any data in buffers to the file descriptor of standard output,, a pretty convinent function
+  exit(0);
+}
+
+// Function that handle dedicated communication with a client
+void *HandleClient(void *new_socket)
+{
+  pthread_detach(pthread_self()); // detach the thread as we don't need to synchronize/join with the other client threads, their execution/code flow does not depend on our termination/completion
+  int socket = *(int *)new_socket;
+  free(new_socket);
+  printf("Handling new client in a thread using socket: %d\n", socket);
+  printf("Listening to client..\n"); // while printing make sure to end your strings with \n or \0 to flush the stream, other wise if in anyother concurent process is reading from socket/pipe-end with standard input/output redirection, it will keep on waiting for stream to end.
+
+  int i = 0; // to keep track of messages received
+  // variable such as message buffers to receive and send messages
+  char message[1024] = {0};  // to send message
+  char message2[1024] = {0}; // to receive message
+  int data_len;              // for flusing the received message
+
+  while (1)
+  {
+    // clearing the message arrays properly
+    memset(message, 0, 1024 * (sizeof(char)));
+    memset(message2, 0, 1024 * (sizeof(char)));
+
+    data_len = recv(socket, message2, sizeof(message2), 0);                                                   // receive message from client
+    printf("Server Received message from Client on socket %d, here is the message : %s\n", socket, message2); // print the received message
+    fflush(stdout);                                                                                           // force to flush any data in buffers to the file descriptor of standard output
+
+    message2[data_len] = '\0';
+    // printf("%s\n", message2);
+    if (strcmp(message2, "exit") == 0)
+    {
+      printf("Closing the client communication socket : %d and terminating the corrosponding thread. \n", socket);
+      close(socket); // close the conneciton with client
+      break;         // break the infinite loop so that this thread could be terminated
+    }
+
+    int flag = 0, numFlag = 0;
+    int num1 = 0, num2 = 0;
+    int c, j;
+    int x = 0, y = 0;
+    
+    while (message2[x] != '\0')
+    {
+      if (message2[x] != ' ')
+      {
+        message2[y++] = message2[x];
+      }
+      x++;
+    }
+    message2[y] = '\0';
+
+    for (int i = 0; i < strlen(message2) - 1; i++)
+    {
+      if (message2[i] == '+' || message2[i] == '-' || message2[i] == '*' || message2[i] == '/')
+      {
+        flag = 1;
+        j = i;
+      }
+      else
+      {
+        if (flag == 0)
+        {
+          num1 = (10 * num1) + (message2[i] - '0');
+        }
+        else if (flag != 0)
+        {
+          num2 = (10 * num2) + (message2[i] - '0');
+        }
+      }
+      if (message2[i] >= '0' && message2[i] <= '9' || (message2[i] == '+' || message2[i] == '-' || message2[i] == '*' || message2[i] == '/'))
+      {
+        numFlag = 0;
+      }
+      else
+      {
+        numFlag = 1;
+      }
+    }
+    if (!numFlag)
+    {
+
+      int result = 0;
+      if (message2[j] == '+')
+        result = num1 + num2;
+      else if (message2[j] == '-')
+        result = num1 - num2;
+      else if (message2[j] == '/')
+        result = num1 / num2;
+      else if (message2[j] == '*')
+        result = num1 * num2;
+      i = i + 1;
+
+      printf("sending result to client! Answer is: %d : Socket number: %d\n", result, socket);
+      int server_output = htonl(result);
+      write(socket, &server_output, sizeof(server_output));
+      continue;
+    }
+    else
+    {
+      printf("Invalid Input!\n");
+      char error[20] = "Error, message";
+      send(socket, error, strlen(error), 0);   // send message to client
+    }
+  }
+
+  pthread_exit(NULL); // terminate the thread
+}
+
+int main() // main function
+{
+
+  printf("Welcome to Math Multi-threaded Server!\n");
+  // Set the SIGINT (Ctrl-C) signal handler to serverExitHandler
+  signal(SIGINT, serverExitHandler);
+
+  int sock1, sock2, valread;
+  struct sockaddr_in address; // structure for storing addres; local interface and port
+  int addrlen = sizeof(address);
+
+  // Creating socket file descriptor with communication: domain of internet protocol version 4, type of SOCK_STREAM for reliable/conneciton oriented communication, protocol of internet
+  if ((sock1 = socket(AF_INET, SOCK_STREAM, 0)) == 0) // checking if socket creation fail
+  {
+    perror("socket failed");
+    exit(EXIT_FAILURE);
+  }
+
+  // setting the address to be bind to socket
+  address.sin_family = AF_INET;
+  address.sin_addr.s_addr = htonl(INADDR_ANY);
+  address.sin_port = htons(PORT);
+
+  // attaching socket to addresses (any/all local ip with port 5564)
+  if (bind(sock1, (struct sockaddr *)&address,
+           sizeof(address)) < 0) // checking if bind fails
+  {
+    perror("bind failed");
+    exit(EXIT_FAILURE);
+  }
+
+  if (listen(sock1, NUM_CLIENTS) < 0) // defining for socket length of queue for pending client connections
+  {
+    perror("Listen Failed");
+    exit(EXIT_FAILURE);
+  }
+
+  while (1) // to keep server alive for infintiy
+  {
+
+    if ((sock2 = accept(sock1, (struct sockaddr *)&address,
+                        (socklen_t *)&addrlen)) < 0) // accepting the client connection with creation/return of a new socket for the established connection to enable dedicated communication (active communication on a new socket) with the client
+    {
+      perror("Error in accepting");
+      exit(EXIT_FAILURE);
+    }
+
+    int rc;                                       // return value from pthread_create to check if new thread is created successfukky                           */
+    pthread_t thread_id;                          // thread's ID (just an integer, typedef unsigned long int) to indetify new thread
+    int *new_socket = (int *)malloc(sizeof(int)); // for passing safely the integer socket to the thread
+    if (new_socket == NULL)
+    {
+      fprintf(stderr, "Couldn't allocate memory for thread new socket argument.\n");
+      exit(EXIT_FAILURE);
+    }
+    *new_socket = sock2;
+
+    printf("New Client has Connected!\n");
+
+    // create a new thread that will handle the communication with the newly accepted client
+    rc = pthread_create(&thread_id, NULL, HandleClient, new_socket);
+    if (rc) // if rc is > 0 imply could not create new thread
+    {
+      printf("\n ERROR: return code from pthread_create is %d \n", rc);
+      exit(EXIT_FAILURE);
+    }
+  }
+
+  close(sock1);
+
+  pthread_exit(NULL); // terminate the main thread
+}
+
+Client
+#include <unistd.h>     // / header for unix specic functions declarations : fork(), getpid(), getppid(), sleep()
+#include <stdio.h>      // header for input and output from console : printf, perror
+#include <sys/socket.h> // header for socket specific functions and macros declarations
+#include <stdlib.h>     // header for general functions declarations: exit() and also has exit macros such as EXIT_FAILURE - unsuccessful execution of a program
+#include <netinet/in.h> //header for MACROS and structures related to addresses "sockaddr_in", INADDR_ANY
+#include <string.h>     // header for string functions declarations: strlen()
+#include <arpa/inet.h>  // header for functions related to addresses from text to binary form, inet_pton
+#include <signal.h>     // header for signal related functions and macros declarations
+
+#define PORT 5554
+#define MAX_BUFFER 1024
+
+int sock = 0; // global variable for accessing socket in terminating handler and using it to send exit message to server
+
+// function routine of Signal Handler for SIGINT, to send connection termination message to server and terminates the client process
+void clientExitHandler(int sig_num)
+{
+  send(sock, "exit", strlen("exit"), 0); // sending exit message to server
+  close(sock);                           // close the socket/end the conection
+  printf("\n Exiting client.  \n");
+  fflush(stdout); // force to flush any data in buffers to the file descriptor of standard output,, a pretty convinent function
+  exit(0);
+}
+
+int main()
+{
+  // Set the SIGINT (Ctrl-C) signal handler to clientExitHandler
+  signal(SIGINT, clientExitHandler);
+
+  int valread;
+  struct sockaddr_in serv_addr; // structure for storing addres; remote server ip and port
+
+  // Creating socket file descriptor with communication: domain of internet protocol version 4, type of SOCK_STREAM for reliable/conneciton oriented communication, protocol of internet
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) // checking if socket creation fail
+  {
+    printf("\n Socket creation error \n");
+    return -1;
+  }
+
+  // setting the address to connect socket to server
+  serv_addr.sin_family = AF_INET;
+  serv_addr.sin_port = htons(PORT);
+
+  // Convert IPv4 and IPv6 addresses from text to binary form and set the ip
+  // This function converts the character string 127.0.0.1 into a network
+  // address structure in the af address family, then copies the
+  // network address structure to serv_addr.sin_addr
+  if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0) // check if conversion failed
+  {
+    printf("\nInvalid address/ Address not supported \n");
+    return -1;
+  }
+
+  // connect the socket with the adddress and establish connnection with the server
+  if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+  {
+    printf("\nConnection Failed \n");
+    return -1;
+  }
+  printf("Succesfully Connected to server!\n");
+
+  // variable such as message buffers to receive and send messages
+  char message[MAX_BUFFER] = {0};  // to receive message from server
+  char message2[MAX_BUFFER] = {0}; // to send message to server
+  int i = 0;                       // to keep track of messages sent
+  int data_len;                    // for flusing the received message
+
+  while (1)
+  {
+    // clearing the message arrays properly
+    memset(message, 0, MAX_BUFFER * (sizeof(char)));
+    memset(message2, 0, MAX_BUFFER * (sizeof(char)));
+
+    snprintf(message2, MAX_BUFFER, "Hello this is %d message from client using socket : %d !", i, sock); // puts string into buffer
+    i = i + 1;
+
+    printf("\nMath server supports  + , - , * and / \n");
+    printf("Please enter your math equation to be sent to server: ");
+
+    // bzero(inputbuf, MAX_BUFFER);
+    fgets(message2, MAX_BUFFER - 1, stdin);
+
+    /* Write to server */
+    int n;
+    n = write(sock, message2, strlen(message2));
+    if (n < 0)
+    {
+      fprintf(stderr, "ERROR writing to socket\n");
+      exit(1);
+    }
+
+    int result = 0;
+
+    n = read(sock, &result, sizeof(result));
+    if (n > 0)
+    {
+      printf("Received result from client = %d \n", ntohl(result));
+    }
+    else
+    {
+      printf("ERROR in receiving answer from server\n");
+    }
+
+    sleep(3);
+  }
+
+  exit(0);
+}
+
+

@@ -1,0 +1,347 @@
+
+#include<sys/types.h>
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<sys/wait.h>
+#include<sys/mman.h>
+#include<string.h>
+
+//define key variables for pipes' read end, write end, and the size
+#define READ_END 0
+#define WRITE_END 1
+#define MAX_SIZE 150
+
+char** separate(char str[]); //function to parse the input into individual strings and append a NULL value at the end of the array
+void noPipe(char* func[]);   //function to be executed when the program does not require a pipe use
+void onePipe(char* func[], char* param1[]);  //function to be executed when the program requires the use of one pipe
+void twoPipe(char* func[], char* param1[], char* param2[]);   //function to be executed when the program requires the use of 2 pipes 
+void threePipe(char* func[], char* param1[], char* param2[], char* param3[]); //function to be executed when the program requires the use of 3 pipes
+
+int main(){
+    //create an array to get the input from the user and get the input from the user
+	char str[MAX_SIZE];
+	printf("Enter your command: \n");
+	fgets(str, MAX_SIZE, stdin);
+
+    //count the number of pipes needed by parsing the input into strings separated by '|'
+	char* pipe[4];
+	int j = 0; //number of pipes
+	char* temp;
+	temp = strtok (str,"|\n");
+	while (temp != NULL)
+	{
+		pipe[j] = temp;
+		j++;
+	    temp = strtok (NULL, "|\n");
+	}
+
+
+    //call the function for each case by passing the arguments saved in the pipe array (pipe[0] refers to the command of the first process, pipe[1] to the second process etc)
+    //print warnings and exit the program if the input is not supported by the program (e.g no input or more than 3 pipes are needed) 
+	if(j==0){
+		printf("Empty Input. Please restart the program.\n");
+	}else if(j==1){
+		char** func1 = separate(pipe[0]);
+		noPipe(func1);
+	}else if(j==2){
+		char** func1 = separate(pipe[0]);
+		char** func2 = separate(pipe[1]);
+		onePipe(func1, func2);
+	}else if(j==3){
+		char** func1 = separate(pipe[0]);
+		char** func2 = separate(pipe[1]);
+		char** func3 = separate(pipe[2]);
+		twoPipe(func1, func2, func3);
+	}else if(j==4){
+		char** func1 = separate(pipe[0]);
+		char** func2 = separate(pipe[1]);
+		char** func3 = separate(pipe[2]);
+		char** func4 = separate(pipe[3]);
+		threePipe(func1, func2, func3, func4);
+	}else{
+		printf("The input requires more than 3 pipes.\n");
+	}
+	return 0;
+}
+
+//function to parse the input into individual strings and append a NULL value at the end of the array
+char** separate(char* input){
+    //first count the number of input program + arguments
+	char **strings;
+	int cnt = 0;
+	//count the number of commands and arguments
+	for(int i= 0; i<strlen(input); i++){
+		if(input[i] == ' '){
+			cnt++;
+		}
+	}
+
+    //create an array dynamically to store the parsed string elements and trailing NULL value
+	strings = malloc((cnt+2)*sizeof(char*));
+
+    //parse the string into smaller strings by whitespace character ' ' and store in the array
+	int cnt2 = 0;
+	char* temp2;
+	temp2 = strtok(input," ");
+	while (temp2 != NULL)
+	{
+		strings[cnt2] = malloc(sizeof(temp2));
+		strcpy(strings[cnt2], temp2);
+	    temp2 = strtok(NULL, " ");
+	    cnt2++;
+
+	}
+    //set the trailing null element
+	strings[cnt+1] = NULL;
+    //return the string
+	return strings;
+}
+
+//function to be executed when the program does not require a pipe use
+void noPipe(char* func[]){
+    //no pipe or child needed, simply execute the function in the context of the current process by calling exec
+	execvp(func[0], func);
+	perror ("Execvp failed.");
+    exit(EXIT_FAILURE);
+}
+
+//function to be executed when the program requires the use of one pipe
+void onePipe(char* func[], char* param1[]){
+    //declare the pipe and the child
+	int fd[2];
+    int pid;
+
+    //if pipe failed, exit with an error
+    if (pipe(fd) < 0)
+        exit(EXIT_FAILURE);
+    
+    // fork a child and check if it was successful
+    pid = fork();
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    else if (pid == 0)
+    {
+        //context of the child
+
+        //write by redirecting standard output to pipe
+        dup2(fd[WRITE_END], 1);
+        //close the write end of the pipe
+        close(fd[WRITE_END]);
+        //clsoe the read end of the pipe
+        close(fd[READ_END]);
+        //execute the program passed on 
+        execvp(func[0], func);
+        //if the execution fails, the rest of the child's code is executed and the process exits with an error
+        perror ("Execvp failed.");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        //contect of the parent
+
+        //set the standard input to the read end of the pipe
+        dup2(fd[READ_END], 0);
+        //close the ends of the pipe
+        close(fd[READ_END]);
+        close(fd[WRITE_END]);
+        //execute the program, get the input from the read end of the pipe passed on as arguments of the function
+        execvp(param1[0], param1);
+        //if the execution fails, the rest of the parent's code is executed and the process exits with an error
+        perror ("Execvp failed.");
+        exit(EXIT_FAILURE);
+    }
+    exit(EXIT_FAILURE);
+}
+
+//function to be executed when the program requires the use of one pipe
+void twoPipe(char* func[], char* param1[], char* param2[]){
+    //declare the pipes and the child
+	int fd1[2];
+    int fd2[2];
+    int pid;
+
+    //if pipes failed, exit with an error
+    if (pipe(fd1) < 0)
+        exit(EXIT_FAILURE);
+    if (pipe(fd2) < 0)
+        exit(EXIT_FAILURE);
+    
+    //fork the child #1 and check if it was successfull
+    pid = fork();
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    else if (pid == 0)
+    {
+        //context of the first child
+        //write by redirecting standard output to pipe
+        dup2(fd1[WRITE_END], 1);
+        //close the ends of the two pipes
+        close(fd1[WRITE_END]);
+        close(fd1[READ_END]);
+        close(fd2[WRITE_END]);
+        close(fd2[READ_END]);
+        //execute the function passed on as an array of arguments
+        execvp(func[0], func);
+        //if the execution fails, the rest of the child's code is executed and the process exits with an error
+        perror ("Execvp failed.");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        //fork the child #2 and check if it was successful
+        pid = fork();
+        if (pid == 0)
+        {
+            //context of the second child
+
+            //read the redirected ouput of func through pipe 1
+            dup2(fd1[READ_END], 0);
+            //write by redirecting standard output to pipe 2
+            dup2(fd2[WRITE_END], 1);  
+            //clsoe the ends of the pipes
+            close(fd1[WRITE_END]);
+            close(fd1[READ_END]);
+            close(fd2[WRITE_END]);
+            close(fd2[READ_END]);
+            //execute the function, get the input from the read end of the pipe passed on as arguments of the function
+            execvp(param1[0], param1);
+            //if the execution fails, the rest of the child's code is executed and the process exits with an error
+            perror ("Execvp failed.");
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            //context of the parent
+            //set the standard input to the read end of the pipe
+            dup2(fd2[READ_END], 0);
+            //close the ends of the pipes
+            close(fd1[WRITE_END]);
+            close(fd1[READ_END]);
+            close(fd2[WRITE_END]);
+            close(fd2[READ_END]);
+            //execute the function, get the input from the read end of the pipe passed on as arguments of the function
+            execvp(param2[0], param2);
+            //if the execution fails, the rest of the parent's code is executed and the process exits with an error
+            perror ("Execvp failed.");
+            exit(EXIT_FAILURE);
+        }
+    }
+    exit(EXIT_FAILURE);
+}
+
+void threePipe(char* func[], char* param1[], char* param2[], char* param3[]){
+    //declare the pipes and the children
+    int fd1[2];
+    int fd2[2];
+    int fd3[2];
+    int pid;
+
+    //if pipes failed, exit with an error
+    if (pipe(fd1) < 0)
+        exit(EXIT_FAILURE);
+    if (pipe(fd2) < 0)
+        exit(EXIT_FAILURE);
+    if (pipe(fd3) < 0)
+        exit(EXIT_FAILURE);
+    
+    //fork the child #1 and check if it was successfull
+    pid = fork();
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    else if (pid == 0)
+    {
+        //context of the first child
+        //write by redirecting standard output to pipe
+        dup2(fd1[WRITE_END], 1);
+        //close the pipes
+        close(fd1[WRITE_END]);
+        close(fd1[READ_END]);
+        close(fd2[WRITE_END]);
+        close(fd2[READ_END]);
+        close(fd3[WRITE_END]);
+        close(fd3[READ_END]);
+        //execute the program with parameters passed on as arguments
+        execvp(func[0], func);
+        //if the execution fails, the rest of the child's code is executed and the process exits with an error
+        perror ("Execvp failed.");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        //context of the parent
+        //fork the child #2 and check if it was successful
+        pid = fork();
+        if (pid < 0)
+            exit(EXIT_FAILURE);
+        else if (pid == 0)
+        {
+            //context of the second child
+            //read the redirected ouput of func through pipe 1
+            dup2(fd1[READ_END], 0);
+            //write by redirecting standard output to pipe 2
+            dup2(fd2[WRITE_END], 1);
+            //close the pipes
+            close(fd1[WRITE_END]);
+            close(fd1[READ_END]);
+            close(fd2[WRITE_END]);
+            close(fd2[READ_END]);
+            close(fd3[WRITE_END]);
+            close(fd3[READ_END]);
+            //execute the function, get the input from the read end of the pipe passed on as arguments of the function
+            execvp(param1[0], param1);
+            //if the execution fails, the rest of the child's code is executed and the process exits with an error
+            perror ("Execvp failed.");
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            //context of the parent
+            //fork the child #3 and check if it was successful 
+            pid = fork();
+            if (pid < 0)
+                exit(EXIT_FAILURE);
+            else if (pid == 0)
+            {
+                //context of the third child
+                //read the redirected ouput of func through pipe 2
+                dup2(fd2[READ_END], 0);
+                //write by redirecting standard output to pipe 3
+                dup2(fd3[WRITE_END], 1);
+                //close the pipes
+                close(fd1[WRITE_END]);
+                close(fd1[READ_END]);
+                close(fd2[WRITE_END]);
+                close(fd2[READ_END]);
+                close(fd3[WRITE_END]);
+                close(fd3[READ_END]);
+                //execute the function, get the input from the read end of the pipe passed on as arguments of the function
+                execvp(param2[0], param2);
+                //if the execution fails, the rest of the child's code is executed and the process exits with an error
+                perror ("Execvp failed.");
+                exit(EXIT_FAILURE);
+            }
+            else
+            {
+                //context of the parent
+                //read the redirected ouput of func through pipe 3
+                dup2(fd3[READ_END], 0);
+                //close the pipes
+                close(fd1[WRITE_END]);
+                close(fd1[READ_END]);
+                close(fd2[WRITE_END]);
+                close(fd2[READ_END]);
+                close(fd3[WRITE_END]);
+                close(fd3[READ_END]);
+                //execute the function, get the input from the read end of the pipe passed on as arguments of the function
+                execvp(param3[0], param3);
+                //if the execution fails, the rest of the child's code is executed and the process exits with an error
+                perror ("Execvp failed.");
+                exit(EXIT_FAILURE);
+            }
+        }
+    }
+    exit(EXIT_FAILURE);
+}
+
+

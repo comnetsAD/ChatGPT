@@ -1,0 +1,10 @@
+
+A)
+
+Looking at the needs with initial available resources of  (2, 1, 0, 0), we get the only possible sequence of P1 -> P4 -> P5 -> P2 -> P3. The system is safe.
+B)
+Available after A: 6,7,12,10
+
+If granted immediately, sequence will be P3 -> P1 -> Deadlock. Not safe.
+
+

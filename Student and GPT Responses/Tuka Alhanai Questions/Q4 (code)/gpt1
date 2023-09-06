@@ -1,0 +1,5 @@
+The output of the following code snippet: 'a' < 'f' ? true : false; is "true"
+
+This is because the comparison operator '<' compares the ASCII values of the characters 'a' and 'f' and 'a' has a lower ASCII value than 'f', so the comparison evaluates to true. The ternary operator ?: is then used to assign the value of true or false to the output depending on the result of the comparison.
+Since the comparison is true, the value assigned to the output is true.
+

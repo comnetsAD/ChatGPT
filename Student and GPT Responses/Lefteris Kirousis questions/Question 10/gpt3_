@@ -1,0 +1,10 @@
+
+No, it is not possible to have an optimal scheduling of jobs that minimizes lateness yet contains an inversion.
+
+An inversion in a schedule occurs when two jobs are assigned to the same machine in such a way that the job that should be finished first according to their deadlines is actually finished after the other job. An optimal schedule should always minimize the lateness of jobs, and therefore it should avoid inversions, as they can increase the lateness of the jobs.
+
+Even though it may seem that inversion could be useful in some cases, such as when two jobs have very tight deadlines, there are other scheduling algorithms that can be used to solve such problem without introducing inversions, such as the Earliest Deadline First (EDF) algorithm.
+
+So, an optimal schedule should not contain inversions as it would violate the minimal lateness condition.
+
+

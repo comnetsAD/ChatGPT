@@ -1,0 +1,57 @@
+
+
+all_conversion = function (mass, unit_input, unit_output) {
+    if(unit_input == "kg"&& unit_output == "pounds"){
+      return (mass/0.453592)
+      
+    } else if(unit_input== "kg"&& unit_output == "stone"){
+       
+      return (mass*0.15747)
+  
+} else if(unit_input== "kg"&& unit_output == "batman"){
+      
+      return ( mass/7.484)
+
+  } else if(unit_input== "pounds"&& unit_output == "kg"){
+
+      return ( mass*0.453592)
+
+ } else if(unit_input== "pounds"&& unit_output == "stone"){
+    
+      return ( mass/14)
+
+ } else if(unit_input== "pounds"&& unit_output == "batman"){
+   
+      return (mass*16)
+
+} else if(unit_input== "stone"&& unit_output == "kg") {
+  
+      return ( mass/0.15747)
+
+} else if(unit_input== "stone"&& unit_output == "pounds"){
+      
+      return (mass*14)
+  
+} else if(unit_input== "stone"&& unit_output == "batman"){
+    
+      return (mass*9.4)
+  
+} else if(unit_input== "batman"&& unit_output == "kg"){
+    
+      return (mass*7.484)
+   
+} else if(unit_input== "batman"&& unit_output == "pounds"){
+    
+      return (mass/16) 
+  
+} else if(unit_input== "batman"&& unit_output == "stone"){
+      
+      return (mass/9.4) 
+} 
+}
+
+# TEST
+
+all_conversion(101, "pounds", "batman")
+
+

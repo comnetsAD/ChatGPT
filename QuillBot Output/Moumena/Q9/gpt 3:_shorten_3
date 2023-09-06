@@ -1,0 +1,1 @@
+The first doughnut has 30 options, the second 29, the third 28, and so on. 30 * 29 * 28 *... * 19 * 18 * 17 methods to pick 12 doughnuts from the shop. 30!/(12! * 18!), or 3.2 * 10^13 ways. 

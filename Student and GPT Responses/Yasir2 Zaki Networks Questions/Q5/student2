@@ -1,0 +1,3 @@
+If data is sent infrequently, NAKs would only be detected on the infrequent sending of information. If data is sent frequently and is rarely lost, NAK’s are good because the decrease the amount of Non-data messages that are sent on the network and decrease the likelihood of slowing down due to a lost ACK or NAK.
+
+

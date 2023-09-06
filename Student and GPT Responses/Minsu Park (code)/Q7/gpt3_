@@ -1,0 +1,20 @@
+
+Hint: To remove all the "a"s from a string, you can use 'that_string.replace("a", "")'. And you can call 'replace' multiple times.
+
+def disemvowel(a_string):
+    ...
+    ...
+
+# An example call to your function.  (It's often helpful to run
+# an example call from time to time while you're writing a function,
+# to see how it currently works.)
+disemvowel("Can you read this without vowels?")
+
+def disemvowel(a_string):
+    vowels = "aeiouAEIOU"
+    for vowel in vowels:
+        a_string = a_string.replace(vowel, "")
+    return a_string
+
+print(disemvowel("Can you read this without vowels?"))
+

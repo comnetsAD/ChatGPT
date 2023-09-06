@@ -1,0 +1,2 @@
+First and foremost we will iterate over all the edges of the graph andchange their weights from le to 2le + 1. Then after changing the weights we run the Djikstra’s algorithm on this graph. The djikstra’s algorithm will output the shortest path from s to all other nodes t.
+

@@ -1,0 +1,47 @@
+To determine whether Conch Republic should produce the new smartphone, an analysis of the project's net present value (NPV) should be conducted. The NPV is a measure of the project's profitability and takes into account the time value of money. A positive NPV indicates that the project will generate more cash flow than the initial investment, while a negative NPV indicates the opposite.
+
+To calculate the NPV, the following information is needed:
+
+Initial investment: $41.5 million for equipment + $1.5 million for prototype development + $250,000 for marketing study
+Annual sales: 67,000, 108,000, 93,000, 86,000, and 55,000 for each of the next five years
+Unit price: $525
+Variable costs: $210 per unit
+Fixed costs: $5.4 million per year
+Depreciation: $41.5 million (initial equipment cost) / 7 years (MACRS schedule)
+Equipment value at end of project: $5.9 million
+Working capital: 20% of sales
+Tax rate: 22%
+Required return: 12%
+Using these figures, the NPV for the new smartphone project can be calculated:
+
+Year 0 (Initial Investment):
+
+Equipment: -$41.5 million
+Prototype development: -$1.5 million
+Marketing study: -$250,000
+Total: -$43.25 million
+Year 1:
+
+Sales: 67,000 x $525 = $35,275,000
+Variable costs: 67,000 x $210 = $14,070,000
+Contribution margin: $35,275,000 - $14,070,000 = $21,205,000
+Fixed costs: $5,400,000
+Depreciation: $41,500,000 / 7 = $5,928,571
+Income before tax: $21,205,000 - $5,400,000 - $5,928,571 = $9,876,429
+Taxes: $9,876,429 x 22% = $2,167,722
+Income after tax: $9,876,429 - $2,167,722 = $7,708,707
+Working capital: 67,000 x $525 x 20% = $2,738,000
+Cash flow: $7,708,707 - $2,738,000 = $5,970,707
+NPV: ($5,970,707 / (1 + 0.12)^1) - $43,250,000 = -$38,931,634
+Year 2:
+
+Sales: 108,000 x $525 = $57,300,000
+Variable costs: 108,000 x $210 = $22,680,000
+Contribution margin: $57,300,000 - $22,680,000 = $34,620,000
+Fixed costs: $5,400,000
+Depreciation: $5,928,571
+Income before tax: $34,620,000 - $5,400,000 - $5,928,571 = $23,291,429
+Taxes: $23,291,429 x 22% = $5,121,817
+Income after tax: $23,291,429 - $5,121,817 = $18,169,612
+Working capital: 108,000 x $525 x 20% = $4,452
+

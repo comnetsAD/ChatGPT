@@ -1,0 +1,13 @@
+A NAK-only protocol, which uses only negative acknowledgments (NAKs) to indicate the receipt of data, may be preferable to a protocol that uses ACKs in some cases, but not in others.
+
+If the sender sends data infrequently, a NAK-only protocol may be preferable because it can help to reduce the overhead of the protocol. In a protocol that uses ACKs, the sender must wait for an ACK from the receiver before sending more data. This can lead to delays in the transmission of data, particularly if the sender is sending data infrequently.
+
+In a NAK-only protocol, the sender does not need to wait for an ACK from the receiver before sending more data. Instead, the sender can simply continue sending data until it receives a NAK from the receiver, indicating that a packet was lost. This can help to reduce the delays in the transmission of data, particularly if the sender is sending data infrequently.
+
+On the other hand, if the sender has a lot of data to send and the end-to-end connection experiences few losses, a NAK-only protocol may not be preferable. In this case, the sender may be sending data at a high rate, and it may be more efficient to use ACKs to acknowledge the receipt of data rather than waiting for a NAK.
+
+In a protocol that uses ACKs, the sender can send multiple packets before waiting for an ACK, which can help to increase the overall throughput of the protocol. In a NAK-only protocol, the sender must wait for a NAK before sending more data, which can lead to delays and reduce the overall throughput of the protocol.
+
+Therefore, whether a NAK-only protocol is preferable to a protocol that uses ACKs depends on the rate at which the sender is sending data and the rate of packet loss in the end-to-end connection. In some cases, a NAK-only protocol may be more efficient, while in others, a protocol that uses ACKs may be more efficient.
+
+

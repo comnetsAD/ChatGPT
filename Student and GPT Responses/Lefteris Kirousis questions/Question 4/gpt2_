@@ -1,0 +1,7 @@
+The statement is true.
+We can prove this statement by assuming that there are positive constants c and d, with c ≤ 1, such that f(n) <= cg(n) + d for all large enough n.
+By multiplying both sides of the inequality by 2, we get 2f(n) <= 2cg(n) + 2d for all large enough n.
+Now, we can see that the right-hand side of the inequality is O(2g(n)), which implies that 2f(n) is also O(2g(n)).
+It is important to note that the inequality f(n) <= cg(n) + d, with c ≤ 1, holds true for all large enough n, this ensures that the rate of growth of f(n) is not greater than the rate of growth of g(n), so 2f(n) is also not greater than 2g(n).
+Therefore, the statement that "If there are positive constants c, d, with c ≤ 1, such that f(n) <= cg(n) + d for all large enough n, then 2f (n) is O(2g(n))" is true.
+

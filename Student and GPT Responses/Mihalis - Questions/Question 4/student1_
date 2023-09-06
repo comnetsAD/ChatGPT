@@ -1,0 +1,10 @@
+Anywhere two or more parts of the internet intersect, the piece of equipment called a router comes into the game. In
+general, a router is a device that connects two different IP networks and acts as a gateway, the hosts from two different
+ends can send the traffic through it. Most hosts will have one interface with an IPv4 address, while a router will have two
+or more. The host on a local network knows about the default gateway - the router that is connected with the rest of the
+internet. Computers attached to the same switch or WiFI access point can easily send data packages to one another
+without a need to go through a different network, as they are connected locally. A default gateway may have another
+default gateway connected to it, but as we go forward we will reach a point where there is the default less part, where
+routers on major transit ISPs know about the global rounding table - the directory of all public IP networks. Those routers
+do not have default gateways.
+

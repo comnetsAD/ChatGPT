@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+
+int main() {
+
+//==================================================================================================
+    //Float, addition of operands from left to right
+//==================================================================================================
+    float float_number = 0;
+    float power = 1;
+
+    for (int i = 1; i<=10000; i++){
+        float_number = float_number + (pow((-power),(i+1) )* power/i);
+    }
+        printf("Float, from left to right: %.30f \n", float_number);
+
+//==================================================================================================
+        //Float, addition of operands from right to left
+//==================================================================================================
+
+    float_number = 0;
+
+    for (int i = 10000; i>=1; i--){
+        float_number = float_number + (pow((-power),(i+1))* power/i);
+    }
+
+        printf("Float, from right to left: %.30f \n", float_number);
+
+

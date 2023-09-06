@@ -1,0 +1,20 @@
+F = 15,000,000 Kb, u(s) at 30,000 kbps peers download at 2000kbp
+
+Client-Server
+-------------
+U (Kb)
+300     7500sec   50,000sec   500,000sec
+700     7500sec   50,000sec   500,000sec
+2000    7500sec   50,000sec   500,000sec
+          10          100       1000      N
+
+
+P2P
+----
+U (Kb)
+300     7500sec   25,000sec    45,454sec
+700     7500sec   15,000sec    20,548sec
+2000    7500sec    7,500sec     7,500sec
+          10          100       1000      N
+
+

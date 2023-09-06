@@ -1,0 +1,3 @@
+Since we do not care about any information in the return packet other than if it is a DUP Ack or a new Ack. Once dup ACK’s have been counted, they can be discarded so sequence number doesn’t matter.
+
+

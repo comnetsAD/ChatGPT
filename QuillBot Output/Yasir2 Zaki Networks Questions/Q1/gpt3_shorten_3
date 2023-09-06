@@ -1,0 +1,1 @@
+The generator G and data D CRC is 0101010. Modulo-2 division of D by G yields the CRC. Divide D by G using binary arithmetic, which only uses modulo-2 addition (also known as XOR). Thus, the split would be: D: 1010101010\sG: 10011 01010\s 1 0011 ————-\s 1001\s 0 0101 ————\s 0001 1001\s ————\s 0000 0000, the CRC for data D and generator G, completes this division. 

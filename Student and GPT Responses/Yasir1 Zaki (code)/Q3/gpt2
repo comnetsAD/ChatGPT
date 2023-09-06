@@ -1,0 +1,24 @@
+import random
+
+# create a list of words corresponding to the numbers on a dice
+words = ["zero", "one", "two", "three", "four", "five", "six"]
+
+# prompt the user to guess the outcome of the dice roll
+guess = int(input("Guess the outcome of the dice roll (0-6): "))
+
+# roll the dice
+result = random.randint(0, 6)
+
+# print the outcome of the dice roll
+print("*---*")
+print("| {} |".format(result))
+print("*---*")
+
+# tell the user if their guess was correct or not
+if guess == result:
+    print("Your guess was correct!")
+else:
+    print("Your guess was wrong. The correct answer was {}.".format(words[result]))
+
+
+

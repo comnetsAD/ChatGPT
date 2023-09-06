@@ -1,0 +1,319 @@
+import random,os
+
+DIM =10
+shipsDict={"A":5,"B":4,"S":3,"D":3,"P":2}
+shipsFull= {"A":"Aircraft Carrier","B":"Battleship","S":"Submarine","D":"Destroyer","P":"Patrol Boat"}
+orientations=["Vertical","Horizontal"]
+
+class Board:
+    def __init__(self,name):
+        self.board=[]
+        self.playername=name
+        self.shipList=[]
+        self.numHits=0
+        self.numMisses=0
+
+        #create a board of specified dimensions initialied to spaces
+        for row in range (DIM):
+            row_list=[]
+            for col in range (DIM):
+                row_list.append(" ")
+            self.board.append(row_list)
+
+        #fill the board with ships of random orientations    
+        self.populateBoard()
+
+    #board print method
+    def __str__(self):
+        print(self.playername+"'s Board:")
+        output="    "
+        for topIndex in range (DIM):
+            output+="  "+str(topIndex)+"    "
+        output+="\n   "
+
+        topdashes=len(output)-7
+        for dashes in range (topdashes):
+            output+="-"
+        output+="\n"
+
+        for row in range(DIM):
+            output+=" "+str(row)+" |"
+
+            for col in range (DIM):
+                if self.board[row][col] in shipsDict:
+                    output+="  "+" "+"   |"
+                else:
+                    output+="  "+self.board[row][col]+"   |"
+            output+="\n   "
+            for underdash in range(topdashes):
+                output+="-"
+            output+="\n"
+        return output
+
+    # this function fills the board with ships of random orientations
+    def populateBoard(self):
+        for playerShips in shipsDict:
+            alignment = random.choice(orientations)
+
+            if alignment=="Vertical":
+                startRow=random.randint(0,DIM-shipsDict[playerShips])
+                startCol=random.randint(0,DIM-1)
+                collide=self.checkCollide(startRow,startCol,alignment,shipsDict[playerShips])
+                
+            elif alignment=="Horizontal":
+                startRow=random.randint(0,DIM-1)
+                startCol=random.randint(0,DIM-shipsDict[playerShips])
+                collide=self.checkCollide(startRow,startCol,alignment,shipsDict[playerShips])
+                
+
+            while(self.checkCollide(startRow,startCol,alignment,shipsDict[playerShips])):
+
+                if alignment=="Vertical":
+                    startRow=random.randint(0,DIM-shipsDict[playerShips])
+                    startCol=random.randint(0,DIM-1)
+
+                elif alignment=="Horizontal":
+                    startRow=random.randint(0,DIM-1)
+                    startCol=random.randint(0,DIM-shipsDict[playerShips])
+
+            self.shipList.append(Ship(self.board,startRow,startCol,shipsDict[playerShips],playerShips,alignment))
+
+    #check if random start coordinates for ship doesn't overlap with another ship
+    def checkCollide(self,startRow,startCol,alignment,size):
+        if alignment=="Vertical":
+            for row in range(startRow,startRow+size):
+                if self.board[row][startCol]!=" ":
+                    return True
+            return False
+
+        elif alignment=="Horizontal":
+            for col in range(startCol,startCol+size):
+                if self.board[startRow][col]!=" ":
+                    return True
+            return False
+
+    #checks if all the ships on a board have benn sunk
+    def checkAllSunk(self):
+        sunkCount=0
+        for ship in self.shipList:
+            if ship.state=="SUNK":
+                sunkCount+=1
+            else:
+                continue
+
+        if sunkCount==len(shipsDict):
+            return True
+        else:
+            return False
+
+class Ship:
+    def __init__(self,board,row,col,size,shipName,alignment):
+        self.startRow=row
+        self.startCol=col
+        self.size=size
+        self.shipType=shipName
+        self.orientation=alignment
+        self.state="AFLOAT"
+        self.positions=[]
+
+        #method for filling vertical ships into board
+        if self.orientation=="Vertical":
+            for rowIndex in range(self.startRow,self.startRow+self.size):
+                row_list=[]
+                board[rowIndex][self.startCol]=self.shipType
+                row_list.append(rowIndex)
+                row_list.append(self.startCol)
+                self.positions.append(row_list)
+
+        #method for filling horizontal ships into the board
+        elif self.orientation=="Horizontal":
+            for colIndex in range(self.startCol,self.startCol+self.size):
+                row_list=[]
+                board[self.startRow][colIndex]=self.shipType
+                row_list.append(self.startRow)
+                row_list.append(colIndex)
+                self.positions.append(row_list)
+    
+    #method for checking if one ship on a board has been sunk and updating its status accordingly    
+    def checkShipSunk(self,opponentBoard):
+        if len(self.positions)==0:
+            self.state="SUNK"
+            print(opponentBoard.playername+"'s",shipsFull[self.shipType],"has been sunk!")
+        else:
+            return
+
+class Player:
+    def __init__(self,name,board):
+        self.playername=name
+        self.numTries=0
+        self.board=board
+
+    def play(self,opponentBoard):
+        if self.playername=="Computer":
+            self.comPlay(opponentBoard)
+        else:
+            position=input(self.playername+"! Please enter a position (r,c) on computer's board (between 0 and 9) to attack: ")
+            position=position.split(",")
+
+            valid = self.validate(position,opponentBoard)
+            found=False
+            while valid==False:
+                position=input(self.playername+"! Please re-enter a position (r,c) on computer's board (between 0 and 9 both inclusive) to attack: ")
+
+                position=position.split(",")
+                valid=self.validate(position,opponentBoard)
+
+            self.numTries+=1
+
+            #delete correct coordinate from ship positons list in opponent board
+            if opponentBoard.board[int(position[0])][int(position[1])] in shipsDict:
+                print("DIRECT HIT! TARGET DESTROYED!")
+                opponentBoard.board[int(position[0])][int(position[1])]="X"
+                opponentBoard.numHits+=1
+
+                for ship in opponentBoard.shipList:
+                    for coordinates in ship.positions:
+                        if coordinates[0]==int(position[0]) and coordinates[1]==int(position[1]):
+                            ship.positions.remove(coordinates)
+                            found =True
+                            ship.checkShipSunk(opponentBoard)
+                            break
+                    if found ==True:
+                        break
+                
+            
+
+            elif opponentBoard.board[int(position[0])][int(position[1])] ==" ":
+                print("TARGET MISSED! RECALIBRATING...")
+                opponentBoard.board[int(position[0])][int(position[1])]="O"
+                opponentBoard.numMisses+=1
+            
+
+    #validate user coordinate entry
+    def validate(self,position,opponentBoard):
+        if (len(position)!=2 or not(position[0].isdigit()) or not(position[1].isdigit()) or int(position[0]) not in range(DIM) or int(position[1]) not in range(DIM)):
+
+            print("Invalid entry!")
+            return False
+
+        elif(opponentBoard.board[int(position[0])][int(position[1])]=="X" or opponentBoard.board[int(position[0])][int(position[1])]=="O"):
+                print("TARGET ALREADY ENTERED! REASSESS THE COORDINATES!")
+                print()
+                return False
+        else:
+            return True
+
+    #computer's play function
+    def comPlay(self,opponentBoard):
+        print("Computer is Playing...")
+        
+        found=False
+        position=[]
+        randRow=random.randint(0,DIM-1)
+        position.append(randRow)
+        randCol=random.randint(0,DIM-1)
+        position.append(randCol)
+
+        while opponentBoard.board[int(position[0])][int(position[1])]=="X" or opponentBoard.board[int(position[0])][int(position[1])]=="O":
+            position=[]
+            randRow=random.randint(0,DIM-1)
+            position.append(randRow)
+            randCol=random.randint(0,DIM-1)
+            position.append(randCol)
+
+        self.numTries+=1
+            #delete correct coordinate from ship positons list in opponent board
+        if opponentBoard.board[int(position[0])][int(position[1])] in shipsDict:
+            print("DIRECT HIT! TARGET DESTROYED!")
+            print("\n")
+            opponentBoard.board[int(position[0])][int(position[1])]="X"
+            opponentBoard.numHits+=1
+
+            for ship in opponentBoard.shipList:
+                for coordinates in ship.positions:
+                    if coordinates[0]==int(position[0]) and coordinates[1]==int(position[1]):
+                        ship.positions.remove(coordinates)
+                        found =True
+                        ship.checkShipSunk(opponentBoard)
+                        break
+                if found ==True:
+                        break
+                        
+
+        elif opponentBoard.board[int(position[0])][int(position[1])] ==" ":
+            print("TARGET MISSED! RECALIBRATING...")
+            print("\n")
+            opponentBoard.board[int(position[0])][int(position[1])]="O"
+            opponentBoard.numMisses+=1
+          
+
+class Game:
+    #create two players
+    def __init__(self):
+        self.players=[]
+        self.turn=0
+        self.win=False
+        self.winner="None"
+
+        #get the human players name
+        player1Name=input("Player 1, please enter your name: ")
+        player2Name="Computer"
+
+        #create two boards
+        self.board1 = Board(player1Name)
+        self.boardComp = Board(player2Name)
+
+        #Create two players
+        player1=Player(player1Name,self.board1)
+        self.players.append(player1)
+
+        player2=Player(player2Name,self.boardComp)
+        self.players.append(player2)
+
+        os.system("clear")
+        self.playGame()
+
+    #method for changing the player turn after each player has played
+    def changeTurn(self):
+        self.turn=(self.turn+1)%2
+
+    #check for a game win if all ships on either board have been sunk
+    def checkWin(self,board1,boardComp):
+        if board1.checkAllSunk():
+            self.win=True
+            self.winner=boardComp.playername
+
+        elif boardComp.checkAllSunk():
+            self.win=True
+            self.winner=board1.playername
+
+    def playGame(self):
+
+        while(self.win==False):
+            print()
+            print("It's",self.players[self.turn].playername+"'s turn!")
+
+            self.players[self.turn].play(self.players[(self.turn+1)%2].board)
+            self.changeTurn()
+
+            #print both boards after both players have played (that is when the turn switches back to human player)
+            if(self.turn==0):
+                
+                print(self.board1,"\t",self.players[0].playername,"has used",self.players[0].numTries,"tries:",self.players[1].board.numHits,"hits and",self.players[1].board.numMisses,"misses (on",self.players[1].playername+"'s board)")
+                print() 
+
+                print(self.boardComp,"\t",self.players[1].playername,"has used",self.players[1].numTries,"tries:",self.players[
+                    0].board.numHits,"hits and",self.players[0].board.numMisses,"misses (on",self.players[0].playername+"'s board)")
+                print()
+
+            self.checkWin(self.board1,self.boardComp)
+                
+        print()
+        print("*"*(len(self.winner)+10))  
+        print("*",self.winner.upper(),"WINS! *")
+        print("*"*(len(self.winner)+10)) 
+   
+#create and start a game
+game=Game()
+
+

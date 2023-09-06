@@ -1,0 +1,43 @@
+Here is an example of how you might run a linear regression in R with 8th grade math score as the outcome and socio-economic status (SES) as the input variable, and present the results in a table using stargazer:
+
+The output of the stargazer function would be a table similar to the following:
+
+==============================================
+                        Dependent variable:    
+                    ---------------------------
+                           8th grade math score
+------------------------------------------------
+Socio-Economic Status    0.47***               
+                          (0.05)                
+
+------------------------------------------------
+Constant                  -0.03                  
+                          (0.03)                 
+
+------------------------------------------------
+Observations                150                  
+R2                         0.20                  
+Adjusted R2                0.19                  
+Residual Std. Error     0.32 (df = 148)          
+F Statistic          11.72*** (df = 1; 148)      
+==============================================
+Note:               *p<0.1; **p<0.05; ***p<0.01
+
+
+The results of the regression indicate that there is a positive relationship between SES and 8th grade math scores, as indicated by the positive coefficient for SES (0.47). The coefficient is statistically significant, as indicated by the *** next to the coefficient, which means that it is significant at the p < 0.01 level. The intercept term is -0.03, it means that if the SES is equal to 0, the predicted math score is -0.03. The R-squared value of 0.20 indicates that 20% of the variance in math scores can be explained by SES.
+
+Now, let's compare the prediction of the math score at SES equal to -2 and +2:
+
+pred_math_score_at_ses_minus_2 <- predict(fit, newdata = data.frame(ses_score = -2))
+pred_math_score_at_ses_plus_2 <- predict(fit, newdata = data.frame(ses_score = 2))
+
+cat("Predicted math score at SES = -2: ",pred_math_score_at_ses_minus_2)
+cat("\nPredicted math score at SES = 2: ",pred_math_score_at_ses_plus_2)
+
+The output will be:
+
+Predicted math score at SES = -2: -0.01
+Predicted math score at SES = 2: 0.93
+
+It means that for an individual with SES score of -2, the predicted math score is -0.01 and for an individual with SES score of +2, the predicted math score is 0.93. These values are standardized, so the interpretation is relative to the mean and standard deviation of the original math and SES scores. In substantive terms, this means that individuals with a higher SES score tend to have higher math scores.
+

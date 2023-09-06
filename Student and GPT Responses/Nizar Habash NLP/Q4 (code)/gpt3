@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+
+const char* translate(const char* english) {
+    static char enkliz[1000];
+    int i;
+    int len = strlen(english);
+    char table[256] = {0};
+    table['t'] = 'd';
+    table['w'] = 'o';
+    table['n'] = 'i';
+    table['k'] = 'g';
+    table['l'] = 'd';
+    for (i = 0; i < len; i++) {
+        enkliz[i] = table[english[i]];
+    }
+    enkliz[i] = '\0';
+    return enkliz;
+}

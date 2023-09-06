@@ -1,0 +1,5 @@
+convert_lbs_to_kgs <- function(pounds) {
+  kilograms <- pounds / 2.20462
+  return(kilograms)
+}
+

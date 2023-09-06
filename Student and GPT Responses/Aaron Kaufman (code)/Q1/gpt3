@@ -1,0 +1,22 @@
+library(charlatan)
+
+# create fake data
+set.seed(123)
+logical_var <- sample(c(TRUE, FALSE), 10, replace = TRUE)
+character_var <- charlatan::faker_name(10)
+numeric_var <- round(rnorm(10, mean = 50, sd = 10), 2)
+date_var <- as.Date(sample(1:365, 10, replace = TRUE), origin = "2020-01-01")
+phone_number_var <- charlatan::faker_phone_number(10)
+
+# create dataframe
+df <- data.frame(logical_var, character_var, numeric_var, date_var, phone_number_var)
+
+# add unique row names
+row.names(df) <- charlatan::faker_name(10)
+
+# check the dataframe
+df
+
+This would create a dataframe 'df' with 10 observations and 5 columns, named 'logical_var', 'character_var', 'numeric_var', 'date_var' and 'phone_number_var'.
+Each row will have unique name and each column will have variation in their observations.
+

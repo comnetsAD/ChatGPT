@@ -1,0 +1,5 @@
+The child should keep reading from user strings and send it to the parent to check if it is palindrome or not.
+The parent should receive the request from the child. Once a request is received, it checks if it is palindrome or not, print the result, and send to the client the result. 
+The child should print the results based on the received answer from the parent, and continue reading the next string.
+Explain in details your solution step by step through comments.
+

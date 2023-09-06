@@ -1,0 +1,43 @@
+
+
+A strategy is a pure strategy if it assigns a single action to each player. A strategy is a mixed strategy if it assigns a probability distribution over the actions to each player. A Nash equilibrium is a set of strategies, one for each player, such that no player can improve their payoff by unilaterally switching to another strategy.
+
+To find the pure strategy Nash equilibria for this game, we can simply check for each player's strategy which action maximizes their payoff for every possible action of the opponent.
+
+For player 1 (row player), the strategy U maximizes their payoff against strategy L of player 2 (column player) with a payoff of 4, and against strategy R with a payoff of 1. Similarly, for player 2, the strategy L maximizes their payoff against strategy U of player 1 with a payoff of 4, and against strategy D with a payoff of 3.
+
+Therefore, the pure strategy Nash equilibrium is (U, L) with payoffs (1, 4) for player 1 and (4, 1) for player 2.
+
+To find the mixed strategy Nash equilibrium, we can use the following method:
+Assign a probability (p) to each action of a player
+Express the expected payoffs of the opponent as a function of the assigned probabilities
+Use the expected payoffs to derive the best response of the opponent and find the probability that makes it indifferent between the actions.
+
+For player 1 (row player), let's say p(U)=x, p(D)=1-x. Then the expected payoffs for player 2 (column player) are:
+
+E(L)=x*1+(1-x)3
+E(R)=x4+(1-x)*2
+
+Player 2's best response is to play strategy L if E(L)>E(R) and strategy R if E(R)>E(L). Therefore, we need to find the value of x that makes E(L) = E(R)
+
+x*1+(1-x)3=x4+(1-x)*2
+x=1/2
+
+so p(U)=1/2 and p(D)=1/2
+
+For player 2 (column player), we can do a similar process, let's say p(L)=y, p(R)=1-y. Then the expected payoffs for player 1 (row player) are:
+
+E(U)=y*1+(1-y)3
+E(D)=y4+(1-y)*2
+
+Player 1's best response is to play strategy U if E(U)>E(D) and strategy D if E(D)>E(U). Therefore, we need to find the value of y that makes E(U) = E(D)
+
+y*1+(1-y)3=y4+(1-y)*2
+y=1/2
+
+so p(L)=1/2 and p(R)=1/2
+
+Thus, the mixed strategy Nash equilibrium is (1/2, 1/2) for player 1 and (1/2, 1/2) for player 2.
+
+In summary, the pure strategy Nash equilibrium is (U, L) with payoffs (1, 4) for player 1 and (4, 1) for player 2. And the mixed strategy Nash equilibrium is (1/2, 1/2) for both players.
+

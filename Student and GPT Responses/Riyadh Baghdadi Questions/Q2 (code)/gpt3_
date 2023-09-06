@@ -1,0 +1,46 @@
+
+Examples:
+If the input is "12233" then the output should be "23".
+If the input is "122331" then the output should be "123".
+If the input is "123" then the output should be "".
+If the input is "12233177719" then the output should be "123177".
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[100];
+    char c;
+    int i, lastIndex = -1;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+    printf("Enter a character to remove: ");
+    scanf(" %c", &c); // note the space before %c to prevent newline character from being read
+
+    for (i = 0; i < strlen(str); i++)
+    {
+        if (str[i] == c)
+        {
+            lastIndex = i;
+        }
+    }
+
+    if (lastIndex != -1)
+    {
+        for (i = lastIndex; i < strlen(str); i++)
+        {
+            str[i] = str[i + 1];
+        }
+        printf("Modified string: %s\n", str);
+    }
+    else
+    {
+        printf("The character %c does not appear in the string.\n", c);
+    }
+
+    return 0;
+}
+

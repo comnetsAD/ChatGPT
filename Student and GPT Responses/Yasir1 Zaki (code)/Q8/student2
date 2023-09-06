@@ -1,0 +1,63 @@
+BDfile=open('Birthdays.txt','a')
+
+Birthdays={}
+BDfile=open('Birthdays.txt','r')
+
+for line in BDfile: 
+	temp=line.strip().split(',')
+	Birthdays[temp[0]]=temp[1]
+
+BDfile.close() 
+
+choice='0'
+
+while choice != '5':
+
+	print('1. Look up a birthday')
+	print('2. Add a new birthday')
+	print('3. Change a birthday')
+	print('4. Delete a birthday')
+	print('5. Quit the program')
+
+
+	choice=input('Choose one of the options above to proceed'+
+	'(Enter on of the five numbers above): ')
+	
+	if choice == '1':
+		Name=input("Who's birthday do you want to look up? ")
+		while Name not in Birthdays and len(Name) != 0:
+			Name=input(Name+"'s birthday is not saved. "+
+				"Enter a different name or press Enter to go back to the menu: ")
+		if len(Name) != 0:
+			print(Name+"'s birthday is on",Birthdays[Name])
+	elif choice == '2':
+		Name=input("Who's birthday do you want to add? ")
+		Birthdate=input('Enter his/her bithday: ')
+		Birthdays[Name]=Birthdate
+	elif choice == '3':
+		Name=input("Who's birthday do you want to change? ")
+		while Name not in Birthdays and len(Name) != 0:
+			Name=input(Name+"'s birthday is not saved. "+
+				"Enter a different name or press Enter to go back to the menu: ")
+		if len(Name) != 0:
+			Birthdate=input('Enter corrected birthday: ')
+			Birthdays[Name]=Birthdate
+	elif choice == '4':
+		Name=input("Who's name do you want to delete? ")
+		while Name not in Birthdays and len(Name) != 0:
+			Name=input(Name+"'s birthday is not saved. "+
+				"Enter a different name or press Enter to go back to the menu: ")
+		if len(Name) != 0:
+			del Birthdays[Name]
+			print(Name+"'s birthday was successfully deleted.")
+	elif choice == '5':
+		BDfile=open('Birthdays.txt','w')
+		for key in Birthdays: 
+			BDfile.write(key+','+Birthdays[key]+'\n')
+		BDfile.close()
+
+		break
+	else: 
+		print('Your choice is not valid')
+
+

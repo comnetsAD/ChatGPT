@@ -1,0 +1,15 @@
+
+Let us represent the strategy player 1 can adopt and their outcomes.
+
+
+In the case where (k - 1) players contribute, player 1 can be considered as the Pivotal player that has the power to change the situation; however, if we look at the possible outcomes of the contribution of two players we understand why “don't contribute” is the best strategy.
+
+In a group of N players and we consider a player 1 and a player 2.
+
+In the case where (k - 1) contributes
+In the case where more than 2 players have already contributed and player 1 and player 2 are not pivotal (k > 2):
+
+Whether the public good is provided or not, player 1 has an incentive not to contribute and free-ride others’ contribution. 
+
+If more than k players already contributed, then the best response for player 1 is to not contribute; if (k - 1) players contribute, the best response for player 1 is to contribute as well; if no one contributes then the best response for player 1 is to not contribute as well.
+

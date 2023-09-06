@@ -1,0 +1,8 @@
+The Nash Equilibrium of this game is a set of strategies, one for each firm, such that no firm can improve its payoff by changing its strategy while the other firm's strategy remains fixed.
+
+In this case, the Nash Equilibrium is (q_P = 2, q_E = 2), since both firms would choose to produce 2 million bottles of water. At this equilibrium, neither firm can increase its profit by changing its strategy while the other firm's strategy remains fixed. For example, if Perrier were to increase its production to 2.5 million bottles, its profit would decrease from 7 to 6.25, while Evian's profit would remain unchanged. Similarly, if Evian were to increase its production to 2.5 million bottles, its profit would decrease from 7 to 6.25, while Perrier's profit would remain unchanged.
+
+If the firms only interact once, the cooperative solution (q_P = 2.5, q_E = 2.5) cannot be achieved.
+In the cooperative solution, both firms would produce 2.5 million bottles of water, which would maximize their joint profit at 7.5 million. However, since firms can't coordinate the action, the only way that they can achieve the cooperative solution is if they can commit to the strategy, and they can't.
+Because the firms are rational, they will choose the strategy that maximizes their own profit, and in this case, the Nash Equilibrium is (q_P = 2, q_E = 2) which is different from the cooperative solution.
+

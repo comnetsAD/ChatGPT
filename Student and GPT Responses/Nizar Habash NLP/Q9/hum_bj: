@@ -1,0 +1,4 @@
+
+I will use the UN and Europarl corpui because I use a pivoting strategy. Europarl contains Finnish to English parallel sentences. First I pre-process the Finnish by tokenization and removal of caps/numbers. Then I create a phrase table by aligning the Finnish phrases to English. Next because Arabic is morphologically rich, I will pre-process the Arabic by tokenizing, stemming and expanding the dictionary of the phrase table. After creating the phrase table alignment using the UN corpus, I will pivot to create a Arabic to Finnish phrase table for translating. It is evaluated using the Bleu score metric. I will spend the 1000 to get some gold Arabic-Finnish sentences. I will apply these gold Arabic sentences, translate them with the system and compare this with the gold Finnish using Bleu.
+
+

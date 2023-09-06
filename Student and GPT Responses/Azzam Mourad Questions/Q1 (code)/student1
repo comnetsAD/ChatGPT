@@ -1,0 +1,79 @@
+#include …
+Char checkPal(*char TheString);
+Main (){
+//create socket according to java in the parent
+socket client = new sock(1667);  //create the socket network in the parent, using local port address 
+//create socket according to java
+//create pipe
+ThePipe[2];
+pid_t child;
+If (pipe(ThePipe) failed)
+{
+Exit(failed);
+}
+//fork child
+child = fork()
+If (child<0)
+{
+exit(EXIT_failure);
+}
+Else if (child == 0)
+{
+//In child
+//create socket request
+socket client = new socket(1667);  //create the socket request, using local port address
+close(ThePipe[1]);  //close the write 
+// listen for the request 
+While(true){
+//create variable that holds the string and sends it the client 
+writerprinter output = new writerprinter(client.input, null); 
+while (user is inputing into the terminal, STDIN ==true)
+{
+//send the input to the parent
+dp(ThePipe[1], STDOUT); 
+char TheString = scanf():
+execvp("echo",  TheString,  NULL);
+}
+}
+close(socket); //close the socket
+close(ThePipe[1]); //close the write end of the pipe
+exit(0);
+{
+Else{
+//in parent
+close (ThePipe[1]); //close the write end
+InputReader in = client;
+InputReader bins = inputreader(in)
+while (STDINPUT != 0) //while there is input
+{
+dp(ThePipe[0], STDIN);
+if (checkPal(STDIN))
+{
+printf("string is pal");
+}
+else{
+printf("string is not pal");
+}
+}
+}
+return 0;
+}
+Char checkPal(*char TheString){
+if (TheString is palindrome)
+{
+return 1;
+}
+else{
+return 0;
+}
+}
+Server/child
+Create connection request
+Listen 
+Accept connection
+Send output (in C this step is done by using echo)
+Client/ parent
+Create connection 
+Create variable that hold the input
+While there are still inputs read the input
+

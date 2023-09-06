@@ -1,0 +1,17 @@
+
+We can solve this problem by iterated elimination of weakly dominated strategies.
+
+We know that ⅔ of the obtained average is at most 67 (⅔(100) rounded to the nearest integer).
+
+So any choice in the interval {68, …, 100} is weakly dominated.
+
+Thus, after one step of elimination, we assume all players will pick integers between 1 and 67. 
+
+By the same logic, we assume players pick integers in the interval {1, …, 45} and so on. 
+
+At each step the set of remaining strategies is {1, …, K} where K ≥ 2.
+
+The procedure terminates when all players choose 1. 
+
+Thus (1, 1, 1) is a NE.
+

@@ -1,0 +1,43 @@
+Whilst considering which type of attacks cause more
+damage, physical or cyber, I believe that the main factor of
+consideration should be the ease of access. While it might be
+troublesome for an attacker to surpass certain security measures,
+however, if he/she does not need to be physically at the site of
+the attack to conduct it, and the access can be gained remotely,
+then this presents a huge advantage for him/her. Of course, this
+is not applicable to all the attacks, since some of them would
+require some physical steps as in the case of Stuxnet where there
+was a need to overcome the “air gap” between the nuclear
+facility and the rest of the world, but if there a possibility to
+conduct an attack fully remotely, then the attacker has a relative
+advantage as there is no distance between him and his target.
+There have been numerous instances of relatively
+destructive cyber-attacks in the past: Stuxnet, which attacked the
+Iranian Natanz Nuclear Facility, Wiper malware that was used
+to erase hard drives of Iranian Oil Companies, Shamoon virus
+that was used to tackle Saudi Aramco and Qatar’s RasGas oil
+companies, etc. Those attacks were orchestrated with direct
+objectives to either destroy or damage specific data or objects
+and the level of sophistication and damages produced by such
+attacks are only going to increase in future. It would have been
+significantly harder to tackle all those targets by solely physical
+means since scalability would be an issue in some of the
+mentioned attacks. For instance, it would have been close to
+impossible to physically breach the security in all 30,000 Saudi
+Aramco gas stations and erase and overwrite the hard drives in
+each and every one of them, and the same applies to Wiper too.
+We do think that the existing solutions are doing a great job
+of protecting the systems in the current context, given the
+existing threats. However, as the share of the IoT industry in our
+world increases and its integration into our daily lives (smart
+fridges, kettles, climate control systems, HVAC, heating and
+water systems) so does the probability of greater and more
+severe breaches in security to occur, which can potentially bring
+devastating consequences. For instance, if somebody gains
+access to the heating system of a house, he/she might potentially
+set it on fire if the wrong settings are applied. To combat this,
+manufacturers would need to employ even better security
+practices, and enhance testing and research, and development in
+the after-mentioned areas.
+
+

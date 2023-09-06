@@ -1,0 +1,93 @@
+#include <sys/types.h> 
+#include <stdio.h> 
+#include <unistd.h> 
+#include <stdlib.h> 
+#include <sys/wait.h> 
+#include <sys/mman.h>
+
+int main()
+{
+	//map an array of one integer as a shared memory
+	int * shared_array= (int *) mmap(NULL, sizeof(int), PROT_READ |PROT_WRITE, MAP_SHARED |MAP_ANONYMOUS, -1,0); 
+
+	//chec if mapping failed
+	if(shared_array == MAP_FAILED)
+	{
+		perror("Failed: mmap");
+		exit(EXIT_FAILURE);
+	}
+
+	//for the first child
+	pid_t child1 = fork();
+
+	//check if forking failed
+	if(child1 < 0)
+	{
+		perror("Fork Failed");
+		exit(EXIT_FAILURE);
+	}
+
+	else
+	{
+		if(child1 == 0)
+		{
+			//Child1 Process
+			shared_array[0] = 0; // initate the integer in the first child and increment it
+			for (int i = 0; i < 10000; ++i)
+			{
+				shared_array[0]++;
+			}
+			//print the value of shared integer before existing child1
+			printf("Child 1: %d \n",shared_array[0]);
+
+		}
+		else
+		{
+			//Parent Process
+			wait(NULL); //wait for the first child to finish
+			
+			//for the second child and check whether it was successful
+			pid_t child2 = fork();
+			if(child2 < 0)
+			{
+				perror("Fork Failed");
+				exit(EXIT_FAILURE);
+			}
+			else
+			{
+				if(child2 == 0)
+				{
+					//Child 2 process
+					//increment the shared integer by 5000
+					for (int i = 0; i < 5000; ++i)
+					{
+						shared_array[0]++;
+					}
+					//print the value of shared integer before exiting child 2
+					printf("Child 2: %d \n",shared_array[0]);
+
+				}
+				else
+				{
+					//Parent Process
+					wait(NULL); //wait for the second child to finish
+
+					//increment the shared integer by 5000
+					for (int i = 0; i < 5000; ++i)
+					{
+						shared_array[0]++;
+					}
+					//print the value of shared integer before exiting
+					printf("Child 1: %d \n",shared_array[0]);
+				}
+			}
+		}
+	}
+
+	//unmap the mapped memory
+	munmap(shared_array,  sizeof(int*));
+	
+	return 0;
+}
+
+

@@ -1,0 +1,17 @@
+A pure strategy Nash equilibrium is a set of strategies where no player can improve their payoff by changing their strategy while the other players' strategies remain fixed. A mixed strategy Nash equilibrium is a set of probability distributions over strategies where no player can improve their expected payoff by changing their probability distribution while the other players' probability distributions remain fixed.
+For this game, there are no pure strategy Nash equilibria. To find the mixed strategy Nash equilibrium, we need to find the probability distributions for each player such that no player can improve their expected payoff by changing their distribution.
+
+For player U, the expected payoffs for playing L and R are:
+E(L) = 2 * P(D, L) + 3 * P(D, R)
+E(R) = 2 * P(D, L) + 5 * P(D, R)
+
+Player U's best response is to play R, because E(R) > E(L)
+For player D, the expected payoffs for playing L and R are:
+E(L) = 1 * P(U, L) + 4 * P(U, R)
+E(R) = 1 * P(U, L) + 2 * P(U, R)
+
+Player D's best response is to play L, because E(L) > E(R)
+Thus, the mixed strategy Nash equilibrium for this game is (1,1) for U, D respectively. This means that player U plays R with probability 1 and D plays L with probability 1.
+Alternatively, we can also observe that for any mixed strategy of D other than playing L with probability 1, U will always have a higher expected payoff by playing R and for any mixed strategy of U other than playing R with probability 1, D will always have a higher expected payoff by playing L.
+In this game, there's only one mixed strategy Nash equilibrium.
+

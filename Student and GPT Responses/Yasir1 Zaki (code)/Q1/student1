@@ -1,0 +1,17 @@
+FirstName_1= input ('First Name: ').capitalize()+ str(' ')
+LastName_1= input ('Last Name: ').capitalize()+ str(' ')
+Birthday_1= input ('Birthday (enter the date of your birthday date represented by an\
+8-digit integer. eg. March 2nd 1990 would be 19900302): ')
+print (FirstName_1+LastName_1+'was born on '+Birthday_1[6:8],Birthday_1[4:6],Birthday_1[0:4],sep='/')
+
+FirstName_2= input ('First Name: ').capitalize()+ str(' ')
+LastName_2= input ('Last Name: ').capitalize()+ str(' ')
+Birthday_2= input ('Birthday (enter the date of your birthday date represented by an\
+8-digit integer. eg. March 2nd 1990 would be 19900302): ')
+print (FirstName_2+LastName_2+'was born on '+Birthday_2[6:8],Birthday_2[4:6],Birthday_2[0:4],sep='/')
+
+if Birthday_1>Birthday_2:
+    print (FirstName_2+'is older than '+FirstName_1)
+else:
+    print (FirstName_1+'is older than '+FirstName_2)
+

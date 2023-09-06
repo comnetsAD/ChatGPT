@@ -1,0 +1,18 @@
+function merge(left, right)
+    result = []
+    i = 0
+    j = 0
+    while (i < left.size() && j < right.size())
+        if (left[i] <= right[j])
+            result.append(left[i])
+            i++
+        else
+            result.append(right[j])
+            j++
+    while (i < left.size())
+        result.append(left[i])
+        i++
+    while (j < right.size())
+        result.append(right[j])
+        j++
+    return result

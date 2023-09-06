@@ -1,0 +1,26 @@
+
+Total cost of Perrier: TC_P = 2_{qP} + 1
+Total cost of Evian: TC{E} = 2{qE} + 1
+
+
+        	q_P  	q_E  	P   	TR_P 	TR_E 	TC_P 	TC_E 	Profit_P 	Profit_E
+row1
+row2
+row3
+row4
+
+q_P q_E P   TR_P    TR_E    TC_P    TC_E    Profit_P    Profit_E
+2   	2   	6   	12  	12  	5   	5   	7   	7
+2   	2.5 	5.5 	11  	13.75   5   	6.25    	6   	7.75
+2.5 	2   	5.5 	13.75   11  	6.25    	5   	7.75    	6
+2.5 	2.5 	5   	13.75   13.75   6.25    	6.25    	7.5 	7.5
+
+In the above table:
+P = 10 - Q, where Q = q_P + q_E
+TR_P = P * q_P and TR_E = P * q_E
+TC_P = 2q_P + 1 and TC_E = 2q_E + 1
+Profit_P = TR_P - TC_P and Profit_E = TR_E - TC_E
+
+In each of the four scenarios, both firms have the same profit, which is 7.5 million when both firms produce 2.5 million bottles of water.
+As you can see, the firms have an incentive to cheat on the cartel agreement, as the profit is higher if both firms produce more than 2 million bottles of water.
+

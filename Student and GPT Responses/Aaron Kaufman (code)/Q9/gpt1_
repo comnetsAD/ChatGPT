@@ -1,0 +1,13 @@
+This researcher is on a better footing to make causal claims about the relationship between education and income, as the study uses a natural experiment to control for the potential confounding variables. The scholarship program serves as a "treatment" that randomly assigns education to a group of individuals, creating a comparison group of individuals who do not receive the treatment. This allows the researcher to infer causality by comparing the outcomes of the treated group to the outcomes of the control group.
+
+Here is an example of a causal graph in R using the ggdag package:
+
+library(ggdag)
+
+g <- dagify(Y ~ T, 
+            T ~ X)
+
+ggdag(g, label = c("Income","Scholarship","Applicants"))
+
+This causal graph represents the researcher's hypothesis that obtaining a scholarship (T) leads to increased income (Y). It also indicates that the scholarship was only given to applicants (X), but since the researcher only looked at the first year of the program, it can be assumed that all the applicants in the sample are from the same group of people who applied in the first year and the scholarship was randomly assigned to them. This allows the researcher to infer causality between obtaining the scholarship and increased income.
+

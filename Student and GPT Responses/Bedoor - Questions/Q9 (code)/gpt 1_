@@ -1,0 +1,2 @@
+np.tile(A, (5, 1)).ravel()
+

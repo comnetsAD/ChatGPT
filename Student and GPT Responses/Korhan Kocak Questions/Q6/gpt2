@@ -1,0 +1,28 @@
+In a game with vNM preferences, a strategy is a pure strategy Nash equilibrium if each player's expected utility is maximized for that strategy, given the other player's strategies. A mixed strategy equilibrium occurs when each player's expected utility is maximized for a probability distribution over strategies.
+For a two-player game, we can find the pure strategy Nash equilibrium by checking all possible combinations of strategies and seeing which ones satisfy the condition that neither player can improve their expected utility by switching to another strategy.
+In this game, we can find the pure strategy Nash equilibrium as follows:
+First, we check if there is a pure strategy Nash equilibrium where both players choose the same strategy. In this case, neither player can improve their expected utility by switching to another strategy if both players choose the same strategy.
+- If both players choose "U", player 1 gets 2 and player 2 gets 2. Neither player can improve their expected utility by switching to another strategy. Therefore (U,U) is a pure strategy Nash equilibrium.
+- If both players choose "D", player 1 gets 4 and player 2 gets 4. Neither player can improve their expected utility by switching to another strategy. Therefore (D,D) is also a pure strategy Nash equilibrium.
+
+Next, we check if there is a pure strategy Nash equilibrium where the two players choose different strategies. We check all possible combinations of strategies:
+- If player 1 chooses "U" and player 2 chooses "L", player 1 gets 2 and player 2 gets 4. Player 2 can improve their expected utility by switching to strategy "R" (2, 4), so this is not a pure strategy Nash equilibrium.
+- If player 1 chooses "U" and player 2 chooses "R", player 1 gets 2 and player 2 gets 4. Player 1 can improve their expected utility by switching to strategy "D" (6, 4), so this is not a pure strategy Nash equilibrium.
+- If player 1 chooses "D" and player 2 chooses "L", player 1 gets 4 and player 2 gets 6. Player 1 can improve their expected utility by switching to strategy "U" (2, 2), so this is not a pure strategy Nash equilibrium.
+- If player 1 chooses "D" and player 2 chooses "R", player 1 gets 1 and player 2 gets 0. Player 2 can improve their expected utility by switching to strategy "L" (0, 1), so this is not a pure strategy Nash equilibrium.
+So, the pure strategy Nash equilibria of the game are (U, U) and (D, D).
+Now, to check for a mixed strategy equilibrium, we will check for each player separately if their expected utility is maximized for a probability distribution over strategies.
+
+For player 1:
+- If player 1 chooses strategy "U" with probability p, and strategy "D" with probability (1-p), the expected utility is p*2 + (1-p)*6 = 2p + 6 - 6p = 6-4p.
+- If player 1 chooses strategy "D" with probability p, and strategy "U" with probability (1-p), the expected utility is p*4 + (1-p)*2 = 4p + 2 - 2p = 2 + 2p.
+So for player 1, the expected utility is maximized for the probability distribution (U, D) with p = 0.
+Similarly, for player 2:
+- If player 2 chooses strategy "L" with probability p, and strategy "R" with probability (1-p), the expected utility is p*2 + (1-p)*0 = 2p.
+player 2 chooses strategy "R" with probability p, and strategy "L" with probability (1-p), the expected utility is p*4 + (1-p)*1 = 4p + 1 - p = 4p + 1.
+So for player 2, the expected utility is maximized for the probability distribution (L, R) with p = 0.
+Therefore, we have found a mixed strategy Nash equilibrium where player 1 chooses strategy "U" with probability 1 and strategy "D" with probability 0 and player 2 chooses strategy "L" with probability 1 and strategy "R" with probability 0.
+So the solution is
+- Pure strategy Nash equilibrium: (U, U) and (D, D)
+- Mixed strategy Nash equilibrium: player 1 chooses strategy "U" with probability 1 and strategy "D" with probability 0 and player 2 chooses strategy "L" with probability 1 and strategy "R" with probability 0.
+

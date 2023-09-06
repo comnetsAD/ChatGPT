@@ -1,0 +1,81 @@
+Today, there are billions of IoT devices, many of which, be-
+cause of limited hardware capabilities, often have bad security.
+Securing these devices is very important - the attacks of the
+Mirai botnet showed the high magnitude of damage brought
+by infected IoT devices.
+The case study highlighted Shodan’s capabilities and how
+maliciously it can be used for launching attacks related to IoT
+devices. Even a security camera installed in a yard can give
+adversaries information that they might use for causing much
+harm. However, Shodan is also an excellent tool for security
+awareness and tracking vulnerabilities. Shodan exposes the
+vulnerabilities of anything that it indexes. IoT device man-
+ufacturers can use this information to improve the security of
+their products, and the knowledge that the vulnerabilities are
+publicly available acts as a motivator for them (they have to
+fix them as soon as possible before the adversaries discover
+them).
+Shodan is also widely used for researching the security of
+IoT devices. A Google Scholar search reveals that there are
+4300 papers that explicitly mention Shodan and security, and
+among these, there are 2090 papers (48.6%) that also explicitly
+mention IoT or the Internet of Things.
+Shodan can be used in many ways by malicious actors.
+Many powerful tools (e.g. Metasploit) use Shodan API.
+Shodan’s filter system allows users to find desired devices
+easily and quickly. For instance, with the ”vuln” filter, it is
+possible to search for devices with a certain vulnerability (e.g.
+Heartbleed). This can be very useful for an adversary that has
+created an exploitative program and is looking for devices for
+spreading it. The user-friendliness of Shodan also makes it
+possible for script kiddies to easily find publicly accessible
+devices (e.g. webcams) and tamper with them.
+Many devices on Shodan have the option of installing
+updates but are poorly protected. If an adversary gets access to
+such a device, he/she can install malware instead of updates.
+This malware can be of many types, for example, making the
+device a part of a botnet and then using it for DDoS attacks
+(This is what happened with the Mirai Botnet).
+Devices found on Shodan also include devices (e.g. pro-
+grammable logic circuits) that can be parts of critical in-
+frastructures. In this case, an adversary tampering with those
+devices would bring much harm. For example, as part of the
+research, to show the capabilities of Shodan, all of the nuclear
+power plants in France were identified.
+Shodan also contains information about many web servers
+worldwide. A malicious actor could use this information for
+orchestrating an appropriate attack, which might lead to data
+theft and privacy invasion.
+On the other hand, all these capabilities of Shodan can
+be used for good as well. White hat hackers can use it to
+scan networks, analyze devices and find vulnerabilities. They
+can then use the information gathered from Shodan to seal
+backdoor access to their devices, maintain secure banners, pro-
+tect accidentally exposed databases, or patch vulnerabilities.
+With the help of Shodan, all of these can be done before an
+adversary discovers those same vulnerabilities. Shodan also
+makes it possible to locate malware command and control
+servers. In that case, the defenders can even launch an attack
+on malicious servers.
+Shodan is also widely used by academic researchers for
+gathering data and drawing conclusions. As already discussed,
+a Google Scholar search of the terms ”Shodan” and ”security”
+result in 4300 papers about the topic.
+In 2013, CNN stated that “Shodan: The scariest search
+engine on the Internet.” Since then, cyberspace has changed
+very much. Although there are many ways of using Shodan
+maliciously, it is not appropriate to state that Shodan is still the
+scariest search engine. There are several reasons for this. First
+of all, Shodan has tried its best to limit the activity of malicious
+users - there’s a limit on the number of searches a person
+can do. Without registration, the limit is 10 searches, while
+with an account, the limit rises to 50 [2]. If the user needs
+more searches, they’ll need to buy one of Shodan’s premium
+packets and state their intentions. Also, some filters (e.g. tags)
+are unavailable unless the user buys the paid packets. The
+purchase will reveal some information about the user, thus no
+malicious actors will be using Shodan at its full capability.
+Other than that, Shodan has many alternatives, such as
+ZoomEye, Censys, or Criminal IP, which do not have strict
+search limits.
+

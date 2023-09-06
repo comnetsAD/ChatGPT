@@ -1,0 +1,13 @@
+A = [1,2,3,4]
+
+# Write your code below this line
+######### SOLUTION #########
+B= np.repeat(A, 4)
+#C = A*3
+C= np.tile(A, 3)
+np.append(B,C)
+#joinedlist = [*B, *C]
+#print(joinedlist)
+######### SOLUTION END #########
+
+

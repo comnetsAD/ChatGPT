@@ -1,0 +1,239 @@
+import random,os,time
+
+#initialisations
+DIM=10
+BATTLESHIPS=[2,3,3,4,5]
+TURNS=[0,1]
+Alphabets=[] #for the labelling of columns
+AlphabetsV=["I"]+Alphabets #for the labelling of rows
+playerBoard=[] #the board for the user
+compBoard=[] #the computer's board with the ship's positions
+playdisplay=[] #the board that's shown to the user for attack
+playerShips=[] #the list of the position of the player's ships
+compShips=[] #the list of the position of computer's ships
+player_turn=0
+trials=0
+NUM_PLAYERS=2
+unsunk_player=[]+[playerShips]
+unsunk_comp=[]+[compShips]
+
+
+#Rules:
+print("WELCOME TO BATTLESHIPS!!\n\nThis is a 2 player game: You and the Computer. Each are provided with a fleet of 5 ships of sizes 2,3,3,4,5 respectively. You will attack in turn and the one to first eleminate the opponent's fleet will win. The rules are:\n1. You will enter the row and column of the place you want to attack in the form row,column.\n2. Input in any other format and beyond the labels of the board will be considered invalid. It should be noted that rows and columns are alphabets.\n3. You will be able to see your attack on the board. If there is a ship present at that position, it will be denoted with a 'O', otherwise it will be denoted with a 'X'.\n4. If all the coordinates of the shop has been attacked, the ship will be sunk.\n5. Your aim is to eleminate the opponent's fleet in as few attacks as possible.\nGood Luck!!!\n")
+input("Enter to begin")
+os.system("clear")
+
+#For the formatting of display
+class DisplayBoard:
+	def __init__(self,r,c,display):
+		self.r=r
+		self.c=c
+		self.display=display
+			
+	def __str__(self):
+		return "|{0}".format(self.display[self.r][self.c])
+
+def printBoard(board):
+	for row in range(DIM+1):
+		count=1
+		print("+---"*(DIM+1)+"+")
+		for column in range(DIM+1):
+			b1=DisplayBoard(row,column,board)
+			if count%(DIM+1)!=0:
+				print(b1,end="")
+			else:
+				print(b1,end="|")
+			count+=1
+		print()
+	print("+---"*(DIM+1)+"+")
+
+def box(player): #makes boards
+	for i in range(97,97+DIM):
+		Alphabets.append(chr(i))
+		AlphabetsV.append(chr(i))
+	
+	for row in range(DIM+1):
+		rowlist=[]
+		rowlist.append(" "+AlphabetsV[row]+" ")
+		for column in range(DIM):
+			if row==0:
+				rowlist.append(" "+Alphabets[column]+" ")
+			else:
+				rowlist.append("   ")
+		player.append(rowlist)
+
+def fillBoard(playdisplay,player_positions): #puts the battleships is the boards
+
+	for size in BATTLESHIPS:
+		s1=BattleShips(size,playdisplay)
+		each_ship=[]
+		for rnc in s1.positionlist:
+			playdisplay[rnc[0]][rnc[1]]=" O "
+			coordinates=[]
+			coordinates.append(rnc[0])
+			coordinates.append(rnc[1])
+			each_ship.append(coordinates)
+		player_positions.append(each_ship)
+
+#To decide the positions of the battleships and make sure they don't overlap	
+class BattleShips:
+	def __init__(self,s,box):
+		self.s=s
+		self.box=box
+		self.o=random.randint(0,1)
+		if self.o==0:
+			self.positionlist=self.horizontal()
+		if self.o==1:
+			self.positionlist=self.vertical()
+		while self.checkPosition(self.positionlist)==False:
+			if random.randint(0,1)==0:
+				self.positionlist=self.horizontal()
+			else:
+				self.positionlist=self.vertical()
+
+	def horizontal(self):
+		positions=[]
+		r=random.randint(1,DIM)
+		c=random.randint(1,DIM)
+
+		for k in range(self.s):
+			coordinates=[]
+			coordinates.append(r)
+			coordinates.append(c+k)
+			positions.append(coordinates)
+		return positions
+
+	def vertical(self):
+		positions=[]
+		r=random.randint(1,DIM)
+		c=random.randint(1,DIM)
+
+		for k in range(self.s):
+			coordinates=[]
+			coordinates.append(r+k)
+			coordinates.append(c)
+			positions.append(coordinates)
+		return positions
+
+	def checkPosition(self, the_list):
+		for positions in the_list:
+			if positions[0]<1 or positions[0]>10 or positions[1]<1 or positions[1]>10 or self.box[positions[0]][positions[1]]!="   ":
+				return False
+		return True
+
+box(playerBoard)
+fillBoard(playerBoard,playerShips) 
+box(compBoard) 
+fillBoard(compBoard,compShips) 
+box(playdisplay) 
+print("Your Fleet:")
+printBoard(playerBoard)
+
+def toTerminate(checkBoard,positionlist):
+	count=0
+	for ship in positionlist:
+		for tile in ship:
+			if checkBoard[tile[0]][tile[1]]==" O ":
+				count+=1
+	return count
+
+while toTerminate(playerBoard,playerShips)!=0 and toTerminate(compBoard,compShips)!=0:
+
+	def inputCheck(choiceCheck):
+		if choiceCheck.count(",")>0 and len(choiceCheck.split(","))==2 and len(choiceCheck.split(',')[0].rstrip().lstrip())==1 and len(choiceCheck.split(',')[1].rstrip().lstrip())==1 and choiceCheck.split(',')[0].rstrip().lstrip().isalpha() and choiceCheck.split(',')[1].rstrip().lstrip().isalpha() and 97<=ord(choiceCheck.split(',')[0].rstrip().lstrip())<(97+DIM) and 97<=ord(choiceCheck.split(',')[1].rstrip().lstrip())<(97+DIM):	
+			choices=[]
+			choices.append(choiceCheck.split(',')[0].rstrip().lstrip())
+			choices.append(choiceCheck.split(',')[1].rstrip().lstrip())	
+			return choices	
+		return False	
+	
+	def compattack():
+		attackRow=0
+		attackCol=0
+		while playerBoard[attackRow][attackCol]==" X " or playerBoard[attackRow][attackCol]==" I ": #bcs we want 0,0 position to satisfy so that it will generate a random position
+			attackRow=random.randint(1,DIM)
+			attackCol=random.randint(1,DIM)
+		return attackRow,attackCol
+
+	#the position list is a 3d list and unsunklist=[]+positionList somehow makes it a 4d list 
+
+	def ShipSunk(checkBoard,unsunkList):
+		for ship in unsunkList:
+			for tile in ship:
+				cnt=0
+				for points in tile:
+					if checkBoard[points[0]][points[1]]==" O ":
+						cnt+=1
+
+				if cnt==0:
+					print("A ship has been sunk.")
+					ship.pop(ship.index(tile))
+		return 
+	
+		
+	if player_turn==0:
+		trials+=1
+		print("Opponent's Board:")
+		printBoard(playdisplay)
+		print("Attack Number=",trials)
+
+		choice=input("Enter your strike r,c:")
+		choice=inputCheck(choice)
+		
+		if choice!=False:
+			if playdisplay[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]!=" X " and playdisplay[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]!=" O ":
+					
+				if compBoard[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]==" O ":
+
+					playdisplay[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]=" O "
+					message="YAY YOU HIT!"
+				else:
+					playdisplay[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]=" X "
+					message="YOU MISSED."
+				compBoard[AlphabetsV.index(choice[0])][Alphabets.index(choice[1])+1]=" X "
+
+				os.system("clear")
+				print("Opponent's board:")
+				printBoard(playdisplay)	
+				print(message)
+				ShipSunk(compBoard,unsunk_comp)	
+							
+			else:
+				print("Coordinate repeated.\nYou miss your turn.")
+		else:
+			print("INVALID INPUT\nYou miss your turn.")
+							
+	else:
+		compRow,compCol=compattack()
+		print("Opponent's Turn\nYour fleet:")
+		printBoard(playerBoard)
+		time.sleep(1)
+		os.system("clear")
+		if playerBoard[compRow][compCol]==" O ":
+			message="Oh no! You have been hit."
+		else:
+			message="Phew! The opponent missed."
+		print("Opponent's Turn")
+		playerBoard[compRow][compCol]=" X "
+		printBoard(playerBoard)
+		print(message)
+		ShipSunk(playerBoard,unsunk_player)
+
+	player_turn=(player_turn+1)%NUM_PLAYERS
+		
+	time.sleep(1.5)
+	os.system("clear")
+
+if player_turn==1:
+	message="YOU WON.\nYour Score="+str(100+toTerminate(playerBoard,playerShips))
+else:
+	message="YOU LOST.\nYour Score="+str(100-toTerminate(compBoard,compShips))
+
+print("Number of attempts=",trials)
+print("Your fleet:")
+printBoard(playerBoard)	
+print("Opponent's fleet:")
+printBoard(playdisplay)
+print(message)
+
+

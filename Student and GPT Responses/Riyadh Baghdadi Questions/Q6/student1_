@@ -1,0 +1,13 @@
+Here, we calculated the same result using three different methods, which can be seen in the results shown above. As we can see, all computation methods provide the same results up to the seventh decimal place. However, the results appear to vary drastically after the 7th decimal place. There are various explanations for this. The first problem is that computers cannot
+represent floating point numbers as we do, which is why they use a particular format that
+rounded the nearest number. This causes rounding errors. Similarly, floating point data types
+Float and Double have finite spaces, however, some irreducible fractions or real numbers are
+infinite in nature. Due to the problems of finite space and infinite real numbers, we have to round
+the number and omit the leftovers. But floating-point does not end there since there are three
+different rounding methods (rounding towards zero, rounding half away from zero, and rounding
+half to even), so performing the same calculation can produce different results based on the
+rounding method used that give different results for the same calculations. Further, adding and
+subtracting floating-point numbers often leaves out the smaller magnitude numbers, resulting in
+different results in different computation methods. Finally, as floating-point arithmetic is also not
+associative or distributive, this could also have caused variations in the answer.
+

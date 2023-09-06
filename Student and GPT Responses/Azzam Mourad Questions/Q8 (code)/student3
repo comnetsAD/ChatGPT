@@ -1,0 +1,227 @@
+
+Server:
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <unistd.h> 
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <netinet/in.h>
+#include <pthread.h>
+
+#define PORT 9002
+
+// to count the number of threads ever ran
+int id_count = 0;
+
+void *threadRun(void *socket)
+{
+	// cast to intptr_t to prevent the warning (-Wpointer-to-int-cast)
+	int clientfd = (intptr_t)socket;
+	// get a new id
+	int id = id_count++;
+
+	// macro used to print the sequence number of the connection
+	#define PRINT_ID printf("[%d] ", id);
+
+
+	
+
+    //receive "hello" message from client
+	char hello_msg[1024];
+	recv(clientfd , &hello_msg , sizeof(hello_msg),0);
+
+	//print out the data we get back
+	PRINT_ID printf("Received: %s\n" , hello_msg);
+
+	//send "hello back" to client
+	char hello_back_msg[]="Hello back";
+    send(clientfd , hello_back_msg , sizeof(hello_back_msg),0);
+
+    //receive array of integers
+	PRINT_ID printf("Waiting for client to send an array..\n");
+
+    int msg[1024];
+    int n = recv(clientfd,msg,1024*sizeof(int),0);
+	PRINT_ID printf("Number of bytes read = %d; thus %ld is the size of the array\n",n,n/sizeof(int));
+	PRINT_ID printf("Array received: ");
+    for(int j=0;j<n/sizeof(int);j++){
+      printf("%d ",msg[j]);
+    }
+	printf("\n");
+	PRINT_ID printf("Finished reading\n");
+
+    //calculate sum
+    int sum = 0;
+	PRINT_ID printf("Computing sum ...\n") ;
+    for(int k=0;k<n/sizeof(int);k++) {
+      sum += msg[k];
+    }
+	PRINT_ID printf("Sum = %d\n", sum);
+
+    //send sum back to client
+    send(clientfd , &sum , sizeof(int),0);
+	PRINT_ID printf("Finished sending sum ...\n");
+
+	// closing the connection
+	close(clientfd);
+	PRINT_ID printf("Connection closed!\n");
+
+}
+
+int main()
+{
+	//create socket
+	int server_socket;
+	server_socket = socket(AF_INET , SOCK_STREAM, 0);
+
+	// allow the port number to be reused after termination
+	setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int));
+
+	//check for fail error
+	if (server_socket == -1) {
+        printf("socket creation failed..\n");
+        exit(EXIT_FAILURE);
+    }
+    
+	//define server address structure
+	struct sockaddr_in server_address;
+	server_address.sin_family = AF_INET;
+	server_address.sin_port = htons(PORT);
+	server_address.sin_addr.s_addr = INADDR_ANY;
+
+
+	//bind the socket to our specified IP and port
+	if (bind(server_socket , 
+		(struct sockaddr *) &server_address,
+		sizeof(server_address)) < 0)
+	{
+		printf("socket bind failed..\n");
+        exit(EXIT_FAILURE);
+	}
+	 
+
+	//after it is bound, we can listen for connections
+	if(listen(server_socket,5)<0){
+		printf("Listen failed..\n");
+        exit(EXIT_FAILURE);
+	}
+	 
+
+
+	while (1)
+	{
+		// accepting a new connection
+		struct sockaddr_in clientAddr;
+        int clientAddrSize = sizeof(clientAddr);
+        int clientfd = accept(server_socket, (struct sockaddr*)&clientAddr, &clientAddrSize);
+
+		if(clientfd < 0){
+			printf("accept failed..\n");
+			exit(EXIT_FAILURE);
+		}
+
+		// passing the file descriptor to the threadRun function
+		// by creating new thread to handle the client asynchronously
+		pthread_t th;
+		pthread_create(&th, NULL, threadRun, (void *)(intptr_t)clientfd);
+	}
+
+	//close the socket
+	close(server_socket); 
+
+	return 0;
+}
+
+Client:
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> 
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <netinet/in.h>
+
+#define PORT 9002 //or 8080 or any other unused port value
+
+int main(){
+
+	//create a socket
+	int network_socket;
+	network_socket = socket(AF_INET , SOCK_STREAM, 0);
+
+	//check for fail error
+	if (network_socket == -1) {
+        printf("socket creation failed..\n");
+        exit(EXIT_FAILURE);
+    }
+    
+
+	//connect to another socket on the other side
+	
+	//specify an address for the socket we want to connect to
+	struct sockaddr_in server_address;
+	server_address.sin_family = AF_INET;
+	server_address.sin_port = htons(PORT);
+	server_address.sin_addr.s_addr = INADDR_ANY;
+
+
+	//connect
+	int connection_status = 
+	connect(network_socket, 
+			(struct sockaddr *) &server_address,
+			sizeof(server_address));
+
+	//check for errors with the connection
+	if(connection_status == -1){
+		printf("There was an error making a connection to the remote socket \n\n");
+		exit(EXIT_FAILURE);
+	}
+	
+
+	//now that we have the connect, we either send or receive data
+
+    //send "hello" message
+    char hello_msg[]="hello";
+    send(network_socket , hello_msg , sizeof(hello_msg),0);
+
+	//receive "hello back" from server
+	char hello_back_msg[1024];
+	recv(network_socket , &hello_back_msg , sizeof(hello_back_msg),0);
+
+	//print out the data we get back
+	printf("Received: %s\n" , hello_back_msg);
+
+
+	//Read array of integers from user and send it to server
+	int size;
+	printf("\nPlease enter the size of the array:\n");
+	scanf("%d",&size);
+	printf("\nPlease enter %d numbers:\n",size);
+	int arr[size];
+	for(int i=0;i<size;i++){
+	  scanf("%d",&arr[i]);
+	}
+
+	//send array to server
+	send(network_socket, arr, sizeof(int) * size,0);
+
+	//receive sum of array elements from server
+	int received_sum;
+	recv(network_socket , &received_sum , sizeof(int),0);
+
+	printf("\nClient received Sum= %d\n",received_sum);
+
+
+	//close socket after we are done
+	close(network_socket);
+
+
+
+	return 0;
+}
+
+

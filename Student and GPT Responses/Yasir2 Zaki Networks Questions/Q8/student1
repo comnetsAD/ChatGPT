@@ -1,0 +1,28 @@
+For the minimum distribution time for client-server distribution, we use the formula given in the textbook:
+
+Dcs = max (NF/Us, F/dmin)
+
+Where, F = 15 Gbits
+Us = 30 Mbps
+dmin = di = 2 Mbps
+
+
+                  N
+                10       100     1000
+    300 Kbps    7680    51200   512000
+u   700 Kbps    7680    51200   51200
+    2000 Kbps   7680    51200   51200
+
+
+For the minimum distribution time for P2P distribution, we use the following formula:
+
+Dp2p = max (F/Us, F/dmin, NF/(Us + sum(Ui)))
+
+
+                  N
+                10       100     1000
+    300 Kbps    7680    25904   47559
+u   700 Kbps    7680    15616   21525
+    2000 Kbps   7680    7680    7680
+
+

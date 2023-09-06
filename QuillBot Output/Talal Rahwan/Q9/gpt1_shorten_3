@@ -1,0 +1,1 @@
+Dynamic size: Linked Lists may alter size during runtime. This allows memory allocation during program execution, making it more efficient for applications that often add or delete parts. Linked Lists are more efficient at adding and removing members from the centre of the list than arrays since they just need to change the pointers of the surrounding components. 

@@ -1,0 +1,19 @@
+
+This game has 2 Nash equilibria (2; 4), (6; 4) are where the highest payoff for each player intersect (no dominant strategy).
+
+Find a possible mixed strategy.
+Player 1's strategies will be associated with positive probabilities (p) and (1 - p) for Up and Down respectively.
+Player 2's strategies will be associated with positive probabilities (q) and (1 - q).
+
+U1(U) = U1(D).
+2(p) + 2 (1-p) = 6(p).
+p=⅓
+
+Player 1 must randomize to make player 2 indifferent, let p2 play L with q and R with (1 - q).
+
+U2(L) = U2(R).
+2 (q) + 4 (1 - q) = 4(q) + 1(1 - q).
+p=⅗
+
+Thus the mixed strategies Nash equilibrium is (⅓; ⅔), (⅗; ⅖)), the only way both players make each other indifferent.
+

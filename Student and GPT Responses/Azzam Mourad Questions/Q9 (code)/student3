@@ -1,0 +1,280 @@
+
+Server:
+
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <netinet/in.h>
+
+#include <pthread.h>
+
+#define PORT 5555
+
+// prototype for thread function
+void *ThreadRun(void *);
+
+int main()
+{
+  // Create socket
+  int server_socket = socket(AF_INET, SOCK_STREAM, 0);
+
+  // Checking if socket creation fail
+  if (server_socket == -1)
+  {
+    printf("Socket creation failed..\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Specify an address for the socket we want to connect to
+  struct sockaddr_in server_address;
+  server_address.sin_family = AF_INET;
+  server_address.sin_port = htons(PORT);
+  server_address.sin_addr.s_addr = INADDR_ANY;
+
+  // Bind the socket to our specified IP and port and check for error
+
+  if (bind(server_socket, (struct sockaddr *)&server_address, sizeof(server_address)) < 0)
+  {
+    printf("Socket bind failed..\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Since socket is bound, listen for connections
+  if (listen(server_socket, 5) < 0)
+  {
+    printf("Listen failed..\n");
+    exit(EXIT_FAILURE);
+  }
+
+  // Store size of server address variable
+  int addrlen = sizeof(server_address);
+
+  // loop infinitely to keep listening for incoming connections
+  while (1)
+  {
+    // accept new client socket
+    // (loop is halted here until new client is accepted)
+    int client_socket = accept(server_socket, (struct sockaddr *)&server_address, (socklen_t *)&addrlen);
+
+    // Check if accepting client socket failed
+    if (client_socket < 0)
+    {
+      printf("Accept failed..\n");
+      exit(EXIT_FAILURE);
+    }
+
+    // Create new thread to handle client socket
+    pthread_t th;
+    pthread_create(&th, NULL, ThreadRun, &client_socket);
+  }
+
+  // Close the server socket
+  close(server_socket);
+
+  return 0;
+}
+
+void *ThreadRun(void *socket)
+{
+  // type cast void* argument to get client socket
+  int client_socket = *(int *)socket;
+
+  // loop indefinitely until client terminates with ctrl c
+  while (1)
+  {
+    // variable to store expression from client
+    char expression[1024] = "0";
+
+    // variable to store expression with all whitespaces removed
+    char expressionWithoutWhitespaces[1024];
+
+    // array holdings possible operands
+    char operands[4] = {'+', '-', '/', '*'};
+
+    // variable storing the operand of the expression
+    char operand = '?';
+
+    // Receive expression from client
+    recv(client_socket, &expression, sizeof(expression), 0);
+
+    // if client quit with ctrl + c,
+    // break out so server does not crash
+    if (!strcmp(expression, "0"))
+      break;
+
+    // flag to check whether expression is invalid
+    // (more or less than two numbers and no valid operand)
+    int invalidExpression = 0;
+
+    // Remove whitespaces from expression
+    for (int i = 0, j = 0; i < 1024 && !invalidExpression; i++)
+    {
+      // skip every whitespace
+      if (expression[i] == ' ')
+        continue;
+
+      // check each character for operand
+      for (int k = 0; k < 4; k++)
+        if (expression[i] == operands[k])
+        {
+          // if first operand found, store it
+          if (operand == '?')
+            operand = operands[k];
+          // if more than one found, expression invalid
+          else
+            invalidExpression = 1;
+        }
+
+      // store every character that isn't a whitespace in the new array
+      expressionWithoutWhitespaces[j++] = expression[i];
+    }
+
+    // array to hold the two numbers of the expression
+    int numbers[2];
+
+    // make character variable a string for strtok
+    char stringOperand[2];
+    stringOperand[0] = operand;
+    stringOperand[1] = '\0';
+
+    // variable to count how many numbers are in the expression
+    // if more than two, the expression is invalid
+    int counter = 0;
+
+    // get part (number) before operand
+    char *token = strtok(expressionWithoutWhitespaces, stringOperand);
+
+    // as long as exppression can be split, and expression is valid,
+    // split the expression to extract numbers
+    while (token != NULL && invalidExpression != 1)
+    {
+      // if two numbers, the expression is invalid
+      if (counter < 2)
+        numbers[counter++] = atoi(token);
+      // if more, expression is invalid
+      else
+        invalidExpression = 1;
+
+      token = strtok(NULL, stringOperand);
+    }
+
+    // if less than two numbers, the expression is invalid
+    if (counter < 2)
+      invalidExpression = 1;
+
+    double result;
+    char server_response[1024];
+
+    if (invalidExpression)
+    {
+      // send response back to client
+      strcpy(server_response, "Invalid expression");
+      send(client_socket, server_response, sizeof(server_response), 0);
+    }
+    else
+    {
+      // depending on operand, perform operation
+      if (operand == '+')
+        result = numbers[0] + numbers[1];
+      else if (operand == '-')
+        result = numbers[0] - numbers[1];
+      else if (operand == '/')
+        result = numbers[0] / numbers[1];
+      else if (operand == '*')
+        result = numbers[0] * numbers[1];
+
+      // write double value into string variable
+      snprintf(server_response, sizeof(server_response), "%g", result);
+
+      // send response back to client
+      send(client_socket, server_response, sizeof(server_response), 0);
+    }
+  }
+
+  // Close the client socket
+  close(client_socket);
+
+  return 0;
+}
+
+Client
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+
+#include <sys/socket.h>
+#include <sys/types.h>
+
+#include <netinet/in.h>
+
+#define PORT 5555
+
+int main()
+{
+	// Create socket
+	int server_socket = socket(AF_INET, SOCK_STREAM, 0);
+
+	// check for fail error
+	if (server_socket == -1)
+	{
+		printf("socket creation failed..\n");
+		exit(EXIT_FAILURE);
+	}
+
+	// Specify an address for the socket we want to connect to
+	struct sockaddr_in server_address;
+	server_address.sin_family = AF_INET;
+	server_address.sin_port = htons(PORT);
+	server_address.sin_addr.s_addr = INADDR_ANY;
+
+	// connect
+	int connection_status = connect(server_socket, (struct sockaddr *)&server_address, sizeof(server_address));
+
+	// check for errors with the connection
+	if (connection_status == -1)
+	{
+		printf("There was an error making a connection to the remote socket \n\n");
+		exit(EXIT_FAILURE);
+	}
+
+	// loop indefinitely until terminated by ctrl c
+	while (1)
+	{
+		char expression[1024];
+
+		printf("> ");
+
+		// Get input from users
+		fgets(expression, 1024, stdin);
+
+		// If input is just empty enter, do nothing
+		if (expression[0] == '\0' || expression[0] == '\n')
+			continue;
+
+		// Change \n at the end of input to a \0
+		expression[strcspn(expression, "\n")] = 0;
+
+		// send expression to server
+		send(server_socket, expression, sizeof(expression), 0);
+
+		// receive response from server
+		char server_response[1024];
+		recv(server_socket, &server_response, sizeof(server_response), 0);
+
+		// print out the response we get back
+		printf("Received: %s\n", server_response);
+	}
+
+	// close socket after we are done
+	close(server_socket);
+
+	return 0;
+}
+
+

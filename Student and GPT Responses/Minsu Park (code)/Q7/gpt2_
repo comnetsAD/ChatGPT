@@ -1,0 +1,7 @@
+def disemvowel(a_string):
+    vowels = "aeiouAEIOU"
+    return "".join(c for c in a_string if c not in vowels)
+
+# An example call to your function
+print(disemvowel("Can you read this without vowels?"))
+

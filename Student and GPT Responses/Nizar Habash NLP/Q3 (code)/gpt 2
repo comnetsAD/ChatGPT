@@ -1,0 +1,13 @@
+The regular expression that exactly models the language of hexadecimal numbers is:
+^([1-9]|[A-F]|[A-F][0-9]|[1-9][0-9])+$
+This regular expression allows for strings that start with any of the hexadecimal digits (0-9, A-F) and continue with any combination of those digits. It doesn't allow irrelevant initial zeroes as in 00019AF0A.
+Explanation:
+^ indicates the start of the string
+[1-9] matches any digit between 1 and 9
+[A-F] matches any uppercase letter between A and F
+[A-F][0-9] matches any uppercase letter between A and F followed by any digit between 0 and 9
+[1-9][0-9] matches any digit between 1 and 9 followed by any digit between 0 and 9
+matches one or more of the preceding characters or group
+$ indicates the end of the string
+The brackets ()+ indicate that the preceding characters or group must occur one or more times.
+This regular expression will match strings such as "12FD", "FFFFFFFF" and "A", but it will not match strings such as "00019AF0A" or "01A".

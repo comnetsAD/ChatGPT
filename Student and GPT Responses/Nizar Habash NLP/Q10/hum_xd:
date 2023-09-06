@@ -1,0 +1,3 @@
+
+Since we already have the Finnish-English, English-Arabic translation model, we first translate the Arabic enquiry to English, build a vector, and then translate the Finnish document and build the vectors. After that, we use cosine similarity to find the relevant documents. And then, from the relevant document, we vectorize the sentences, and find the most relevant sentences (Let us suppose we take 5 most similar sentences), and output the Finnish version of these 5 sentences.
+

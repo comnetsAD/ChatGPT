@@ -1,0 +1,68 @@
+def main():
+    # Initialize the birthday dictionary
+    birthdays = {}
+
+    # Display the menu to the user
+    while True:
+        print("Birthday Dictionary")
+        print("-------------------")
+        print("1. Look up a birthday")
+        print("2. Add a new birthday")
+        print("3. Change a birthday")
+        print("4. Delete a birthday")
+        print("5. Quit")
+        print()
+
+        # Get the user's choice
+        choice = input("Enter your choice (1-5): ")
+        print()
+
+        # Look up a birthday
+        if choice == "1":
+            name = input("Enter a name: ")
+            if name in birthdays:
+                print(f"{name}'s birthday is {birthdays[name]}")
+            else:
+                print(f"{name} is not in the dictionary.")
+
+        # Add a new birthday
+        elif choice == "2":
+            name = input("Enter a name: ")
+            if name in birthdays:
+                print(f"{name} is already in the dictionary.")
+            else:
+                birthday = input("Enter the birthday: ")
+                birthdays[name] = birthday
+                print(f"{name}'s birthday has been added to the dictionary.")
+
+        # Change a birthday
+        elif choice == "3":
+            name = input("Enter a name: ")
+            if name in birthdays:
+                birthday = input("Enter the new birthday: ")
+                birthdays[name] = birthday
+                print(f"{name}'s birthday has been updated in the dictionary.")
+            else:
+                print(f"{name} is not in the dictionary.")
+
+        # Delete a birthday
+        elif choice == "4":
+            name = input("Enter a name: ")
+            if name in birthdays:
+                del birthdays[name]
+                print(f"{name}'s birthday has been deleted from the dictionary.")
+            else:
+                print(f"{name} is not in the dictionary.")
+
+        # Quit the program
+        elif choice == "5":
+            break
+
+        # Invalid choice
+        else:
+            print("Invalid choice. Please try again.")
+        print()
+
+main()
+
+

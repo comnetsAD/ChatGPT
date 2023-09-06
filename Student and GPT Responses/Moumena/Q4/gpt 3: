@@ -1,0 +1,9 @@
+
+To solve this problem, we need to use Bayes' rule. Let R be the event that the ball drawn is red and U1 be the event that the urn with 6 red balls is chosen. We want to find P(U1|R). By Bayes' rule, we have:
+P(U1|R) = P(R|U1) * P(U1) / P(R)
+We are given that P(U1) = 1/2 and P(R) = (6/9) * (1/2) + (5/13) * (1/2) = 47/108.
+To find P(R|U1), we need to find the probability of drawing a red ball from the urn with 6 red balls. This is simply 6/9.
+Plugging these values into the formula above, we get:
+P(U1|R) = (6/9) * (1/2) / (47/108) = 36/47
+So the probability that the urn with 6 red balls was chosen given that a red ball was drawn is 36/47.
+

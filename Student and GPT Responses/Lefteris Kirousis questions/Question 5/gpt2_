@@ -1,0 +1,7 @@
+The algorithm is as follows:
+Perform a Breadth-First Search (BFS) starting from node s.
+Perform another BFS starting from node t1.
+Perform a third BFS starting from node t2.
+Iterate through all the nodes in the graph and find the node u that has the largest distance from s, but for which the sum of the distance from s to t1 and from s to t2 via u is not greater than the distance of s from t1 and t2.
+This algorithm takes O(m) time because it performs three BFS searches which take O(n+m) time each, and then iterates through all the nodes which takes O(n) time. Thus, the overall time complexity is O(3(n+m)) which is O(m).
+

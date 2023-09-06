@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+ 
+class Drink {
+ 
+   public:
+ 
+	int volume;
+  
+	// constructor
+	Drink(int v) {
+ 
+    	// variable private to the function
+    	volume = v;
+    	cout << "Volume: " << volume << "\n";
+ 
+	}
+ 
+};
+ 
+ 
+int main() {
+ 
+  // creating object
+Drink mydrink(12);
+ 
+  // Create object with dynamic memory allocation
+  // ... solution here ...
+//I think here I've declared it correctly, but I'm 100% sure why we're getting the displayed error
+Drink* mydrink = new Drink(7);  //declared using pointer
+delete &mydrink; // Deleted it after use
+ 
+return 0;
+ 
+}
+

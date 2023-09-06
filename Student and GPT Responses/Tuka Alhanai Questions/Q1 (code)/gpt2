@@ -1,0 +1,20 @@
+The source of the error in this code snippet is the factorial function. Specifically, the problem is caused by the line "return x * factorial(x-1);" which is called recursively.
+
+When the function is called with an argument of 0, the if statement "if(x == 1) { return 1; }" is not triggered and the function enters into an infinite recursion, calling itself again and again. This leads to stack overflow and eventually results in a segmentation fault error.
+
+A segmentation fault error occurs when a program attempts to access memory that it is not allowed to access, such as memory that is not allocated to it. In this case, the function is causing a stack overflow by recursing indefinitely and the program is trying to access memory that has not been allocated to it.
+
+To fix this issue the if statement should check if x is less than or equal to 1 and return 1. In this case, the factorial of 0 is not defined, returning 1 as the factorial of 0 is an acceptable mathematical definition.
+
+So the correct code should be:
+
+#include <iostream>
+ using namespace std;
+ int factorial(int x) {
+   if(x <= 1) { return 1; }
+   return x * factorial(x-1);
+}
+ int main() {
+   int n = factorial(0);
+return 0; }
+

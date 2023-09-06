@@ -1,0 +1,9 @@
+Bob's claim that he can receive a complete copy of the file shared by the swarm without uploading any data to other peers is not possible. This is because BitTorrent is a peer-to-peer file sharing protocol that relies on a system of shared responsibility for uploading and downloading data. In order for a peer to download data from the swarm, it must also contribute to the swarm by uploading data to other peers.
+
+If a peer, like Bob, does not contribute to the swarm by uploading data, it will not receive data from the swarm in return. This is because other peers in the swarm will prioritize uploading data to peers that are also uploading data, rather than to peers that are not contributing to the swarm.
+
+However, Bob can make his "free-riding" more efficient by using multiple computers with distinct IP addresses in the computer lab. This is because each computer with a distinct IP address can connect to the swarm as a separate peer, allowing Bob to download data from multiple peers simultaneously. This can potentially increase the download speed for Bob, as he is able to download data from multiple sources at the same time.
+
+However, it is worth noting that using multiple computers in this way is not necessarily ethical, as it allows Bob to download data from the swarm without contributing to the upload capacity of the swarm. This can potentially lead to an imbalance in the swarm, where some peers are uploading a disproportionate amount of data compared to others. This can negatively impact the overall performance of the swarm, and may be considered unfair by other peers in the swarm.
+
+

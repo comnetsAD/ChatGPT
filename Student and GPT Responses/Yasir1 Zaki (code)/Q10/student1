@@ -1,0 +1,19 @@
+b=[1,3,5,7,9,7,5,3,1]
+
+switch=False
+spaces=4
+for var2 in b:
+        
+        if switch==False:
+                
+                print(spaces*" "+ ("*"*var2))
+                spaces=spaces-1
+                if spaces==0:
+                        switch=True
+                
+        elif switch:
+
+                print(spaces*" "+ ("*"*var2))
+                spaces=spaces+1
+
+

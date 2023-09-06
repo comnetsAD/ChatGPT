@@ -1,0 +1,7 @@
+In a TCP connection that has no loss and is using AIMD for congestion control, cwnd will increase by 1 MSS every time a batch of ACKs is received. If cwnd starts at 6 MSS and we are trying to increase it to 12 MSS, it will take 6 RTT to increase cwnd from 6 MSS to 12 MSS.
+
+The average throughput for this connection up through time = 6 RTT will be equal to the product of cwnd and MSS, divided by the RTT. In other words, the average throughput will be equal to 6 MSS * MSS / RTT.
+
+In an HTTP request message, the average throughput will depend on the specific circumstances of the request. Factors that can impact the average throughput include the size of the requested resource, the bandwidth and latency of the network connection, and the processing time of the server. It is not possible to accurately determine the average throughput of an HTTP request without more information about the specific request being made.
+
+

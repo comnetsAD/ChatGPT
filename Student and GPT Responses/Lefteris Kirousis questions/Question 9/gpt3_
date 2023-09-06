@@ -1,0 +1,11 @@
+You are given such a complete binary tree T, but the labeling is only specified in the following implicit way: for each node v, you can determine the value xv by probing the node v. Show how to find a local minimum of T using only O(log n) probes to the nodes of T.
+
+A solution to find a local minimum of the complete binary tree T would be to use a binary search algorithm.
+Start at the middle node of the last level of the tree.
+Compare the value of the current node to the values of its parent and its siblings. If the value of the current node is less than its parent and siblings, it is a local minimum and we return it.
+If the value of the current node is greater than its parent, we know that the local minimum is in the left subtree of the current node, so we move to the middle node of the left subtree.
+If the value of the current node is less than its parent, we know that the local minimum is in the right subtree of the current node, so we move to the middle node of the right subtree.
+Repeat steps 2 to 4 recursively until a local minimum is found.
+This approach also allows us to eliminate half of the tree in each step, since we only need to search the subtree where the local minimum could be. Since the tree is complete, it has height log(n), thus we only need log(n) probes to find the local minimum.
+For example, in a four-level complete binary tree, we would need at most four probes to find a local minimum. First, we would probe the middle node of the last level, then the middle node of left or right subtree (depending on which one is smaller), then the middle node of the left or right subtree of the subtree, and finally the left or right grandchild (which will be the local minimum if it exists).
+

@@ -1,0 +1,7 @@
+
+To build a cross-lingual question-answering system for Arabic-to-Finnish using Lextrista's English-only IR system, I would likely use a combination of machine translation and transfer learning.
+First, I would use the machine translation model that I built in the previous mission to translate the Arabic query into English. Then, I would use Lextrista's English-only IR system to search for relevant documents in Finnish.
+Since I don't have a summarization tool, I would use a pre-trained text summarization model such as T5 or BERT fine-tuned on a Finnish summarization dataset to generate summary of the relevant documents.
+To evaluate the performance of the system, I would use metrics such as F1 score or ROUGE to measure the quality of the generated summaries. I would also perform human evaluation by having native speakers of both languages evaluate the summaries.
+It's important to note that building such a system with limited resources and a short timeframe will be challenging, but using pre-trained models for machine translation and summarization can still be an effective approach.
+

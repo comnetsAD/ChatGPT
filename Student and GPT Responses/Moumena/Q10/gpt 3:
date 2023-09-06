@@ -1,0 +1,4 @@
+
+There are a total of 100 positive integers less than 100, and there are 9 choices for the first digit (since it cannot be 0). For each of these choices, there are 9 choices for the second digit (since it must be different from the first digit). Therefore, there are a total of 9*9=81 positive integers less than 100 that have all distinct digits.
+The probability that a positive integer less than 100 picked at random has all distinct digits is therefore 81/100, which simplifies to approximately 0.81.
+

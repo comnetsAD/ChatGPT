@@ -1,0 +1,5 @@
+False. The shortest paths from s to any other node t can change if the lengths are replaced by 2le.
+A counterexample can be a graph with 2 nodes: s and t, and 2 directed edges: (s,t) and (t,s), with the weights le1 and le2 respectively. The shortest path from s to t would be through the edge (s,t) with length le1, but if we multiply the length by 2, the shortest path would now be through the edge (t,s) with length 2*le2.
+We can prove it formally by assuming that D(u,v) is the shortest path from u to v in the original graph G. Let G' be the graph obtained from G by multiplying all the weights by 2. If a path P in G' is shorter than D(u,v), then we can show that there exists a path P' in G such that the length of P' is less than D(u,v) which contradicts the definition of D(u,v) being the shortest path.
+Therefore, we can conclude that the shortest paths from s to any other node t can change if the lengths are replaced by 2le.
+

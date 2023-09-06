@@ -1,0 +1,3 @@
+
+First I will use the Arabic to English pivot table to help translate Arabic queries into English. I will use the Finnish English pivot table to translate a copy of the Finnish document to English for the IR system. I then query the IR system to find the ID of the document (then lookup the original Finnish doc). Next I will use the tool in Part 1) to translate Arabic to Finnish query. I use these queries to apply TF-IDF on the Finnish document to get the most informative sentence. I show this summary to the user, also with the retrieved Finnish doc.
+

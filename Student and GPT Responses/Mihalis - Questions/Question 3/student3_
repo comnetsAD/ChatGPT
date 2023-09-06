@@ -1,0 +1,9 @@
+A port is a logical connection that is used by services and programs to exchange information, it determines the specific
+program or service that is going to be used. Its values range from 0 to 65535. Some of the common port numbers are 80,
+443 - Web pages (HTTP, HTTPS), 21 FTP (File Transfer Protocol), and 25 - email (SMTP). Port numbers are always
+associated with an IP address, they work together to exchange data.
+Everything connected directly or indirectly to the internet has an IP address (e.g. computers, phones, servers, etc.) Servers
+are computers directly connected to the internet and every internet server has an Internet Protocol (IP) address. Unlike
+servers, the computers you and I use are called clients, they are connected indirectly to the internet through an internet
+service provider (ISP)
+

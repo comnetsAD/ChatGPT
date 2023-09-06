@@ -1,0 +1,6 @@
+
+To find the shortest paths from s to any other node t when the lengths of the edges are replaced by 2le + 1, one possible approach would be to use the modified Dijkstra's algorithm. The basic idea is the same as the original Dijkstra's algorithm, but with a small modification in the relaxation step.
+Instead of relaxing the edges by updating the distance of a vertex as the sum of the distance of the previous vertex and the weight of the edge, we would update the distance as the sum of the distance of the previous vertex and ( 2le + 1) of the weight of the edge.
+Then we would use a priority queue, implemented as a min-heap data structure, to keep track of the vertex with the smallest distance from the source vertex s. The algorithm repeatedly selects the vertex v from the priority queue with the smallest distance and updates the distance of all vertices adjacent to v by relaxing the edge(v,u).
+Once all vertices have been processed, the algorithm will have determined the shortest paths from s to all other vertices in the graph, considering the new weights ( 2le + 1).
+

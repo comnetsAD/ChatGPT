@@ -1,0 +1,42 @@
+
+#include <iostream>
+using namespace std;
+// ---- Place your solution below this line -----
+
+// ---- Do not edit below this line -----
+int main() {
+   double sumInt  = sumFunc(13, 7.8);
+   string sumName = sumFunc(""Abra"", ""Cadabra"");
+   cout << ""Int: "" << sumInt << ""\n"";
+   cout << ""String: "" << sumName << ""\n"";
+   return 0;
+}
+// ---- Console print out ------
+// Int: 20.8
+// String: Abra Cadabra
+
+
+
+#include <iostream>
+using namespace std;
+double sumFunc(double x, double y) {
+return x + y;
+}
+string sumFunc(string x, string y) {
+return x + " " + y;
+}
+
+int main() {
+double sumInt = sumFunc(13, 7.8);
+string sumName = sumFunc("Abra", "Cadabra");
+cout << "Int: " << sumInt << "\n";
+cout << "String: " << sumName << "\n";
+return 0;
+}
+
+I've added two overloads of the sumFunc function, one that accepts two double parameters and returns a double, and another that accepts two string parameters and returns a string. This way the main function can call the correct version of the sumFunc function based on the types of its parameters.
+Also, I've corrected the quotation marks in the String function call.
+The functions will now return the expected results and the output will be:
+// Int: 20.8
+// String: Abra Cadabra
+

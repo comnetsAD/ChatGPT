@@ -1,0 +1,11 @@
+To send an MP3 file consisting of 5 million bytes from Host A to Host B, we need to find out how many datagrams are required. Since datagrams are limited to 1,500 bytes (including header), and the IP header is 20 bytes, the maximum size of the payload in each datagram is 1,500 bytes - 20 bytes = 1,480 bytes.
+
+To calculate the number of datagrams required to send the 5 million byte MP3 file, we can divide the size of the file by the maximum payload size of each datagram:
+
+(5 million bytes) / (1,480 bytes/datagram) = 3,378.378378378378378378378378378 datagrams
+
+Since we cannot send a fraction of a datagram, we will need to round up to the nearest whole number. This means that we will need 3,379 datagrams to send the 5 million byte MP3 file.
+
+We computed the number of datagrams required by dividing the size of the MP3 file by the maximum payload size of each datagram, and rounding up to the nearest whole number.
+
+

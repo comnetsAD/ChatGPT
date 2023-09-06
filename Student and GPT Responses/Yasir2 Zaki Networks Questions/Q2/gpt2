@@ -1,0 +1,39 @@
+To send an MP3 consisting of 5 million bytes from Host A to Host B, it would be necessary to send 5,000,000 / 1,500 = 3,333 datagrams. This is because each datagram is limited to 1,500 bytes, including the header, and the total size of the MP3 is 5 million bytes.
+
+To calculate the number of datagrams required, we first need to divide the size of the MP3 (5 million bytes) by the maximum size of each datagram (1,500 bytes). This gives us the total number of datagrams required to send the MP3, which is 3,333.
+
+It is important to note that this calculation includes the size of the IP header (20 bytes) in the maximum size of each datagram. If the IP header were not included in the maximum size, the number of datagrams required would be slightly higher.
+
+Suppose the information content of a packet is the bit pattern 1110 0110 1001 1101 and an even parity scheme is being used. What would the value of the field containing the parity bits be for the case of a two-dimensional parity scheme? Your answer should be such that a minimum-length checksum field is used.
+
+In a two-dimensional parity scheme, the parity bits are added to the packet in such a way as to provide parity for each row and each column of the matrix formed by the information content of the packet.
+
+To calculate the value of the parity bits for the given packet using a two-dimensional parity scheme, we can arrange the information content of the packet into a matrix as follows:
+
+1 1 1 0 
+0 1 1 0 
+1 0 0 1 
+1 1 0 1
+To calculate the parity bits, we can then perform the following steps:
+
+Calculate the parity for each row:
+Row 1: 1 + 1 + 1 + 0 = 0 (even parity)
+Row 2: 0 + 1 + 1 + 0 = 0 (even parity)
+Row 3: 1 + 0 + 0 + 1 = 0 (even parity)
+Row 4: 1 + 1 + 0 + 1 = 1 (odd parity)
+Calculate the parity for each column:
+Column 1: 1 + 0 + 1 + 1 = 1 (odd parity)
+Column 2: 1 + 1 + 0 + 1 = 1 (odd parity)
+Column 3: 1 + 1 + 0 + 0 = 0 (even parity)
+Column 4: 0 + 0 + 1 + 1 = 0 (even parity)
+Add the parity bits to the matrix:
+
+P 1 1 1 0 
+1 0 1 1 0 
+1 1 0 0 1 
+0 1 1 0 1
+The value of the parity bits in the field containing the parity bits would be the concatenation of the parity bits in each row and column, in the order in which they were calculated. In this case, the value of the parity bits would be 0101.
+
+It is important to note that this is the minimum-length checksum field that can be used for this packet, as it contains the minimum number of parity bits required to provide parity for each row and column of the matrix.
+
+

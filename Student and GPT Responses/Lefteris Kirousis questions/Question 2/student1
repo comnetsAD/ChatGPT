@@ -1,0 +1,7 @@
+This claim is true. Given that f(n) is Og(n) we can show that f(n) ≤ cg(n) where c is aconstant greater than 0. By taking log on both sides of the inequality we get the following:
+• logf(n) ≤ log(cg(n))
+• logf(n) ≤ log(c)+ log(g(n))
+• As n approaches ∞, log(n) also approaches ∞, therefore, we candeduce that log(c) ≤ log(g(n)).
+• Thus, logf(n) ≤ log(g(n))+ log(g(n))
+• logf(n) ≤ 2 log(g(n)), therefore implying that logf(n) is O(logg(n))
+

@@ -1,0 +1,8 @@
+The contemporary cyber-threat chosen is Ransomware.
+Ransomware is a type of malware that encrypts a victim's files and demands payment, usually in the form of cryptocurrency, in exchange for the decryption key. The motivation behind using ransomware is financial gain for the attackers.
+The delivery method for ransomware can vary, but common methods include phishing emails, exploit kits, and drive-by downloads.
+Once the ransomware has been delivered and executed, it will encrypt the victim's files and display a ransom note, usually with instructions on how to pay the ransom. The victim is then given a deadline to pay the ransom before the decryption key is deleted, making the files permanently inaccessible.
+According to data from the FBI's Internet Crime Complaint Center, there were 4,086 reported ransomware attacks in 2019, causing a total loss of $11.5 million. This represents a significant increase from 2018, when there were 2,573 reported attacks resulting in a loss of $3.6 million.
+In terms of cost, it can be difficult to estimate the exact cost of ransomware attacks as not all victims report the attacks or disclose the amount paid in ransom. However, according to a report by Cybersecurity Ventures, the cost of ransomware is expected to exceed $11.5 billion annually by 2021.
+To combat ransomware, solutions such as backup and disaster recovery, endpoint protection, and employee education and training can be deployed. Two examples of ransomware are WannaCry and Petya. WannaCry was a global ransomware attack that affected over 200,000 victims in 150 countries in May 2017. Petya is a ransomware attack that encrypts the master boot record of the victim's computer, rendering it inoperable.
+

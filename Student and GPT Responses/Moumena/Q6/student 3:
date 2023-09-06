@@ -1,0 +1,8 @@
+
+We can use the pigeonhole principle to find out the largest number of students that need to share a locker.
+This can be done by simply finding the ceiling of the ratio between students and lockers, ⌈( 4026
+805 )⌉ = 6
+
+
+
+

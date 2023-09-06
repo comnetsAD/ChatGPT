@@ -1,0 +1,9 @@
+In order to initiate a connection with www.cyberwarefarenyuad.com, the host machine undergoes a series
+of steps. When this URL is typed into the browser, the browser intends to communicate with the server.
+To do that, it first extracts the hostname from said URL. In this case, the hostname is
+‘myhost.subnet.com’. The browser then looks up the IP address for this hostname, which is done through
+a Domain Name System (DNS) lookup, giving us the IP 192.168.1.50 for this URL. Host
+names are labels that are assigned to computers to identify them on the network. It is essential to
+differentiate different devices from each other and is used to send the user to a particular webpage. On the
+other hand, a host IP address is a numerical label assigned to each device
+

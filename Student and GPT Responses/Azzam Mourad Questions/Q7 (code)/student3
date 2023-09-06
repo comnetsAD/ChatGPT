@@ -1,0 +1,102 @@
+
+// Write a program that reads an array and fills it from the user. 
+// The program should initiate 3 threads, where:
+		// one should calculate the average, 
+		// the other should calculate the minimum
+		// the final one should calculate the maximum. 
+// You need to print the results of these functions in the main function (not in the threads).
+
+
+#include<pthread.h>
+#include <stdio.h>
+#include<stdlib.h>
+
+int *array ;
+
+// inside function of thread 1
+// calc the average
+void* avrg(int size)
+{
+	// int Length  = sizeof(array)/sizeof(array[0]);
+	int sum = 0 ;
+	for (int i = 0; i < size; i++)
+	{
+		sum += array[i];
+	}
+	int avg = sum/size;
+	pthread_exit((void *)avg);
+}
+
+// inside function of thread 2
+// calc the minimum
+void* min(int size)
+{
+	int min = array[0];
+	for (int i=0; i<size;i++)
+	{
+		if (array[i]<min)
+		{
+			min = array[i];
+		}
+	}
+	pthread_exit((void *)min);
+}
+
+// inside function of thread 3
+// maximum
+void* max(int size)
+{
+	int max = array[0];
+	for (int i=0; i<size;i++)
+	{
+		if (array[i]>max)
+		{
+			max = array[i];
+		}
+	}
+	pthread_exit((void *)max);
+}
+
+
+int main() {
+	int size;
+	void *AvgValue;
+	void *MinValue;
+	void *MaxValue;
+
+	// read array
+		// reading array from lab 7 + global array
+	printf("\nPlease enter the size of the array:\n");
+	scanf("%d",&size);
+	printf("\nPlease enter %d numbers:\n",size);
+	array = malloc( sizeof *array * size );
+
+	for(int i=0;i<size;i++){
+	  scanf("%d",&array[i]);
+	}
+
+
+	// create 3 threads
+	pthread_t avgThread, minThread, maxThread;
+	pthread_create(&avgThread, NULL, avrg, size);
+
+	pthread_create(&minThread, NULL, min, size);
+
+	pthread_create(&maxThread, NULL, max, size);
+
+
+	// get the values from the threads
+	pthread_join(avgThread, &AvgValue);
+	pthread_join(minThread, &MinValue);
+	pthread_join(maxThread, &MaxValue);
+
+
+	// print all the values
+	printf("The average is: %d\n",(int)AvgValue);
+	printf("The minimum value is: %d\n",(int)MinValue);
+	printf("The maximum value is: %d\n",(int)MaxValue);
+
+	return 0;
+}
+
+

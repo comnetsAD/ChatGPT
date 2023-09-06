@@ -1,0 +1,38 @@
+convert_units <- function(value, unit, desired_unit) {
+  if (unit == "pounds") {
+    if (desired_unit == "kilograms") {
+      return (value * 0.453592)
+    } else if (desired_unit == "stone") {
+      return (value * 0.0714286)
+    } else if (desired_unit == "Batman") {
+      return (value * 0.000001)
+    }
+  } else if (unit == "kilograms") {
+    if (desired_unit == "pounds") {
+      return (value * 2.20462)
+    } else if (desired_unit == "stone") {
+      return (value * 0.157473)
+    } else if (desired_unit == "Batman") {
+      return (value * 0.000000220462)
+    }
+  } else if (unit == "stone") {
+    if (desired_unit == "pounds") {
+      return (value * 14)
+    } else if (desired_unit == "kilograms") {
+      return (value * 6.35029)
+    } else if (desired_unit == "Batman") {
+      return (value * 0.00001)
+    }
+  } else if (unit == "Batman") {
+    if (desired_unit == "pounds") {
+      return (value * 1000000)
+    } else if (desired_unit == "kilograms") {
+      return (value * 453592)
+    } else if (desired_unit == "stone") {
+      return (value * 100000)
+    }
+  } else {
+    return ("Invalid unit")
+  }
+}
+

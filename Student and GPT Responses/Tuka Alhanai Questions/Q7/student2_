@@ -1,0 +1,4 @@
+Separate compilation. Putting all the codes in one main.cpp file will make it difficult for developrs to read and collaborate. Splitting classes and functions in different files will definitely ake the code more neat and organized.
+Taking advantage of polymorphism. Using polymorphism to make functions to override themselveds based on the context, to overload operators and classes to inherit qualities from their parent classes will lessen our effort to always come up with different function / class names and mess things up.
+
+

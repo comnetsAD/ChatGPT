@@ -1,0 +1,99 @@
+
+/* Program Logic:
+    Two queues, one for girls, one for boys.
+    Both produce and consume take 1 clock speed, and RR scheduler has quantum of 3.
+    Scheduler puts signal on mutex for <= 3 girls or boys per round.
+    Boys and girls are simulated and added through messages send from clients.
+    Counting semaphore makes sure that nothing is consumed if its value is < 0.
+*/
+define MaxUsers 100;
+define MaxProducts 100;
+
+struct products {...} box[MaxProducts];
+
+struct job {
+    char gender;
+} girlJobs[MaxUsers], boyJobs[MaxUsers];
+
+define Quantum 3;
+
+int girls;
+int boys;
+
+sem_t products;
+sem_t girlMutex;
+sem_t boyMutex;
+
+void* boyThread(void*);
+void* girlThread(void*);
+void* schedulerThread(void*);
+
+int main(void) {
+    socket_t server = ...
+    /* Server steps left out because they are not important for program logic.
+        Could have also added boys/girls through console inputs.
+    */    sem_init(&products, 0, 0);
+    sem_init(&girlMutex, 0, 0);
+    sem_init(&boyMutex, 0, 0);
+    while(server.listening()) {
+        // don't take message if max users are reached so new messages do not get lost
+        if(boys + girls == MaxUsers) continue
+        char msg[1024];
+        server.receive(&msg, 1024, NULL);
+
+        char gender = boyOrGirl(msg); # return 'g' for girl and 'b' for boy
+
+        if (gender == 'b') {
+            pthread_t boy;
+            pthread_init(&boy, boyThread, NULL, NULL);
+            boyJobs[boys++] = boy;
+        }
+
+        if (gender == 'g') {
+            pthread_t girl;
+            pthread_t girl = pthread_init(&girl, girlThread, NULL, NULL);
+            girlJobs[girls++] = girl;
+        }
+    }
+
+    # print content of box, arbitrary logic depending on struct
+}
+
+void* schedulerThread(void*) {
+    char curGender = 'b'; // start with boys producing
+
+    while(true) {
+        int rounds = 0;
+
+        while(rounds < Quantum) {
+            if(curGender == 'b') {
+                if(boys == 0) continue;
+                sem_signal(boyMutex);
+            else
+                if(girls == 0) continue;
+                sem_signal(girlMutex);
+            rounds++;
+        }
+        if(curGender == 'b')
+            curGender = 'g';
+        else
+            curGender = 'b';
+    }
+}
+void* girlThread(void*) {
+    while(true) {
+        sem_wait(&girlMutex);
+        sem_wait(&counting);
+        consume(); # arbitrary consume function
+    }
+}
+void* boyThread(void*) {
+    while(true) {
+        sem_wait(&boyMutex);
+        if(products.length == 100) continue;
+        sem_signal(&counting);
+        produce(); # arbitrary produce function
+    }
+}
+
+
